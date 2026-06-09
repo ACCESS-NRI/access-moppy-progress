@@ -1,0 +1,272 @@
+# Submission plan for ACCESS-ESM1.6
+# Defines which experiments and ensemble members are planned for CMORisation
+# and ESGF submission.
+# Conforms to schemas/plan.schema.json
+
+model: ACCESS-ESM1.6
+esgf_node: esgf.nci.org.au
+mip_era: CMIP6
+notes: >
+  ACCESS-ESM1.6 CMIP6 submission. Target data node is NCI ESGF.
+  Mapping source: src/access_moppy/mappings/ACCESS-ESM1.6_mappings.json
+
+experiments:
+
+  - id: historical
+    priority: high
+    members:
+      - variant_label: r1i1p1f1
+        realization: 1
+        physics: 1
+        forcing: 1
+        initialization: 1
+        notes: "Primary historical run"
+      - variant_label: r2i1p1f1
+        realization: 2
+        physics: 1
+        forcing: 1
+        initialization: 1
+      - variant_label: r3i1p1f1
+        realization: 3
+        physics: 1
+        forcing: 1
+        initialization: 1
+      - variant_label: r4i1p1f1
+        realization: 4
+        physics: 1
+        forcing: 1
+        initialization: 1
+      - variant_label: r5i1p1f1
+        realization: 5
+        physics: 1
+        forcing: 1
+        initialization: 1
+    target_variables:
+      # Atmosphere (Amon / day)
+      - zg500
+      - rldscs
+      - rlutcs
+      - ci
+      - cl
+      - cli
+      - clivi
+      - clt
+      - clw
+      - clwvi
+      - evspsbl
+      - hfls
+      - hfss
+      - hur
+      - hus
+      - huss
+      - hurs
+      - mc
+      - pr
+      - prc
+      - prsn
+      - prw
+      - ps
+      - psl
+      - rlds
+      - rlus
+      - rlut
+      - rsds
+      - rsdt
+      - rsus
+      - rsut
+      - rtmt
+      - sfcWind
+      - ta
+      - tas
+      - tasmax
+      - tasmin
+      - tauu
+      - tauv
+      - ts
+      - ua
+      - uas
+      - va
+      - vas
+      - wap
+      - zg
+      - areacella
+      - hursmax
+      - hursmin
+      - sfcWindmax
+      # Ocean (Omon)
+      - msftmrho
+      - msftmz
+      - areacello
+      - agessc
+      - bigthetao
+      - bigthetaoga
+      - deptho
+      - evs
+      - hfds
+      - hfgeou
+      - mlotst
+      - mlotststq
+      - pbo
+      - pso
+      - sob
+      - so
+      - soga
+      - sos
+      - sosga
+      - sftof
+      - tauuo
+      - tauvo
+      - thetao
+      - thetaoga
+      - thkcello
+      - tob
+      - tos
+      - tosga
+      - uo
+      - volcello
+      - vo
+      - wfo
+      - wo
+      - zos
+      - zossq
+      - zostoga
+      # Sea ice (SImon)
+      - siconc
+      - sidconcdyn
+      - sidconcth
+      - siarean
+      - siareas
+      - sidmassdyn
+      - sidmassth
+      - sidmassmeltlat
+      - sidmassevapsubl
+      - sidmassgrowthsi
+      - sidmassgrowthbot
+      - siextentn
+      - siextents
+      - simass
+      - sisnconc
+      - sisnhc
+      - sisnthick
+      - sispeed
+      - sisndmasssi
+      - sithick
+      - sitimefrac
+      - siu
+      - sivol
+      - sivoln
+      - sivols
+      # Land (Lmon)
+      - mrfso
+      - mrro
+      - mrros
+      - mrsfl
+      - mrsll
+      - mrso
+      - mrsos
+      - nbp
+      - nep
+      - gpp
+      - lai
+      - ra
+      - rh
+      - tran
+      - tsl
+      - evspsblsoi
+      - evspsblveg
+      - cLand
+      - cLeaf
+      - cSoil
+      - cVeg
+      - sftlf
+
+  - id: piControl
+    priority: high
+    members:
+      - variant_label: r1i1p1f1
+        realization: 1
+        physics: 1
+        forcing: 1
+        initialization: 1
+        notes: "Control run branched from spin-up"
+    target_variables: "*"
+    notes: >
+      Full variable set for piControl as required by CMIP6 protocol.
+
+  - id: ssp585
+    priority: medium
+    members:
+      - variant_label: r1i1p1f1
+        realization: 1
+        physics: 1
+        forcing: 1
+        initialization: 1
+      - variant_label: r2i1p1f1
+        realization: 2
+        physics: 1
+        forcing: 1
+        initialization: 1
+    target_variables:
+      - tas
+      - tasmax
+      - tasmin
+      - pr
+      - psl
+      - tos
+      - siconc
+      - siextentn
+      - siextents
+      - zos
+      - nbp
+      - gpp
+
+  - id: ssp245
+    priority: medium
+    members:
+      - variant_label: r1i1p1f1
+        realization: 1
+        physics: 1
+        forcing: 1
+        initialization: 1
+    target_variables:
+      - tas
+      - tasmax
+      - tasmin
+      - pr
+      - psl
+      - tos
+      - siconc
+
+  - id: abrupt-4xCO2
+    priority: low
+    members:
+      - variant_label: r1i1p1f1
+        realization: 1
+        physics: 1
+        forcing: 1
+        initialization: 1
+    target_variables:
+      - tas
+      - pr
+      - tos
+      - thetao
+      - psl
+      - rlut
+      - rsut
+      - hfds
+
+  - id: 1pctCO2
+    priority: low
+    members:
+      - variant_label: r1i1p1f1
+        realization: 1
+        physics: 1
+        forcing: 1
+        initialization: 1
+    target_variables:
+      - tas
+      - pr
+      - tos
+      - psl
+      - rlut
+      - rsut

@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/rbeucher/access-moppy-progress/schemas/plan.schema.json",
+  "title": "Submission Plan",
+  "description": "Declares which (experiment, member) combinations are planned for CMORisation and ESGF submission for a given model.",
+  "type": "object",
+  "required": ["model", "experiments"],
+  "additionalProperties": false,
+  "properties": {
+    "model": {
+      "type": "string",
+      "description": "Model identifier, e.g. ACCESS-ESM1.6"
+    },
+    "esgf_node": {
+      "type": "string",
+      "description": "Target ESGF data node, e.g. esgf.nci.org.au"
+    },
+    "mip_era": {
+      "type": "string",
+      "enum": ["CMIP6", "CMIP6Plus", "CMIP7"],
+      "description": "MIP era for this submission"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "experiments": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "members"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "CMIP experiment id, e.g. historical"
+          },
+          "members": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["variant_label"],
+              "additionalProperties": false,
+              "properties": {
+                "variant_label": {
+                  "type": "string",
+                  "pattern": "^r[0-9]+i[0-9]+p[0-9]+f[0-9]+$",
+                  "description": "CMIP variant label, e.g. r1i1p1f1"
+                },
+                "realization": { "type": "integer", "minimum": 1 },
+                "physics":    { "type": "integer", "minimum": 1 },
+                "forcing":    { "type": "integer", "minimum": 1 },
+                "initialization": { "type": "integer", "minimum": 1 },
+                "notes": { "type": "string" }
+              }
+            }
+          },
+          "target_variables": {
+            "oneOf": [
+              { "type": "string", "enum": ["*"] },
+              { "type": "array", "items": { "type": "string" }, "minItems": 1 }
+            ],
+            "description": "Variables to CMORise. Use * for all variables in the model mappings."
+          },
+          "priority": {
+            "type": "string",
+            "enum": ["high", "medium", "low"],
+            "description": "Submission priority relative to other experiments"
+          },
+          "notes": { "type": "string" }
+        }
+      }
+    }
+  }
+}

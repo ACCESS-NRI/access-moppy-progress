@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/rbeucher/access-moppy-progress/schemas/cmorisation_report.schema.json",
+  "title": "CMORisation Report",
+  "description": "Wrapper around moppy_batch_report.json with provenance for the progress registry.",
+  "type": "object",
+  "required": ["schema_version", "model", "variant_label", "status", "tasks"],
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": { "type": "string" },
+    "model": { "type": "string" },
+    "variant_label": {
+      "type": "string",
+      "pattern": "^r[0-9]+i[0-9]+p[0-9]+f[0-9]+$"
+    },
+    "ingested_at": { "type": "string", "description": "ISO-8601 timestamp when this report was ingested into the registry" },
+    "status": { "type": "string", "enum": ["completed", "failed", "incomplete"] },
+    "success": { "type": "boolean" },
+    "experiment_id": { "type": "string" },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "total":     { "type": "integer" },
+        "completed": { "type": "integer" },
+        "failed":    { "type": "integer" },
+        "running":   { "type": "integer" },
+        "pending":   { "type": "integer" },
+        "retrying":  { "type": "integer" }
+      }
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["variable", "status"],
+        "properties": {
+          "variable":      { "type": "string" },
+          "experiment_id": { "type": "string" },
+          "status":        { "type": "string" },
+          "start_time":    { "type": ["string", "null"] },
+          "end_time":      { "type": ["string", "null"] },
+          "duration_seconds": { "type": ["number", "null"] },
+          "error_message": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "failures": { "type": "array" }
+  }
+}

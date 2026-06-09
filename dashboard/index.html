@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ACCESS-MOPPy Submission Progress</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="header-title">
+        <h1>ACCESS-MOPPy Submission Progress</h1>
+        <span class="header-sub">CMORisation → QC → ESGF pipeline tracker</span>
+      </div>
+      <nav>
+        <button class="nav-btn active" data-view="overview">Overview</button>
+        <button class="nav-btn" data-view="experiment">Experiment Detail</button>
+        <button class="nav-btn" data-view="member">Member Timeline</button>
+        <button class="nav-btn" data-view="variable">Variable Pipeline</button>
+      </nav>
+      <a class="qc-link" href="https://rbeucher.github.io/access-moppy-qc-registry/" target="_blank" rel="noopener">QC Registry →</a>
+    </div>
+  </header>
+
+  <main id="app">
+    <div id="loading">Loading progress data…</div>
+  </main>
+
+  <footer>
+    <span id="meta"></span>
+    &nbsp;·&nbsp;
+    <a href="https://github.com/rbeucher/access-moppy-progress" target="_blank" rel="noopener">GitHub</a>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

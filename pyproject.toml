@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "access-moppy-progress"
+version = "0.1.0"
+description = "CMORisation and ESGF submission progress tracker for ACCESS-MOPPy"
+requires-python = ">=3.10"
+dependencies = [
+    "pyyaml>=6.0",
+    "jsonschema>=4.0",
+]
+
+[project.scripts]
+ingest-report    = "scripts.ingest_report:main"
+compile-progress = "scripts.compile_progress:main"

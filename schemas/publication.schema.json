@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/rbeucher/access-moppy-progress/schemas/publication.schema.json",
+  "title": "Publication Status",
+  "description": "Tracks ESGF publication status per variable for a (model, experiment, member) combination.",
+  "type": "object",
+  "required": ["model", "experiment_id", "variant_label", "variables"],
+  "additionalProperties": false,
+  "properties": {
+    "model":          { "type": "string" },
+    "experiment_id":  { "type": "string" },
+    "variant_label":  { "type": "string" },
+    "updated_at":     { "type": "string" },
+    "updated_by":     { "type": "string", "description": "GitHub handle of who updated this" },
+    "variables": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["status"],
+        "additionalProperties": false,
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": ["not_published", "publishing", "published", "retracted"]
+          },
+          "esgf_url":   { "type": "string" },
+          "published_at": { "type": "string" },
+          "notes":      { "type": "string" }
+        }
+      }
+    }
+  }
+}

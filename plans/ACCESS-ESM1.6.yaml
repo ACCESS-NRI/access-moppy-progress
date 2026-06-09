@@ -5,10 +5,13 @@
 
 model: ACCESS-ESM1.6
 esgf_node: esgf.nci.org.au
-mip_era: CMIP6
+mip_era: CMIP7
 notes: >
-  ACCESS-ESM1.6 CMIP6 submission. Target data node is NCI ESGF.
-  Mapping source: src/access_moppy/mappings/ACCESS-ESM1.6_mappings.json
+  ACCESS-ESM1.6 CMIP7 submission. Target data node is NCI ESGF.
+  Mapping source: src/access_moppy/mappings/ACCESS-ESM1.6_mappings.json.
+  Variable names below are CMIP7 physical parameter IDs. Full compound names
+  (e.g. atmos.tas.tavg-h2m-hxy-u.mon.GLB) are specified in individual request YAMLs.
+  Note: ssp585 and ssp245 are pending formal registration in the CMIP7 CV.
 
 experiments:
 
@@ -180,7 +183,7 @@ experiments:
       - cVeg
       - sftlf
 
-  - id: piControl
+  - id: picontrol
     priority: high
     members:
       - variant_label: r1i1p1f1
@@ -191,7 +194,7 @@ experiments:
         notes: "Control run branched from spin-up"
     target_variables: "*"
     notes: >
-      Full variable set for piControl as required by CMIP6 protocol.
+      Full variable set for picontrol as required by CMIP7 protocol.
 
   - id: ssp585
     priority: medium
@@ -237,7 +240,7 @@ experiments:
       - tos
       - siconc
 
-  - id: abrupt-4xCO2
+  - id: abrupt-4xco2
     priority: low
     members:
       - variant_label: r1i1p1f1
@@ -255,7 +258,7 @@ experiments:
       - rsut
       - hfds
 
-  - id: 1pctCO2
+  - id: 1pctco2
     priority: low
     members:
       - variant_label: r1i1p1f1

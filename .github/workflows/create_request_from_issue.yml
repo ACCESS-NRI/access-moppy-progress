@@ -1,0 +1,110 @@
+name: "Create request YAML from submission issue"
+
+on:
+  issues:
+    types: [labeled]
+
+# Only act on submission-request issues that a maintainer has approved
+# by applying the "status/accepted" label.
+jobs:
+  create-request:
+    if: >
+      github.event.label.name == 'status/accepted' &&
+      contains(github.event.issue.labels.*.name, 'type/submission-request')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install pyyaml jsonschema
+
+      - name: Write issue body to file
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: printf '%s' "$ISSUE_BODY" > /tmp/issue_body.txt
+
+      - name: Generate request YAML
+        id: gen
+        env:
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          python scripts/issue_to_request.py \
+            --body   /tmp/issue_body.txt \
+            --number "$ISSUE_NUMBER" \
+            --output requests/
+          # Capture the generated filename for later steps
+          YAML_FILE=$(ls requests/*.yaml | \
+            xargs grep -l "issue: $ISSUE_NUMBER" | head -1)
+          echo "yaml_file=$YAML_FILE" >> "$GITHUB_OUTPUT"
+          echo "Generated: $YAML_FILE"
+
+      - name: Validate generated YAML against schema
+        run: |
+          python scripts/validate_requests.py
+
+      - name: Create branch and open PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          YAML_FILE: ${{ steps.gen.outputs.yaml_file }}
+        run: |
+          BRANCH="submission/issue-${ISSUE_NUMBER}"
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add "$YAML_FILE"
+          git commit -m "feat(requests): add submission request from issue #${ISSUE_NUMBER}
+
+          Auto-generated from ${ISSUE_TITLE}.
+          Review and adjust cmip_metadata / dates before merging."
+          git push origin "$BRANCH"
+
+          # Open a PR linking back to the issue
+          gh pr create \
+            --title "feat(requests): ${ISSUE_TITLE}" \
+            --body "Closes #${ISSUE_NUMBER}
+
+          This PR was automatically generated from the submission request issue.
+
+          **Before merging, please review:**
+          - \`cmip_metadata\` branching fields (parent experiment, branch year)
+          - \`run_dates\` start/end
+          - \`target_variables\` list
+          - \`gadi.output_folder\` if not specified in the issue
+
+          Once merged, the request YAML can be converted to a MOPPy batch config:
+          \`\`\`
+          python scripts/generate_batch_config.py \\
+              --request ${YAML_FILE} \\
+              --output  /path/to/batch_config.yml
+          \`\`\`" \
+            --head "$BRANCH" \
+            --base main \
+            --label "type/submission-request" \
+            --label "status/accepted"
+
+      - name: Comment on issue with PR link
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          YAML_FILE: ${{ steps.gen.outputs.yaml_file }}
+        run: |
+          PR_URL=$(gh pr list --head "submission/issue-${ISSUE_NUMBER}" \
+                   --json url -q '.[0].url')
+          gh issue comment "$ISSUE_NUMBER" --body \
+            "A request YAML has been generated from this issue and a PR opened for review: ${PR_URL}
+
+          The file \`${YAML_FILE}\` will be added to the repository once the PR is merged.
+          A maintainer will review the metadata before merging."

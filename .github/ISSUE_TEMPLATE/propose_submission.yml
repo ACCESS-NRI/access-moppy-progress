@@ -15,9 +15,15 @@ body:
     attributes:
       value: |
         ## Propose a new CMORisation / ESGF submission
-        Fill in as much as you can. Fields marked * are required for the
+        Fill in as much as you can. Fields marked **\*** are required for the
         request to be actionable. Fields you don't know can be left blank —
         a maintainer will follow up.
+
+        > **CMIP7 note:** experiment IDs and activity IDs use lowercase
+        > (e.g. `historical`, `picontrol`, `cmip`, `scenariomip`).
+        > Variable names should use the CMIP7 compound format
+        > `table.physical_param.processing.frequency.region`,
+        > e.g. `atmos.tas.tavg-h2m-hxy-u.mon.GLB`.
 
   # ── Identity ──────────────────────────────────────────────────────────────
   - type: dropdown
@@ -32,11 +38,23 @@ body:
     validations:
       required: true
 
+  - type: dropdown
+    id: mip_era
+    attributes:
+      label: "MIP era *"
+      options:
+        - CMIP7
+        - CMIP6Plus
+        - CMIP6
+      default: 0
+    validations:
+      required: true
+
   - type: input
     id: experiment_id
     attributes:
       label: "Experiment id *"
-      description: "CMIP experiment id, e.g. historical, piControl, ssp585"
+      description: "CMIP7 experiment id (lowercase), e.g. historical, picontrol, abrupt-4xco2"
       placeholder: "historical"
     validations:
       required: true
@@ -61,13 +79,14 @@ body:
     id: activity_id
     attributes:
       label: "Activity id"
+      description: "CMIP7 activity IDs are lowercase"
       options:
-        - CMIP
-        - ScenarioMIP
-        - DAMIP
-        - HighResMIP
-        - OMIP
-        - Other
+        - cmip
+        - scenariomip
+        - damip
+        - highresmip
+        - omip
+        - other
       default: 0
 
   # ── Gadi run location ─────────────────────────────────────────────────────
@@ -184,11 +203,12 @@ body:
     attributes:
       label: "Variable list (if Subset above)"
       description: >
-        Compound names (Table.short_name), one per line, e.g. Amon.tas
+        CMIP7 compound names (table.physical_param.processing.frequency.region),
+        one per line.
       placeholder: |
-        Amon.tas
-        Omon.tos
-        SImon.siconc
+        atmos.tas.tavg-h2m-hxy-u.mon.GLB
+        ocean.tos.tavg-u-hxy-sea.mon.GLB
+        seaIce.siconc.tavg-u-hxy-u.mon.GLB
 
   - type: textarea
     id: file_patterns
@@ -196,11 +216,11 @@ body:
       label: "Custom file patterns (optional)"
       description: >
         Override default glob patterns if the run uses non-standard output
-        naming. Format: `Table.variable: glob_pattern`, one per line.
+        naming. Format: `compound_name: glob_pattern`, one per line.
         Leave blank to use MOPPy defaults.
       placeholder: |
-        Amon.tas: output[0-4]*/atmosphere/netCDF/*mon.nc
-        Omon.tos: output[0-4]*/ocean/ocean-2d-surface_temp-1monthly-mean*.nc
+        atmos.tas.tavg-h2m-hxy-u.mon.GLB: output[0-4]*/atmosphere/netCDF/*mon.nc
+        ocean.tos.tavg-u-hxy-sea.mon.GLB: output[0-4]*/ocean/ocean-2d-surface_temp-1monthly-mean*.nc
 
   # ── PBS resources ─────────────────────────────────────────────────────────
   - type: markdown

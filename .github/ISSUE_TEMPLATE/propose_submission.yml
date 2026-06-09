@@ -1,0 +1,268 @@
+name: "Propose a CMORisation / ESGF submission"
+description: >
+  Request that a model run on Gadi be CMORised and submitted to ESGF.
+  Once accepted a maintainer will add an entry to requests/ and eventually
+  to plans/. A MOPPy batch config can then be auto-generated from it.
+title: "[submission] <model> <experiment_id> <variant_label>"
+labels:
+  - "type/submission-request"
+  - "status/needs-review"
+assignees: []
+
+body:
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Propose a new CMORisation / ESGF submission
+        Fill in as much as you can. Fields marked * are required for the
+        request to be actionable. Fields you don't know can be left blank —
+        a maintainer will follow up.
+
+  # ── Identity ──────────────────────────────────────────────────────────────
+  - type: dropdown
+    id: model
+    attributes:
+      label: "Model *"
+      options:
+        - ACCESS-ESM1.6
+        - ACCESS-CM3
+        - ACCESS-OM3
+        - Other (describe in Notes)
+    validations:
+      required: true
+
+  - type: input
+    id: experiment_id
+    attributes:
+      label: "Experiment id *"
+      description: "CMIP experiment id, e.g. historical, piControl, ssp585"
+      placeholder: "historical"
+    validations:
+      required: true
+
+  - type: input
+    id: variant_label
+    attributes:
+      label: "Variant label *"
+      description: "CMIP variant label, e.g. r1i1p1f1"
+      placeholder: "r1i1p1f1"
+    validations:
+      required: true
+
+  - type: input
+    id: source_id
+    attributes:
+      label: "CMIP source_id"
+      description: "Hyphenated form, e.g. ACCESS-ESM1-6. Leave blank if unsure."
+      placeholder: "ACCESS-ESM1-6"
+
+  - type: dropdown
+    id: activity_id
+    attributes:
+      label: "Activity id"
+      options:
+        - CMIP
+        - ScenarioMIP
+        - DAMIP
+        - HighResMIP
+        - OMIP
+        - Other
+      default: 0
+
+  # ── Gadi run location ─────────────────────────────────────────────────────
+  - type: markdown
+    attributes:
+      value: "---\n### Run location on Gadi"
+
+  - type: input
+    id: gadi_project
+    attributes:
+      label: "NCI project code *"
+      description: "The project the data lives under, e.g. p66, oi10, tm70"
+      placeholder: "p66"
+    validations:
+      required: true
+
+  - type: input
+    id: input_folder
+    attributes:
+      label: "Input folder (raw model output) *"
+      description: >
+        Absolute path to the run archive on Gadi.
+        Usually under /g/data/<project>/archive/ or /g/data/access/.
+      placeholder: "/g/data/p66/archive/CMIP7/ACCESS-ESM1-6/historical/MyRun"
+    validations:
+      required: true
+
+  - type: input
+    id: output_folder
+    attributes:
+      label: "Output folder (CMORised files)"
+      description: >
+        Where CMORised files should be written. Typically on /scratch.
+        Leave blank to use the default (scratch/<project>/$USER/moppy_output).
+      placeholder: "/scratch/p66/rb5533/moppy_historical_r1i1p1f1"
+
+  - type: input
+    id: storage
+    attributes:
+      label: "PBS storage flags"
+      description: >
+        Gadi storage directives needed to access the data, e.g.
+        gdata/p66+gdata/tm70+scratch/p66. See your project allocation.
+      placeholder: "gdata/p66+gdata/tm70+scratch/p66"
+
+  - type: input
+    id: worker_init
+    attributes:
+      label: "Worker init commands"
+      description: >
+        Shell commands to activate the MOPPy environment before each PBS job,
+        e.g. conda activate moppy or module load access-moppy.
+        Leave blank to use the system default.
+      placeholder: "module use /g/data/xp65/public/modules && module load access-moppy"
+
+  # ── Run dates & metadata ─────────────────────────────────────────────────
+  - type: markdown
+    attributes:
+      value: "---\n### Run dates & CMIP metadata"
+
+  - type: input
+    id: run_start
+    attributes:
+      label: "Run start date"
+      description: "First date of the model run, ISO format"
+      placeholder: "1850-01-01"
+
+  - type: input
+    id: run_end
+    attributes:
+      label: "Run end date"
+      description: "Last date of the model run, ISO format"
+      placeholder: "2014-12-31"
+
+  - type: input
+    id: parent_experiment
+    attributes:
+      label: "Parent experiment id"
+      description: >
+        For branched runs (historical branches from piControl, ssp* branches
+        from historical). Leave blank for standalone runs.
+      placeholder: "piControl"
+
+  - type: input
+    id: parent_variant
+    attributes:
+      label: "Parent variant label"
+      placeholder: "r1i1p1f1"
+
+  - type: input
+    id: branch_year
+    attributes:
+      label: "Branch year"
+      description: "Calendar year the child run branches from the parent run"
+      placeholder: "1850"
+
+  # ── Variables ─────────────────────────────────────────────────────────────
+  - type: markdown
+    attributes:
+      value: "---\n### Variables"
+
+  - type: dropdown
+    id: target_variables
+    attributes:
+      label: "Target variables"
+      description: "Which variables should be CMORised for this submission?"
+      options:
+        - "All variables (as defined in the submission plan)"
+        - "Subset (list below)"
+      default: 0
+
+  - type: textarea
+    id: variable_list
+    attributes:
+      label: "Variable list (if Subset above)"
+      description: >
+        Compound names (Table.short_name), one per line, e.g. Amon.tas
+      placeholder: |
+        Amon.tas
+        Omon.tos
+        SImon.siconc
+
+  - type: textarea
+    id: file_patterns
+    attributes:
+      label: "Custom file patterns (optional)"
+      description: >
+        Override default glob patterns if the run uses non-standard output
+        naming. Format: `Table.variable: glob_pattern`, one per line.
+        Leave blank to use MOPPy defaults.
+      placeholder: |
+        Amon.tas: output[0-4]*/atmosphere/netCDF/*mon.nc
+        Omon.tos: output[0-4]*/ocean/ocean-2d-surface_temp-1monthly-mean*.nc
+
+  # ── PBS resources ─────────────────────────────────────────────────────────
+  - type: markdown
+    attributes:
+      value: "---\n### PBS resource hints (optional)"
+
+  - type: input
+    id: pbs_queue
+    attributes:
+      label: "PBS queue"
+      placeholder: "normal"
+
+  - type: input
+    id: pbs_mem
+    attributes:
+      label: "Default memory per job"
+      placeholder: "32GB"
+
+  - type: input
+    id: pbs_walltime
+    attributes:
+      label: "Default walltime per job"
+      placeholder: "02:00:00"
+
+  # ── Priority & contact ────────────────────────────────────────────────────
+  - type: markdown
+    attributes:
+      value: "---"
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: "Priority"
+      options:
+        - high
+        - medium
+        - low
+      default: 1
+
+  - type: input
+    id: contact
+    attributes:
+      label: "Contact on NCI *"
+      description: "GitHub handle of the person who has access to the data and can assist"
+      placeholder: "@rbeucher"
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: "Notes"
+      description: >
+        Anything else a maintainer should know: unusual run configuration,
+        known issues with the output, dependencies on other submissions, etc.
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "Checklist"
+      options:
+        - label: "The input_folder path exists and is readable by the NCI project"
+          required: true
+        - label: "I have verified the experiment/variant combination is not already in the submission plan"
+          required: true

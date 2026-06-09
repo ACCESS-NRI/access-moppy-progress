@@ -1,0 +1,68 @@
+# Accepted submission request: ACCESS-ESM1.6 / ssp585 / r1i1p1f1
+# Conforms to schemas/submission_request.schema.json
+#
+# Status: accepted — batch config has not yet been run.
+# Once CMORisation starts, a cmorisation.json will appear in
+#   progress/ACCESS-ESM1.6/ssp585/r1i1p1f1/
+
+model: ACCESS-ESM1.6
+source_id: ACCESS-ESM1-6
+experiment_id: ssp585
+variant_label: r1i1p1f1
+grid_label: gn
+activity_id: ScenarioMIP
+mip_era: CMIP6
+
+status: accepted
+priority: medium
+issue: 1
+
+gadi:
+  project: p66
+  input_folder: /g/data/p66/archive/CMIP7/ACCESS-ESM1-6/ssp585/MyRun-ssp585-abc1234
+  output_folder: /scratch/p66/rb5533/moppy_ssp585_r1i1p1f1
+  storage: gdata/p66+gdata/tm70+scratch/p66+gdata/xp65
+  worker_init: |
+    module use /g/data/xp65/public/modules
+    module load access-moppy
+
+pbs:
+  queue: normal
+  cpus_per_node: 14
+  mem: 32GB
+  jobfs: 100GB
+  walltime: "02:00:00"
+
+cmip_metadata:
+  parent_experiment_id: historical
+  parent_source_id: ACCESS-ESM1-6
+  parent_variant_label: r1i1p1f1
+  parent_activity_id: CMIP
+  branch_year: 2015
+  branch_method: standard
+
+run_dates:
+  start: "2015-01-01"
+  end: "2100-12-31"
+
+target_variables:
+  - Amon.tas
+  - Amon.tasmax
+  - Amon.tasmin
+  - Amon.pr
+  - Amon.psl
+  - Omon.tos
+  - SImon.siconc
+  - SImon.siextentn
+  - SImon.siextents
+  - Omon.zos
+  - Lmon.nbp
+  - Lmon.gpp
+
+contact: "@rbeucher"
+requested_by: "@rbeucher"
+requested_at: "2026-06-09"
+accepted_at: "2026-06-09"
+notes: >
+  Branches from historical r1i1p1f1 at the end of 2014.
+  Input is the ACCESS-ESM1.6 ssp585 run produced for CMIP7 testing.

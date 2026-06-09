@@ -1,0 +1,157 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/rbeucher/access-moppy-progress/schemas/submission_request.schema.json",
+  "title": "Submission Request",
+  "description": "An accepted submission request — sits in requests/ until it graduates to plans/. Contains enough information to generate a MOPPy batch config and locate the run on Gadi.",
+  "type": "object",
+  "required": ["model", "source_id", "experiment_id", "variant_label", "status", "gadi", "contact"],
+  "additionalProperties": false,
+  "properties": {
+
+    "model": {
+      "type": "string",
+      "description": "Human-readable model id matching plans/, e.g. ACCESS-ESM1.6"
+    },
+    "source_id": {
+      "type": "string",
+      "description": "CMIP source_id (hyphenated), e.g. ACCESS-ESM1-6"
+    },
+    "experiment_id": {
+      "type": "string",
+      "description": "CMIP experiment id, e.g. historical"
+    },
+    "variant_label": {
+      "type": "string",
+      "pattern": "^r[0-9]+i[0-9]+p[0-9]+f[0-9]+$",
+      "description": "CMIP variant label, e.g. r1i1p1f1"
+    },
+    "grid_label": {
+      "type": "string",
+      "description": "CMIP grid label, usually gn (native grid)",
+      "default": "gn"
+    },
+    "activity_id": {
+      "type": "string",
+      "description": "CMIP activity_id, e.g. CMIP or ScenarioMIP",
+      "default": "CMIP"
+    },
+    "mip_era": {
+      "type": "string",
+      "enum": ["CMIP6", "CMIP6Plus", "CMIP7"],
+      "default": "CMIP6"
+    },
+
+    "status": {
+      "type": "string",
+      "enum": ["proposed", "accepted", "in_progress", "on_hold", "completed", "rejected"],
+      "description": "Lifecycle state of this request"
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["high", "medium", "low"]
+    },
+
+    "gadi": {
+      "type": "object",
+      "required": ["project", "input_folder"],
+      "additionalProperties": false,
+      "description": "Gadi-specific run location and resource information",
+      "properties": {
+        "project": {
+          "type": "string",
+          "description": "NCI Gadi project code, e.g. p66"
+        },
+        "input_folder": {
+          "type": "string",
+          "description": "Absolute path to the raw model output directory on Gadi, e.g. /g/data/p66/archive/..."
+        },
+        "output_folder": {
+          "type": "string",
+          "description": "Absolute path where CMORised files will be written. Typically on /scratch."
+        },
+        "storage": {
+          "type": "string",
+          "description": "PBS storage flags, e.g. gdata/p66+gdata/tm70+scratch/tm70"
+        },
+        "worker_init": {
+          "type": "string",
+          "description": "Shell commands to run before each PBS job (activate conda env, etc.)"
+        },
+        "file_patterns": {
+          "type": "object",
+          "description": "Custom glob patterns per compound variable name, e.g. Amon.tas: output*/atmosphere/netCDF/*mon.nc",
+          "additionalProperties": { "type": "string" }
+        }
+      }
+    },
+
+    "pbs": {
+      "type": "object",
+      "description": "Default PBS resource request (can be overridden per-variable in the generated batch config)",
+      "additionalProperties": false,
+      "properties": {
+        "queue":         { "type": "string", "default": "normal" },
+        "cpus_per_node": { "type": "integer", "minimum": 1 },
+        "mem":           { "type": "string", "description": "e.g. 32GB" },
+        "jobfs":         { "type": "string", "description": "e.g. 100GB" },
+        "walltime":      { "type": "string", "description": "HH:MM:SS" }
+      }
+    },
+
+    "cmip_metadata": {
+      "type": "object",
+      "description": "Additional CMIP global attributes required for branched or scenario runs",
+      "additionalProperties": false,
+      "properties": {
+        "parent_experiment_id":  { "type": "string" },
+        "parent_source_id":      { "type": "string" },
+        "parent_variant_label":  { "type": "string" },
+        "parent_activity_id":    { "type": "string" },
+        "branch_year":           { "type": "integer", "description": "Calendar year the child run branches from the parent" },
+        "branch_method":         { "type": "string", "description": "e.g. standard" }
+      }
+    },
+
+    "run_dates": {
+      "type": "object",
+      "description": "Nominal start/end of the model run",
+      "additionalProperties": false,
+      "properties": {
+        "start": { "type": "string", "description": "ISO date e.g. 1850-01-01" },
+        "end":   { "type": "string", "description": "ISO date e.g. 2014-12-31" }
+      }
+    },
+
+    "target_variables": {
+      "oneOf": [
+        { "type": "string", "enum": ["*"] },
+        { "type": "array", "items": { "type": "string" }, "minItems": 1 }
+      ],
+      "description": "Compound variable names (Table.short_name) or * for all. Defaults to what is in the plan."
+    },
+
+    "contact": {
+      "type": "string",
+      "description": "GitHub handle of the person responsible for this run, e.g. @rbeucher"
+    },
+    "requested_by": {
+      "type": "string",
+      "description": "GitHub handle of the requester (may differ from contact)"
+    },
+    "requested_at": {
+      "type": "string",
+      "description": "ISO date the request was opened"
+    },
+    "accepted_at": {
+      "type": "string",
+      "description": "ISO date the request was accepted"
+    },
+    "issue": {
+      "type": "integer",
+      "description": "GitHub Issue number where this was proposed"
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

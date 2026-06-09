@@ -25,6 +25,8 @@ jobs:
         run: pip install pyyaml jsonschema
       - name: Validate plan files
         run: python scripts/validate_plans.py
+      - name: Validate submission requests
+        run: python scripts/validate_requests.py
       - name: Compile progress (dry-run)
         run: python scripts/compile_progress.py --output /tmp/progress.json
       - name: Upload compiled artefact

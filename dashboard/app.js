@@ -5,6 +5,8 @@
 
 const PROGRESS_URL = "progress.json";
 const GITHUB_REPO  = "rbeucher/access-moppy-progress";
+const QC_REGISTRY_REPO = "https://github.com/rbeucher/access-moppy-qc-registry";
+const QC_REGISTRY_DASHBOARD = "https://rbeucher.github.io/access-moppy-qc-registry/";
 
 // ── Stage metadata ──────────────────────────────────────────────────────────
 const STAGES = {
@@ -110,6 +112,88 @@ function variableLabelHtml(unit) {
   return `<div class="variable-label"${titleAttr}><code>${primary}</code><span>${extras.join(" · ")}</span></div>`;
 }
 
+function variableLookupUnit(variable) {
+  return progress.units.find(unit => unit.variable === variable) || null;
+}
+
+function variableContextLabel(context) {
+  if (!context?.experiment) return "Variable-wide QC context";
+  const parts = [context.model, context.experiment, context.member].filter(Boolean);
+  return `Experiment-specific QC context: ${parts.join(" / ")}`;
+}
+
+function variableScopeOptions(context, selected) {
+  const options = [];
+  if (context?.experiment) {
+    options.push(["context", "Selected experiment only"]);
+  }
+  options.push(["all", "All experiments"]);
+  return options.map(([value, label]) =>
+    `<option value="${value}"${value === selected ? " selected" : ""}>${label}</option>`
+  ).join("");
+}
+
+function matchesVariableContext(unit, context) {
+  if (!context?.experiment) return true;
+  if (context.model && unit.model !== context.model) return false;
+  return unit.experiment === context.experiment;
+}
+
+function buildQcRegistrySearchUrl(unit, context) {
+  const params = new URLSearchParams();
+  if (unit?.variable) params.set("variable", unit.variable);
+  if (unit?.variable_short) params.set("short_name", unit.variable_short);
+  if (unit?.variable_cmip7) params.set("cmip7_name", unit.variable_cmip7);
+  if (context?.model) params.set("model", context.model);
+  if (context?.experiment) params.set("experiment", context.experiment);
+  if (context?.member) params.set("member", context.member);
+  const query = params.toString();
+  return query ? `${QC_REGISTRY_DASHBOARD}?${query}` : QC_REGISTRY_DASHBOARD;
+}
+
+function buildQcSuggestionUrl(unit, context) {
+  const title = context?.experiment
+    ? `QC check suggestion for ${unit.variable} in ${context.experiment}`
+    : `QC check suggestion for ${unit.variable}`;
+  const body = [
+    `Variable: ${unit.variable}`,
+    unit.variable_short ? `Short name: ${unit.variable_short}` : null,
+    unit.variable_cmip7 ? `CMIP7 name: ${unit.variable_cmip7}` : null,
+    context?.model ? `Model: ${context.model}` : null,
+    context?.experiment ? `Experiment: ${context.experiment}` : null,
+    context?.member ? `Member: ${context.member}` : null,
+    "",
+    "Suggested additional QC checks:",
+    "- ",
+    "",
+    "Why this would be useful:",
+    "- ",
+  ].filter(Boolean).join("\n");
+  return `${QC_REGISTRY_REPO}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
+}
+
+function renderVariableActions(unit, context) {
+  const registryUrl = buildQcRegistrySearchUrl(unit, context);
+  const variableWideRegistryUrl = buildQcRegistrySearchUrl(unit, null);
+  const suggestionUrl = buildQcSuggestionUrl(unit, context);
+  return `
+    <div class="variable-resource-card">
+      <div>
+        <div class="variable-resource-title">QC registry companion</div>
+        <div class="variable-resource-copy">
+          Use the companion QC registry to inspect checks for this variable or suggest new ones.
+        </div>
+        <div class="variable-resource-context">${escHtml(variableContextLabel(context))}</div>
+      </div>
+      <div class="variable-resource-actions">
+        <a class="resource-btn" href="${registryUrl}" target="_blank" rel="noopener">${context?.experiment ? "View checks for this experiment" : "View QC checks"}</a>
+        ${context?.experiment ? `<a class="resource-btn resource-btn-secondary" href="${variableWideRegistryUrl}" target="_blank" rel="noopener">View variable-wide checks</a>` : ""}
+        <a class="resource-btn resource-btn-secondary" href="${suggestionUrl}" target="_blank" rel="noopener">Suggest checks</a>
+      </div>
+    </div>
+  `;
+}
+
 function themeLabel(theme) {
   if (theme === "dummy") return "TESTING / DUMMY";
   if (theme === "deck") return "DECK";
@@ -127,6 +211,7 @@ function worstStage(stages) {
 // ── App state ───────────────────────────────────────────────────────────────
 let progress = null;
 let currentView = "overview";
+let currentVariableContext = null;
 
 // ── Bootstrap ───────────────────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", async () => {
@@ -164,7 +249,20 @@ function renderView() {
   if (currentView === "overview")    renderOverview(app);
   if (currentView === "experiment")  renderExperimentDetail(app);
   if (currentView === "member")      renderMemberTimeline(app);
-  if (currentView === "variable")    renderVariablePipeline(app);
+  if (currentView === "variable")    renderVariablePipeline(app, currentVariableContext);
+}
+
+function openVariableView(variable, context = {}) {
+  document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+  document.querySelector('[data-view="variable"]').classList.add("active");
+  currentView = "variable";
+  currentVariableContext = {
+    variable,
+    model: context.model || null,
+    experiment: context.experiment || null,
+    member: context.member || null,
+  };
+  renderVariablePipeline(document.getElementById("app"), currentVariableContext);
 }
 
 // ── Helpers ─────────────────────────────────────────────────────────────────
@@ -413,7 +511,7 @@ function renderOverview(container) {
   redraw();
 
   container.addEventListener("click", event => {
-    const lnk = event.target.closest(".member-label");
+    const lnk = event.target.closest("[data-member]");
     if (!lnk) return;
     document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
     document.querySelector('[data-view="member"]').classList.add("active");
@@ -489,7 +587,7 @@ function renderExperimentDetail(container, preModel, preExp) {
       const v = variableUnit.variable;
       const row = tbody.insertRow();
       const th = document.createElement("th");
-      th.innerHTML = `<span class="member-label variable-link" data-var="${escHtml(v)}">${variableLabelHtml(variableUnit)}</span>`;
+      th.innerHTML = `<span class="variable-link" data-var="${escHtml(v)}">${variableLabelHtml(variableUnit)}</span>`;
       row.appendChild(th);
       for (const m of members) {
         const u = byKey[`${v}__${m}`];
@@ -500,18 +598,6 @@ function renderExperimentDetail(container, preModel, preExp) {
     }
     scrollDiv.appendChild(table);
     wrap.appendChild(scrollDiv);
-
-    // Wire variable links
-    wrap.querySelectorAll("[data-var]").forEach(lnk => {
-      lnk.style.cursor = "pointer";
-      lnk.style.color = "#58a6ff";
-      lnk.addEventListener("click", () => {
-        document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
-        document.querySelector('[data-view="variable"]').classList.add("active");
-        currentView = "variable";
-        renderVariablePipeline(document.getElementById("app"), lnk.dataset.var);
-      });
-    });
   }
 
   controls.querySelector("#sel-model").addEventListener("change", e => {
@@ -522,6 +608,11 @@ function renderExperimentDetail(container, preModel, preExp) {
   });
   controls.querySelector("#sel-exp").addEventListener("change",   e => { selExp   = e.target.value; redraw(); });
   controls.querySelector("#var-filter").addEventListener("input",  e => { varFilter = e.target.value.trim(); redraw(); });
+  wrap.addEventListener("click", event => {
+    const lnk = event.target.closest("[data-var]");
+    if (!lnk) return;
+    openVariableView(lnk.dataset.var, { model: selModel, experiment: selExp });
+  });
 
   redraw();
 }
@@ -591,7 +682,7 @@ function renderMemberTimeline(container, preModel, preExp, preMember) {
     for (const u of sorted) {
       const tr = document.createElement("tr");
       tr.innerHTML = `
-        <td>${variableLabelHtml(u)}</td>
+        <td><span class="variable-link" data-var="${escHtml(u.variable)}">${variableLabelHtml(u)}</span></td>
         <td>${simpleStatusBadge(cmorSimpleStatus(u))}</td>
         <td>${simpleStatusBadge(qcSimpleStatus(u))}</td>
         <td>${simpleStatusBadge(publicationSimpleStatus(u))}</td>
@@ -618,12 +709,17 @@ function renderMemberTimeline(container, preModel, preExp, preMember) {
     redraw();
   });
   controls.querySelector("#sel-member").addEventListener("change", e => { selMember = e.target.value; redraw(); });
+  wrap.addEventListener("click", event => {
+    const lnk = event.target.closest("[data-var]");
+    if (!lnk) return;
+    openVariableView(lnk.dataset.var, { model: selModel, experiment: selExp, member: selMember });
+  });
 
   redraw();
 }
 
 // ── View: Variable Pipeline ──────────────────────────────────────────────────
-function renderVariablePipeline(container, preVar) {
+function renderVariablePipeline(container, selection) {
   container.innerHTML = "";
 
   const allVarUnits = [];
@@ -635,6 +731,11 @@ function renderVariablePipeline(container, preVar) {
   }
   allVarUnits.sort((a, b) => a.variable.localeCompare(b.variable));
   let varFilter = "";
+  const initialVariable = typeof selection === "string"
+    ? selection
+    : selection?.variable || "";
+  const initialContext = typeof selection === "string" ? null : selection || null;
+  let scopeMode = initialContext?.experiment ? "context" : "all";
 
   const controls = document.createElement("div");
   controls.className = "controls";
@@ -645,6 +746,8 @@ function renderVariablePipeline(container, preVar) {
     <select id="sel-var" style="max-width:200px">
       <option value="">— select —</option>
     </select>
+    <label>Scope</label>
+    <select id="scope-mode">${variableScopeOptions(initialContext, scopeMode)}</select>
   `;
 
   const title = h("div", "view-title", "Variable Pipeline");
@@ -666,7 +769,7 @@ function renderVariablePipeline(container, preVar) {
     `;
   }
 
-  function redraw(variable) {
+  function redraw(variable, context = null) {
     wrap.innerHTML = "";
     if (!variable) return;
     const units = progress.units.filter(u => u.variable === variable);
@@ -675,12 +778,20 @@ function renderVariablePipeline(container, preVar) {
       return;
     }
 
-    const models     = [...new Set(units.map(u => u.model))].sort();
-    const experiments= [...new Set(units.map(u => u.experiment))].sort();
-    const members    = [...new Set(units.map(u => u.member))].sort();
+    const variableUnit = variableLookupUnit(variable) || units[0];
+    wrap.appendChild(el(renderVariableActions(variableUnit, context)));
+
+    const scopedUnits = scopeMode === "context" && context?.experiment
+      ? units.filter(unit => matchesVariableContext(unit, context))
+      : units;
+    const displayUnits = scopedUnits.length ? scopedUnits : units;
+
+    const models     = [...new Set(displayUnits.map(u => u.model))].sort();
+    const experiments= [...new Set(displayUnits.map(u => u.experiment))].sort();
+    const members    = [...new Set(displayUnits.map(u => u.member))].sort();
 
     const byKey = {};
-    for (const u of units) byKey[`${u.model}__${u.experiment}__${u.member}`] = u;
+    for (const u of displayUnits) byKey[`${u.model}__${u.experiment}__${u.member}`] = u;
 
     const scrollDiv = document.createElement("div");
     scrollDiv.className = "scroll";
@@ -723,8 +834,8 @@ function renderVariablePipeline(container, preVar) {
   }
 
   const sel = controls.querySelector("#sel-var");
-  refreshVariableOptions(preVar || "");
-  if (preVar) redraw(preVar);
+  refreshVariableOptions(initialVariable);
+  if (initialVariable) redraw(initialVariable, initialContext);
   controls.querySelector("#var-search").addEventListener("input", e => {
     varFilter = e.target.value.trim();
     const selected = sel.value;
@@ -733,7 +844,16 @@ function renderVariablePipeline(container, preVar) {
       wrap.innerHTML = "";
     }
   });
-  sel.addEventListener("change", e => redraw(e.target.value));
+  sel.addEventListener("change", e => {
+    currentVariableContext = { variable: e.target.value };
+    scopeMode = "all";
+    controls.querySelector("#scope-mode").innerHTML = variableScopeOptions(currentVariableContext, scopeMode);
+    redraw(e.target.value, currentVariableContext);
+  });
+  controls.querySelector("#scope-mode").addEventListener("change", e => {
+    scopeMode = e.target.value;
+    redraw(sel.value, currentVariableContext);
+  });
 }
 
 // ── DOM utilities ────────────────────────────────────────────────────────────

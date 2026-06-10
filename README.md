@@ -1,8 +1,9 @@
-# ACCESS-MOPPy Submission Progress
+# ACCESS CMIP7 Submission Tracker
 
-Tracks CMORisation → QC → ESGF publication pipeline progress for ACCESS model
-CMIP submissions. Companion to
-[access-moppy-qc-registry](https://github.com/rbeucher/access-moppy-qc-registry).
+Entry dashboard for the ACCESS CMIP7 submission workflow. Tracks progress through
+CMORisation, QC, and ESGF publication for ACCESS model submissions, with
+[access-moppy-qc-registry](https://github.com/rbeucher/access-moppy-qc-registry)
+serving as the companion QC registry.
 
 ## Dashboard
 
@@ -13,14 +14,14 @@ CMIP submissions. Companion to
 | **Overview** | Per-experiment cards with progress bars per ensemble member |
 | **Experiment Detail** | Variable × member matrix for one experiment |
 | **Member Timeline** | All variables for one (model, experiment, member) sorted by stage |
-| **Variable Pipeline** | One variable across all (experiment, member) combinations |
+| **Variable Pipeline** | One variable across all (experiment, member) combinations, with links to inspect or suggest QC checks |
 
 ## Pipeline stages
 
 ```
-not_started → planned → cmorising → cmorised ─┬→ qc_pending → qc_pass ──┬→ publishing → published
-                                               └→ qc_fail                └→ qc_warn ─────┘
-                                failed (batch error)
+not_started → planned → cmorised ─┬→ qc_pending → qc_pass ──┬→ published
+                                   └→ qc_fail                └→ qc_warn ─┘
+                    failed (batch error)
 ```
 
 ## Repository structure

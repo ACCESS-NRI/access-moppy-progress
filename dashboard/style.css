@@ -284,7 +284,8 @@ footer {
 .exp-card .members-table tr:hover td { background: #1c2128; }
 .member-label { font-family: var(--mono); font-size: 0.78rem; cursor: pointer; color: #58a6ff; }
 .member-label:hover { text-decoration: underline; }
-.variable-link { display: inline-block; }
+.variable-link { display: inline-block; cursor: pointer; color: #58a6ff; }
+.variable-link:hover { text-decoration: underline; }
 .variable-label {
   display: flex;
   flex-direction: column;
@@ -295,6 +296,69 @@ footer {
   font-size: 0.68rem;
   line-height: 1.3;
   color: var(--text-muted);
+}
+.variable-resource-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background:
+    linear-gradient(135deg, rgba(31, 111, 235, 0.12), rgba(22, 27, 34, 0.92)),
+    var(--surface);
+}
+.variable-resource-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #9fd0ff;
+}
+.variable-resource-copy {
+  margin-top: 0.2rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+.variable-resource-context {
+  margin-top: 0.45rem;
+  color: #9fd0ff;
+  font-size: 0.74rem;
+  font-weight: 600;
+}
+.variable-resource-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.resource-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.38rem 0.7rem;
+  border-radius: 7px;
+  border: 1px solid #58a6ff;
+  background: rgba(31, 111, 235, 0.18);
+  color: #dceeff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.resource-btn:hover {
+  border-color: #79c0ff;
+  background: rgba(31, 111, 235, 0.26);
+  text-decoration: none;
+}
+.resource-btn-secondary {
+  border-color: rgba(139, 148, 158, 0.35);
+  background: rgba(139, 148, 158, 0.12);
+  color: var(--text);
+}
+.resource-btn-secondary:hover {
+  border-color: rgba(139, 148, 158, 0.55);
+  background: rgba(139, 148, 158, 0.18);
 }
 .count-chips { display: flex; gap: 0.3rem; flex-wrap: wrap; }
 .chip {
@@ -332,6 +396,12 @@ table.detail code { font-family: var(--mono); font-size: 0.78rem; background: #2
   }
   .overview-section-head {
     display: block;
+  }
+  .variable-resource-card {
+    display: block;
+  }
+  .variable-resource-actions {
+    margin-top: 0.75rem;
   }
   .overview-section-head p {
     margin-top: 0.25rem;

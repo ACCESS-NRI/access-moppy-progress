@@ -63,6 +63,7 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).parent.parent
+VARIABLE_METADATA_PATH = ROOT / "data" / "variable_metadata.json"
 
 # ── Pipeline stage helpers ──────────────────────────────────────────────────
 
@@ -71,16 +72,29 @@ STAGE_PRIORITY = [
     "qc_fail",
     "cmorised_partial",
     "failed",
-    "cmorising",
     "planned",
     "not_started",
     "qc_warn",
     "qc_pending",
     "cmorised",
     "qc_pass",
-    "publishing",
     "published",
 ]
+
+CMOR_STATUS_PRIORITY = {
+    "failed": 0,
+    "running": 1,
+    "retrying": 1,
+    "pending": 1,
+    "completed": 2,
+}
+
+PUBLICATION_STATUS_PRIORITY = {
+    "not_published": 0,
+    "publishing": 1,
+    "published": 2,
+    "retracted": 0,
+}
 
 
 def _pipeline_stage(
@@ -91,17 +105,15 @@ def _pipeline_stage(
     if cmor_status is None:
         return "planned"
     if cmor_status == "running":
-        return "cmorising"
+        return "planned"
     if cmor_status == "failed":
         return "failed"
     if cmor_status == "completed":
         if pub_status == "published":
             return "published"
-        if pub_status == "publishing":
-            return "publishing"
         return "cmorised"
     # pending/retrying
-    return "cmorising"
+    return "planned"
 
 
 def _aggregate_stage(stages: list[str]) -> str:
@@ -109,6 +121,31 @@ def _aggregate_stage(stages: list[str]) -> str:
     if not stages:
         return "not_started"
     return min(stages, key=lambda s: STAGE_PRIORITY.index(s) if s in STAGE_PRIORITY else 999)
+
+
+def _merge_cmor_status(current: str | None, new: str | None) -> str | None:
+    """Return the most conservative CMOR status across duplicates."""
+    if current is None:
+        return new
+    if new is None:
+        return current
+    return current if CMOR_STATUS_PRIORITY.get(current, -1) <= CMOR_STATUS_PRIORITY.get(new, -1) else new
+
+
+def _merge_publication_status(current: str | None, new: str | None) -> str | None:
+    """Return the furthest publication status seen across duplicates."""
+    if current is None:
+        return new
+    if new is None:
+        return current
+    return current if PUBLICATION_STATUS_PRIORITY.get(current, -1) >= PUBLICATION_STATUS_PRIORITY.get(new, -1) else new
+
+
+def _effective_publication_status(cmor_status: str | None, pub_status: str | None) -> str:
+    """Publication cannot outrun CMOR completion."""
+    if cmor_status != "completed":
+        return "not_published"
+    return pub_status or "not_published"
 
 
 # ── Loader helpers ───────────────────────────────────────────────────────────
@@ -122,6 +159,14 @@ def _load_plans() -> dict[str, dict]:
         if plan and "model" in plan:
             plans[plan["model"]] = plan
     return plans
+
+
+def _load_variable_metadata() -> dict[str, dict]:
+    """Return {request_name: metadata_dict} for variable hover/display metadata."""
+    if not VARIABLE_METADATA_PATH.exists():
+        return {}
+    with VARIABLE_METADATA_PATH.open() as fh:
+        return json.load(fh)
 
 
 def _load_cmorisation(progress_root: Path) -> dict[tuple[str, str, str], dict]:
@@ -171,10 +216,34 @@ def _resolve_variables(target_variables: list | str, cmor_report: dict | None) -
     return []
 
 
+def _normalize_target_variables(
+    target_variables: list | str,
+    cmor_report: dict | None,
+) -> list[dict[str, str | None]]:
+    """Return canonical variable metadata for planned variables."""
+    resolved = _resolve_variables(target_variables, cmor_report)
+    normalized: list[dict[str, str | None]] = []
+    for item in resolved:
+        if isinstance(item, str):
+            normalized.append({
+                "request_name": item,
+                "short_name": item.split(".")[-1],
+                "cmip7_name": None,
+            })
+            continue
+        normalized.append({
+            "request_name": item["request_name"],
+            "short_name": item["short_name"],
+            "cmip7_name": item.get("cmip7_name"),
+        })
+    return normalized
+
+
 # ── Main compilation ─────────────────────────────────────────────────────────
 
 def compile_progress(output: Path) -> None:
     plans = _load_plans()
+    variable_metadata = _load_variable_metadata()
     progress_root = ROOT / "progress"
     cmor_reports = _load_cmorisation(progress_root)
     pub_reports   = _load_publications(progress_root)
@@ -196,16 +265,23 @@ def compile_progress(output: Path) -> None:
                 cmor_by_var: dict[str, str] = {}
                 if cmor:
                     for task in cmor.get("tasks", []):
-                        cmor_by_var[task["variable"]] = task["status"]
+                        short_name = task["variable"]
+                        cmor_by_var[short_name] = _merge_cmor_status(
+                            cmor_by_var.get(short_name),
+                            task["status"],
+                        )
 
                 # Build per-variable publication lookup
                 pub_by_var: dict[str, str] = {}
                 if pub:
                     for var, info in pub.get("variables", {}).items():
-                        pub_by_var[var] = info.get("status", "not_published")
+                        pub_by_var[var] = _merge_publication_status(
+                            pub_by_var.get(var),
+                            info.get("status", "not_published"),
+                        )
 
                 # Resolve target variables
-                target_vars = _resolve_variables(
+                target_vars = _normalize_target_variables(
                     exp_def.get("target_variables", "*"), cmor
                 )
 
@@ -213,19 +289,35 @@ def compile_progress(output: Path) -> None:
                 if not target_vars and not cmor_by_var:
                     continue
 
-                # Use union of planned + reported variables
-                all_vars = sorted(set(target_vars) | set(cmor_by_var.keys()))
+                planned_short_names = {v["short_name"] for v in target_vars}
+                extra_report_vars = [
+                    {
+                        "request_name": short_name,
+                        "short_name": short_name,
+                        "cmip7_name": None,
+                    }
+                    for short_name in sorted(cmor_by_var.keys())
+                    if short_name not in planned_short_names
+                ]
+                all_vars = target_vars + extra_report_vars
 
                 summary: dict[str, int] = {
                     "total_planned": len(all_vars),
-                    "cmorised": 0, "cmorised_partial": 0, "cmorising": 0,
+                    "cmorised": 0, "cmorised_partial": 0,
                     "qc_pass": 0, "qc_warn": 0, "qc_fail": 0,
-                    "published": 0, "publishing": 0, "failed": 0, "not_started": 0,
+                    "published": 0, "failed": 0, "planned": 0, "not_started": 0,
                 }
 
                 for var in all_vars:
-                    cmor_status = cmor_by_var.get(var)
-                    pub_status  = pub_by_var.get(var, "not_published")
+                    request_name = str(var["request_name"])
+                    short_name = str(var["short_name"])
+                    cmip7_name = var.get("cmip7_name")
+                    metadata = variable_metadata.get(request_name, {})
+                    cmor_status = cmor_by_var.get(short_name) or cmor_by_var.get(request_name)
+                    pub_status = _effective_publication_status(
+                        cmor_status,
+                        pub_by_var.get(short_name, pub_by_var.get(request_name)),
+                    )
 
                     stage = _pipeline_stage(cmor_status, pub_status)
 
@@ -233,7 +325,11 @@ def compile_progress(output: Path) -> None:
                         "model": model,
                         "experiment": exp_id,
                         "member": member,
-                        "variable": var,
+                        "variable": request_name,
+                        "variable_short": short_name,
+                        "variable_cmip7": cmip7_name,
+                        "variable_description": metadata.get("description"),
+                        "variable_notes": metadata.get("notes"),
                         "pipeline_stage": stage,
                         "cmorisation_status": cmor_status or "not_started",
                         "publication_status": pub_status,
@@ -252,15 +348,23 @@ def compile_progress(output: Path) -> None:
             for u in all_units
         ):
             pub = pub_reports.get((model, exp, member), {})
-            pub_by_var = {v: i.get("status", "not_published") for v, i in pub.get("variables", {}).items()}
+            pub_by_var: dict[str, str] = {}
+            for var, info in pub.get("variables", {}).items():
+                pub_by_var[var] = _merge_publication_status(
+                    pub_by_var.get(var),
+                    info.get("status", "not_published"),
+                )
             for task in cmor.get("tasks", []):
                 var = task["variable"]
-                stage = _pipeline_stage(task["status"], pub_by_var.get(var, "not_published"))
+                pub_status = _effective_publication_status(task["status"], pub_by_var.get(var))
+                stage = _pipeline_stage(task["status"], pub_status)
                 all_units.append({
                     "model": model, "experiment": exp, "member": member,
-                    "variable": var, "pipeline_stage": stage,
+                    "variable": var, "variable_short": var, "variable_cmip7": None,
+                    "variable_description": None, "variable_notes": None,
+                    "pipeline_stage": stage,
                     "cmorisation_status": task["status"],
-                    "publication_status": pub_by_var.get(var, "not_published"),
+                    "publication_status": pub_status,
                     "_orphan": True,
                 })
 
@@ -273,6 +377,11 @@ def compile_progress(output: Path) -> None:
             index[plan_model]["experiments"][eid] = {
                 "members": [m["variant_label"] for m in exp_def.get("members", [])],
                 "priority": exp_def.get("priority", "medium"),
+                "deck": exp_def.get("deck", False),
+                "label": exp_def.get("label", eid),
+                "theme": exp_def.get("theme", "deck" if exp_def.get("deck", False) else "default"),
+                "category": exp_def.get("category"),
+                "tags": exp_def.get("tags", []),
             }
 
     output.parent.mkdir(parents=True, exist_ok=True)

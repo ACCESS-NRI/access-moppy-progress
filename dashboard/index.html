@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ACCESS-MOPPy Submission Progress</title>
+  <title>ACCESS CMIP7 Submission Tracker</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
   <header>
     <div class="header-inner">
       <div class="header-title">
-        <h1>ACCESS-MOPPy Submission Progress</h1>
+        <h1>ACCESS CMIP7 Submission Tracker</h1>
         <span class="header-sub">CMORisation → QC → ESGF pipeline tracker</span>
       </div>
       <nav>
@@ -23,8 +23,16 @@
     </div>
   </header>
 
-  <main id="app">
-    <div id="loading">Loading progress data…</div>
+  <main>
+    <section class="intro-panel">
+      <p>
+        This dashboard supports the CMIP ACCESS Consortium submission to CMIP7. It is intended to
+        track progress through the data pipeline for CMORisation, QC checks, and publication to ESGF.
+      </p>
+    </section>
+    <div id="app">
+      <div id="loading">Loading progress data…</div>
+    </div>
   </main>
 
   <footer>

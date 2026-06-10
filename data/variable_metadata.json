@@ -1,0 +1,526 @@
+{
+  "3hr.huss": {
+    "description": "Near-Surface Specific Humidity",
+    "notes": "This is sampled synoptically."
+  },
+  "3hr.pr": {
+    "description": "Precipitation",
+    "notes": "at surface; includes both liquid and solid phases.  This is the 3-hour mean precipitation flux."
+  },
+  "3hr.tas": {
+    "description": "Near-Surface Air Temperature",
+    "notes": "This is sampled synoptically."
+  },
+  "3hrPt.uas": {
+    "description": "Eastward Near-Surface Wind",
+    "notes": "This is sampled synoptically."
+  },
+  "3hrPt.vas": {
+    "description": "Northward Near-Surface Wind",
+    "notes": "This is sampled synoptically."
+  },
+  "6hrPlev.hurs": {
+    "description": "Near-Surface Relative Humidity",
+    "notes": "The relative humidity with respect to liquid water for T> 0 C, and with respect to ice for T<0 C."
+  },
+  "6hrPlevPt.ta": {
+    "description": "Air Temperature",
+    "notes": "Air Temperature"
+  },
+  "6hrPlevPt.ua": {
+    "description": "Eastward Wind",
+    "notes": "Zonal wind (positive in a eastward direction)."
+  },
+  "6hrPlevPt.va": {
+    "description": "Northward Wind",
+    "notes": "Meridional wind (positive in a northward direction)."
+  },
+  "Amon.cl": {
+    "description": "Percentage Cloud Cover",
+    "notes": "Includes both large-scale and convective cloud."
+  },
+  "Amon.cli": {
+    "description": "Mass Fraction of Cloud Ice",
+    "notes": "Includes both large-scale and convective cloud.  This is calculated as the mass of cloud ice in the grid cell divided by the mass of air (including the water in all phases) in the grid cell. It includes precipitating hydrometeors ONLY if the precipitating hydrometeors affect the calculation of radiative transfer in model."
+  },
+  "Amon.clivi": {
+    "description": "Ice Water Path",
+    "notes": "mass of ice water in the column divided by the area of the column (not just the area of the cloudy portion of the column). Includes precipitating frozen hydrometeors ONLY if the precipitating hydrometeor affects the calculation of radiative transfer in model."
+  },
+  "Amon.clt": {
+    "description": "Total Cloud Cover Percentage",
+    "notes": "for the whole atmospheric column, as seen from the surface or the top of the atmosphere. Include both large-scale and convective cloud."
+  },
+  "Amon.clw": {
+    "description": "Mass Fraction of Cloud Liquid Water",
+    "notes": "Includes both large-scale and convective cloud.  Calculate as the mass of cloud liquid water in the grid cell divided by the mass of air (including the water in all phases) in the grid cells. Precipitating hydrometeors are included ONLY if the precipitating hydrometeors affect the calculation of radiative transfer in model."
+  },
+  "Amon.clwvi": {
+    "description": "Condensed Water Path",
+    "notes": "mass of condensed (liquid + ice) water in the column divided by the area of the column (not just the area of the cloudy portion of the column). Includes precipitating hydrometeors ONLY if the precipitating hydrometeor affects the calculation of radiative transfer in model."
+  },
+  "Amon.evspsbl": {
+    "description": "Evaporation Including Sublimation and Transpiration",
+    "notes": "at surface; flux of water into the atmosphere due to conversion of both liquid and solid phases to vapor (from underlying surface and vegetation)"
+  },
+  "Amon.hfls": {
+    "description": "Surface Upward Latent Heat Flux",
+    "notes": "includes both evaporation and sublimation"
+  },
+  "Amon.hfss": {
+    "description": "Surface Upward Sensible Heat Flux",
+    "notes": "The surface sensible heat flux, also called turbulent heat flux, is the exchange of heat between the surface and the air by motion of air."
+  },
+  "Amon.hur": {
+    "description": "Relative Humidity",
+    "notes": "This is the relative humidity with respect to liquid water for T> 0 C, and with respect to ice for T<0 C."
+  },
+  "Amon.hurs": {
+    "description": "Near-Surface Relative Humidity",
+    "notes": "This is the relative humidity with respect to liquid water for T> 0 C, and with respect to ice for T<0 C."
+  },
+  "Amon.hus": {
+    "description": "Specific Humidity",
+    "notes": "Specific humidity is the mass fraction of water vapor in (moist) air."
+  },
+  "Amon.huss": {
+    "description": "Near-Surface Specific Humidity",
+    "notes": "Near-surface (usually, 2 meter) specific humidity."
+  },
+  "Amon.pr": {
+    "description": "Precipitation",
+    "notes": "at surface; includes both liquid and solid phases from all types of clouds (both large-scale and convective)"
+  },
+  "Amon.prc": {
+    "description": "Convective Precipitation",
+    "notes": "at surface; includes both liquid and solid phases."
+  },
+  "Amon.prsn": {
+    "description": "Snowfall Flux",
+    "notes": "at surface; includes precipitation of all forms of water in the solid phase"
+  },
+  "Amon.prw": {
+    "description": "Water Vapor Path",
+    "notes": "Vertically integrated mass of water vapour through the atmospheric column"
+  },
+  "Amon.ps": {
+    "description": "Surface Air Pressure",
+    "notes": "not, in general, the same as mean sea-level pressure"
+  },
+  "Amon.psl": {
+    "description": "Sea Level Pressure",
+    "notes": "not, in general, the same as surface pressure"
+  },
+  "Amon.rlds": {
+    "description": "Surface Downwelling Longwave Radiation",
+    "notes": "The surface called \"surface\" means the lower boundary of the atmosphere. \"longwave\" means longwave radiation. Downwelling radiation is radiation from above. It does not mean \"net downward\"."
+  },
+  "Amon.rldscs": {
+    "description": "Surface Downwelling Clear-Sky Longwave Radiation",
+    "notes": "Surface downwelling clear-sky longwave radiation"
+  },
+  "Amon.rlus": {
+    "description": "Surface Upwelling Longwave Radiation",
+    "notes": "The surface called \"surface\" means the lower boundary of the atmosphere. \"longwave\" means longwave radiation. Upwelling radiation is radiation from below. It does not mean \"net upward\"."
+  },
+  "Amon.rluscs": {
+    "description": "Surface Upwelling Clear-Sky Longwave Radiation",
+    "notes": "Surface Upwelling Clear-sky Longwave Radiation"
+  },
+  "Amon.rlut": {
+    "description": "TOA Outgoing Longwave Radiation",
+    "notes": "at the top of the atmosphere (to be compared with satellite measurements)"
+  },
+  "Amon.rlutcs": {
+    "description": "TOA Outgoing Clear-Sky Longwave Radiation",
+    "notes": "Upwelling clear-sky longwave radiation at top of atmosphere"
+  },
+  "Amon.rsds": {
+    "description": "Surface Downwelling Shortwave Radiation",
+    "notes": "Surface solar irradiance for UV calculations."
+  },
+  "Amon.rsdscs": {
+    "description": "Surface Downwelling Clear-Sky Shortwave Radiation",
+    "notes": "Surface solar irradiance clear sky for UV calculations"
+  },
+  "Amon.rsdt": {
+    "description": "TOA Incident Shortwave Radiation",
+    "notes": "at the top of the atmosphere"
+  },
+  "Amon.rsus": {
+    "description": "Surface Upwelling Shortwave Radiation",
+    "notes": "The surface called \"surface\" means the lower boundary of the atmosphere. \"shortwave\" means shortwave radiation. Upwelling radiation is radiation from below. It does not mean \"net upward\"."
+  },
+  "Amon.rsuscs": {
+    "description": "Surface Upwelling Clear-Sky Shortwave Radiation",
+    "notes": "Surface Upwelling Clear-sky Shortwave Radiation"
+  },
+  "Amon.rsut": {
+    "description": "TOA Outgoing Shortwave Radiation",
+    "notes": "at the top of the atmosphere"
+  },
+  "Amon.rsutcs": {
+    "description": "TOA Outgoing Clear-Sky Shortwave Radiation",
+    "notes": "Calculated in the absence of clouds."
+  },
+  "Amon.sfcWind": {
+    "description": "Near-Surface Wind Speed",
+    "notes": "This is the mean of the speed, not the speed computed from the mean u and v components of wind"
+  },
+  "Amon.ta": {
+    "description": "Air Temperature",
+    "notes": "Air Temperature"
+  },
+  "Amon.tas": {
+    "description": "Near-Surface Air Temperature",
+    "notes": "near-surface (usually, 2 meter) air temperature"
+  },
+  "Amon.tasmax": {
+    "description": "Daily Maximum Near-Surface Air Temperature",
+    "notes": "monthly mean of the daily-maximum near-surface air temperature."
+  },
+  "Amon.tasmin": {
+    "description": "Daily Minimum Near-Surface Air Temperature",
+    "notes": "monthly mean of the daily-minimum near-surface air temperature."
+  },
+  "Amon.tauu": {
+    "description": "Surface Downward Eastward Wind Stress",
+    "notes": "Downward eastward wind stress at the surface"
+  },
+  "Amon.tauv": {
+    "description": "Surface Downward Northward Wind Stress",
+    "notes": "Downward northward wind stress at the surface"
+  },
+  "Amon.ts": {
+    "description": "Surface Temperature",
+    "notes": "Surface temperature (skin for open ocean)"
+  },
+  "Amon.ua": {
+    "description": "Eastward Wind",
+    "notes": "Zonal wind (positive in a eastward direction)."
+  },
+  "Amon.uas": {
+    "description": "Eastward Near-Surface Wind",
+    "notes": "Eastward component of the near-surface (usually, 10 meters)  wind"
+  },
+  "Amon.va": {
+    "description": "Northward Wind",
+    "notes": "Meridional wind (positive in a northward direction)."
+  },
+  "Amon.vas": {
+    "description": "Northward Near-Surface Wind",
+    "notes": "Northward component of the near surface wind"
+  },
+  "Amon.wap": {
+    "description": "Omega (=dp/dt)",
+    "notes": "commonly referred to as \"omega\", this represents the vertical component of velocity in pressure coordinates (positive down)"
+  },
+  "Amon.zg": {
+    "description": "Geopotential Height",
+    "notes": "Geopotential height is the geopotential divided by the standard acceleration due to gravity."
+  },
+  "CFday.ps": {
+    "description": "Surface Air Pressure",
+    "notes": "surface pressure (not mean sea-level pressure), 2-D field to calculate the 3-D pressure field from hybrid coordinates"
+  },
+  "day.clt": {
+    "description": "Total Cloud Cover Percentage",
+    "notes": "for the whole atmospheric column, as seen from the surface or the top of the atmosphere. Includes both large-scale and convective cloud."
+  },
+  "day.hur": {
+    "description": "Relative Humidity",
+    "notes": "This is the relative humidity with respect to liquid water for T> 0 C, and with respect to ice for T<0 C."
+  },
+  "day.hurs": {
+    "description": "Near-Surface Relative Humidity",
+    "notes": "This is the relative humidity with respect to liquid water for T> 0 C, and with respect to ice for T<0 C."
+  },
+  "day.hus": {
+    "description": "Specific Humidity",
+    "notes": "Specific humidity is the mass fraction of water vapor in (moist) air."
+  },
+  "day.huss": {
+    "description": "Near-Surface Specific Humidity",
+    "notes": "Near-surface (usually, 2 meter) specific humidity."
+  },
+  "day.pr": {
+    "description": "Precipitation",
+    "notes": "at surface; includes both liquid and solid phases from all types of clouds (both large-scale and convective)"
+  },
+  "day.psl": {
+    "description": "Sea Level Pressure",
+    "notes": "Sea Level Pressure"
+  },
+  "day.rsds": {
+    "description": "Surface Downwelling Shortwave Radiation",
+    "notes": "Surface solar irradiance for UV calculations."
+  },
+  "day.sfcWind": {
+    "description": "Near-Surface Wind Speed",
+    "notes": "near-surface (usually, 10 meters) wind speed."
+  },
+  "day.ta": {
+    "description": "Air Temperature",
+    "notes": "Air Temperature"
+  },
+  "day.tas": {
+    "description": "Near-Surface Air Temperature",
+    "notes": "near-surface (usually, 2 meter) air temperature"
+  },
+  "day.tasmax": {
+    "description": "Daily Maximum Near-Surface Air Temperature",
+    "notes": "maximum near-surface (usually, 2 meter) air temperature"
+  },
+  "day.tasmin": {
+    "description": "Daily Minimum Near-Surface Air Temperature",
+    "notes": "minimum near-surface (usually, 2 meter) air temperature"
+  },
+  "day.ua": {
+    "description": "Eastward Wind",
+    "notes": "Zonal wind (positive in a eastward direction)."
+  },
+  "day.uas": {
+    "description": "Eastward Near-Surface Wind",
+    "notes": "Eastward component of the near-surface (usually, 10 meters)  wind"
+  },
+  "day.va": {
+    "description": "Northward Wind",
+    "notes": "Meridional wind (positive in a northward direction)."
+  },
+  "day.vas": {
+    "description": "Northward Near-Surface Wind",
+    "notes": "Northward component of the near surface wind"
+  },
+  "day.wap": {
+    "description": "Omega (=dp/dt)",
+    "notes": "commonly referred to as \"omega\", this represents the vertical component of velocity in pressure coordinates (positive down)"
+  },
+  "day.zg": {
+    "description": "Geopotential Height",
+    "notes": "Geopotential height is the geopotential divided by the standard acceleration due to gravity."
+  },
+  "E1hr.pr": {
+    "description": "Precipitation",
+    "notes": "Total precipitation flux"
+  },
+  "Efx.slthick": {
+    "description": "Thickness of Soil Layers",
+    "notes": "Thickness of Soil Layers"
+  },
+  "fx.areacella": {
+    "description": "Grid-Cell Area for Atmospheric Grid Variables",
+    "notes": "Cell areas for any grid used to report atmospheric variables and any other variable using that grid."
+  },
+  "fx.mrsofc": {
+    "description": "Capacity of Soil to Store Water (Field Capacity)",
+    "notes": "reported \"where land\"."
+  },
+  "fx.orog": {
+    "description": "Surface Altitude",
+    "notes": "height above the geoid."
+  },
+  "fx.rootd": {
+    "description": "Maximum Root Depth",
+    "notes": "report the maximum soil depth reachable by plant roots."
+  },
+  "fx.sftgif": {
+    "description": "Land Ice Area Percentage",
+    "notes": "fraction of grid cell occupied by \"permanent\" ice (i.e., glaciers)."
+  },
+  "fx.sftlf": {
+    "description": "Percentage of the Grid Cell Occupied by Land (Including Lakes)",
+    "notes": "Percentage of horizontal area occupied by land."
+  },
+  "LImon.snc": {
+    "description": "Snow Area Percentage",
+    "notes": "Fraction of each grid cell that is occupied by snow that rests on land portion of cell."
+  },
+  "LImon.snw": {
+    "description": "Surface Snow Amount",
+    "notes": "Computed as the mass of surface snow on the land portion of the grid cell divided by the land area in the grid cell."
+  },
+  "Lmon.evspsblsoi": {
+    "description": "Water Evaporation from Soil",
+    "notes": "includes sublimation."
+  },
+  "Lmon.evspsblveg": {
+    "description": "Evaporation from Canopy",
+    "notes": "the canopy evaporation+sublimation (if present in model)."
+  },
+  "Lmon.lai": {
+    "description": "Leaf Area Index",
+    "notes": "A ratio obtained by dividing the total upper leaf surface area of vegetation by the horizontal surface area of the land."
+  },
+  "Lmon.mrfso": {
+    "description": "Soil Frozen Water Content",
+    "notes": "the mass (summed over all all layers) of frozen water."
+  },
+  "Lmon.mrro": {
+    "description": "Total Runoff",
+    "notes": "the total runoff leaving the land portion of the grid cell."
+  },
+  "Lmon.mrros": {
+    "description": "Surface Runoff",
+    "notes": "the total surface runoff leaving the land portion of the grid cell."
+  },
+  "Lmon.mrso": {
+    "description": "Total Soil Moisture Content",
+    "notes": "the mass per unit area (summed over all soil layers) of water in all phases."
+  },
+  "Lmon.mrsos": {
+    "description": "Moisture in Upper Portion of Soil Column",
+    "notes": "the mass of water in all phases in a thin surface soil layer."
+  },
+  "Oday.sos": {
+    "description": "Sea Surface Salinity",
+    "notes": "Sea water salinity is the salt content of sea water."
+  },
+  "Oday.tos": {
+    "description": "Sea Surface Temperature",
+    "notes": "This may differ from surface temperature in regions of sea ice or floating ice shelves."
+  },
+  "Oday.zos": {
+    "description": "Sea Surface Height Above Geoid",
+    "notes": "This is the effective dynamic sea level."
+  },
+  "Ofx.areacello": {
+    "description": "Grid-Cell Area for Ocean Variables",
+    "notes": "Cell areas for any grid used to report ocean variables."
+  },
+  "Ofx.basin": {
+    "description": "Region Selection Index",
+    "notes": "A variable with the standard name of region contains strings which indicate geographical regions."
+  },
+  "Ofx.deptho": {
+    "description": "Sea Floor Depth Below Geoid",
+    "notes": "Ocean bathymetry."
+  },
+  "Ofx.hfgeou": {
+    "description": "Upward Geothermal Heat Flux at Sea Floor",
+    "notes": "Upward geothermal heat flux per unit area on the sea floor"
+  },
+  "Ofx.masscello": {
+    "description": "Ocean Grid-Cell Mass per Area",
+    "notes": "Tracer grid-cell mass per unit area used for computing tracer budgets."
+  },
+  "Ofx.sftof": {
+    "description": "Sea Area Percentage",
+    "notes": "This is the area fraction at the ocean surface."
+  },
+  "Ofx.thkcello": {
+    "description": "Ocean Model Cell Thickness",
+    "notes": "Thickness of ocean cells."
+  },
+  "Omon.bigthetao": {
+    "description": "Sea Water Conservative Temperature",
+    "notes": "Diagnostic should be contributed only for models using conservative temperature as prognostic field."
+  },
+  "Omon.hfds": {
+    "description": "Downward Heat Flux at Sea Water Surface",
+    "notes": "This is the net flux of heat entering the liquid water column through its upper surface."
+  },
+  "Omon.masscello": {
+    "description": "Ocean Grid-Cell Mass per Area",
+    "notes": "For Boussinesq models, report this diagnostic as Boussinesq reference density times grid cell volume."
+  },
+  "Omon.mlotst": {
+    "description": "Ocean Mixed Layer Thickness Defined by Delta Sigma T of 0.03 kg m-3 referenced to the model level closest to 10 m depth",
+    "notes": "Defined by Sigma T of 0.03 kg m-3 wrt to model level closest to 10 m depth."
+  },
+  "Omon.so": {
+    "description": "Sea Water Salinity",
+    "notes": "Sea water salinity is the salt content of sea water."
+  },
+  "Omon.sos": {
+    "description": "Sea Surface Salinity",
+    "notes": "Sea water salinity is the salt content of sea water."
+  },
+  "Omon.tauuo": {
+    "description": "Sea Water Surface Downward X Stress",
+    "notes": "This is the stress on the liquid ocean from overlying atmosphere, sea ice, ice shelf, etc."
+  },
+  "Omon.tauvo": {
+    "description": "Sea Water Surface Downward Y Stress",
+    "notes": "This is the stress on the liquid ocean from overlying atmosphere, sea ice, ice shelf, etc."
+  },
+  "Omon.thetao": {
+    "description": "Sea Water Potential Temperature",
+    "notes": "Diagnostic should be contributed even for models using conservative temperature as prognostic field."
+  },
+  "Omon.thkcello": {
+    "description": "Ocean Model Cell Thickness",
+    "notes": "The time varying thickness of ocean cells."
+  },
+  "Omon.tos": {
+    "description": "Sea Surface Temperature",
+    "notes": "This may differ from surface temperature in regions of sea ice or floating ice shelves."
+  },
+  "Omon.umo": {
+    "description": "Ocean Mass X Transport",
+    "notes": "X-ward mass transport from residual mean advective transport."
+  },
+  "Omon.uo": {
+    "description": "Sea Water X Velocity",
+    "notes": "Prognostic x-ward velocity component resolved by the model."
+  },
+  "Omon.vmo": {
+    "description": "Ocean Mass Y Transport",
+    "notes": "Y-ward mass transport from residual mean advective transport."
+  },
+  "Omon.vo": {
+    "description": "Sea Water Y Velocity",
+    "notes": "Prognostic y-ward velocity component resolved by the model."
+  },
+  "Omon.wmo": {
+    "description": "Upward Ocean Mass Transport",
+    "notes": "Upward mass transport from residual mean advective transport."
+  },
+  "Omon.wo": {
+    "description": "Sea Water Vertical Velocity",
+    "notes": "Prognostic z-ward velocity component resolved by the model."
+  },
+  "Omon.zos": {
+    "description": "Sea Surface Height Above Geoid",
+    "notes": "This is the effective dynamic sea level."
+  },
+  "Omon.zostoga": {
+    "description": "Global Average Thermosteric Sea Level Change",
+    "notes": "There is no CMIP6 request for zosga nor zossga."
+  },
+  "SIday.siconc": {
+    "description": "Sea-Ice Area Percentage (Ocean Grid)",
+    "notes": "Percentage of a given grid cell that is covered by sea ice on the ocean grid."
+  },
+  "SImon.siconc": {
+    "description": "Sea-Ice Area Percentage (Ocean Grid)",
+    "notes": "Percentage of a given grid cell that is covered by sea ice on the ocean grid."
+  },
+  "SImon.simass": {
+    "description": "Sea-Ice Mass",
+    "notes": "Total mass of sea ice divided by grid-cell area."
+  },
+  "SImon.sisnthick": {
+    "description": "Snow Thickness",
+    "notes": "Actual thickness of snow averaged over the snow-covered part of the sea ice."
+  },
+  "SImon.sitemptop": {
+    "description": "Surface Temperature of Sea Ice",
+    "notes": "Mean surface temperature of the sea-ice covered part of the grid cell."
+  },
+  "SImon.sithick": {
+    "description": "Sea-Ice Thickness",
+    "notes": "Actual thickness of sea ice averaged over the ice-covered part of a given grid cell."
+  },
+  "SImon.sitimefrac": {
+    "description": "Fraction of Time Steps with Sea Ice",
+    "notes": "Fraction of time steps of the averaging period during which sea ice is present."
+  },
+  "SImon.siu": {
+    "description": "X-Component of Sea-Ice Velocity",
+    "notes": "X-component of sea-ice velocity on native model grid."
+  },
+  "SImon.siv": {
+    "description": "Y-Component of Sea-Ice Velocity",
+    "notes": "Y-component of sea-ice velocity on native model grid."
+  }
+}

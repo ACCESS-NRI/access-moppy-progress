@@ -15,176 +15,12 @@ notes: >
 
 experiments:
 
-  - id: historical
+  - id: piControl
     priority: high
-    members:
-      - variant_label: r1i1p1f1
-        realization: 1
-        physics: 1
-        forcing: 1
-        initialization: 1
-        notes: "Primary historical run"
-      - variant_label: r2i1p1f1
-        realization: 2
-        physics: 1
-        forcing: 1
-        initialization: 1
-      - variant_label: r3i1p1f1
-        realization: 3
-        physics: 1
-        forcing: 1
-        initialization: 1
-      - variant_label: r4i1p1f1
-        realization: 4
-        physics: 1
-        forcing: 1
-        initialization: 1
-      - variant_label: r5i1p1f1
-        realization: 5
-        physics: 1
-        forcing: 1
-        initialization: 1
-    target_variables:
-      # Atmosphere (Amon / day)
-      - zg500
-      - rldscs
-      - rlutcs
-      - ci
-      - cl
-      - cli
-      - clivi
-      - clt
-      - clw
-      - clwvi
-      - evspsbl
-      - hfls
-      - hfss
-      - hur
-      - hus
-      - huss
-      - hurs
-      - mc
-      - pr
-      - prc
-      - prsn
-      - prw
-      - ps
-      - psl
-      - rlds
-      - rlus
-      - rlut
-      - rsds
-      - rsdt
-      - rsus
-      - rsut
-      - rtmt
-      - sfcWind
-      - ta
-      - tas
-      - tasmax
-      - tasmin
-      - tauu
-      - tauv
-      - ts
-      - ua
-      - uas
-      - va
-      - vas
-      - wap
-      - zg
-      - areacella
-      - hursmax
-      - hursmin
-      - sfcWindmax
-      # Ocean (Omon)
-      - msftmrho
-      - msftmz
-      - areacello
-      - agessc
-      - bigthetao
-      - bigthetaoga
-      - deptho
-      - evs
-      - hfds
-      - hfgeou
-      - mlotst
-      - mlotststq
-      - pbo
-      - pso
-      - sob
-      - so
-      - soga
-      - sos
-      - sosga
-      - sftof
-      - tauuo
-      - tauvo
-      - thetao
-      - thetaoga
-      - thkcello
-      - tob
-      - tos
-      - tosga
-      - uo
-      - volcello
-      - vo
-      - wfo
-      - wo
-      - zos
-      - zossq
-      - zostoga
-      # Sea ice (SImon)
-      - siconc
-      - sidconcdyn
-      - sidconcth
-      - siarean
-      - siareas
-      - sidmassdyn
-      - sidmassth
-      - sidmassmeltlat
-      - sidmassevapsubl
-      - sidmassgrowthsi
-      - sidmassgrowthbot
-      - siextentn
-      - siextents
-      - simass
-      - sisnconc
-      - sisnhc
-      - sisnthick
-      - sispeed
-      - sisndmasssi
-      - sithick
-      - sitimefrac
-      - siu
-      - sivol
-      - sivoln
-      - sivols
-      # Land (Lmon)
-      - mrfso
-      - mrro
-      - mrros
-      - mrsfl
-      - mrsll
-      - mrso
-      - mrsos
-      - nbp
-      - nep
-      - gpp
-      - lai
-      - ra
-      - rh
-      - tran
-      - tsl
-      - evspsblsoi
-      - evspsblveg
-      - cLand
-      - cLeaf
-      - cSoil
-      - cVeg
-      - sftlf
-
-  - id: picontrol
-    priority: high
+    deck: true
+    theme: deck
+    tags: [DECK, NESP]
+    category: DECK
     members:
       - variant_label: r1i1p1f1
         realization: 1
@@ -192,84 +28,677 @@ experiments:
         forcing: 1
         initialization: 1
         notes: "Control run branched from spin-up"
-    target_variables: "*"
+    target_variables: &common_target_variables
+      - request_name: 3hr.huss
+        short_name: huss
+        cmip7_name: atmos.huss.tpt-h2m-hxy-u.3hr.glb
+      - request_name: 3hr.pr
+        short_name: pr
+        cmip7_name: atmos.pr.tavg-u-hxy-u.3hr.glb
+      - request_name: 3hr.tas
+        short_name: tas
+        cmip7_name: atmos.tas.tpt-h2m-hxy-u.3hr.glb
+      - request_name: 3hrPt.uas
+        short_name: uas
+        cmip7_name: atmos.uas.tpt-h10m-hxy-u.3hr.glb
+      - request_name: 3hrPt.vas
+        short_name: vas
+        cmip7_name: atmos.vas.tpt-h10m-hxy-u.3hr.glb
+      - request_name: 6hrPlev.hurs
+        short_name: hurs
+        cmip7_name: atmos.hurs.tavg-h2m-hxy-u.6hr.glb
+      - request_name: 6hrPlevPt.ta
+        short_name: ta
+        cmip7_name: atmos.ta.tpt-p3-hxy-air.6hr.glb
+      - request_name: 6hrPlevPt.ua
+        short_name: ua
+        cmip7_name: atmos.ua.tpt-p3-hxy-air.6hr.glb
+      - request_name: 6hrPlevPt.va
+        short_name: va
+        cmip7_name: atmos.va.tpt-p3-hxy-air.6hr.glb
+      - request_name: Amon.cl
+        short_name: cl
+        cmip7_name: atmos.cl.tavg-al-hxy-u.mon.glb
+      - request_name: Amon.cli
+        short_name: cli
+        cmip7_name: atmos.cli.tavg-al-hxy-u.mon.glb
+      - request_name: Amon.clivi
+        short_name: clivi
+        cmip7_name: atmos.clivi.tavg-u-hxy-u.mon.glb
+      - request_name: Amon.clt
+        short_name: clt
+        cmip7_name: atmos.clt.tavg-u-hxy-u.mon.glb
+      - request_name: Amon.clw
+        short_name: clw
+        cmip7_name: atmos.clw.tavg-al-hxy-u.mon.glb
+      - request_name: Amon.clwvi
+        short_name: clwvi
+        cmip7_name: atmos.clwvi.tavg-u-hxy-u.mon.glb
+      - request_name: Amon.evspsbl
+        short_name: evspsbl
+        cmip7_name: atmos.evspsbl.tavg-u-hxy-u.mon.glb
+      - request_name: Amon.hfls
+        short_name: hfls
+        cmip7_name: atmos.hfls.tavg-u-hxy-u.mon.glb
+      - request_name: Amon.hfss
+        short_name: hfss
+        cmip7_name: atmos.hfss.tavg-u-hxy-u.mon.glb
+      - request_name: Amon.hur
+        short_name: hur
+        cmip7_name: atmos.hur.tavg-p19-hxy-air.mon.glb
+      - request_name: Amon.hurs
+        short_name: hurs
+        cmip7_name: atmos.hurs.tavg-h2m-hxy-u.mon.glb
+      - request_name: Amon.hus
+        short_name: hus
+        cmip7_name: atmos.hus.tavg-p19-hxy-u.mon.glb
+      - request_name: Amon.huss
+        short_name: huss
+        cmip7_name: atmos.huss.tavg-h2m-hxy-u.mon.glb
+      - request_name: Amon.pr
+        short_name: pr
+        cmip7_name: atmos.pr.tavg-u-hxy-u.mon.glb
+      - request_name: Amon.prc
+        short_name: prc
+        cmip7_name: atmos.prc.tavg-u-hxy-u.mon.glb
+      - request_name: Amon.prsn
+        short_name: prsn
+        cmip7_name: atmos.prsn.tavg-u-hxy-u.mon.glb
+      - request_name: Amon.prw
+        short_name: prw
+        cmip7_name: atmos.prw.tavg-u-hxy-u.mon.glb
+      - request_name: Amon.ps
+        short_name: ps
+        cmip7_name: atmos.ps.tavg-u-hxy-u.mon.glb
+      - request_name: Amon.psl
+        short_name: psl
+        cmip7_name: atmos.psl.tavg-u-hxy-u.mon.glb
+      - request_name: Amon.rlds
+        short_name: rlds
+        cmip7_name: atmos.rlds.tavg-u-hxy-u.mon.glb
+      - request_name: Amon.rldscs
+        short_name: rldscs
+        cmip7_name: atmos.rldscs.tavg-u-hxy-u.mon.glb
+      - request_name: Amon.rlus
+        short_name: rlus
+        cmip7_name: atmos.rlus.tavg-u-hxy-u.mon.glb
+      - request_name: Amon.rluscs
+        short_name: rluscs
+        cmip7_name: atmos.rluscs.tavg-u-hxy-u.mon.glb
+      - request_name: Amon.rlut
+        short_name: rlut
+        cmip7_name: atmos.rlut.tavg-u-hxy-u.mon.glb
+      - request_name: Amon.rlutcs
+        short_name: rlutcs
+        cmip7_name: atmos.rlutcs.tavg-u-hxy-u.mon.glb
+      - request_name: Amon.rsds
+        short_name: rsds
+        cmip7_name: atmos.rsds.tavg-u-hxy-u.mon.glb
+      - request_name: Amon.rsdscs
+        short_name: rsdscs
+        cmip7_name: atmos.rsdscs.tavg-u-hxy-u.mon.glb
+      - request_name: Amon.rsdt
+        short_name: rsdt
+        cmip7_name: atmos.rsdt.tavg-u-hxy-u.mon.glb
+      - request_name: Amon.rsus
+        short_name: rsus
+        cmip7_name: atmos.rsus.tavg-u-hxy-u.mon.glb
+      - request_name: Amon.rsuscs
+        short_name: rsuscs
+        cmip7_name: atmos.rsuscs.tavg-u-hxy-u.mon.glb
+      - request_name: Amon.rsut
+        short_name: rsut
+        cmip7_name: atmos.rsut.tavg-u-hxy-u.mon.glb
+      - request_name: Amon.rsutcs
+        short_name: rsutcs
+        cmip7_name: atmos.rsutcs.tavg-u-hxy-u.mon.glb
+      - request_name: Amon.sfcWind
+        short_name: sfcWind
+        cmip7_name: atmos.sfcWind.tavg-h10m-hxy-u.mon.glb
+      - request_name: Amon.ta
+        short_name: ta
+        cmip7_name: atmos.ta.tavg-p19-hxy-air.mon.glb
+      - request_name: Amon.tas
+        short_name: tas
+        cmip7_name: atmos.tas.tavg-h2m-hxy-u.mon.glb
+      - request_name: Amon.tasmax
+        short_name: tasmax
+        cmip7_name: atmos.tas.tmaxavg-h2m-hxy-u.mon.glb
+      - request_name: Amon.tasmin
+        short_name: tasmin
+        cmip7_name: atmos.tas.tminavg-h2m-hxy-u.mon.glb
+      - request_name: Amon.tauu
+        short_name: tauu
+        cmip7_name: atmos.tauu.tavg-u-hxy-u.mon.glb
+      - request_name: Amon.tauv
+        short_name: tauv
+        cmip7_name: atmos.tauv.tavg-u-hxy-u.mon.glb
+      - request_name: Amon.ts
+        short_name: ts
+        cmip7_name: atmos.ts.tavg-u-hxy-u.mon.glb
+      - request_name: Amon.ua
+        short_name: ua
+        cmip7_name: atmos.ua.tavg-p19-hxy-air.mon.glb
+      - request_name: Amon.uas
+        short_name: uas
+        cmip7_name: atmos.uas.tavg-h10m-hxy-u.mon.glb
+      - request_name: Amon.va
+        short_name: va
+        cmip7_name: atmos.va.tavg-p19-hxy-air.mon.glb
+      - request_name: Amon.vas
+        short_name: vas
+        cmip7_name: atmos.vas.tavg-h10m-hxy-u.mon.glb
+      - request_name: Amon.wap
+        short_name: wap
+        cmip7_name: atmos.wap.tavg-p19-hxy-air.mon.glb
+      - request_name: Amon.zg
+        short_name: zg
+        cmip7_name: atmos.zg.tavg-p19-hxy-air.mon.glb
+      - request_name: CFday.ps
+        short_name: ps
+        cmip7_name: atmos.ps.tavg-u-hxy-u.day.glb
+      - request_name: day.clt
+        short_name: clt
+        cmip7_name: atmos.clt.tavg-u-hxy-u.day.glb
+      - request_name: day.hur
+        short_name: hur
+        cmip7_name: atmos.hur.tavg-p19-hxy-u.day.glb
+      - request_name: day.hurs
+        short_name: hurs
+        cmip7_name: atmos.hurs.tavg-h2m-hxy-u.day.glb
+      - request_name: day.hus
+        short_name: hus
+        cmip7_name: atmos.hus.tavg-p19-hxy-u.day.glb
+      - request_name: day.huss
+        short_name: huss
+        cmip7_name: atmos.huss.tavg-h2m-hxy-u.day.glb
+      - request_name: day.pr
+        short_name: pr
+        cmip7_name: atmos.pr.tavg-u-hxy-u.day.glb
+      - request_name: day.psl
+        short_name: psl
+        cmip7_name: atmos.psl.tavg-u-hxy-u.day.glb
+      - request_name: day.rsds
+        short_name: rsds
+        cmip7_name: atmos.rsds.tavg-u-hxy-u.day.glb
+      - request_name: day.sfcWind
+        short_name: sfcWind
+        cmip7_name: atmos.sfcWind.tavg-h10m-hxy-u.day.glb
+      - request_name: day.ta
+        short_name: ta
+        cmip7_name: atmos.ta.tavg-p19-hxy-air.day.glb
+      - request_name: day.tas
+        short_name: tas
+        cmip7_name: atmos.tas.tavg-h2m-hxy-u.day.glb
+      - request_name: day.tasmax
+        short_name: tasmax
+        cmip7_name: atmos.tas.tmax-h2m-hxy-u.day.glb
+      - request_name: day.tasmin
+        short_name: tasmin
+        cmip7_name: atmos.tas.tmin-h2m-hxy-u.day.glb
+      - request_name: day.ua
+        short_name: ua
+        cmip7_name: atmos.ua.tavg-p19-hxy-air.day.glb
+      - request_name: day.uas
+        short_name: uas
+        cmip7_name: atmos.uas.tavg-h10m-hxy-u.day.glb
+      - request_name: day.va
+        short_name: va
+        cmip7_name: atmos.va.tavg-p19-hxy-air.day.glb
+      - request_name: day.vas
+        short_name: vas
+        cmip7_name: atmos.vas.tavg-h10m-hxy-u.day.glb
+      - request_name: day.wap
+        short_name: wap
+        cmip7_name: atmos.wap.tavg-p19-hxy-u.day.glb
+      - request_name: day.zg
+        short_name: zg
+        cmip7_name: atmos.zg.tavg-p19-hxy-air.day.glb
+      - request_name: E1hr.pr
+        short_name: pr
+        cmip7_name: atmos.pr.tavg-u-hxy-u.1hr.glb
+      - request_name: Efx.slthick
+        short_name: slthick
+        cmip7_name: land.slthick.ti-sl-hxy-lnd.fx.glb
+      - request_name: fx.areacella
+        short_name: areacella
+        cmip7_name: atmos.areacella.ti-u-hxy-u.fx.glb
+      - request_name: fx.mrsofc
+        short_name: mrsofc
+        cmip7_name: land.mrsofc.ti-u-hxy-lnd.fx.glb
+      - request_name: fx.orog
+        short_name: orog
+        cmip7_name: land.orog.ti-u-hxy-u.fx.glb
+      - request_name: fx.rootd
+        short_name: rootd
+        cmip7_name: land.rootd.ti-u-hxy-lnd.fx.glb
+      - request_name: fx.sftgif
+        short_name: sftgif
+        cmip7_name: land.sftgif.ti-u-hxy-u.fx.glb
+      - request_name: fx.sftlf
+        short_name: sftlf
+        cmip7_name: atmos.sftlf.ti-u-hxy-u.fx.glb
+      - request_name: LImon.snc
+        short_name: snc
+        cmip7_name: landIce.snc.tavg-u-hxy-lnd.mon.glb
+      - request_name: LImon.snw
+        short_name: snw
+        cmip7_name: landIce.snw.tavg-u-hxy-lnd.mon.glb
+      - request_name: Lmon.evspsblsoi
+        short_name: evspsblsoi
+        cmip7_name: land.evspsblsoi.tavg-u-hxy-lnd.mon.glb
+      - request_name: Lmon.evspsblveg
+        short_name: evspsblveg
+        cmip7_name: land.evspsblveg.tavg-u-hxy-lnd.mon.glb
+      - request_name: Lmon.lai
+        short_name: lai
+        cmip7_name: land.lai.tavg-u-hxy-lnd.mon.glb
+      - request_name: Lmon.mrfso
+        short_name: mrfso
+        cmip7_name: landIce.mrfso.tavg-u-hxy-lnd.mon.glb
+      - request_name: Lmon.mrro
+        short_name: mrro
+        cmip7_name: land.mrro.tavg-u-hxy-lnd.mon.glb
+      - request_name: Lmon.mrros
+        short_name: mrros
+        cmip7_name: land.mrros.tavg-u-hxy-lnd.mon.glb
+      - request_name: Lmon.mrso
+        short_name: mrso
+        cmip7_name: land.mrso.tavg-u-hxy-lnd.mon.glb
+      - request_name: Lmon.mrsos
+        short_name: mrsos
+        cmip7_name: land.mrsol.tavg-d10cm-hxy-lnd.mon.glb
+      - request_name: Oday.sos
+        short_name: sos
+        cmip7_name: ocean.sos.tavg-u-hxy-sea.day.glb
+      - request_name: Oday.tos
+        short_name: tos
+        cmip7_name: ocean.tos.tavg-u-hxy-sea.day.glb
+      - request_name: Oday.zos
+        short_name: zos
+        cmip7_name: ocean.zos.tavg-u-hxy-sea.day.glb
+      - request_name: Ofx.areacello
+        short_name: areacello
+        cmip7_name: ocean.areacello.ti-u-hxy-u.fx.glb
+      - request_name: Ofx.basin
+        short_name: basin
+        cmip7_name: ocean.basin.ti-u-hxy-u.fx.glb
+      - request_name: Ofx.deptho
+        short_name: deptho
+        cmip7_name: ocean.deptho.ti-u-hxy-sea.fx.glb
+      - request_name: Ofx.hfgeou
+        short_name: hfgeou
+        cmip7_name: ocean.hfgeou.ti-u-hxy-sea.fx.glb
+      - request_name: Ofx.masscello
+        short_name: masscello
+        cmip7_name: ocean.masscello.ti-ol-hxy-sea.fx.glb
+      - request_name: Ofx.sftof
+        short_name: sftof
+        cmip7_name: ocean.sftof.ti-u-hxy-u.fx.glb
+      - request_name: Ofx.thkcello
+        short_name: thkcello
+        cmip7_name: ocean.thkcello.ti-ol-hxy-sea.fx.glb
+      - request_name: Omon.bigthetao
+        short_name: bigthetao
+        cmip7_name: ocean.bigthetao.tavg-ol-hxy-sea.mon.glb
+      - request_name: Omon.hfds
+        short_name: hfds
+        cmip7_name: ocean.hfds.tavg-u-hxy-sea.mon.glb
+      - request_name: Omon.masscello
+        short_name: masscello
+        cmip7_name: ocean.masscello.tavg-ol-hxy-sea.mon.glb
+      - request_name: Omon.mlotst
+        short_name: mlotst
+        cmip7_name: ocean.mlotst.tavg-u-hxy-sea.mon.glb
+      - request_name: Omon.so
+        short_name: so
+        cmip7_name: ocean.so.tavg-ol-hxy-sea.mon.glb
+      - request_name: Omon.sos
+        short_name: sos
+        cmip7_name: ocean.sos.tavg-u-hxy-sea.mon.glb
+      - request_name: Omon.tauuo
+        short_name: tauuo
+        cmip7_name: ocean.tauuo.tavg-u-hxy-sea.mon.glb
+      - request_name: Omon.tauvo
+        short_name: tauvo
+        cmip7_name: ocean.tauvo.tavg-u-hxy-sea.mon.glb
+      - request_name: Omon.thetao
+        short_name: thetao
+        cmip7_name: ocean.thetao.tavg-ol-hxy-sea.mon.glb
+      - request_name: Omon.thkcello
+        short_name: thkcello
+        cmip7_name: ocean.thkcello.tavg-ol-hxy-sea.mon.glb
+      - request_name: Omon.tos
+        short_name: tos
+        cmip7_name: ocean.tos.tavg-u-hxy-sea.mon.glb
+      - request_name: Omon.umo
+        short_name: umo
+        cmip7_name: ocean.umo.tavg-ol-hxy-sea.mon.glb
+      - request_name: Omon.uo
+        short_name: uo
+        cmip7_name: ocean.uo.tavg-ol-hxy-sea.mon.glb
+      - request_name: Omon.vmo
+        short_name: vmo
+        cmip7_name: ocean.vmo.tavg-ol-hxy-sea.mon.glb
+      - request_name: Omon.vo
+        short_name: vo
+        cmip7_name: ocean.vo.tavg-ol-hxy-sea.mon.glb
+      - request_name: Omon.wmo
+        short_name: wmo
+        cmip7_name: ocean.wmo.tavg-ol-hxy-sea.mon.glb
+      - request_name: Omon.wo
+        short_name: wo
+        cmip7_name: ocean.wo.tavg-ol-hxy-sea.mon.glb
+      - request_name: Omon.zos
+        short_name: zos
+        cmip7_name: ocean.zos.tavg-u-hxy-sea.mon.glb
+      - request_name: Omon.zostoga
+        short_name: zostoga
+        cmip7_name: ocean.zostoga.tavg-u-hm-sea.mon.glb
+      - request_name: SIday.siconc
+        short_name: siconc
+        cmip7_name: seaIce.siconc.tavg-u-hxy-u.day.glb
+      - request_name: SImon.siconc
+        short_name: siconc
+        cmip7_name: seaIce.siconc.tavg-u-hxy-u.mon.glb
+      - request_name: SImon.simass
+        short_name: simass
+        cmip7_name: seaIce.simass.tavg-u-hxy-si.mon.glb
+      - request_name: SImon.sisnthick
+        short_name: sisnthick
+        cmip7_name: seaIce.snd.tavg-u-hxy-sn.mon.glb
+      - request_name: SImon.sitemptop
+        short_name: sitemptop
+        cmip7_name: seaIce.ts.tavg-u-hxy-si.mon.glb
+      - request_name: SImon.sithick
+        short_name: sithick
+        cmip7_name: seaIce.sithick.tavg-u-hxy-si.mon.glb
+      - request_name: SImon.sitimefrac
+        short_name: sitimefrac
+        cmip7_name: seaIce.sitimefrac.tavg-u-hxy-sea.mon.glb
+      - request_name: SImon.siu
+        short_name: siu
+        cmip7_name: seaIce.siu.tavg-u-hxy-si.mon.glb
+      - request_name: SImon.siv
+        short_name: siv
+        cmip7_name: seaIce.siv.tavg-u-hxy-si.mon.glb
     notes: >
-      Full variable set for picontrol as required by CMIP7 protocol.
+      Full variable set for piControl as required by CMIP7 protocol.
 
-  - id: ssp585
+  - id: historical
+    label: historical
     priority: medium
+    category: Testing
+    tags: [DUMMY]
     members:
       - variant_label: r1i1p1f1
         realization: 1
         physics: 1
         forcing: 1
         initialization: 1
-      - variant_label: r2i1p1f1
-        realization: 2
-        physics: 1
-        forcing: 1
-        initialization: 1
-    target_variables:
-      - tas
-      - tasmax
-      - tasmin
-      - pr
-      - psl
-      - tos
-      - siconc
-      - siextentn
-      - siextents
-      - zos
-      - nbp
-      - gpp
+        notes: "Synthetic dashboard test experiment"
+    target_variables: *common_target_variables
 
-  - id: ssp245
-    priority: medium
+  - id: amip
+    priority: high
+    deck: true
+    theme: deck
+    tags: [DECK, NESP]
+    category: DECK
     members:
       - variant_label: r1i1p1f1
         realization: 1
         physics: 1
         forcing: 1
         initialization: 1
-    target_variables:
-      - tas
-      - tasmax
-      - tasmin
-      - pr
-      - psl
-      - tos
-      - siconc
+    target_variables: *common_target_variables
 
-  - id: abrupt-4xco2
-    priority: low
+  - id: esm-piControl
+    priority: high
+    deck: true
+    theme: deck
+    tags: [DECK, NESP]
+    category: DECK
     members:
       - variant_label: r1i1p1f1
         realization: 1
         physics: 1
         forcing: 1
         initialization: 1
-    target_variables:
-      - tas
-      - pr
-      - tos
-      - thetao
-      - psl
-      - rlut
-      - rsut
-      - hfds
+    target_variables: *common_target_variables
 
-  - id: 1pctco2
-    priority: low
+  - id: 1pctCO2
+    priority: high
+    deck: true
+    theme: deck
+    tags: [DECK, NESP]
+    category: DECK
     members:
       - variant_label: r1i1p1f1
         realization: 1
         physics: 1
         forcing: 1
         initialization: 1
-    target_variables:
-      - tas
-      - pr
-      - tos
-      - psl
-      - rlut
-      - rsut
+    target_variables: *common_target_variables
+
+  - id: abrupt-4xCO2
+    priority: high
+    deck: true
+    theme: deck
+    tags: [DECK, NESP]
+    category: DECK
+    members:
+      - variant_label: r1i1p1f1
+        realization: 1
+        physics: 1
+        forcing: 1
+        initialization: 1
+    target_variables: *common_target_variables
+
+  - id: piClim-control
+    priority: high
+    deck: true
+    theme: deck
+    tags: [DECK, NESP]
+    category: DECK
+    members:
+      - variant_label: r1i1p1f1
+        realization: 1
+        physics: 1
+        forcing: 1
+        initialization: 1
+    target_variables: *common_target_variables
+
+  - id: piClim-anthro
+    priority: high
+    deck: true
+    theme: deck
+    tags: [DECK, NESP]
+    category: DECK
+    members:
+      - variant_label: r1i1p1f1
+        realization: 1
+        physics: 1
+        forcing: 1
+        initialization: 1
+    target_variables: *common_target_variables
+
+  - id: piClim-4xCO2
+    priority: high
+    deck: true
+    theme: deck
+    tags: [DECK, NESP]
+    category: DECK
+    members:
+      - variant_label: r1i1p1f1
+        realization: 1
+        physics: 1
+        forcing: 1
+        initialization: 1
+    target_variables: *common_target_variables
+
+  - id: esm-historical
+    priority: high
+    deck: true
+    theme: deck
+    tags: [DECK, NESP]
+    category: DECK
+    members:
+      - variant_label: r1i1p1f1
+        realization: 1
+        physics: 1
+        forcing: 1
+        initialization: 1
+    target_variables: *common_target_variables
+
+  - id: high-scenario-emission-driven
+    label: High scenario (emissions driven)
+    priority: high
+    theme: fast_track
+    tags: [FAST TRACK, CSIRO]
+    category: ScenarioMIP
+    members:
+      - variant_label: r1i1p1f1
+        realization: 1
+        physics: 1
+        forcing: 1
+        initialization: 1
+    target_variables: *common_target_variables
+
+  - id: medium-scenario-emission-driven
+    label: Medium scenario (emissions driven)
+    priority: high
+    theme: fast_track
+    tags: [FAST TRACK, CSIRO]
+    category: ScenarioMIP
+    members:
+      - variant_label: r1i1p1f1
+        realization: 1
+        physics: 1
+        forcing: 1
+        initialization: 1
+    target_variables: *common_target_variables
+
+  - id: overshoot-scenario-emission-driven
+    label: Overshoot scenario (emissions driven)
+    priority: high
+    theme: fast_track
+    tags: [FAST TRACK, CSIRO]
+    category: ScenarioMIP
+    members:
+      - variant_label: r1i1p1f1
+        realization: 1
+        physics: 1
+        forcing: 1
+        initialization: 1
+    target_variables: *common_target_variables
+
+  - id: low-scenario-emission-driven
+    label: Low scenario (emissions driven)
+    priority: high
+    theme: fast_track
+    tags: [FAST TRACK, CSIRO]
+    category: ScenarioMIP
+    members:
+      - variant_label: r1i1p1f1
+        realization: 1
+        physics: 1
+        forcing: 1
+        initialization: 1
+    target_variables: *common_target_variables
+
+  - id: very-low-scenario-emission-driven
+    label: Very low scenario (emissions driven)
+    priority: high
+    theme: fast_track
+    tags: [FAST TRACK, CSIRO]
+    category: ScenarioMIP
+    members:
+      - variant_label: r1i1p1f1
+        realization: 1
+        physics: 1
+        forcing: 1
+        initialization: 1
+    target_variables: *common_target_variables
+
+  - id: low-overshoot-scenario-emission-driven
+    label: Low overshoot scenario (emission driven)
+    priority: high
+    theme: fast_track
+    tags: [FAST TRACK, CSIRO]
+    category: ScenarioMIP
+    members:
+      - variant_label: r1i1p1f1
+        realization: 1
+        physics: 1
+        forcing: 1
+        initialization: 1
+    target_variables: *common_target_variables
+
+  - id: high-scenario-concentration-driven
+    label: High scenario (concentration driven)
+    priority: high
+    theme: fast_track
+    tags: [FAST TRACK, CSIRO]
+    category: ScenarioMIP
+    members:
+      - variant_label: r1i1p1f1
+        realization: 1
+        physics: 1
+        forcing: 1
+        initialization: 1
+    target_variables: *common_target_variables
+
+  - id: medium-scenario-concentration-driven
+    label: Medium scenario (concentration driven)
+    priority: high
+    theme: fast_track
+    tags: [FAST TRACK, CSIRO]
+    category: ScenarioMIP
+    members:
+      - variant_label: r1i1p1f1
+        realization: 1
+        physics: 1
+        forcing: 1
+        initialization: 1
+    target_variables: *common_target_variables
+
+  - id: low-scenario-concentration-driven
+    label: Low scenario (concentration driven)
+    priority: high
+    theme: fast_track
+    tags: [FAST TRACK, CSIRO]
+    category: ScenarioMIP
+    members:
+      - variant_label: r1i1p1f1
+        realization: 1
+        physics: 1
+        forcing: 1
+        initialization: 1
+    target_variables: *common_target_variables
+
+  - id: 1pctCO2-bgc
+    priority: high
+    theme: fast_track
+    tags: [FAST TRACK, CSIRO]
+    category: C4MIP
+    members:
+      - variant_label: r1i1p1f1
+        realization: 1
+        physics: 1
+        forcing: 1
+        initialization: 1
+    target_variables: *common_target_variables
+
+  - id: 1pctCO2-rad
+    priority: high
+    theme: fast_track
+    tags: [FAST TRACK, CSIRO]
+    category: C4MIP
+    members:
+      - variant_label: r1i1p1f1
+        realization: 1
+        physics: 1
+        forcing: 1
+        initialization: 1
+    target_variables: *common_target_variables

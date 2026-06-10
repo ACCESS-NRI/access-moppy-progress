@@ -59,14 +59,56 @@
           "target_variables": {
             "oneOf": [
               { "type": "string", "enum": ["*"] },
-              { "type": "array", "items": { "type": "string" }, "minItems": 1 }
+              {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "oneOf": [
+                    { "type": "string" },
+                    {
+                      "type": "object",
+                      "required": ["request_name", "short_name"],
+                      "additionalProperties": false,
+                      "properties": {
+                        "request_name": { "type": "string" },
+                        "short_name": { "type": "string" },
+                        "cmip7_name": { "type": "string" }
+                      }
+                    }
+                  ]
+                }
+              }
             ],
-            "description": "Variables to CMORise. Use * for all variables in the model mappings."
+            "description": "Variables to CMORise. Use * for all variables in the model mappings, or provide strings/objects with request and CMIP7 names."
           },
           "priority": {
             "type": "string",
             "enum": ["high", "medium", "low"],
             "description": "Submission priority relative to other experiments"
+          },
+          "label": {
+            "type": "string",
+            "description": "Human-friendly display label for the experiment card."
+          },
+          "theme": {
+            "type": "string",
+            "enum": ["default", "deck", "fast_track"],
+            "description": "Dashboard card theme for this experiment."
+          },
+          "category": {
+            "type": "string",
+            "description": "Higher-level grouping label shown on the dashboard, e.g. ScenarioMIP."
+          },
+          "tags": {
+            "type": "array",
+            "description": "Small badge labels shown on the experiment card.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "deck": {
+            "type": "boolean",
+            "description": "Whether the experiment belongs to the DECK set and should be highlighted in the dashboard."
           },
           "notes": { "type": "string" }
         }

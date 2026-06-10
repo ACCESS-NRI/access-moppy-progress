@@ -89,6 +89,29 @@ cd dashboard && python -m http.server 8080
 
 Dependencies: `pyyaml`, `jsonschema` (Python 3.10+).
 
+### With Pixi
+
+This repo now includes a [`pixi.toml`](/home/romain/PROJECTS/access-moppy-progress/pixi.toml:1) for a managed dev environment.
+
+```bash
+pixi run dev
+```
+
+That will:
+
+1. validate `plans/*.yaml`
+2. rebuild `dashboard/progress.json`
+3. serve the dashboard at `http://localhost:8080`
+
+Other handy commands:
+
+```bash
+pixi run validate-plans
+pixi run validate-requests
+pixi run compile-progress
+pixi run serve-dashboard
+```
+
 ## Licence
 
 MIT

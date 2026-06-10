@@ -1,0 +1,16 @@
+[workspace]
+name = "access-moppy-progress"
+channels = ["conda-forge"]
+platforms = ["linux-64", "osx-64", "osx-arm64", "win-64"]
+
+[dependencies]
+python = ">=3.10,<3.14"
+pyyaml = ">=6.0"
+jsonschema = ">=4.0"
+
+[tasks]
+validate-plans = "python scripts/validate_plans.py"
+validate-requests = "python scripts/validate_requests.py"
+compile-progress = "python scripts/compile_progress.py"
+serve-dashboard = { cmd = "python -m http.server 8080", cwd = "dashboard" }
+dev = { depends-on = ["validate-plans", "compile-progress"], cmd = "python -m http.server 8080", cwd = "dashboard" }

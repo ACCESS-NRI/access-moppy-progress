@@ -16,6 +16,7 @@
   /* Pipeline stage colours */
   --c-published:    #1f7a36;
   --c-qc-pass:      #1f7a36;
+  --c-ready-for-nci:#b68500;
   --c-qc-checks:    #005ea8;
   --c-cmorised:     #c77700;
   --c-failed:       #b42318;
@@ -24,6 +25,7 @@
 
   --bg-published:    #2f9e44;
   --bg-qc-pass:      #2f9e44;
+  --bg-ready-for-nci:#fff2c2;
   --bg-qc-checks:    #dff0fb;
   --bg-cmorised:     #fff0d6;
   --bg-failed:       #d92d20;
@@ -150,6 +152,7 @@ footer {
 }
 .stage-published    { background: var(--bg-published);    color: #ffffff;  border: 1px solid var(--c-published); }
 .stage-qc_pass      { background: var(--bg-qc-pass);      color: #ffffff;  border: 1px solid var(--c-qc-pass); }
+.stage-ready_for_nci{ background: var(--bg-ready-for-nci);color: #7a5600;  border: 1px solid var(--c-ready-for-nci); }
 .stage-qc_checks    { background: var(--bg-qc-checks);    color: #0d5b90;  border: 1px solid var(--c-qc-checks); }
 .stage-cmorised     { background: var(--bg-cmorised);     color: #8a5600;  border: 1px solid var(--c-cmorised); }
 .stage-failed       { background: var(--bg-failed);       color: #ffffff;  border: 1px solid var(--c-failed); }
@@ -158,6 +161,7 @@ footer {
 
 /* ── Matrix cell colours (compact) ──────────────────────────────────────── */
 .cell-published    { background: var(--bg-published);    color: #ffffff; }
+.cell-ready_for_nci{ background: var(--bg-ready-for-nci);color: #7a5600; }
 .cell-qc_checks    { background: var(--bg-qc-checks);    color: #0d5b90; }
 .cell-cmorised     { background: var(--bg-cmorised);     color: #8a5600; }
 .cell-planned      { background: var(--bg-planned);      color: #475569; }
@@ -166,6 +170,7 @@ footer {
 .progress-wrap { background: var(--bg); border-radius: 4px; height: 8px; overflow: hidden; min-width: 80px; display: flex; }
 .progress-segment { height: 100%; transition: width 0.3s; }
 .seg-published  { background: var(--c-published); }
+.seg-ready-for-nci { background: var(--c-ready-for-nci); }
 .seg-qc-checks  { background: var(--c-qc-checks); }
 .seg-cmorised   { background: var(--c-cmorised); }
 .seg-planned    { background: var(--c-planned); }
@@ -423,6 +428,7 @@ footer {
   mix-blend-mode: normal;
 }
 .count-chips .chip-published { background-color: #d9f2df !important; color: #14532d !important; border-color: #74b585 !important; }
+.count-chips .chip-ready-for-nci { background-color: #fff2c2 !important; color: #7a5600 !important; border-color: #d8bb63 !important; }
 .count-chips .chip-qc-checks { background-color: #e3f1fb !important; color: #0d5b90 !important; border-color: #8cb8db !important; }
 .count-chips .chip-cmorised { background-color: #fff0d6 !important; color: #8a5600 !important; border-color: #e1b56a !important; }
 .count-chips .chip-planned { background-color: #eceff3 !important; color: #475569 !important; border-color: #b8c1cb !important; }

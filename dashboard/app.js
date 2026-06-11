@@ -11,19 +11,13 @@ const QC_REGISTRY_DASHBOARD = "https://rbeucher.github.io/access-moppy-qc-regist
 // ── Stage metadata ──────────────────────────────────────────────────────────
 const STAGES = {
   published:   { label: "Published",   symbol: "★", cls: "published"  },
-  qc_pass:     { label: "QC Pass",     symbol: "✓", cls: "qc_pass"    },
-  qc_warn:     { label: "QC Warn",     symbol: "!", cls: "qc_warn"    },
-  qc_fail:     { label: "QC Fail",     symbol: "✗", cls: "qc_fail"    },
-  qc_pending:  { label: "QC Pending",  symbol: "?", cls: "qc_pending" },
+  qc_checks:   { label: "QC checks",   symbol: "◌", cls: "qc_checks"  },
   cmorised:    { label: "CMORised",    symbol: "✓", cls: "cmorised"   },
-  failed:      { label: "Failed",      symbol: "✗", cls: "failed"     },
-  not_started: { label: "Not started", symbol: "·", cls: "not_started"},
   planned:     { label: "Planned",     symbol: "○", cls: "planned"    },
 };
 
 const STAGE_PRIORITY = [
-  "qc_fail","failed","planned","not_started",
-  "qc_warn","qc_pending","cmorised","qc_pass","published"
+  "planned","cmorised","qc_checks","published"
 ];
 
 function isDeckExperiment(expInfo) {
@@ -208,6 +202,13 @@ function worstStage(stages) {
   }, "published");
 }
 
+function displayStage(stage) {
+  if (stage === "published") return "published";
+  if (stage === "cmorised") return "cmorised";
+  if (["qc_pass", "qc_warn", "qc_fail", "qc_pending", "failed"].includes(stage)) return "qc_checks";
+  return "planned";
+}
+
 // ── App state ───────────────────────────────────────────────────────────────
 let progress = null;
 let currentView = "overview";
@@ -275,12 +276,12 @@ function unitsFor(model, experiment, member) {
 }
 
 function stageCell(stage) {
-  const s = STAGES[stage] || STAGES.not_started;
+  const s = STAGES[displayStage(stage)] || STAGES.planned;
   return `<td class="cell-${s.cls}" title="${s.label}">${s.symbol}</td>`;
 }
 
 function stageBadge(stage) {
-  const s = STAGES[stage] || STAGES.not_started;
+  const s = STAGES[displayStage(stage)] || STAGES.planned;
   return `<span class="stage stage-${s.cls}">${s.label}</span>`;
 }
 
@@ -331,11 +332,9 @@ function progressBar(summary, total) {
   if (!total) return "";
   const segments = [
     ["published",  summary.published  || 0, "seg-published"],
-    ["qc_pass",    summary.qc_pass    || 0, "seg-qc_pass"],
-    ["qc_warn",    summary.qc_warn    || 0, "seg-qc_warn"],
+    ["qc_checks",  (summary.qc_pass || 0) + (summary.qc_warn || 0) + (summary.qc_fail || 0) + (summary.qc_pending || 0) + (summary.failed || 0), "seg-qc-checks"],
     ["cmorised",   summary.cmorised   || 0, "seg-cmorised"],
-    ["failed",     summary.failed     || 0, "seg-failed"],
-    ["not_started",(summary.not_started || 0) + (summary.planned || 0), "seg-not_started"],
+    ["planned",    (summary.not_started || 0) + (summary.planned || 0), "seg-planned"],
   ];
   const bars = segments
     .filter(([,n]) => n > 0)
@@ -344,37 +343,16 @@ function progressBar(summary, total) {
   return `<div class="progress-wrap">${bars}</div>`;
 }
 
-function derivedSummary(summary) {
-  const published = summary.published || 0;
-  const qcPass = summary.qc_pass || 0;
-  const qcWarn = summary.qc_warn || 0;
-  const qcFail = summary.qc_fail || 0;
-  const cmorised = summary.cmorised || 0;
-  const failed = summary.failed || 0;
-  const planned = summary.planned || 0;
-  const notStarted = summary.not_started || 0;
-
-  return {
-    published,
-    qcComplete: published + qcPass,
-    cmorisedComplete: published + qcPass + qcWarn + qcFail + cmorised,
-    failed,
-    pending: planned + notStarted,
-  };
-}
-
 function countChips(summary) {
-  const derived = derivedSummary(summary);
   const parts = [];
   const checks = [
-    ["published", "seg-published", derived.published],
-    ["qc✓", "seg-qc_pass", derived.qcComplete],
-    ["cmorised", "seg-cmorised", derived.cmorisedComplete],
-    ["failed", "seg-failed", derived.failed],
-    ["pending", "seg-not_started", derived.pending],
+    ["Published", "chip-published", summary.published || 0],
+    ["QC checks", "chip-qc-checks", (summary.qc_pass || 0) + (summary.qc_warn || 0) + (summary.qc_fail || 0) + (summary.qc_pending || 0) + (summary.failed || 0)],
+    ["CMORised", "chip-cmorised", summary.cmorised || 0],
+    ["Planned", "chip-planned", (summary.planned || 0) + (summary.not_started || 0)],
   ];
   for (const [label, cls, n] of checks) {
-    if (n) parts.push(`<span class="chip ${cls}" style="opacity:0.85">${n} ${label}</span>`);
+    if (n) parts.push(`<span class="chip ${cls}">${n} ${label}</span>`);
   }
   return `<div class="count-chips">${parts.join("")}</div>`;
 }
@@ -407,7 +385,7 @@ function renderOverview(container) {
     <select id="overview-category">${buildOptions(["All categories", ...categoriesForModel(selModel)], selCategory)}</select>
   `;
   container.appendChild(controls);
-  container.appendChild(el(makeLegend(["published","qc_pass","qc_warn","cmorised","failed","planned","not_started"])));
+  container.appendChild(el(makeLegend(["planned","cmorised","qc_checks","published"])));
 
   const content = document.createElement("div");
   container.appendChild(content);
@@ -544,7 +522,7 @@ function renderExperimentDetail(container, preModel, preExp) {
   container.appendChild(title);
   container.appendChild(sub);
   container.appendChild(controls);
-  container.appendChild(el(makeLegend(["published","qc_pass","qc_warn","cmorised","failed","planned","not_started"])));
+  container.appendChild(el(makeLegend(["planned","cmorised","qc_checks","published"])));
 
   const wrap = document.createElement("div");
   container.appendChild(wrap);
@@ -591,8 +569,8 @@ function renderExperimentDetail(container, preModel, preExp) {
       row.appendChild(th);
       for (const m of members) {
         const u = byKey[`${v}__${m}`];
-        const stage = u ? u.pipeline_stage : "not_started";
-        const s = STAGES[stage] || STAGES.not_started;
+        const stage = displayStage(u ? u.pipeline_stage : "planned");
+        const s = STAGES[stage] || STAGES.planned;
         row.insertCell().outerHTML = `<td class="cell-${s.cls}" title="${s.label} — ${v} / ${m}">${s.symbol}</td>`;
       }
     }
@@ -670,7 +648,7 @@ function renderMemberTimeline(container, preModel, preExp, preMember) {
 
     // Sort by pipeline stage priority (worst first so failures are visible)
     const sorted = [...units].sort((a, b) =>
-      STAGE_PRIORITY.indexOf(a.pipeline_stage) - STAGE_PRIORITY.indexOf(b.pipeline_stage)
+      STAGE_PRIORITY.indexOf(displayStage(a.pipeline_stage)) - STAGE_PRIORITY.indexOf(displayStage(b.pipeline_stage))
     );
 
     const scrollDiv = document.createElement("div");
@@ -821,15 +799,15 @@ function renderVariablePipeline(container, selection) {
         row.appendChild(th2);
         for (const m of members) {
           const u = byKey[`${model}__${exp}__${m}`];
-          const stage = u ? u.pipeline_stage : "not_started";
-          const s = STAGES[stage] || STAGES.not_started;
+          const stage = displayStage(u ? u.pipeline_stage : "planned");
+          const s = STAGES[stage] || STAGES.planned;
           row.insertCell().outerHTML = `<td class="cell-${s.cls}" title="${s.label} — ${exp}/${m}">${s.symbol}</td>`;
         }
       }
     }
 
     scrollDiv.appendChild(table);
-    wrap.appendChild(el(makeLegend(["published","qc_pass","qc_warn","cmorised","failed","planned","not_started"])));
+    wrap.appendChild(el(makeLegend(["planned","cmorised","qc_checks","published"])));
     wrap.appendChild(scrollDiv);
   }
 

@@ -658,11 +658,12 @@ function renderMemberTimeline(container, preModel, preExp, preMember) {
     table.innerHTML = `<thead><tr><th>Variable</th><th>CMORisation</th><th>QC Checks</th><th>Publication</th></tr></thead>`;
     const tbody = document.createElement("tbody");
     for (const u of sorted) {
+      const qcStatus = qcSimpleStatus(u);
       const tr = document.createElement("tr");
       tr.innerHTML = `
-        <td><span class="variable-link" data-var="${escHtml(u.variable)}">${variableLabelHtml(u)}</span></td>
+        <td>${variableLabelHtml(u)}</td>
         <td>${simpleStatusBadge(cmorSimpleStatus(u))}</td>
-        <td>${simpleStatusBadge(qcSimpleStatus(u))}</td>
+        <td><span class="timeline-qc-cell" data-var="${escHtml(u.variable)}" title="Open variable pipeline for ${escHtml(u.variable)}">${simpleStatusBadge(qcStatus)}</span></td>
         <td>${simpleStatusBadge(publicationSimpleStatus(u))}</td>
       `;
       tbody.appendChild(tr);

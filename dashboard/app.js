@@ -945,23 +945,6 @@ function renderRequestsView(container) {
   container.appendChild(title);
   container.appendChild(sub);
 
-  const summary = document.createElement("div");
-  summary.className = "request-summary-card";
-  summary.innerHTML = `
-    <div>
-      <div class="variable-resource-title">Request intake</div>
-      <div class="variable-resource-copy">
-        ${requests.length} tracked request${requests.length === 1 ? "" : "s"} in the repo ·
-        ${gaps.length} planned combination${gaps.length === 1 ? "" : "s"} still missing retrospective request metadata.
-      </div>
-    </div>
-    <div class="variable-resource-actions">
-      <a class="resource-btn" href="${CMOR_REQUEST_TEMPLATE_URL}" target="_blank" rel="noopener">Open new request</a>
-      <a class="resource-btn resource-btn-secondary" href="https://github.com/${GITHUB_REPO}/issues?q=is%3Aissue+label%3Atype%2Fsubmission-request" target="_blank" rel="noopener">View GitHub issues</a>
-    </div>
-  `;
-  container.appendChild(summary);
-
   const controls = document.createElement("div");
   controls.className = "controls";
   controls.innerHTML = `
@@ -971,6 +954,8 @@ function renderRequestsView(container) {
     <select id="req-status">${buildOptions(statuses, selStatus)}</select>
     <label>Search</label>
     <input id="req-search" type="text" placeholder="experiment, member, contact, Gadi path..." style="width:280px"/>
+    <a class="resource-btn" href="${CMOR_REQUEST_TEMPLATE_URL}" target="_blank" rel="noopener">Request CMORisation work</a>
+    <a class="resource-btn resource-btn-secondary" href="https://github.com/${GITHUB_REPO}/issues?q=is%3Aissue+label%3Atype%2Fsubmission-request" target="_blank" rel="noopener">View GitHub issues</a>
   `;
   container.appendChild(controls);
 

@@ -9,7 +9,7 @@ submission request in requests/.
 Usage
 -----
     python scripts/generate_batch_config.py \\
-        --request requests/ACCESS-ESM1.6_ssp585_r1i1p1f1.yaml \\
+        --request requests/<model>_<experiment>_<member>.yaml \\
         --output  /path/to/batch_config.yml
 
 The output file can be passed directly to MOPPy:

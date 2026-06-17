@@ -31,7 +31,7 @@ not_started → planned → cmorised ─┬→ qc_pending → qc_pass ──┬�
 plans/                          # Submission intent — one YAML per model
   ACCESS-ESM1.6.yaml
 requests/                       # CMORisation work requests accepted from GitHub issues
-  ACCESS-ESM1.6_ssp585_r1i1p1f1.yaml
+  <model>_<experiment>_<member>.yaml
 progress/                       # Ingested runtime reports
   <model>/
     <experiment>/

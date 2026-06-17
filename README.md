@@ -2,12 +2,12 @@
 
 Entry dashboard for the ACCESS CMIP7 submission workflow. Tracks progress through
 CMORisation, QC, and ESGF publication for ACCESS model submissions, with
-[access-moppy-qc-registry](https://github.com/rbeucher/access-moppy-qc-registry)
+[access-moppy-qc-registry](https://github.com/access-nri/access-moppy-qc-registry)
 serving as the companion QC registry.
 
 ## Dashboard
 
-**→ [Open dashboard](https://rbeucher.github.io/access-moppy-progress/)**
+**→ [Open dashboard](https://access-nri.github.io/access-moppy-progress/)**
 
 | View | Description |
 |---|---|
@@ -62,7 +62,7 @@ dashboard/                      # Static GitHub Pages site
 
 Open the GitHub issue form:
 
-`https://github.com/rbeucher/access-moppy-progress/issues/new?template=propose_submission.yml`
+`https://github.com/access-nri/access-moppy-progress/issues/new?template=propose_submission.yml`
 
 The form captures the experiment/member to CMORise, the Gadi path to the raw
 output, the parent experiment metadata needed by ACCESS-MOPPy, extra notes, and

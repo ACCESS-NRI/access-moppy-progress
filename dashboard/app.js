@@ -4,9 +4,9 @@
  */
 
 const PROGRESS_URL = "progress.json";
-const GITHUB_REPO  = "rbeucher/access-moppy-progress";
-const QC_REGISTRY_REPO = "https://github.com/rbeucher/access-moppy-qc-registry";
-const QC_REGISTRY_DASHBOARD = "https://rbeucher.github.io/access-moppy-qc-registry/";
+const GITHUB_REPO  = "access-nri/access-moppy-progress";
+const QC_REGISTRY_REPO = "https://github.com/access-nri/access-moppy-qc-registry";
+const QC_REGISTRY_DASHBOARD = "https://access-nri.github.io/access-moppy-qc-registry/";
 const CMOR_REQUEST_TEMPLATE_URL = `https://github.com/${GITHUB_REPO}/issues/new?template=propose_submission.yml`;
 
 // ── Stage metadata ──────────────────────────────────────────────────────────

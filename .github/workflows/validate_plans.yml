@@ -4,14 +4,19 @@ on:
   pull_request:
     paths:
       - "plans/**"
+      - "requests/**"
       - "progress/**"
       - "schemas/**"
       - "scripts/**"
+      - ".github/workflows/**"
+      - ".github/ISSUE_TEMPLATE/**"
   push:
     branches: [main]
     paths:
       - "plans/**"
+      - "requests/**"
       - "schemas/**"
+      - "scripts/**"
 
 jobs:
   validate:

@@ -1,6 +1,6 @@
-name: "Propose a CMORisation / ESGF submission"
-description: "Request CMORisation and ESGF submission for a model run on Gadi."
-title: "[submission] <model> <experiment_id> <variant_label>"
+name: "Request CMORisation work"
+description: "Request CMORisation for an existing experiment/member run on Gadi."
+title: "[cmorisation] <model> <experiment_id> <variant_label>"
 labels:
   - "type/submission-request"
   - "status/needs-review"
@@ -11,10 +11,11 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## Propose a new CMORisation / ESGF submission
-        Fill in as much as you can. Fields marked **\*** are required for the
-        request to be actionable. Fields you don't know can be left blank —
-        a maintainer will follow up.
+        ## Request CMORisation work
+        Use this form to request CMORisation for an existing experiment/member
+        in the submission system. Fields marked **\*** are required for the
+        request to be actionable. If you do not know a field yet, leave a note
+        and a maintainer can help fill in the gaps.
 
         > **CMIP7 note:** experiment IDs and activity IDs use lowercase
         > (e.g. `historical`, `picontrol`, `cmip`, `scenariomip`).
@@ -51,7 +52,7 @@ body:
     id: experiment_id
     attributes:
       label: "Experiment id *"
-      description: "CMIP7 experiment id (lowercase), e.g. historical, picontrol, abrupt-4xco2"
+      description: "Existing experiment id already tracked in this repo, e.g. esm-historical"
       placeholder: "historical"
     validations:
       required: true
@@ -129,7 +130,7 @@ body:
         gdata/p66+gdata/tm70+scratch/p66. See your project allocation.
       placeholder: "gdata/p66+gdata/tm70+scratch/p66"
 
-  - type: input
+  - type: textarea
     id: worker_init
     attributes:
       label: "Worker init commands"
@@ -137,7 +138,9 @@ body:
         Shell commands to activate the MOPPy environment before each PBS job,
         e.g. conda activate moppy or module load access-moppy.
         Leave blank to use the system default.
-      placeholder: "module use /g/data/xp65/public/modules && module load access-moppy"
+      placeholder: |
+        module use /g/data/xp65/public/modules
+        module load access-moppy
 
   # ── Run dates & metadata ─────────────────────────────────────────────────
   - type: markdown
@@ -261,7 +264,7 @@ body:
     id: contact
     attributes:
       label: "Contact on NCI *"
-      description: "GitHub handle of the person who has access to the data and can assist"
+      description: "Best contact for questions about this run and data access"
       placeholder: "@rbeucher"
     validations:
       required: true
@@ -281,5 +284,5 @@ body:
       options:
         - label: "The input_folder path exists and is readable by the NCI project"
           required: true
-        - label: "I have verified the experiment/variant combination is not already in the submission plan"
+        - label: "I have verified the experiment/member combination is the one I want CMORised"
           required: true

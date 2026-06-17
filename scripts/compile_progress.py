@@ -169,6 +169,19 @@ def _load_variable_metadata() -> dict[str, dict]:
         return json.load(fh)
 
 
+def _load_requests() -> list[dict]:
+    """Return request records from requests/*.yaml with their source file attached."""
+    requests: list[dict] = []
+    for yaml_file in sorted((ROOT / "requests").glob("*.yaml")):
+        with yaml_file.open() as fh:
+            req = yaml.safe_load(fh) or {}
+        if not isinstance(req, dict):
+            continue
+        req["_request_file"] = str(yaml_file.relative_to(ROOT))
+        requests.append(req)
+    return requests
+
+
 def _load_cmorisation(progress_root: Path) -> dict[tuple[str, str, str], dict]:
     """
     Scan progress/<model>/<exp>/<member>/cmorisation.json.
@@ -244,6 +257,7 @@ def _normalize_target_variables(
 def compile_progress(output: Path) -> None:
     plans = _load_plans()
     variable_metadata = _load_variable_metadata()
+    request_records = _load_requests()
     progress_root = ROOT / "progress"
     cmor_reports = _load_cmorisation(progress_root)
     pub_reports   = _load_publications(progress_root)
@@ -370,12 +384,16 @@ def compile_progress(output: Path) -> None:
 
     # Build model/experiment/member index for quick nav
     index: dict[str, dict] = {}
+    planned_request_keys: set[tuple[str, str, str]] = set()
     for plan_model, plan in plans.items():
         index[plan_model] = {"experiments": {}}
         for exp_def in plan.get("experiments", []):
             eid = exp_def["id"]
+            members = [m["variant_label"] for m in exp_def.get("members", [])]
+            for member in members:
+                planned_request_keys.add((plan_model, eid, member))
             index[plan_model]["experiments"][eid] = {
-                "members": [m["variant_label"] for m in exp_def.get("members", [])],
+                "members": members,
                 "priority": exp_def.get("priority", "medium"),
                 "deck": exp_def.get("deck", False),
                 "label": exp_def.get("label", eid),
@@ -384,6 +402,64 @@ def compile_progress(output: Path) -> None:
                 "tags": exp_def.get("tags", []),
             }
 
+    compiled_requests: list[dict] = []
+    request_keys: set[tuple[str, str, str]] = set()
+    for req in request_records:
+        model = req.get("model")
+        exp_id = req.get("experiment_id")
+        member = req.get("variant_label")
+        if not all((model, exp_id, member)):
+            continue
+
+        key = (str(model), str(exp_id), str(member))
+        request_keys.add(key)
+        summary_key = "/".join(key)
+        summary = summaries.get(summary_key)
+        target_variables = req.get("target_variables", "*")
+        if isinstance(target_variables, list):
+            target_variable_count = len(target_variables)
+            target_variable_mode = "subset"
+        else:
+            target_variable_count = None
+            target_variable_mode = "all"
+
+        compiled_requests.append({
+            "model": model,
+            "source_id": req.get("source_id"),
+            "experiment": exp_id,
+            "member": member,
+            "status": req.get("status", "proposed"),
+            "priority": req.get("priority", "medium"),
+            "contact": req.get("contact"),
+            "requested_by": req.get("requested_by"),
+            "requested_at": req.get("requested_at"),
+            "accepted_at": req.get("accepted_at"),
+            "issue": req.get("issue"),
+            "request_file": req.get("_request_file"),
+            "gadi": {
+                "project": req.get("gadi", {}).get("project"),
+                "input_folder": req.get("gadi", {}).get("input_folder"),
+                "output_folder": req.get("gadi", {}).get("output_folder"),
+            },
+            "cmip_metadata": req.get("cmip_metadata", {}),
+            "run_dates": req.get("run_dates", {}),
+            "target_variables_mode": target_variable_mode,
+            "target_variable_count": target_variable_count,
+            "notes": req.get("notes"),
+            "in_plan": key in planned_request_keys,
+            "progress_summary": summary,
+        })
+
+    request_gaps = [
+        {
+            "model": model,
+            "experiment": exp,
+            "member": member,
+            "label": index.get(model, {}).get("experiments", {}).get(exp, {}).get("label", exp),
+        }
+        for (model, exp, member) in sorted(planned_request_keys - request_keys)
+    ]
+
     output.parent.mkdir(parents=True, exist_ok=True)
     payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -391,6 +467,8 @@ def compile_progress(output: Path) -> None:
         "index": index,
         "summaries": summaries,
         "units": all_units,
+        "requests": compiled_requests,
+        "request_gaps": request_gaps,
     }
     output.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 

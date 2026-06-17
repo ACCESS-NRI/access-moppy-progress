@@ -38,10 +38,16 @@ jobs:
         id: gen
         env:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+          ISSUE_CREATED_AT: ${{ github.event.issue.created_at }}
         run: |
+          ACCEPTED_AT=$(date -u +%Y-%m-%d)
           python scripts/issue_to_request.py \
             --body   /tmp/issue_body.txt \
             --number "$ISSUE_NUMBER" \
+            --requested-by "@$ISSUE_AUTHOR" \
+            --requested-at "$ISSUE_CREATED_AT" \
+            --accepted-at "$ACCEPTED_AT" \
             --output requests/
           # Capture the generated filename for later steps
           YAML_FILE=$(ls requests/*.yaml | \

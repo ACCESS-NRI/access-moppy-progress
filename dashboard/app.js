@@ -7,6 +7,7 @@ const PROGRESS_URL = "progress.json";
 const GITHUB_REPO  = "rbeucher/access-moppy-progress";
 const QC_REGISTRY_REPO = "https://github.com/rbeucher/access-moppy-qc-registry";
 const QC_REGISTRY_DASHBOARD = "https://rbeucher.github.io/access-moppy-qc-registry/";
+const CMOR_REQUEST_TEMPLATE_URL = `https://github.com/${GITHUB_REPO}/issues/new?template=propose_submission.yml`;
 
 // ── Stage metadata ──────────────────────────────────────────────────────────
 const STAGES = {
@@ -20,6 +21,17 @@ const STAGES = {
 const STAGE_PRIORITY = [
   "planned","cmorised","qc_checks","ready_for_nci","published"
 ];
+
+const REQUEST_STATUS_META = {
+  proposed:    { label: "Proposed", cls: "planned" },
+  accepted:    { label: "Accepted", cls: "cmorised" },
+  in_progress: { label: "In progress", cls: "qc_checks" },
+  on_hold:     { label: "On hold", cls: "ready_for_nci" },
+  completed:   { label: "Completed", cls: "published" },
+  rejected:    { label: "Rejected", cls: "failed" },
+};
+
+const REQUEST_STATUS_PRIORITY = ["accepted", "in_progress", "on_hold", "proposed", "completed", "rejected"];
 
 function isDeckExperiment(expInfo) {
   return Boolean(expInfo?.deck);
@@ -51,6 +63,74 @@ function renderExperimentMeta(expInfo) {
   const priority = expInfo?.priority || "medium";
   parts.push(`<span class="exp-card-priority">${escHtml(priority)}</span>`);
   return `<div class="exp-card-meta">${parts.join("")}</div>`;
+}
+
+function requestIssueUrl(issueNumber) {
+  if (!issueNumber) return CMOR_REQUEST_TEMPLATE_URL;
+  return `https://github.com/${GITHUB_REPO}/issues/${issueNumber}`;
+}
+
+function requestFileUrl(requestFile) {
+  if (!requestFile) return `https://github.com/${GITHUB_REPO}`;
+  return `https://github.com/${GITHUB_REPO}/blob/main/${requestFile}`;
+}
+
+function requestModels() {
+  const models = progress.requests?.map(req => req.model).filter(Boolean) || [];
+  return [...new Set([...progress.models, ...models])].sort();
+}
+
+function requestStatusBadge(status) {
+  const meta = REQUEST_STATUS_META[status] || { label: status || "Unknown", cls: "planned" };
+  return `<span class="stage stage-${meta.cls}">${escHtml(meta.label)}</span>`;
+}
+
+function requestPriorityChip(priority) {
+  return `<span class="exp-card-priority">${escHtml(priority || "medium")}</span>`;
+}
+
+function requestSearchText(req) {
+  return [
+    req.model,
+    req.experiment,
+    req.member,
+    req.contact,
+    req.requested_by,
+    req.gadi?.project,
+    req.gadi?.input_folder,
+    req.cmip_metadata?.parent_experiment_id,
+    req.notes,
+  ].filter(Boolean).join(" ").toLowerCase();
+}
+
+function requestMatches(req, filterText) {
+  if (!filterText) return true;
+  return requestSearchText(req).includes(filterText.toLowerCase());
+}
+
+function sortRequests(a, b) {
+  const aStatus = REQUEST_STATUS_PRIORITY.indexOf(a.status);
+  const bStatus = REQUEST_STATUS_PRIORITY.indexOf(b.status);
+  if (aStatus !== bStatus) return (aStatus === -1 ? 999 : aStatus) - (bStatus === -1 ? 999 : bStatus);
+  return `${a.model}/${a.experiment}/${a.member}`.localeCompare(`${b.model}/${b.experiment}/${b.member}`);
+}
+
+function formatRequestVariables(req) {
+  if (req.target_variables_mode === "all") return "All planned variables";
+  if (req.target_variable_count) return `${req.target_variable_count} requested variable${req.target_variable_count === 1 ? "" : "s"}`;
+  return "Subset requested";
+}
+
+function formatRequestProgress(req) {
+  const summary = req.progress_summary;
+  if (!summary) return `<span class="request-progress-empty">No CMORisation report yet</span>`;
+  const total = summary.total_planned || 0;
+  return `${progressBar(summary, total)}<div class="request-progress-copy">${countChips(summary)}</div>`;
+}
+
+function buildGapIssueUrl(gap) {
+  const title = `[cmorisation] ${gap.model} ${gap.experiment} ${gap.member}`;
+  return `${CMOR_REQUEST_TEMPLATE_URL}&title=${encodeURIComponent(title)}`;
 }
 
 function experimentsForModel(model) {
@@ -239,9 +319,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const totalUnits = progress.units.length;
   const done = progress.units.filter(u => u.cmorisation_status === "completed").length;
+  const requestCount = progress.requests?.length || 0;
   document.getElementById("meta").textContent =
     `Generated ${new Date(progress.generated_at).toLocaleString()} · ` +
-    `${totalUnits} units · ${done} cmorised or beyond`;
+    `${totalUnits} units · ${done} cmorised or beyond · ${requestCount} CMOR requests`;
 
   renderView();
 });
@@ -253,6 +334,7 @@ function renderView() {
   if (currentView === "experiment")  renderExperimentDetail(app);
   if (currentView === "member")      renderMemberTimeline(app);
   if (currentView === "variable")    renderVariablePipeline(app, currentVariableContext);
+  if (currentView === "requests")    renderRequestsView(app);
 }
 
 function openVariableView(variable, context = {}) {
@@ -837,6 +919,162 @@ function renderVariablePipeline(container, selection) {
     scopeMode = e.target.value;
     redraw(sel.value, currentVariableContext);
   });
+}
+
+// ── View: CMOR Requests ─────────────────────────────────────────────────────
+function renderRequestsView(container) {
+  container.innerHTML = "";
+
+  const requests = [...(progress.requests || [])].sort(sortRequests);
+  const gaps = progress.request_gaps || [];
+  const models = ["All models", ...requestModels()];
+  const statuses = ["All statuses", ...REQUEST_STATUS_PRIORITY.filter(status =>
+    requests.some(req => req.status === status)
+  )];
+
+  let selModel = models[0];
+  let selStatus = statuses[0];
+  let searchText = "";
+
+  const title = h("div", "view-title", "CMORisation Work Requests");
+  const sub = h(
+    "div",
+    "view-sub",
+    "Requests opened through GitHub issues, plus any planned experiment/member combinations that still need retrospective request metadata."
+  );
+  container.appendChild(title);
+  container.appendChild(sub);
+
+  const summary = document.createElement("div");
+  summary.className = "request-summary-card";
+  summary.innerHTML = `
+    <div>
+      <div class="variable-resource-title">Request intake</div>
+      <div class="variable-resource-copy">
+        ${requests.length} tracked request${requests.length === 1 ? "" : "s"} in the repo ·
+        ${gaps.length} planned combination${gaps.length === 1 ? "" : "s"} still missing retrospective request metadata.
+      </div>
+    </div>
+    <div class="variable-resource-actions">
+      <a class="resource-btn" href="${CMOR_REQUEST_TEMPLATE_URL}" target="_blank" rel="noopener">Open new request</a>
+      <a class="resource-btn resource-btn-secondary" href="https://github.com/${GITHUB_REPO}/issues?q=is%3Aissue+label%3Atype%2Fsubmission-request" target="_blank" rel="noopener">View GitHub issues</a>
+    </div>
+  `;
+  container.appendChild(summary);
+
+  const controls = document.createElement("div");
+  controls.className = "controls";
+  controls.innerHTML = `
+    <label>Model</label>
+    <select id="req-model">${buildOptions(models, selModel)}</select>
+    <label>Status</label>
+    <select id="req-status">${buildOptions(statuses, selStatus)}</select>
+    <label>Search</label>
+    <input id="req-search" type="text" placeholder="experiment, member, contact, Gadi path..." style="width:280px"/>
+  `;
+  container.appendChild(controls);
+
+  const gapWrap = document.createElement("div");
+  const listWrap = document.createElement("div");
+  listWrap.className = "request-grid";
+  container.appendChild(gapWrap);
+  container.appendChild(listWrap);
+
+  function redrawGaps() {
+    if (!gaps.length) {
+      gapWrap.innerHTML = "";
+      return;
+    }
+    const filteredGaps = gaps.filter(gap => selModel === "All models" || gap.model === selModel);
+    if (!filteredGaps.length) {
+      gapWrap.innerHTML = "";
+      return;
+    }
+    gapWrap.innerHTML = `
+      <div class="request-gap-panel">
+        <h3>Planned combinations missing a request issue</h3>
+        <p>These experiment/member combinations exist in the dashboard plan but do not yet have a request record in <code>requests/</code>. This is the retrospective backfill list.</p>
+        <div class="request-gap-list">
+          ${filteredGaps.map(gap => `
+            <div class="request-gap-item">
+              <div>
+                <strong>${escHtml(gap.model)}</strong>
+                <span>${escHtml(gap.experiment)} / ${escHtml(gap.member)}</span>
+              </div>
+              <a class="resource-btn resource-btn-secondary" href="${buildGapIssueUrl(gap)}" target="_blank" rel="noopener">Open request issue</a>
+            </div>
+          `).join("")}
+        </div>
+      </div>
+    `;
+  }
+
+  function redrawRequests() {
+    const filtered = requests.filter(req =>
+      (selModel === "All models" || req.model === selModel) &&
+      (selStatus === "All statuses" || req.status === selStatus) &&
+      requestMatches(req, searchText)
+    );
+
+    if (!filtered.length) {
+      listWrap.innerHTML = "<p style='color:var(--text-muted)'>No request matches this filter.</p>";
+      return;
+    }
+
+    listWrap.innerHTML = filtered.map(req => `
+      <article class="request-card${req.in_plan ? "" : " request-card-warning"}">
+        <div class="request-card-head">
+          <div>
+            <div class="request-card-kicker">${escHtml(req.model)}</div>
+            <h3>${escHtml(req.experiment)} <span>/ ${escHtml(req.member)}</span></h3>
+          </div>
+          <div class="request-card-statuses">
+            ${requestStatusBadge(req.status)}
+            ${requestPriorityChip(req.priority)}
+          </div>
+        </div>
+        <div class="request-meta">
+          <span><strong>Parent:</strong> ${escHtml(req.cmip_metadata?.parent_experiment_id || "Standalone / not set")}</span>
+          <span><strong>Variables:</strong> ${escHtml(formatRequestVariables(req))}</span>
+          <span><strong>Contact:</strong> ${escHtml(req.contact || "Not set")}</span>
+          <span><strong>Requested by:</strong> ${escHtml(req.requested_by || "Not set")}</span>
+          <span><strong>Requested:</strong> ${escHtml(req.requested_at || "Not set")}</span>
+          <span><strong>Accepted:</strong> ${escHtml(req.accepted_at || "Not set")}</span>
+          <span><strong>In plan:</strong> ${req.in_plan ? "Yes" : "No"}</span>
+        </div>
+        <div class="request-paths">
+          <div><strong>Gadi input:</strong> <code>${escHtml(req.gadi?.input_folder || "Not set")}</code></div>
+          ${req.gadi?.output_folder ? `<div><strong>Output:</strong> <code>${escHtml(req.gadi.output_folder)}</code></div>` : ""}
+        </div>
+        ${req.notes ? `<p class="request-notes">${escHtml(req.notes)}</p>` : ""}
+        <div class="request-progress">
+          <div class="request-progress-title">Progress</div>
+          ${formatRequestProgress(req)}
+        </div>
+        <div class="request-actions">
+          <a class="resource-btn" href="${requestIssueUrl(req.issue)}" target="_blank" rel="noopener">${req.issue ? `Issue #${req.issue}` : "Open issue template"}</a>
+          <a class="resource-btn resource-btn-secondary" href="${requestFileUrl(req.request_file)}" target="_blank" rel="noopener">View request YAML</a>
+        </div>
+      </article>
+    `).join("");
+  }
+
+  controls.querySelector("#req-model").addEventListener("change", e => {
+    selModel = e.target.value;
+    redrawGaps();
+    redrawRequests();
+  });
+  controls.querySelector("#req-status").addEventListener("change", e => {
+    selStatus = e.target.value;
+    redrawRequests();
+  });
+  controls.querySelector("#req-search").addEventListener("input", e => {
+    searchText = e.target.value.trim();
+    redrawRequests();
+  });
+
+  redrawGaps();
+  redrawRequests();
 }
 
 // ── DOM utilities ────────────────────────────────────────────────────────────

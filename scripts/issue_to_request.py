@@ -68,6 +68,9 @@ def _scalar(value: str) -> str:
     """Quote a scalar value if needed."""
     if not value:
         return '""'
+    if re.fullmatch(r"\d{4}-\d{2}-\d{2}(?:[T ][0-9:.+\-Z]+)?", value):
+        escaped = value.replace('"', '\\"')
+        return f'"{escaped}"'
     if any(c in value for c in (':', '{', '}', '[', ']', '#', '&', '*',
                                  '!', '|', '>', "'", '"', '%', '@', '`', ',')):
         escaped = value.replace('"', '\\"')
@@ -83,7 +86,13 @@ def _literal_block(text: str, indent: int = 2) -> str:
     return f"|\n{body}"
 
 
-def build_yaml(fields: dict[str, str], issue_number: int) -> tuple[str, str]:
+def build_yaml(
+    fields: dict[str, str],
+    issue_number: int,
+    requested_by: str = "",
+    requested_at: str = "",
+    accepted_at: str = "",
+) -> tuple[str, str]:
     """
     Build the YAML content and the output filename stem from parsed form fields.
 
@@ -92,8 +101,14 @@ def build_yaml(fields: dict[str, str], issue_number: int) -> tuple[str, str]:
     """
     # ── required ──────────────────────────────────────────────────────────
     missing = []
-    for req in ("Model", "Experiment id", "Variant label",
-                "NCI project code", "Input folder (raw model output)"):
+    for req in (
+        "Model",
+        "Experiment id",
+        "Variant label",
+        "NCI project code",
+        "Input folder (raw model output)",
+        "Contact on NCI",
+    ):
         if not fields.get(req):
             missing.append(req)
     if missing:
@@ -128,6 +143,7 @@ def build_yaml(fields: dict[str, str], issue_number: int) -> tuple[str, str]:
     pbs_mem      = (fields.get("Default memory per job") or "32GB").strip()
     pbs_walltime = (fields.get("Default walltime per job") or "02:00:00").strip()
     priority     = (fields.get("Priority") or "medium").strip().lower()
+    contact      = (fields.get("Contact on NCI") or "").strip()
     notes        = (fields.get("Notes") or "").strip()
 
     filename_stem = f"{_slug(model)}_{_slug(experiment_id)}_{_slug(variant_label)}"
@@ -154,7 +170,7 @@ def build_yaml(fields: dict[str, str], issue_number: int) -> tuple[str, str]:
     L(f"activity_id: {_scalar(activity_id)}")
     L(f"mip_era: {mip_era}")
     L()
-    L("status: needs-review")
+    L("status: accepted")
     L(f"priority: {priority}")
     L(f"issue: {issue_number}")
     L()
@@ -167,6 +183,11 @@ def build_yaml(fields: dict[str, str], issue_number: int) -> tuple[str, str]:
         L(f"  storage: {_scalar(storage)}")
     if worker_init:
         L(f"  worker_init: {_literal_block(worker_init, indent=2)}")
+    if file_patterns:
+        L("  file_patterns:")
+        for pat in file_patterns.splitlines():
+            if pat.strip():
+                L(f"    {pat.strip()}")
     L()
     L("pbs:")
     L(f"  queue: {pbs_queue}")
@@ -182,7 +203,6 @@ def build_yaml(fields: dict[str, str], issue_number: int) -> tuple[str, str]:
         L(f"  parent_source_id: {_scalar(source_id) if source_id else 'CHANGEME'}")
         L(f"  parent_variant_label: {_scalar(parent_variant or variant_label)}")
         L("  parent_activity_id: cmip")
-        L(f"  parent_mip_era: {mip_era}")
         L(f"  branch_year: {branch_year if branch_year else 'CHANGEME'}")
         L("  branch_method: standard")
 
@@ -201,13 +221,14 @@ def build_yaml(fields: dict[str, str], issue_number: int) -> tuple[str, str]:
     else:
         L('  - "*"  # all variables from submission plan')
 
-    if file_patterns:
-        L()
-        L("file_patterns:")
-        for pat in file_patterns.splitlines():
-            if pat.strip():
-                L(f"  {pat.strip()}")
-
+    L()
+    L(f"contact: {_scalar(contact)}")
+    if requested_by:
+        L(f"requested_by: {_scalar(requested_by)}")
+    if requested_at:
+        L(f"requested_at: {_scalar(requested_at)}")
+    if accepted_at:
+        L(f"accepted_at: {_scalar(accepted_at)}")
     L()
     L("notes: >")
     if notes:
@@ -238,6 +259,18 @@ def main(argv: list[str] | None = None) -> int:
         help="Directory to write the request YAML (default: requests/)",
     )
     parser.add_argument(
+        "--requested-by", default="",
+        help="GitHub handle or identifier for the requester",
+    )
+    parser.add_argument(
+        "--requested-at", default="",
+        help="ISO date or timestamp when the request issue was opened",
+    )
+    parser.add_argument(
+        "--accepted-at", default="",
+        help="ISO date or timestamp when the request was accepted",
+    )
+    parser.add_argument(
         "--dry-run", action="store_true",
         help="Print the YAML to stdout instead of writing a file",
     )
@@ -251,7 +284,13 @@ def main(argv: list[str] | None = None) -> int:
     fields = _parse_form_body(body_text)
 
     try:
-        stem, content = build_yaml(fields, args.number)
+        stem, content = build_yaml(
+            fields,
+            args.number,
+            requested_by=args.requested_by,
+            requested_at=args.requested_at,
+            accepted_at=args.accepted_at,
+        )
     except ValueError as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 1

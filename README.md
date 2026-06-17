@@ -15,6 +15,7 @@ serving as the companion QC registry.
 | **Experiment Detail** | Variable × member matrix for one experiment |
 | **Member Timeline** | All variables for one (model, experiment, member) sorted by stage |
 | **Variable Pipeline** | One variable across all (experiment, member) combinations, with links to inspect or suggest QC checks |
+| **CMOR Requests** | GitHub issue-backed CMORisation work requests, plus planned combinations still missing retrospective request metadata |
 
 ## Pipeline stages
 
@@ -29,6 +30,8 @@ not_started → planned → cmorised ─┬→ qc_pending → qc_pass ──┬�
 ```
 plans/                          # Submission intent — one YAML per model
   ACCESS-ESM1.6.yaml
+requests/                       # CMORisation work requests accepted from GitHub issues
+  ACCESS-ESM1.6_ssp585_r1i1p1f1.yaml
 progress/                       # Ingested runtime reports
   <model>/
     <experiment>/
@@ -54,6 +57,26 @@ dashboard/                      # Static GitHub Pages site
 
 1. Add `plans/<Model-ID>.yaml` following the schema in `schemas/plan.schema.json`.
 2. Open a PR — CI will validate the file automatically.
+
+## Requesting CMORisation work
+
+Open the GitHub issue form:
+
+`https://github.com/rbeucher/access-moppy-progress/issues/new?template=propose_submission.yml`
+
+The form captures the experiment/member to CMORise, the Gadi path to the raw
+output, the parent experiment metadata needed by ACCESS-MOPPy, extra notes, and
+the best contact for follow-up questions.
+
+When a maintainer applies the `status/accepted` label to the issue, CI will:
+
+1. Convert the issue into `requests/<model>_<experiment>_<member>.yaml`.
+2. Open a PR with the generated request file for review.
+3. Surface the request in the dashboard `CMOR Requests` view.
+
+That request view also highlights planned experiment/member combinations that
+still have no request record, so existing work can be backfilled
+retrospectively through the same issue workflow.
 
 ## Ingesting a batch report
 

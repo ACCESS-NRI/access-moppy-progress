@@ -12,5 +12,6 @@ jsonschema = ">=4.0"
 validate-plans = "python scripts/validate_plans.py"
 validate-requests = "python scripts/validate_requests.py"
 compile-progress = "python scripts/compile_progress.py"
+manage-submission = "python scripts/manage_submission.py"
 serve-dashboard = { cmd = "python -m http.server 8080", cwd = "dashboard" }
 dev = { depends-on = ["validate-plans", "compile-progress"], cmd = "python -m http.server 8080", cwd = "dashboard" }

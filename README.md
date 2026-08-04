@@ -97,6 +97,161 @@ git push
 
 CI will recompile `progress.json` and redeploy the dashboard automatically.
 
+## Managing submissions (ingest, update, delete)
+
+Use the management script when you need to add, replace, or remove a submission record.
+
+### Local (recommended first)
+
+Ingest a new submission:
+
+```bash
+pixi run manage-submission -- \
+  --action ingest \
+  --report /path/to/moppy_batch_report.json \
+  --model ACCESS-ESM1.6 \
+  --experiment historical \
+  --member r2i1p1f1
+```
+
+Update an existing submission:
+
+```bash
+pixi run manage-submission -- \
+  --action update \
+  --report /path/to/moppy_batch_report.json \
+  --model ACCESS-ESM1.6 \
+  --experiment historical \
+  --member r2i1p1f1
+```
+
+`update` overwrites the existing `progress/<model>/<experiment>/<member>/cmorisation.json`.
+If that submission does not exist yet, the command fails (it will not create a new record).
+
+For a hard replace workflow, run `delete` first and then `ingest`.
+
+Delete a submission:
+
+```bash
+# Remove entire member folder under progress/<model>/<experiment>/<member>/
+pixi run manage-submission -- \
+  --action delete \
+  --model ACCESS-ESM1.6 \
+  --experiment historical \
+  --member r2i1p1f1 \
+  --delete-scope member
+
+# Or remove only progress/<model>/<experiment>/<member>/cmorisation.json
+pixi run manage-submission -- \
+  --action delete \
+  --model ACCESS-ESM1.6 \
+  --experiment historical \
+  --member r2i1p1f1 \
+  --delete-scope cmorisation
+```
+
+Then rebuild dashboard data:
+
+```bash
+pixi run compile-progress
+```
+
+### On GitHub (after local validation)
+
+Run the workflow `.github/workflows/manage_submission.yml` from the Actions tab.
+
+Inputs:
+
+- `action`: `ingest`, `update`, or `delete`
+- `model`, `experiment`, `member`
+- `report_path`: preferred for `ingest` and `update` (path to a JSON file already committed in the repository)
+- `report_url`: optional fallback for `ingest` and `update` (accessible HTTPS URL)
+- `delete_scope`: `member` or `cmorisation` for delete
+
+The workflow will:
+
+1. apply the operation in `progress/`
+2. rebuild `dashboard/progress.json`
+3. create a branch and open a PR to `main`
+
+This keeps review and auditability in the normal PR flow.
+
+### Uploading report file on GitHub (no URL needed)
+
+1. Create a small PR that adds your report JSON to a staging path in the repo, for example:
+  - `reports/uploads/moppy_batch_report_20260730T022828Z.json`
+2. Merge that PR.
+3. Run the `Manage submission progress` workflow and set:
+  - `action=ingest` (or `update`)
+  - `report_path=reports/uploads/moppy_batch_report_20260730T022828Z.json`
+  - `model`, `experiment`, `member`
+
+This avoids external URLs entirely and keeps the source report versioned in Git history.
+
+### Dispatch from command line with gh
+
+You can dispatch the same workflow from your terminal using:
+
+```bash
+scripts/gh_manage_submission.sh \
+  --action ingest \
+  --model ACCESS-ESM1.6 \
+  --experiment historical \
+  --member r2i1p1f1 \
+  --report-path reports/uploads/moppy_batch_report_20260730T022828Z.json
+```
+
+Update an existing submission:
+
+```bash
+scripts/gh_manage_submission.sh \
+  --action update \
+  --model ACCESS-ESM1.6 \
+  --experiment historical \
+  --member r2i1p1f1 \
+  --report-path reports/uploads/moppy_batch_report_20260730T022828Z.json
+```
+
+This `update` action replaces the existing `cmorisation.json` for that model/experiment/member.
+If you need to fully recreate the record, do `delete` then `ingest`.
+
+Delete a submission record:
+
+```bash
+# Remove entire member record
+scripts/gh_manage_submission.sh \
+  --action delete \
+  --model ACCESS-ESM1.6 \
+  --experiment historical \
+  --member r2i1p1f1 \
+  --delete-scope member
+
+# Or remove only cmorisation.json
+scripts/gh_manage_submission.sh \
+  --action delete \
+  --model ACCESS-ESM1.6 \
+  --experiment historical \
+  --member r2i1p1f1 \
+  --delete-scope cmorisation
+```
+
+Fallback to URL source for report file:
+
+```bash
+scripts/gh_manage_submission.sh \
+  --action ingest \
+  --model ACCESS-ESM1.6 \
+  --experiment historical \
+  --member r2i1p1f1 \
+  --report-url https://example.org/path/to/moppy_batch_report.json
+```
+
+Notes:
+
+- Requires `gh` to be installed and authenticated (`gh auth status`).
+- The script dispatches `.github/workflows/manage_submission.yml` on `main` by default.
+- Use `--ref` to target a different branch if needed.
+
 ## Updating publication status
 
 Edit `progress/<model>/<experiment>/<member>/publication.json` directly.
@@ -133,6 +288,8 @@ Other handy commands:
 pixi run validate-plans
 pixi run validate-requests
 pixi run compile-progress
+pixi run manage-submission -- --help
+scripts/gh_manage_submission.sh --help
 pixi run serve-dashboard
 ```
 

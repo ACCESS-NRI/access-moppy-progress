@@ -1,0 +1,136 @@
+name: Manage submission progress
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: Operation to perform
+        required: true
+        type: choice
+        options:
+          - ingest
+          - update
+          - delete
+      model:
+        description: Model id, for example ACCESS-ESM1.6
+        required: true
+        type: string
+      experiment:
+        description: Experiment id, for example historical
+        required: true
+        type: string
+      member:
+        description: Variant label, for example r1i1p1f1
+        required: true
+        type: string
+      report_url:
+        description: HTTPS URL for moppy_batch_report.json (optional fallback for ingest/update)
+        required: false
+        type: string
+      report_path:
+        description: Repository path to uploaded report JSON (preferred for ingest/update)
+        required: false
+        type: string
+      delete_scope:
+        description: Delete behavior when action is delete
+        required: true
+        default: member
+        type: choice
+        options:
+          - member
+          - cmorisation
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  manage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install pyyaml jsonschema
+
+      - name: Resolve report source
+        if: ${{ inputs.action == 'ingest' || inputs.action == 'update' }}
+        run: |
+          if [ -n "${{ inputs.report_path }}" ]; then
+            if [ ! -f "${{ inputs.report_path }}" ]; then
+              echo "report_path does not exist in repository: ${{ inputs.report_path }}" >&2
+              exit 1
+            fi
+            cp "${{ inputs.report_path }}" /tmp/moppy_batch_report.json
+            exit 0
+          fi
+
+          if [ -z "${{ inputs.report_url }}" ]; then
+            echo "Provide either report_path (preferred) or report_url for ingest/update" >&2
+            exit 1
+          fi
+
+          curl -fL "${{ inputs.report_url }}" -o /tmp/moppy_batch_report.json
+
+      - name: Manage submission record
+        run: |
+          CMD=(python scripts/manage_submission.py
+            --action "${{ inputs.action }}"
+            --model "${{ inputs.model }}"
+            --experiment "${{ inputs.experiment }}"
+            --member "${{ inputs.member }}"
+            --delete-scope "${{ inputs.delete_scope }}")
+
+          if [ "${{ inputs.action }}" = "ingest" ] || [ "${{ inputs.action }}" = "update" ]; then
+            CMD+=(--report /tmp/moppy_batch_report.json)
+          fi
+
+          "${CMD[@]}"
+
+      - name: Compile dashboard data
+        run: python scripts/compile_progress.py --output dashboard/progress.json
+
+      - name: Create pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes detected; nothing to commit."
+            exit 0
+          fi
+
+          ACTION="${{ inputs.action }}"
+          MODEL="${{ inputs.model }}"
+          EXPERIMENT="${{ inputs.experiment }}"
+          MEMBER="${{ inputs.member }}"
+          TS="$(date -u +%Y%m%dT%H%M%SZ)"
+          BRANCH="submission/${ACTION}-${MODEL}-${EXPERIMENT}-${MEMBER}-${TS}"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add progress/ dashboard/progress.json
+          git commit -m "chore(progress): ${ACTION} ${MODEL} ${EXPERIMENT}/${MEMBER}"
+          git push origin "$BRANCH"
+
+          gh pr create \
+            --title "chore(progress): ${ACTION} ${MODEL} ${EXPERIMENT}/${MEMBER}" \
+            --body "Automated ${ACTION} operation from workflow dispatch.
+
+          Inputs:
+          - model: ${MODEL}
+          - experiment: ${EXPERIMENT}
+          - member: ${MEMBER}
+          - delete_scope: ${{ inputs.delete_scope }}
+          - report_path: ${{ inputs.report_path }}
+          - report_url: ${{ inputs.report_url }}
+
+          This PR includes updated progress records and a rebuilt dashboard/progress.json." \
+            --base main \
+            --head "$BRANCH"

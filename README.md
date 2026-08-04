@@ -252,6 +252,55 @@ Notes:
 - The script dispatches `.github/workflows/manage_submission.yml` on `main` by default.
 - Use `--ref` to target a different branch if needed.
 
+### Run directly on Gadi (no Pixi required)
+
+If your report file is on Gadi scratch, you can run everything in-place with plain Python:
+
+```bash
+# one-time setup in your clone
+python -m pip install --user pyyaml jsonschema
+
+# ingest/update/delete + compile dashboard/progress.json
+scripts/gadi_manage_submission.sh \
+  --action ingest \
+  --report /scratch/path/to/moppy_batch_report.json \
+  --model ACCESS-ESM1.6 \
+  --experiment historical \
+  --member r2i1p1f1
+```
+
+To also create and push a branch and open a PR from Gadi:
+
+```bash
+scripts/gadi_manage_submission.sh \
+  --action update \
+  --report /scratch/path/to/moppy_batch_report.json \
+  --model ACCESS-ESM1.6 \
+  --experiment historical \
+  --member r2i1p1f1 \
+  --create-pr
+```
+
+Delete examples:
+
+```bash
+# remove entire member record
+scripts/gadi_manage_submission.sh \
+  --action delete \
+  --model ACCESS-ESM1.6 \
+  --experiment historical \
+  --member r2i1p1f1 \
+  --delete-scope member
+
+# remove only cmorisation.json
+scripts/gadi_manage_submission.sh \
+  --action delete \
+  --model ACCESS-ESM1.6 \
+  --experiment historical \
+  --member r2i1p1f1 \
+  --delete-scope cmorisation
+```
+
 ## Updating publication status
 
 Edit `progress/<model>/<experiment>/<member>/publication.json` directly.
@@ -290,6 +339,7 @@ pixi run validate-requests
 pixi run compile-progress
 pixi run manage-submission -- --help
 scripts/gh_manage_submission.sh --help
+scripts/gadi_manage_submission.sh --help
 pixi run serve-dashboard
 ```
 

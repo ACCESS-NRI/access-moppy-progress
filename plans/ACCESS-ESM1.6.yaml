@@ -426,17 +426,19 @@ experiments:
       Full variable set for piControl as required by CMIP7 protocol.
 
   - id: historical
-    label: historical
-    priority: medium
-    category: Testing
-    tags: [DUMMY]
+    label: historical (concentration-driven)
+    priority: high
+    deck: true
+    theme: deck
+    tags: [DECK, NESP]
+    category: DECK
     members:
       - variant_label: r1i1p1f1
         realization: 1
         physics: 1
         forcing: 1
         initialization: 1
-        notes: "Synthetic dashboard test experiment"
+        notes: "Prescribed atmospheric CO2 concentrations; parent piControl"
     target_variables: *common_target_variables
 
   - id: amip
@@ -537,7 +539,8 @@ experiments:
         initialization: 1
     target_variables: *common_target_variables
 
-  - id: esm-historical
+  - id: esm-hist
+    label: esm-hist (emission-driven)
     priority: high
     deck: true
     theme: deck
@@ -549,6 +552,7 @@ experiments:
         physics: 1
         forcing: 1
         initialization: 1
+        notes: "Prescribed anthropogenic CO2 emissions with interactive atmospheric CO2; parent esm-piControl"
     target_variables: *common_target_variables
 
   - id: high-scenario-emission-driven

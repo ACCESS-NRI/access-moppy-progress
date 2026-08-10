@@ -13,8 +13,10 @@ Usage
         --model  ACCESS-ESM1.6 \\
         --member r1i1p1f1
 
-The experiment id is read from the report itself (field ``experiment_id``).
-You may override it with ``--experiment`` if it is absent from the report.
+The experiment id, model, and member are read from the report itself
+(fields ``experiment_id``, ``source_id``, ``variant_label``). You may
+override any of them with ``--experiment``/``--model``/``--member`` if
+absent from the report or if you want a different value.
 
 After ingestion, commit and push the new file:
     git add progress/...
@@ -32,17 +34,19 @@ from pathlib import Path
 ROOT = Path(__file__).parent.parent
 
 
-def ingest(
+def resolve_identifiers(
     report_path: Path,
-    model: str,
-    member: str,
+    model: str | None = None,
+    member: str | None = None,
     experiment: str | None = None,
-    force: bool = False,
-) -> Path:
+) -> tuple[str, str, str, dict]:
+    """Resolve model/member/experiment, falling back to the report's own fields.
+
+    Returns (model, member, experiment_id, report_dict).
+    """
     with report_path.open() as fh:
         report = json.load(fh)
 
-    # Resolve experiment id
     exp_id = experiment or report.get("experiment_id")
     if not exp_id:
         raise ValueError(
@@ -50,10 +54,33 @@ def ingest(
             "Pass --experiment explicitly."
         )
 
-    # Validate member label
+    model = model or report.get("source_id")
+    if not model:
+        raise ValueError(
+            "Could not determine model from report. Pass --model explicitly."
+        )
+
+    member = member or report.get("variant_label")
+    if not member:
+        raise ValueError(
+            "Could not determine member from report. Pass --member explicitly."
+        )
+
     import re
     if not re.match(r"^r\d+i\d+p\d+f\d+$", member):
         raise ValueError(f"Invalid variant_label: {member!r} (expected e.g. r1i1p1f1)")
+
+    return model, member, exp_id, report
+
+
+def ingest(
+    report_path: Path,
+    model: str | None = None,
+    member: str | None = None,
+    experiment: str | None = None,
+    force: bool = False,
+) -> Path:
+    model, member, exp_id, report = resolve_identifiers(report_path, model, member, experiment)
 
     # Add provenance fields
     report["model"] = model
@@ -93,8 +120,8 @@ def main() -> None:
         description="Ingest a moppy_batch_report.json into the progress registry"
     )
     parser.add_argument("--report", required=True, type=Path, help="Path to moppy_batch_report.json")
-    parser.add_argument("--model",  required=True, help="Model id, e.g. ACCESS-ESM1.6")
-    parser.add_argument("--member", required=True, help="Variant label, e.g. r1i1p1f1")
+    parser.add_argument("--model", help="Model id, e.g. ACCESS-ESM1.6 (overrides value in report)")
+    parser.add_argument("--member", help="Variant label, e.g. r1i1p1f1 (overrides value in report)")
     parser.add_argument("--experiment", help="Experiment id (overrides value in report)")
     parser.add_argument("--force", action="store_true", help="Overwrite existing file")
     args = parser.parse_args()

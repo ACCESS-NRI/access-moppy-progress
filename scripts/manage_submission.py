@@ -41,11 +41,11 @@ import shutil
 import sys
 from pathlib import Path
 
-from ingest_report import ROOT, ingest
+from ingest_report import ROOT, ingest, resolve_identifiers
 
 
-def _validate_member(member: str) -> None:
-    if not re.match(r"^r\d+i\d+p\d+f\d+$", member):
+def _validate_member(member: str | None) -> None:
+    if member is not None and not re.match(r"^r\d+i\d+p\d+f\d+$", member):
         raise ValueError(f"Invalid variant_label: {member!r} (expected e.g. r1i1p1f1)")
 
 
@@ -64,7 +64,7 @@ def _prune_empty_dirs(start_dir: Path, stop_dir: Path) -> None:
         cur = cur.parent
 
 
-def action_ingest(report: Path, model: str, member: str, experiment: str | None) -> Path:
+def action_ingest(report: Path, model: str | None, member: str | None, experiment: str | None) -> Path:
     return ingest(
         report_path=report,
         model=model,
@@ -74,9 +74,8 @@ def action_ingest(report: Path, model: str, member: str, experiment: str | None)
     )
 
 
-def action_update(report: Path, model: str, member: str, experiment: str | None) -> Path:
-    if not experiment:
-        raise ValueError("--experiment is required for update")
+def action_update(report: Path, model: str | None, member: str | None, experiment: str | None) -> Path:
+    model, member, experiment, _ = resolve_identifiers(report, model, member, experiment)
 
     _, cmor_path = _target_paths(model, experiment, member)
     if not cmor_path.exists():
@@ -122,9 +121,21 @@ def main() -> None:
         help="Operation to perform",
     )
     parser.add_argument("--report", type=Path, help="Path to moppy_batch_report.json")
-    parser.add_argument("--model", required=True, help="Model id, e.g. ACCESS-ESM1.6")
-    parser.add_argument("--member", required=True, help="Variant label, e.g. r1i1p1f1")
-    parser.add_argument("--experiment", help="Experiment id, e.g. historical")
+    parser.add_argument(
+        "--model",
+        help="Model id, e.g. ACCESS-ESM1.6. Required for delete; for "
+        "ingest/update falls back to the report's source_id if omitted.",
+    )
+    parser.add_argument(
+        "--member",
+        help="Variant label, e.g. r1i1p1f1. Required for delete; for "
+        "ingest/update falls back to the report's variant_label if omitted.",
+    )
+    parser.add_argument(
+        "--experiment",
+        help="Experiment id, e.g. historical. Required for delete/update; "
+        "for ingest falls back to the report's experiment_id if omitted.",
+    )
     parser.add_argument(
         "--delete-scope",
         default="member",
@@ -147,6 +158,10 @@ def main() -> None:
         elif args.action == "update":
             action_update(args.report, args.model, args.member, args.experiment)
         else:
+            if not args.model:
+                raise ValueError("--model is required for delete")
+            if not args.member:
+                raise ValueError("--member is required for delete")
             if not args.experiment:
                 raise ValueError("--experiment is required for delete")
             action_delete(args.model, args.experiment, args.member, args.delete_scope)

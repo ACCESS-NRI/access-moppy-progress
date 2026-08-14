@@ -227,6 +227,37 @@ def _load_publications(progress_root: Path) -> dict[tuple[str, str, str], dict]:
     return pubs
 
 
+def _build_cmip7_lookup(plans: dict[str, dict]) -> dict[str, dict[str, str | None]]:
+    """
+    Return {cmip7_name (branded variable name): {request_name, short_name, cmip7_name}}
+    collected from every plan's target_variables lists.
+
+    Reports identify variables by their CMIP7 branded name (e.g.
+    ``atmos.tas.tavg-h2m-hxy-u.mon.glb``), while plans/dashboard units are
+    keyed by the CMIP6-style compound request name (e.g. ``Amon.tas``). This
+    lookup lets us translate a report's branded name back to the request
+    name it corresponds to.
+    """
+    lookup: dict[str, dict[str, str | None]] = {}
+    for plan in plans.values():
+        for exp_def in plan.get("experiments", []):
+            target_variables = exp_def.get("target_variables", "*")
+            if not isinstance(target_variables, list):
+                continue
+            for item in target_variables:
+                if not isinstance(item, dict):
+                    continue
+                cmip7_name = item.get("cmip7_name")
+                if not cmip7_name or cmip7_name in lookup:
+                    continue
+                lookup[cmip7_name] = {
+                    "request_name": item["request_name"],
+                    "short_name": item["short_name"],
+                    "cmip7_name": cmip7_name,
+                }
+    return lookup
+
+
 def _resolve_variables(target_variables: list | str, cmor_report: dict | None) -> list[str]:
     """
     Resolve target_variables (may be '*' or a list) to a concrete list.
@@ -243,16 +274,28 @@ def _resolve_variables(target_variables: list | str, cmor_report: dict | None) -
 def _normalize_target_variables(
     target_variables: list | str,
     cmor_report: dict | None,
+    cmip7_lookup: dict[str, dict[str, str | None]],
 ) -> list[dict[str, str | None]]:
-    """Return canonical variable metadata for planned variables."""
+    """Return canonical variable metadata for planned variables.
+
+    String entries (from '*' / report-derived resolution) are branded
+    variable names from the report; translate them back to their
+    request/short name via cmip7_lookup when known.
+    """
     resolved = _resolve_variables(target_variables, cmor_report)
     normalized: list[dict[str, str | None]] = []
     for item in resolved:
         if isinstance(item, str):
+            mapped = cmip7_lookup.get(item)
+            if mapped:
+                normalized.append(dict(mapped))
+                continue
+            parts = item.split(".")
+            short_name = parts[1] if len(parts) > 1 else item
             normalized.append({
                 "request_name": item,
-                "short_name": item.split(".")[-1],
-                "cmip7_name": None,
+                "short_name": short_name,
+                "cmip7_name": item,
             })
             continue
         normalized.append({
@@ -271,18 +314,21 @@ def _compile_unit_summary(
     cmor: dict | None,
     pub: dict | None,
     variable_metadata: dict[str, dict],
+    cmip7_lookup: dict[str, dict[str, str | None]],
 ) -> tuple[list[dict], dict[str, int]] | None:
     """Build the unit list and summary dict for one (model, experiment, member).
 
     Returns None if there is nothing planned and nothing reported.
     """
-    # Build per-variable cmor lookup
-    cmor_by_var: dict[str, str] = {}
+    # Build per-variable cmor lookup. Report tasks are keyed by CMIP7
+    # branded variable name (e.g. "atmos.tas.tavg-h2m-hxy-u.mon.glb"), not
+    # the plan's request_name/short_name.
+    cmor_by_branded: dict[str, str] = {}
     if cmor:
         for task in cmor.get("tasks", []):
-            short_name = task["variable"]
-            cmor_by_var[short_name] = _merge_cmor_status(
-                cmor_by_var.get(short_name),
+            branded = task["variable"]
+            cmor_by_branded[branded] = _merge_cmor_status(
+                cmor_by_branded.get(branded),
                 task["status"],
             )
 
@@ -295,20 +341,20 @@ def _compile_unit_summary(
                 info.get("status", "not_published"),
             )
 
-    target_vars = _normalize_target_variables(target_variables, cmor)
+    target_vars = _normalize_target_variables(target_variables, cmor, cmip7_lookup)
 
-    if not target_vars and not cmor_by_var:
+    if not target_vars and not cmor_by_branded:
         return None
 
-    planned_short_names = {v["short_name"] for v in target_vars}
+    planned_branded_names = {v["cmip7_name"] for v in target_vars if v.get("cmip7_name")}
     extra_report_vars = [
-        {
-            "request_name": short_name,
-            "short_name": short_name,
-            "cmip7_name": None,
-        }
-        for short_name in sorted(cmor_by_var.keys())
-        if short_name not in planned_short_names
+        cmip7_lookup.get(branded, {
+            "request_name": branded,
+            "short_name": branded.split(".")[1] if branded.count(".") > 1 else branded,
+            "cmip7_name": branded,
+        })
+        for branded in sorted(cmor_by_branded.keys())
+        if branded not in planned_branded_names
     ]
     all_vars = target_vars + extra_report_vars
 
@@ -325,7 +371,11 @@ def _compile_unit_summary(
         short_name = str(var["short_name"])
         cmip7_name = var.get("cmip7_name")
         metadata = variable_metadata.get(request_name, {})
-        cmor_status = cmor_by_var.get(short_name) or cmor_by_var.get(request_name)
+        cmor_status = None
+        if cmip7_name:
+            cmor_status = cmor_by_branded.get(cmip7_name)
+        if cmor_status is None:
+            cmor_status = cmor_by_branded.get(request_name) or cmor_by_branded.get(short_name)
         pub_status = _effective_publication_status(
             cmor_status,
             pub_by_var.get(short_name, pub_by_var.get(request_name)),
@@ -358,6 +408,7 @@ def _compile_unit_summary(
 def compile_progress(output: Path) -> None:
     plans = _load_plans()
     variable_metadata = _load_variable_metadata()
+    cmip7_lookup = _build_cmip7_lookup(plans)
     request_records = _load_requests()
     progress_root = ROOT / "progress"
     cmor_reports = _load_cmorisation(progress_root)
@@ -379,7 +430,7 @@ def compile_progress(output: Path) -> None:
                     model, exp_id, member,
                     exp_def.get("target_variables", "*"),
                     cmor_reports.get(key), pub_reports.get(key),
-                    variable_metadata,
+                    variable_metadata, cmip7_lookup,
                 )
                 if result is None:
                     continue
@@ -397,7 +448,7 @@ def compile_progress(output: Path) -> None:
         result = _compile_unit_summary(
             model, exp_id, member, "*",
             cmor_reports.get(key), pub_reports.get(key),
-            variable_metadata,
+            variable_metadata, cmip7_lookup,
         )
         if result is None:
             continue

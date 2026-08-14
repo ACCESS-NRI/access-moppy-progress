@@ -145,6 +145,35 @@ function buildOptions(items, selected) {
   return items.map(item => `<option${item===selected ? " selected" : ""}>${item}</option>`).join("");
 }
 
+// Natural sort so r2i1p1f1 sorts before r10i1p1f1 instead of after.
+function memberSortKey(member) {
+  const match = member.match(/^r(\d+)i(\d+)p(\d+)f(\d+)$/);
+  return match ? [0, ...match.slice(1).map(Number)] : [1, member];
+}
+function sortMembers(members) {
+  return [...members].sort((a, b) => {
+    const ka = memberSortKey(a), kb = memberSortKey(b);
+    for (let i = 0; i < Math.max(ka.length, kb.length); i++) {
+      if (ka[i] === kb[i]) continue;
+      if (ka[i] === undefined) return -1;
+      if (kb[i] === undefined) return 1;
+      return ka[i] < kb[i] ? -1 : 1;
+    }
+    return 0;
+  });
+}
+
+// Sensible display order for CMOR frequencies; anything unrecognised sorts
+// after these, alphabetically.
+const FREQUENCY_ORDER = ["subhr", "1hr", "3hr", "6hr", "day", "mon", "yr", "dec", "fx"];
+function sortFrequencies(freqs) {
+  return [...freqs].sort((a, b) => {
+    const ia = FREQUENCY_ORDER.indexOf(a), ib = FREQUENCY_ORDER.indexOf(b);
+    if (ia !== -1 || ib !== -1) return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib);
+    return a.localeCompare(b);
+  });
+}
+
 function categoriesForModel(model) {
   const experiments = Object.values(progress.index[model]?.experiments || {});
   return [...new Set(experiments.map(exp => exp.category).filter(Boolean))].sort();
@@ -652,6 +681,8 @@ function renderExperimentDetail(container, preModel, preExp) {
     <select id="sel-model">${buildOptions(models, selModel)}</select>
     <label>Experiment</label>
     <select id="sel-exp">${buildOptions(experimentsForModel(selModel), selExp)}</select>
+    <label>Frequency</label>
+    <select id="freq-filter" style="max-width:140px"></select>
     <label>Filter variable</label>
     <input id="var-filter" type="text" placeholder="e.g. Amon.tos or ocean.tos..." style="width:240px"/>
   `;
@@ -667,11 +698,23 @@ function renderExperimentDetail(container, preModel, preExp) {
   container.appendChild(wrap);
 
   let varFilter = "";
+  let freqFilter = "All frequencies";
+
+  function refreshFrequencyOptions(allUnits) {
+    const freqs = sortFrequencies([...new Set(allUnits.map(u => u.variable_frequency).filter(Boolean))]);
+    const freqSelect = controls.querySelector("#freq-filter");
+    if (!freqs.includes(freqFilter)) freqFilter = "All frequencies";
+    freqSelect.innerHTML = buildOptions(["All frequencies", ...freqs], freqFilter);
+  }
 
   function redraw() {
     wrap.innerHTML = "";
-    const units = unitsFor(selModel, selExp, null);
-    const members = [...new Set(units.map(u => u.member))].sort();
+    const allUnits = unitsFor(selModel, selExp, null);
+    const members = sortMembers([...new Set(allUnits.map(u => u.member))]);
+    refreshFrequencyOptions(allUnits);
+    const units = freqFilter === "All frequencies"
+      ? allUnits
+      : allUnits.filter(u => u.variable_frequency === freqFilter);
     const variableUnits = [];
     const seen = new Set();
     for (const unit of units) {
@@ -724,6 +767,7 @@ function renderExperimentDetail(container, preModel, preExp) {
     redraw();
   });
   controls.querySelector("#sel-exp").addEventListener("change",   e => { selExp   = e.target.value; redraw(); });
+  controls.querySelector("#freq-filter").addEventListener("change", e => { freqFilter = e.target.value; redraw(); });
   controls.querySelector("#var-filter").addEventListener("input",  e => { varFilter = e.target.value.trim(); redraw(); });
   wrap.addEventListener("click", event => {
     const lnk = event.target.closest("[data-var]");
@@ -906,7 +950,7 @@ function renderVariablePipeline(container, selection) {
 
     const models     = [...new Set(displayUnits.map(u => u.model))].sort();
     const experiments= [...new Set(displayUnits.map(u => u.experiment))].sort();
-    const members    = [...new Set(displayUnits.map(u => u.member))].sort();
+    const members    = sortMembers([...new Set(displayUnits.map(u => u.member))]);
 
     const byKey = {};
     for (const u of displayUnits) byKey[`${u.model}__${u.experiment}__${u.member}`] = u;

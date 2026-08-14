@@ -159,6 +159,18 @@ def _effective_publication_status(cmor_status: str | None, pub_status: str | Non
     return pub_status or "not_published"
 
 
+def _derive_frequency(cmip7_name: str | None) -> str | None:
+    """Extract the frequency segment from a branded variable name.
+
+    Branded names follow realm.variable.cell_methods.frequency.region
+    (e.g. "atmos.tas.tavg-h2m-hxy-u.mon.glb" -> "mon").
+    """
+    if not cmip7_name:
+        return None
+    parts = cmip7_name.split(".")
+    return parts[-2] if len(parts) >= 2 else None
+
+
 # ── Loader helpers ───────────────────────────────────────────────────────────
 
 def _load_plans() -> dict[str, dict]:
@@ -390,6 +402,7 @@ def _compile_unit_summary(
             "variable": request_name,
             "variable_short": short_name,
             "variable_cmip7": cmip7_name,
+            "variable_frequency": _derive_frequency(cmip7_name),
             "variable_description": metadata.get("description"),
             "variable_notes": metadata.get("notes"),
             "pipeline_stage": stage,

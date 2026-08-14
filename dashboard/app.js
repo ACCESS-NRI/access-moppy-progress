@@ -443,6 +443,43 @@ function countChips(summary) {
   return `<div class="count-chips">${parts.join("")}</div>`;
 }
 
+// Above this many members, an experiment card switches from a detailed
+// table (one row per member) to a compact colour-coded matrix.
+const MEMBER_MATRIX_THRESHOLD = 6;
+
+function memberAggregateStage(summary) {
+  const buckets = {
+    planned:       (summary?.not_started || 0) + (summary?.planned || 0),
+    cmorised:      summary?.cmorised || 0,
+    qc_checks:     (summary?.qc_fail || 0) + (summary?.qc_pending || 0) + (summary?.failed || 0),
+    ready_for_nci: (summary?.qc_pass || 0) + (summary?.qc_warn || 0),
+    published:     summary?.published || 0,
+  };
+  for (const stage of STAGE_PRIORITY) {
+    if (buckets[stage] > 0) return stage;
+  }
+  return "planned";
+}
+
+function memberShortLabel(member) {
+  const match = member.match(/^r(\d+)/);
+  return match ? match[1] : member;
+}
+
+function renderMemberMatrix(model, expId, members) {
+  const cells = members.map(member => {
+    const key = `${model}/${expId}/${member}`;
+    const summary = progress.summaries[key] || {};
+    const total = summary.total_planned || 0;
+    const done = (summary.published || 0) + (summary.qc_pass || 0) + (summary.qc_warn || 0) + (summary.cmorised || 0);
+    const stage = memberAggregateStage(summary);
+    const s = STAGES[stage] || STAGES.planned;
+    const title = `${member} — ${s.label}${total ? ` (${done}/${total})` : " (no report yet)"}`;
+    return `<span class="member-cell cell-${s.cls}" title="${escHtml(title)}" data-model="${model}" data-exp="${expId}" data-member="${member}">${escHtml(memberShortLabel(member))}</span>`;
+  }).join("");
+  return `<div class="member-grid">${cells}</div>`;
+}
+
 function makeLegend(stages) {
   return `<div class="legend">${stages.map(s => {
     const st = STAGES[s] || {};
@@ -527,26 +564,30 @@ function renderOverview(container) {
           <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:0.5rem">${members.length} member${members.length!==1?"s":""}</div>
         `;
 
-        const table = document.createElement("table");
-        table.className = "members-table";
-        table.innerHTML = `<thead><tr><th>Member</th><th>Progress</th><th>Breakdown</th></tr></thead>`;
-        const tbody = document.createElement("tbody");
+        if (members.length > MEMBER_MATRIX_THRESHOLD) {
+          card.insertAdjacentHTML("beforeend", renderMemberMatrix(selModel, expId, members));
+        } else {
+          const table = document.createElement("table");
+          table.className = "members-table";
+          table.innerHTML = `<thead><tr><th>Member</th><th>Progress</th><th>Breakdown</th></tr></thead>`;
+          const tbody = document.createElement("tbody");
 
-        for (const member of members) {
-          const key = `${selModel}/${expId}/${member}`;
-          const summary = progress.summaries[key] || {};
-          const total = summary.total_planned || 1;
-          const tr = document.createElement("tr");
-          tr.innerHTML = `
-            <td><span class="member-label" data-model="${selModel}" data-exp="${expId}" data-member="${member}">${member}</span></td>
-            <td>${progressBar(summary, total)}<span style="font-size:0.7rem;color:var(--text-muted)">${total}</span></td>
-            <td>${countChips(summary)}</td>
-          `;
-          tbody.appendChild(tr);
+          for (const member of members) {
+            const key = `${selModel}/${expId}/${member}`;
+            const summary = progress.summaries[key] || {};
+            const total = summary.total_planned || 1;
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+              <td><span class="member-label" data-model="${selModel}" data-exp="${expId}" data-member="${member}">${member}</span></td>
+              <td>${progressBar(summary, total)}<span style="font-size:0.7rem;color:var(--text-muted)">${total}</span></td>
+              <td>${countChips(summary)}</td>
+            `;
+            tbody.appendChild(tr);
+          }
+
+          table.appendChild(tbody);
+          card.appendChild(table);
         }
-
-        table.appendChild(tbody);
-        card.appendChild(table);
         grid.appendChild(card);
         renderedCount += 1;
       }

@@ -556,6 +556,8 @@ function renderOverview(container) {
         const members = expInfo.members || [];
         const card = document.createElement("div");
         card.className = experimentCardClass(expInfo);
+        card.dataset.cardModel = selModel;
+        card.dataset.cardExp = expId;
         const title = expInfo.label || expId;
         card.innerHTML = `
           ${renderExperimentTags(expInfo)}
@@ -616,12 +618,22 @@ function renderOverview(container) {
   redraw();
 
   container.addEventListener("click", event => {
-    const lnk = event.target.closest("[data-member]");
-    if (!lnk) return;
-    document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
-    document.querySelector('[data-view="member"]').classList.add("active");
-    currentView = "member";
-    renderMemberTimeline(document.getElementById("app"), lnk.dataset.model, lnk.dataset.exp, lnk.dataset.member);
+    const memberLnk = event.target.closest("[data-member]");
+    if (memberLnk) {
+      document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+      document.querySelector('[data-view="member"]').classList.add("active");
+      currentView = "member";
+      renderMemberTimeline(document.getElementById("app"), memberLnk.dataset.model, memberLnk.dataset.exp, memberLnk.dataset.member);
+      return;
+    }
+
+    const cardLnk = event.target.closest("[data-card-exp]");
+    if (cardLnk) {
+      document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+      document.querySelector('[data-view="experiment"]').classList.add("active");
+      currentView = "experiment";
+      renderExperimentDetail(document.getElementById("app"), cardLnk.dataset.cardModel, cardLnk.dataset.cardExp);
+    }
   });
 }
 

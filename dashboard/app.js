@@ -202,18 +202,11 @@ function variableMatches(unit, filterText) {
 }
 
 function variableLabelHtml(unit) {
-  const primary = escHtml(unit.variable);
-  const extras = [unit.variable_short, unit.variable_cmip7]
-    .filter(value => value && value !== unit.variable)
-    .map(value => escHtml(value));
   const hoverParts = [unit.variable_description, unit.variable_notes].filter(Boolean);
   const titleAttr = hoverParts.length
     ? ` title="${escHtml(hoverParts.join(" — "))}"`
     : "";
-  if (!extras.length) {
-    return `<code${titleAttr}>${primary}</code>`;
-  }
-  return `<div class="variable-label"${titleAttr}><code>${primary}</code><span>${extras.join(" · ")}</span></div>`;
+  return `<code${titleAttr}>${escHtml(unit.variable)}</code>`;
 }
 
 function variableLookupUnit(variable) {
@@ -262,7 +255,6 @@ function buildQcSuggestionUrl(unit, context) {
   const body = [
     `Variable: ${unit.variable}`,
     unit.variable_short ? `Short name: ${unit.variable_short}` : null,
-    unit.variable_cmip7 ? `CMIP7 name: ${unit.variable_cmip7}` : null,
     context?.model ? `Model: ${context.model}` : null,
     context?.experiment ? `Experiment: ${context.experiment}` : null,
     context?.member ? `Member: ${context.member}` : null,

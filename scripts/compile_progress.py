@@ -399,7 +399,7 @@ def _compile_unit_summary(
             "model": model,
             "experiment": exp_id,
             "member": member,
-            "variable": request_name,
+            "variable": cmip7_name or request_name,
             "variable_short": short_name,
             "variable_cmip7": cmip7_name,
             "variable_frequency": _derive_frequency(cmip7_name),

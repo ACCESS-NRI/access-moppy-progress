@@ -690,7 +690,7 @@ function renderExperimentDetail(container, preModel, preExp) {
   container.appendChild(wrap);
 
   let varFilter = "";
-  let freqFilter = "All frequencies";
+  let freqFilter = "mon";
 
   function refreshFrequencyOptions(allUnits) {
     const freqs = sortFrequencies([...new Set(allUnits.map(u => u.variable_frequency).filter(Boolean))]);

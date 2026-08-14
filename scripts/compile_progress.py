@@ -56,6 +56,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -64,6 +65,16 @@ import yaml
 
 ROOT = Path(__file__).parent.parent
 VARIABLE_METADATA_PATH = ROOT / "data" / "variable_metadata.json"
+
+_MEMBER_RE = re.compile(r"^r(\d+)i(\d+)p(\d+)f(\d+)$")
+
+
+def _member_sort_key(member: str) -> tuple:
+    """Natural sort key so r2i1p1f1 sorts before r10i1p1f1."""
+    match = _MEMBER_RE.match(member)
+    if match:
+        return (0, tuple(int(g) for g in match.groups()))
+    return (1, member)
 
 # ── Pipeline stage helpers ──────────────────────────────────────────────────
 
@@ -252,6 +263,96 @@ def _normalize_target_variables(
     return normalized
 
 
+def _compile_unit_summary(
+    model: str,
+    exp_id: str,
+    member: str,
+    target_variables: list | str,
+    cmor: dict | None,
+    pub: dict | None,
+    variable_metadata: dict[str, dict],
+) -> tuple[list[dict], dict[str, int]] | None:
+    """Build the unit list and summary dict for one (model, experiment, member).
+
+    Returns None if there is nothing planned and nothing reported.
+    """
+    # Build per-variable cmor lookup
+    cmor_by_var: dict[str, str] = {}
+    if cmor:
+        for task in cmor.get("tasks", []):
+            short_name = task["variable"]
+            cmor_by_var[short_name] = _merge_cmor_status(
+                cmor_by_var.get(short_name),
+                task["status"],
+            )
+
+    # Build per-variable publication lookup
+    pub_by_var: dict[str, str] = {}
+    if pub:
+        for var, info in pub.get("variables", {}).items():
+            pub_by_var[var] = _merge_publication_status(
+                pub_by_var.get(var),
+                info.get("status", "not_published"),
+            )
+
+    target_vars = _normalize_target_variables(target_variables, cmor)
+
+    if not target_vars and not cmor_by_var:
+        return None
+
+    planned_short_names = {v["short_name"] for v in target_vars}
+    extra_report_vars = [
+        {
+            "request_name": short_name,
+            "short_name": short_name,
+            "cmip7_name": None,
+        }
+        for short_name in sorted(cmor_by_var.keys())
+        if short_name not in planned_short_names
+    ]
+    all_vars = target_vars + extra_report_vars
+
+    summary: dict[str, int] = {
+        "total_planned": len(all_vars),
+        "cmorised": 0, "cmorised_partial": 0,
+        "qc_pass": 0, "qc_warn": 0, "qc_fail": 0,
+        "published": 0, "failed": 0, "planned": 0, "not_started": 0,
+    }
+
+    units: list[dict] = []
+    for var in all_vars:
+        request_name = str(var["request_name"])
+        short_name = str(var["short_name"])
+        cmip7_name = var.get("cmip7_name")
+        metadata = variable_metadata.get(request_name, {})
+        cmor_status = cmor_by_var.get(short_name) or cmor_by_var.get(request_name)
+        pub_status = _effective_publication_status(
+            cmor_status,
+            pub_by_var.get(short_name, pub_by_var.get(request_name)),
+        )
+
+        stage = _pipeline_stage(cmor_status, pub_status)
+
+        units.append({
+            "model": model,
+            "experiment": exp_id,
+            "member": member,
+            "variable": request_name,
+            "variable_short": short_name,
+            "variable_cmip7": cmip7_name,
+            "variable_description": metadata.get("description"),
+            "variable_notes": metadata.get("notes"),
+            "pipeline_stage": stage,
+            "cmorisation_status": cmor_status or "not_started",
+            "publication_status": pub_status,
+        })
+
+        key_s = stage if stage in summary else "not_started"
+        summary[key_s] = summary.get(key_s, 0) + 1
+
+    return units, summary
+
+
 # ── Main compilation ─────────────────────────────────────────────────────────
 
 def compile_progress(output: Path) -> None:
@@ -264,6 +365,7 @@ def compile_progress(output: Path) -> None:
 
     all_units: list[dict] = []
     summaries: dict[str, dict] = {}
+    covered_keys: set[tuple[str, str, str]] = set()
 
     for model, plan in plans.items():
         for exp_def in plan.get("experiments", []):
@@ -271,116 +373,40 @@ def compile_progress(output: Path) -> None:
             for member_def in exp_def.get("members", []):
                 member = member_def["variant_label"]
                 key = (model, exp_id, member)
+                covered_keys.add(key)
 
-                cmor = cmor_reports.get(key)
-                pub  = pub_reports.get(key)
-
-                # Build per-variable cmor lookup
-                cmor_by_var: dict[str, str] = {}
-                if cmor:
-                    for task in cmor.get("tasks", []):
-                        short_name = task["variable"]
-                        cmor_by_var[short_name] = _merge_cmor_status(
-                            cmor_by_var.get(short_name),
-                            task["status"],
-                        )
-
-                # Build per-variable publication lookup
-                pub_by_var: dict[str, str] = {}
-                if pub:
-                    for var, info in pub.get("variables", {}).items():
-                        pub_by_var[var] = _merge_publication_status(
-                            pub_by_var.get(var),
-                            info.get("status", "not_published"),
-                        )
-
-                # Resolve target variables
-                target_vars = _normalize_target_variables(
-                    exp_def.get("target_variables", "*"), cmor
+                result = _compile_unit_summary(
+                    model, exp_id, member,
+                    exp_def.get("target_variables", "*"),
+                    cmor_reports.get(key), pub_reports.get(key),
+                    variable_metadata,
                 )
-
-                # If no plan variables and no report, skip
-                if not target_vars and not cmor_by_var:
+                if result is None:
                     continue
-
-                planned_short_names = {v["short_name"] for v in target_vars}
-                extra_report_vars = [
-                    {
-                        "request_name": short_name,
-                        "short_name": short_name,
-                        "cmip7_name": None,
-                    }
-                    for short_name in sorted(cmor_by_var.keys())
-                    if short_name not in planned_short_names
-                ]
-                all_vars = target_vars + extra_report_vars
-
-                summary: dict[str, int] = {
-                    "total_planned": len(all_vars),
-                    "cmorised": 0, "cmorised_partial": 0,
-                    "qc_pass": 0, "qc_warn": 0, "qc_fail": 0,
-                    "published": 0, "failed": 0, "planned": 0, "not_started": 0,
-                }
-
-                for var in all_vars:
-                    request_name = str(var["request_name"])
-                    short_name = str(var["short_name"])
-                    cmip7_name = var.get("cmip7_name")
-                    metadata = variable_metadata.get(request_name, {})
-                    cmor_status = cmor_by_var.get(short_name) or cmor_by_var.get(request_name)
-                    pub_status = _effective_publication_status(
-                        cmor_status,
-                        pub_by_var.get(short_name, pub_by_var.get(request_name)),
-                    )
-
-                    stage = _pipeline_stage(cmor_status, pub_status)
-
-                    unit = {
-                        "model": model,
-                        "experiment": exp_id,
-                        "member": member,
-                        "variable": request_name,
-                        "variable_short": short_name,
-                        "variable_cmip7": cmip7_name,
-                        "variable_description": metadata.get("description"),
-                        "variable_notes": metadata.get("notes"),
-                        "pipeline_stage": stage,
-                        "cmorisation_status": cmor_status or "not_started",
-                        "publication_status": pub_status,
-                    }
-                    all_units.append(unit)
-
-                    key_s = stage if stage in summary else "not_started"
-                    summary[key_s] = summary.get(key_s, 0) + 1
-
+                units, summary = result
+                all_units.extend(units)
                 summaries[f"{model}/{exp_id}/{member}"] = summary
 
-    # Also surface any reports that are NOT in a plan (orphans)
-    for (model, exp, member), cmor in cmor_reports.items():
-        if not any(
-            u["model"] == model and u["experiment"] == exp and u["member"] == member
-            for u in all_units
-        ):
-            pub = pub_reports.get((model, exp, member), {})
-            pub_by_var: dict[str, str] = {}
-            for var, info in pub.get("variables", {}).items():
-                pub_by_var[var] = _merge_publication_status(
-                    pub_by_var.get(var),
-                    info.get("status", "not_published"),
-                )
-            for task in cmor.get("tasks", []):
-                var = task["variable"]
-                pub_status = _effective_publication_status(task["status"], pub_by_var.get(var))
-                stage = _pipeline_stage(task["status"], pub_status)
-                all_units.append({
-                    "model": model, "experiment": exp, "member": member,
-                    "variable": var, "variable_short": var, "variable_cmip7": None,
-                    "variable_description": None, "variable_notes": None,
-                    "pipeline_stage": stage,
-                    "cmorisation_status": task["status"],
-                    "publication_status": pub_status,
-                    "_orphan": True,
-                })
+    # Surface any reports for (model, experiment, member) combinations that
+    # are not declared in a plan yet — e.g. ensemble members ingested ahead
+    # of the plan being updated. Treated the same as planned combos so they
+    # show up in the index/summaries the dashboard reads, not just in units.
+    report_keys = set(cmor_reports.keys()) | set(pub_reports.keys())
+    for key in sorted(report_keys - covered_keys):
+        model, exp_id, member = key
+        result = _compile_unit_summary(
+            model, exp_id, member, "*",
+            cmor_reports.get(key), pub_reports.get(key),
+            variable_metadata,
+        )
+        if result is None:
+            continue
+        units, summary = result
+        for unit in units:
+            unit["_orphan"] = True
+        all_units.extend(units)
+        summaries[f"{model}/{exp_id}/{member}"] = summary
+        covered_keys.add(key)
 
     # Build model/experiment/member index for quick nav
     index: dict[str, dict] = {}
@@ -401,6 +427,28 @@ def compile_progress(output: Path) -> None:
                 "category": exp_def.get("category"),
                 "tags": exp_def.get("tags", []),
             }
+
+    # Extend the index with any members observed only through reports (not
+    # yet listed in a plan), so the Overview/Member views can see them too.
+    observed: dict[tuple[str, str], set[str]] = {}
+    for model, exp_id, member in covered_keys:
+        observed.setdefault((model, exp_id), set()).add(member)
+
+    for (model, exp_id), members_seen in observed.items():
+        model_entry = index.setdefault(model, {"experiments": {}})
+        exp_entry = model_entry["experiments"].setdefault(exp_id, {
+            "members": [],
+            "priority": "medium",
+            "deck": False,
+            "label": exp_id,
+            "theme": "default",
+            "category": None,
+            "tags": [],
+        })
+        already_listed = set(exp_entry["members"])
+        extra = sorted(members_seen - already_listed, key=_member_sort_key)
+        if extra:
+            exp_entry["members"] = exp_entry["members"] + extra
 
     compiled_requests: list[dict] = []
     request_keys: set[tuple[str, str, str]] = set()
@@ -463,7 +511,7 @@ def compile_progress(output: Path) -> None:
     output.parent.mkdir(parents=True, exist_ok=True)
     payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "models": sorted(plans.keys()),
+        "models": sorted(index.keys()),
         "index": index,
         "summaries": summaries,
         "units": all_units,

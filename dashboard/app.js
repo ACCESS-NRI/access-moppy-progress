@@ -476,10 +476,16 @@ function memberAggregateStage(summary) {
     ready_for_nci: (summary?.qc_pass || 0) + (summary?.qc_warn || 0),
     published:     summary?.published || 0,
   };
-  for (const stage of STAGE_PRIORITY) {
-    if (buckets[stage] > 0) return stage;
+  let bestStage = "planned";
+  let bestCount = 0;
+  for (const stage of [...STAGE_PRIORITY].reverse()) {
+    const count = buckets[stage] || 0;
+    if (count > bestCount) {
+      bestStage = stage;
+      bestCount = count;
+    }
   }
-  return "planned";
+  return bestCount > 0 ? bestStage : "planned";
 }
 
 function memberShortLabel(member) {
@@ -495,8 +501,12 @@ function renderMemberMatrix(model, expId, members) {
     const done = (summary.published || 0) + (summary.qc_pass || 0) + (summary.qc_warn || 0) + (summary.cmorised || 0);
     const stage = memberAggregateStage(summary);
     const s = STAGES[stage] || STAGES.planned;
+    const completionPct = total ? Math.max(0, Math.min(100, (done / total) * 100)) : 0;
     const title = `${member} — ${s.label}${total ? ` (${done}/${total})` : " (no report yet)"}`;
-    return `<span class="member-cell cell-${s.cls}" title="${escHtml(title)}" data-model="${model}" data-exp="${expId}" data-member="${member}">${escHtml(memberShortLabel(member))}</span>`;
+    return `<span class="member-cell cell-${s.cls}" title="${escHtml(title)}" data-model="${model}" data-exp="${expId}" data-member="${member}">
+      <span class="member-cell-label">${escHtml(memberShortLabel(member))}</span>
+      <span class="member-cell-progress" style="width:${completionPct.toFixed(1)}%"></span>
+    </span>`;
   }).join("");
   return `<div class="member-grid">${cells}</div>`;
 }

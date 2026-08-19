@@ -353,11 +353,25 @@ footer {
   height: 1.6rem;
   padding: 0 0.3rem;
   border-radius: 5px;
+  position: relative;
+  overflow: hidden;
   font-family: var(--mono);
   font-size: 0.68rem;
   font-weight: 700;
   cursor: pointer;
   border: 1px solid rgba(20, 54, 79, 0.12);
+}
+.member-cell-label {
+  position: relative;
+  z-index: 1;
+}
+.member-cell-progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  background: rgba(20, 54, 79, 0.35);
+  pointer-events: none;
 }
 .member-cell:hover { box-shadow: inset 0 0 0 2px rgba(20, 54, 79, 0.35); }
 .variable-link { display: inline-block; cursor: pointer; color: #005ea8; }

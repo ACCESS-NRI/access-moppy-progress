@@ -32,22 +32,27 @@ Output schema
       "experiment":            "historical",
       "member":                "r1i1p1f1",
       "variable":              "tas",
-      "pipeline_stage":        "qc_pass",
+      "state":                 "cmorised",
+      "gates":                 {"range": "not_run", "wcrp": "not_run", "repack": "implied"},
+      "gates_cleared":         1,
       "cmorisation_status":    "completed",
       "publication_status":    "not_published"
     }
   ],
   "summaries": {
     "ACCESS-ESM1.6/historical/r1i1p1f1": {
-      "total_planned":  115,
-      "cmorised":       110,
-      "cmorised_partial": 0,
-      "qc_pass":          0,
-      "qc_warn":          0,
-      "qc_fail":          0,
-      "published":        0,
-      "failed":           5,
-      "not_started":      0
+      "total_planned":    115,
+      "planned":            0,
+      "cmorise_failed":     5,
+      "cmorised":         110,
+      "blocked":            0,
+      "ready_for_review":   0,
+      "published":          0,
+      "gates": {
+        "range":  {"pass": 0, "warn": 0, "fail": 0, "implied": 0,   "not_run": 110},
+        "wcrp":   {"pass": 0, "warn": 0, "fail": 0, "implied": 0,   "not_run": 110},
+        "repack": {"pass": 0, "warn": 0, "fail": 0, "implied": 110, "not_run": 0}
+      }
     }
   }
 }
@@ -76,21 +81,36 @@ def _member_sort_key(member: str) -> tuple:
         return (0, tuple(int(g) for g in match.groups()))
     return (1, member)
 
-# ── Pipeline stage helpers ──────────────────────────────────────────────────
+# ── Release gate helpers ────────────────────────────────────────────────────
 
-# Priority order: highest-concern first (used for aggregation)
-STAGE_PRIORITY = [
-    "qc_fail",
-    "cmorised_partial",
-    "failed",
+# A CMORised variable is a candidate, not a result. Three checks decide whether
+# it can be handed to CSIRO for scientific review and to NCI for publication.
+# The order is fixed — the dashboard draws them as a three-segment strip and
+# segment position is what makes the strip readable without a legend.
+GATES = ("range", "wcrp", "repack")
+
+# Outcomes that count as cleared. "implied" is cleared but not evidenced: see
+# _repack_is_implied.
+GATE_CLEARED = ("pass", "warn", "implied")
+
+GATE_RESULTS = ("pass", "warn", "fail", "implied", "not_run")
+
+# Worst first, for rolling many variables up into one member-level gate. An
+# unrun check outranks a warning: not knowing is worse than knowing and being
+# mildly unhappy.
+GATE_PRIORITY = ("fail", "not_run", "warn", "implied", "pass")
+
+# Every state here has a producer. That is the point: the retired qc_pass /
+# qc_warn / qc_fail / qc_pending stages had none, so the dashboard advertised
+# a QC pipeline that could never report anything.
+STATES = (
     "planned",
-    "not_started",
-    "qc_warn",
-    "qc_pending",
+    "cmorise_failed",
     "cmorised",
-    "qc_pass",
+    "blocked",
+    "ready_for_review",
     "published",
-]
+)
 
 CMOR_STATUS_PRIORITY = {
     "failed": 0,
@@ -108,30 +128,82 @@ PUBLICATION_STATUS_PRIORITY = {
 }
 
 
-def _pipeline_stage(
+def _repack_is_implied(plan: dict | None) -> bool:
+    """Whether a completed CMORisation task implies its output was repacked.
+
+    ACCESS-MOPPy runs ``cmip7repack`` inline for CMIP7 output and a repack
+    failure aborts the task, so "task completed" does imply "repacked" — but
+    nothing is written down, so this is an inference and not evidence. The
+    dashboard marks it as such, and any recorded result overrides it.
+    """
+    return bool(plan) and plan.get("mip_era") == "CMIP7"
+
+
+def _gate_results(
+    entry: dict | None,
     cmor_status: str | None,
+    repack_implied: bool,
+) -> dict[str, str]:
+    """Resolve the three gates for one variable.
+
+    Gates only mean anything once CMORisation has completed; before that they
+    are all ``not_run`` rather than absent, so the dashboard can show that a
+    check has not happened as clearly as it shows a failure.
+    """
+    gates = dict.fromkeys(GATES, "not_run")
+    if cmor_status != "completed":
+        return gates
+    if repack_implied:
+        gates["repack"] = "implied"
+    for gate in GATES:
+        recorded = (entry or {}).get(gate)
+        if not isinstance(recorded, dict):
+            continue
+        result = recorded.get("result")
+        if result in GATE_RESULTS:
+            gates[gate] = result
+    return gates
+
+
+def _gate_message(gate: str, recorded: dict | None) -> str | None:
+    """One-line evidence for a gate, shown on hover in the dashboard."""
+    if not isinstance(recorded, dict):
+        return None
+    if recorded.get("message"):
+        return str(recorded["message"])
+    observed, allowed = recorded.get("observed"), recorded.get("allowed")
+    if gate == "range" and observed and allowed:
+        units = f" {recorded['units']}" if recorded.get("units") else ""
+        return (
+            f"observed {observed[0]:g}…{observed[1]:g}{units}, "
+            f"allowed {allowed[0]:g}…{allowed[1]:g}{units}"
+        )
+    if gate == "wcrp" and recorded.get("cv_version"):
+        suites = ", ".join(recorded.get("suites", [])) or "default suites"
+        return f"{suites} · {recorded['cv_version']}"
+    return None
+
+
+def _unit_state(
+    cmor_status: str | None,
+    gates: dict[str, str],
     pub_status: str | None,
 ) -> str:
-    """Derive a single pipeline_stage string from component statuses."""
-    if cmor_status is None:
-        return "planned"
-    if cmor_status == "running":
+    """Derive a single state from CMORisation, the gates, and publication."""
+    if pub_status == "published":
+        return "published"
+    if cmor_status is None or cmor_status == "not_started":
         return "planned"
     if cmor_status == "failed":
-        return "failed"
-    if cmor_status == "completed":
-        if pub_status == "published":
-            return "published"
-        return "cmorised"
-    # pending/retrying
-    return "planned"
-
-
-def _aggregate_stage(stages: list[str]) -> str:
-    """Return worst-case stage across a set of stages."""
-    if not stages:
-        return "not_started"
-    return min(stages, key=lambda s: STAGE_PRIORITY.index(s) if s in STAGE_PRIORITY else 999)
+        return "cmorise_failed"
+    if cmor_status != "completed":
+        # pending / running / retrying — in flight, nothing to show yet.
+        return "planned"
+    if any(result == "fail" for result in gates.values()):
+        return "blocked"
+    if all(result in GATE_CLEARED for result in gates.values()):
+        return "ready_for_review"
+    return "cmorised"
 
 
 def _merge_cmor_status(current: str | None, new: str | None) -> str | None:
@@ -239,6 +311,22 @@ def _load_publications(progress_root: Path) -> dict[tuple[str, str, str], dict]:
     return pubs
 
 
+def _load_qc(progress_root: Path) -> dict[tuple[str, str, str], dict]:
+    """
+    Scan progress/<model>/<exp>/<member>/qc.json.
+    Returns {(model, experiment, member): qc_dict}.
+    """
+    records: dict[tuple[str, str, str], dict] = {}
+    for qc_path in sorted(progress_root.rglob("qc.json")):
+        parts = qc_path.relative_to(progress_root).parts
+        if len(parts) != 4:
+            continue
+        model, exp, member, _ = parts
+        with qc_path.open() as fh:
+            records[(model, exp, member)] = json.load(fh)
+    return records
+
+
 def _build_cmip7_lookup(plans: dict[str, dict]) -> dict[str, dict[str, str | None]]:
     """
     Return {cmip7_name (branded variable name): {request_name, short_name, cmip7_name}}
@@ -325,9 +413,11 @@ def _compile_unit_summary(
     target_variables: list | str,
     cmor: dict | None,
     pub: dict | None,
+    qc: dict | None,
+    repack_implied: bool,
     variable_metadata: dict[str, dict],
     cmip7_lookup: dict[str, dict[str, str | None]],
-) -> tuple[list[dict], dict[str, int]] | None:
+) -> tuple[list[dict], dict] | None:
     """Build the unit list and summary dict for one (model, experiment, member).
 
     Returns None if there is nothing planned and nothing reported.
@@ -343,6 +433,10 @@ def _compile_unit_summary(
                 cmor_by_branded.get(branded),
                 task["status"],
             )
+
+    # Gate results are keyed by branded variable name where available, but a
+    # record written by hand may use the request name or short name instead.
+    qc_by_var: dict[str, dict] = dict((qc or {}).get("variables", {}))
 
     # Build per-variable publication lookup
     pub_by_var: dict[str, str] = {}
@@ -370,11 +464,10 @@ def _compile_unit_summary(
     ]
     all_vars = target_vars + extra_report_vars
 
-    summary: dict[str, int] = {
-        "total_planned": len(all_vars),
-        "cmorised": 0, "cmorised_partial": 0,
-        "qc_pass": 0, "qc_warn": 0, "qc_fail": 0,
-        "published": 0, "failed": 0, "planned": 0, "not_started": 0,
+    summary: dict = {"total_planned": len(all_vars)}
+    summary.update(dict.fromkeys(STATES, 0))
+    summary["gates"] = {
+        gate: dict.fromkeys(GATE_RESULTS, 0) for gate in GATES
     }
 
     units: list[dict] = []
@@ -393,9 +486,16 @@ def _compile_unit_summary(
             pub_by_var.get(short_name, pub_by_var.get(request_name)),
         )
 
-        stage = _pipeline_stage(cmor_status, pub_status)
+        qc_entry = None
+        for key in (cmip7_name, request_name, short_name):
+            if key and key in qc_by_var:
+                qc_entry = qc_by_var[key]
+                break
 
-        units.append({
+        gates = _gate_results(qc_entry, cmor_status, repack_implied)
+        state = _unit_state(cmor_status, gates, pub_status)
+
+        unit = {
             "model": model,
             "experiment": exp_id,
             "member": member,
@@ -405,13 +505,29 @@ def _compile_unit_summary(
             "variable_frequency": _derive_frequency(cmip7_name),
             "variable_description": metadata.get("description"),
             "variable_notes": metadata.get("notes"),
-            "pipeline_stage": stage,
+            "state": state,
+            "gates": gates,
+            "gates_cleared": sum(1 for r in gates.values() if r in GATE_CLEARED),
             "cmorisation_status": cmor_status or "not_started",
             "publication_status": pub_status,
-        })
+        }
 
-        key_s = stage if stage in summary else "not_started"
-        summary[key_s] = summary.get(key_s, 0) + 1
+        messages = {
+            gate: message
+            for gate in GATES
+            if (message := _gate_message(gate, (qc_entry or {}).get(gate)))
+        }
+        if messages:
+            unit["gate_messages"] = messages
+
+        units.append(unit)
+
+        summary[state] = summary.get(state, 0) + 1
+        # Gates are only counted where they mean something — a variable that
+        # never CMORised has nothing to check.
+        if cmor_status == "completed":
+            for gate, result in gates.items():
+                summary["gates"][gate][result] += 1
 
     return units, summary
 
@@ -426,6 +542,7 @@ def compile_progress(output: Path) -> None:
     progress_root = ROOT / "progress"
     cmor_reports = _load_cmorisation(progress_root)
     pub_reports   = _load_publications(progress_root)
+    qc_records    = _load_qc(progress_root)
 
     all_units: list[dict] = []
     summaries: dict[str, dict] = {}
@@ -443,6 +560,7 @@ def compile_progress(output: Path) -> None:
                     model, exp_id, member,
                     exp_def.get("target_variables", "*"),
                     cmor_reports.get(key), pub_reports.get(key),
+                    qc_records.get(key), _repack_is_implied(plan),
                     variable_metadata, cmip7_lookup,
                 )
                 if result is None:
@@ -455,12 +573,13 @@ def compile_progress(output: Path) -> None:
     # are not declared in a plan yet — e.g. ensemble members ingested ahead
     # of the plan being updated. Treated the same as planned combos so they
     # show up in the index/summaries the dashboard reads, not just in units.
-    report_keys = set(cmor_reports.keys()) | set(pub_reports.keys())
+    report_keys = set(cmor_reports.keys()) | set(pub_reports.keys()) | set(qc_records.keys())
     for key in sorted(report_keys - covered_keys):
         model, exp_id, member = key
         result = _compile_unit_summary(
             model, exp_id, member, "*",
             cmor_reports.get(key), pub_reports.get(key),
+            qc_records.get(key), _repack_is_implied(plans.get(model)),
             variable_metadata, cmip7_lookup,
         )
         if result is None:
@@ -584,9 +703,18 @@ def compile_progress(output: Path) -> None:
     }
     output.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 
+    ready = sum(1 for unit in all_units if unit["state"] == "ready_for_review")
+    checked = sum(
+        1 for unit in all_units
+        if any(result not in ("not_run", "implied") for result in unit["gates"].values())
+    )
     print(
         f"Progress compiled: {len(all_units)} units across "
         f"{len(summaries)} (model, experiment, member) combinations → {output}"
+    )
+    print(
+        f"  Release gates: {checked} units with a recorded gate result, "
+        f"{ready} ready for review"
     )
 
 

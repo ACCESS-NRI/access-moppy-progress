@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/access-nri/access-moppy-progress/schemas/qc.schema.json",
+  "title": "QC Gate Results",
+  "description": "Per-variable results for the three release gates (value range, WCRP compliance, repack) for one (model, experiment, member) combination. Records outcomes only; which checks are required lives in the companion access-moppy-qc-registry.",
+  "type": "object",
+  "required": ["schema_version", "model", "experiment_id", "variant_label", "variables"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "type": "string" },
+    "model":          { "type": "string" },
+    "experiment_id":  { "type": "string" },
+    "variant_label": {
+      "type": "string",
+      "pattern": "^r[0-9]+i[0-9]+p[0-9]+f[0-9]+$"
+    },
+    "checked_at":  { "type": "string", "description": "ISO-8601 timestamp for the whole record" },
+    "checked_by":  { "type": "string", "description": "Tool or GitHub handle that produced this record" },
+    "source_report": { "type": "string", "description": "Batch report these results were extracted from" },
+    "variables": {
+      "type": "object",
+      "description": "Keyed by CMIP7 branded variable name; the compound request name or short name are also accepted.",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "range":  { "$ref": "#/definitions/gate" },
+          "wcrp":   { "$ref": "#/definitions/gate" },
+          "repack": { "$ref": "#/definitions/gate" }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "gate": {
+      "type": "object",
+      "required": ["result"],
+      "additionalProperties": true,
+      "properties": {
+        "result": {
+          "type": "string",
+          "description": "pass/warn/fail are measured outcomes; implied means the gate is satisfied by inference rather than by a recorded check; not_run means no result exists.",
+          "enum": ["pass", "warn", "fail", "implied", "not_run"]
+        },
+        "check_id": {
+          "type": "string",
+          "description": "Identifier of the check in access-moppy-qc-registry, e.g. 'wcrp' or 'global_stats.min_max_range'."
+        },
+        "checked_at":  { "type": "string" },
+        "message":     { "type": "string", "description": "Short human-readable detail, shown on hover in the dashboard" },
+        "observed":    { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 },
+        "allowed":     { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 },
+        "units":       { "type": "string" },
+        "files_checked": { "type": "integer" },
+        "suites":      { "type": "array", "items": { "type": "string" } },
+        "cv_version":  { "type": ["string", "null"] },
+        "report_path": { "type": "string" },
+        "backfilled":  { "type": "boolean" },
+        "tool":        { "type": "string" },
+        "evidence":    { "type": "string", "description": "Why an 'implied' result is believed, e.g. 'task_completed'" }
+      }
+    }
+  }
+}

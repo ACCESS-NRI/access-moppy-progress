@@ -13,24 +13,32 @@
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
 
-  /* Pipeline stage colours */
+  /* Unit state colours — where a variable is in the release pipeline */
   --c-published:    #1f7a36;
-  --c-qc-pass:      #1f7a36;
-  --c-ready-for-nci:#b68500;
-  --c-qc-checks:    #005ea8;
+  --c-ready:        #1f7a36;
+  --c-blocked:      #b42318;
   --c-cmorised:     #c77700;
-  --c-failed:       #b42318;
+  --c-cmor-failed:  #7a2018;
   --c-not-started:  #4b5563;
   --c-planned:      #7c8b96;
+  --c-failed:       #b42318;
 
   --bg-published:    #2f9e44;
-  --bg-qc-pass:      #2f9e44;
-  --bg-ready-for-nci:#fff2c2;
-  --bg-qc-checks:    #dff0fb;
+  --bg-ready:        #d9f2df;
+  --bg-blocked:      #f8ded9;
   --bg-cmorised:     #fff0d6;
-  --bg-failed:       #d92d20;
+  --bg-cmor-failed:  #d92d20;
   --bg-not-started:  #cfd4da;
   --bg-planned:      #e5e7eb;
+  --bg-failed:       #d92d20;
+
+  /* Release gate outcomes — a separate axis from state, so a separate
+     palette. Never reuse these for anything that is not a gate result. */
+  --gate-pass:     #2f9e44;
+  --gate-warn:     #d19100;
+  --gate-fail:     #d92d20;
+  --gate-dormant:  #cbd5db;
+  --gate-dormant-line: #9aabb5;
 }
 
 html { font-size: 14px; }
@@ -147,36 +155,83 @@ footer {
 .view-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
 .view-sub { color: var(--text-muted); font-size: 0.82rem; margin-bottom: 1.25rem; }
 
-/* ── Pipeline stage chip ─────────────────────────────────────────────────── */
+/* ── Unit state chip ─────────────────────────────────────────────────────── */
 .stage {
   display: inline-block; border-radius: 4px;
   padding: 0.1rem 0.5rem; font-size: 0.72rem;
   font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
 }
-.stage-published    { background: var(--bg-published);    color: #ffffff;  border: 1px solid var(--c-published); }
-.stage-qc_pass      { background: var(--bg-qc-pass);      color: #ffffff;  border: 1px solid var(--c-qc-pass); }
-.stage-ready_for_nci{ background: var(--bg-ready-for-nci);color: #7a5600;  border: 1px solid var(--c-ready-for-nci); }
-.stage-qc_checks    { background: var(--bg-qc-checks);    color: #0d5b90;  border: 1px solid var(--c-qc-checks); }
-.stage-cmorised     { background: var(--bg-cmorised);     color: #8a5600;  border: 1px solid var(--c-cmorised); }
-.stage-failed       { background: var(--bg-failed);       color: #ffffff;  border: 1px solid var(--c-failed); }
-.stage-not_started  { background: var(--bg-not-started);  color: #111827; border: 1px solid var(--border); }
-.stage-planned      { background: var(--bg-planned);      color: #475569; border: 1px dashed var(--border); }
+.stage-published    { background: var(--bg-published);   color: #ffffff; border: 1px solid var(--c-published); }
+.stage-ready        { background: var(--bg-ready);       color: #14532d; border: 1px solid var(--c-ready); }
+.stage-blocked      { background: var(--bg-blocked);     color: #8c2418; border: 1px solid var(--c-blocked); }
+.stage-cmorised     { background: var(--bg-cmorised);    color: #8a5600; border: 1px solid var(--c-cmorised); }
+.stage-cmor-failed  { background: var(--bg-cmor-failed); color: #ffffff; border: 1px solid var(--c-cmor-failed); }
+.stage-not_started  { background: var(--bg-not-started); color: #111827; border: 1px solid var(--border); }
+.stage-planned      { background: var(--bg-planned);     color: #475569; border: 1px dashed var(--border); }
 
 /* ── Matrix cell colours (compact) ──────────────────────────────────────── */
-.cell-published    { background: var(--bg-published);    color: #ffffff; }
-.cell-ready_for_nci{ background: var(--bg-ready-for-nci);color: #7a5600; }
-.cell-qc_checks    { background: var(--bg-qc-checks);    color: #0d5b90; }
-.cell-cmorised     { background: var(--bg-cmorised);     color: #8a5600; }
-.cell-planned      { background: var(--bg-planned);      color: #475569; }
+.cell-published    { background: var(--bg-published);   color: #ffffff; }
+.cell-ready        { background: var(--bg-ready);       color: #14532d; }
+.cell-blocked      { background: var(--bg-blocked);     color: #8c2418; }
+.cell-cmorised     { background: var(--bg-cmorised);    color: #8a5600; }
+.cell-cmor-failed  { background: var(--bg-cmor-failed); color: #ffffff; }
+.cell-planned      { background: var(--bg-planned);     color: #475569; }
+
+/* ── Release gate strip ──────────────────────────────────────────────────── */
+/* Three segments, always R W K, always in that order and always present: a
+   grey segment means "this check has not run", which has to read as clearly
+   as a failure. */
+.strip {
+  display: inline-flex;
+  gap: 2px;
+  vertical-align: middle;
+  background: rgba(20, 54, 79, 0.10);
+  padding: 2px;
+  border-radius: 3px;
+  line-height: 0;
+}
+/* Colour: one class each, so a result always beats the dormant default. */
+.gate {
+  flex-shrink: 0;
+  border-radius: 1.5px;
+  background: var(--gate-dormant);
+  box-shadow: inset 0 0 0 1px var(--gate-dormant-line);
+}
+.gate-pass { background: var(--gate-pass); box-shadow: none; }
+.gate-warn { background: var(--gate-warn); box-shadow: none; }
+.gate-fail { background: var(--gate-fail); box-shadow: none; }
+/* Hatched: satisfied by inference, not by a recorded result. */
+.gate-implied {
+  background:
+    repeating-linear-gradient(-45deg, var(--gate-pass) 0 2px, transparent 2px 4px),
+    #dff0e4;
+  box-shadow: inset 0 0 0 1px var(--gate-pass);
+}
+
+/* Geometry: set separately, so it never overrides a colour. */
+.strip .gate { width: 8px; height: 14px; }
+.strip-xs { padding: 1px; gap: 1px; background: rgba(20, 54, 79, 0.14); }
+.strip-xs .gate { width: 5px; height: 7px; border-radius: 1px; }
+
+.gate-count {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-left: 0.4rem;
+  font-variant-numeric: tabular-nums;
+}
+.gate-rollup { display: inline-flex; align-items: center; gap: 0.4rem; }
+.gate-rollup-note { font-size: 0.7rem; color: var(--text-muted); white-space: nowrap; }
 
 /* ── Progress bar ────────────────────────────────────────────────────────── */
 .progress-wrap { background: var(--bg); border-radius: 4px; height: 8px; overflow: hidden; min-width: 80px; display: flex; }
 .progress-segment { height: 100%; transition: width 0.3s; }
-.seg-published  { background: var(--c-published); }
-.seg-ready-for-nci { background: var(--c-ready-for-nci); }
-.seg-qc-checks  { background: var(--c-qc-checks); }
-.seg-cmorised   { background: var(--c-cmorised); }
-.seg-planned    { background: var(--c-planned); }
+.seg-published   { background: var(--c-published); }
+.seg-ready       { background: #56b96e; }
+.seg-blocked     { background: var(--c-blocked); }
+.seg-cmorised    { background: var(--c-cmorised); }
+.seg-cmor-failed { background: var(--c-cmor-failed); }
+.seg-planned     { background: var(--c-planned); }
 
 /* ── Overview cards ──────────────────────────────────────────────────────── */
 .overview-section {
@@ -315,10 +370,19 @@ footer {
   color: #456176;
   text-transform: capitalize;
 }
-.exp-card .members-table { width: 100%; border-collapse: collapse; margin-top: 0.75rem; font-size: 0.8rem; }
+/* Fixed layout keeps the breakdown chips inside the card: with auto layout the
+   chip column pushed past the card edge as soon as the labels grew. */
+.exp-card .members-table { width: 100%; table-layout: fixed; border-collapse: collapse; margin-top: 0.75rem; font-size: 0.8rem; }
+.exp-card .members-table th:nth-child(1), .exp-card .members-table td:nth-child(1) { width: 21%; }
+.exp-card .members-table th:nth-child(2), .exp-card .members-table td:nth-child(2) { width: 30%; }
+.exp-card .members-table th:nth-child(3), .exp-card .members-table td:nth-child(3) { width: 15%; }
+.exp-card .members-table th:nth-child(4), .exp-card .members-table td:nth-child(4) { width: 34%; }
+.exp-card .count-chips .chip { max-width: 100%; }
 .exp-card .members-table th {
   text-align: left;
-  padding: 0.28rem 0.4rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.01em;
+  padding: 0.28rem 0.35rem 0.28rem 0;
   color: #47657b;
   font-weight: 700;
   border-bottom: 1px solid #9db8c9;
@@ -347,11 +411,13 @@ footer {
 }
 .member-cell {
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 1.9rem;
-  height: 1.6rem;
-  padding: 0 0.3rem;
+  gap: 2px;
+  min-width: 2.1rem;
+  height: 2.2rem;
+  padding: 0.15rem 0.3rem 0.25rem;
   border-radius: 5px;
   position: relative;
   overflow: hidden;
@@ -380,7 +446,7 @@ footer {
   display: inline-block;
   cursor: pointer;
 }
-.timeline-qc-cell:hover .stage {
+.timeline-qc-cell:hover .strip {
   box-shadow: inset 0 0 0 2px #c52a2a;
 }
 .variable-resource-card {
@@ -463,10 +529,11 @@ footer {
   opacity: 1 !important;
   mix-blend-mode: normal;
 }
-.count-chips .chip-published { background-color: #d9f2df !important; color: #14532d !important; border-color: #74b585 !important; }
-.count-chips .chip-ready-for-nci { background-color: #fff2c2 !important; color: #7a5600 !important; border-color: #d8bb63 !important; }
-.count-chips .chip-qc-checks { background-color: #e3f1fb !important; color: #0d5b90 !important; border-color: #8cb8db !important; }
+.count-chips .chip-published { background-color: #cdeed7 !important; color: #14532d !important; border-color: #5da877 !important; }
+.count-chips .chip-ready { background-color: #d9f2df !important; color: #14532d !important; border-color: #74b585 !important; }
+.count-chips .chip-blocked { background-color: #f8ded9 !important; color: #8c2418 !important; border-color: #d99e93 !important; }
 .count-chips .chip-cmorised { background-color: #fff0d6 !important; color: #8a5600 !important; border-color: #e1b56a !important; }
+.count-chips .chip-cmor-failed { background-color: #f3cfca !important; color: #7a2018 !important; border-color: #c07264 !important; }
 .count-chips .chip-planned { background-color: #eceff3 !important; color: #475569 !important; border-color: #b8c1cb !important; }
 
 /* ── Request view ────────────────────────────────────────────────────────── */
@@ -642,9 +709,20 @@ table.detail tbody tr:nth-child(even) { background: #edf5fa; }
 table.detail code { font-family: var(--mono); font-size: 0.78rem; background: #dceaf3; padding: 0.1rem 0.3rem; border-radius: 3px; }
 
 /* ── Legend ──────────────────────────────────────────────────────────────── */
-.legend { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; font-size: 0.78rem; }
+.legend { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; font-size: 0.78rem; align-items: center; }
 .legend-item { display: flex; align-items: center; gap: 0.35rem; }
 .legend-swatch { width: 12px; height: 12px; border-radius: 2px; flex-shrink: 0; }
+.legend-gates {
+  gap: 0.9rem;
+  padding: 0.5rem 0.75rem;
+  margin-top: -0.5rem;
+  border: 1px dashed var(--border);
+  border-radius: 5px;
+  background: var(--surface-alt);
+}
+.legend-gates .legend-title { font-weight: 600; color: var(--text); }
+.legend-gates .legend-title strong { font-family: var(--mono); }
+.legend-gates .gate { width: 8px; height: 14px; }
 
 @media (max-width: 600px) {
   .header-inner { gap: 0.5rem; }

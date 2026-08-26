@@ -17,13 +17,122 @@ serving as the companion QC registry.
 | **Variable Pipeline** | One variable across all (experiment, member) combinations, with links to inspect or suggest QC checks |
 | **CMOR Requests** | GitHub issue-backed CMORisation work requests, plus planned combinations still missing retrospective request metadata |
 
-## Pipeline stages
+## States and release gates
+
+CMORisation is the entry condition, not an achievement: every variable with a
+report has been CMORised. What the dashboard tracks is whether it has cleared
+the three checks that decide if it can be handed to CSIRO for scientific review
+and to NCI for publication.
 
 ```
-not_started → planned → cmorised ─┬→ qc_pending → qc_pass ──┬→ published
-                                   └→ qc_fail                └→ qc_warn ─┘
-                    failed (batch error)
+planned ──→ CMORised ──→ [ R  value range ] ──→ ready_for_review ──→ published
+   │                     [ W  WCRP compliance ]        │
+   │                     [ K  repack        ]          └→ scientific review (CSIRO)
+   └→ cmorise_failed          │
+                              └→ blocked (a gate failed)
 ```
+
+Each gate is `pass`, `warn`, `fail`, `not_run`, or `implied`. The dashboard
+draws them as a three-segment strip in fixed R-W-K order, so a grey segment
+reads as "this check has not run" just as clearly as a red one reads as a
+failure.
+
+`implied` means a gate is satisfied by inference rather than by a recorded
+result, and is drawn hatched. Repack is currently in that position: ACCESS-MOPPy
+runs `cmip7repack` inline for CMIP7 output and a repack failure aborts the task,
+so a completed task does imply a repacked file — but nothing is written down.
+Any recorded result overrides the inference.
+
+A unit's `state` is derived from the three gates:
+
+| State | Meaning |
+|---|---|
+| `planned` | In the plan, no report yet (or still in flight) |
+| `cmorise_failed` | The CMORisation task failed — a build failure, not a QC finding |
+| `cmorised` | CMORised, at least one gate still outstanding |
+| `blocked` | A gate failed; needs a fix before it can go anywhere |
+| `ready_for_review` | All three gates cleared — hand to CSIRO and NCI |
+| `published` | Published to ESGF |
+
+Every state here has a producer. The retired `qc_pending` / `qc_pass` /
+`qc_warn` / `qc_fail` stages had none, so the dashboard advertised a QC pipeline
+that could never report anything, and the "QC checks" bucket was in fact
+counting CMORisation failures.
+
+## Recording gate results
+
+Gate results live in `progress/<model>/<experiment>/<member>/qc.json`, following
+`schemas/qc.schema.json`:
+
+```json
+{
+  "schema_version": "access-moppy.qc.v1",
+  "model": "ACCESS-ESM1.6",
+  "experiment_id": "historical",
+  "variant_label": "r1i1p1f1",
+  "checked_at": "2026-08-26T04:11:00Z",
+  "variables": {
+    "ocean.tos.tavg-u-hxy-sea.mon.glb": {
+      "range":  {
+        "result": "warn",
+        "check_id": "global_stats.min_max_range",
+        "observed": [-2.1, 34.8], "allowed": [-2.0, 34.0], "units": "degC"
+      },
+      "wcrp":   {
+        "result": "pass",
+        "check_id": "wcrp",
+        "suites": ["cf:1.11", "wcrp_cmip7:1.0"],
+        "cv_version": "esgvoc-1.4.2",
+        "backfilled": true
+      },
+      "repack": { "result": "pass", "tool": "cmip7repack" }
+    }
+  }
+}
+```
+
+Variables are keyed by CMIP7 branded name; the compound request name or short
+name also resolve. `check_id` refers to a check in
+[access-moppy-qc-registry](https://github.com/access-nri/access-moppy-qc-registry),
+which is the division of labour between the two repositories: **the registry
+holds requirements** (which checks exist and which are mandatory for a variable
+or experiment), **this repository holds results**. They join on `check_id`.
+
+Validate before committing:
+
+```bash
+python scripts/validate_qc.py
+pytest tests -q
+```
+
+### Where the results come from
+
+`qc.json` is written automatically during ingestion — `ingest_report.py` and
+`sync_reports.py` both call `qc_from_report.py`, which extracts the gates from
+the batch report they are ingesting. Nothing has to be recorded by hand:
+
+| Gate | Read from |
+|---|---|
+| `range` | `tasks[].output_summary.gates.range`, stamped by the worker after each file is validated |
+| `repack` | `tasks[].output_summary.gates.repack`, stamped after `cmip7repack` runs |
+| `wcrp` | `tasks[].compliance`, from a run with `compliance_check: true` or from `moppy-compliance-backfill` |
+
+Reports produced before ACCESS-MOPPy stamped these fields carry none of them,
+and nothing is invented for them: their gates stay `not_run`. For the range
+gate there is one fallback — a report built by `moppy-batch-report` *without*
+`--skip-qc` carries a batch-level `qc` block, and its findings are matched back
+to tasks by output file path.
+
+To fill in the WCRP gate for runs that have already completed, no code change
+is needed on the ACCESS-MOPPy side:
+
+```bash
+# on Gadi, in the run directory
+moppy-compliance-backfill --db cmor_tasks.db     # writes each verdict to the task row
+moppy-batch-report --db cmor_tasks.db            # rebuild the report with them in it
+```
+
+Then re-run the sync, and the `wcrp` column lights up retrospectively.
 
 ## Repository structure
 
@@ -37,14 +146,16 @@ progress/                       # Ingested runtime reports
     <experiment>/
       <member>/
         cmorisation.json        ← from moppy_batch_report.json (via ingest_report.py)
-        qc.json                 ← from MOPPy QC runner (future)
+        qc.json                 ← release gate results (schemas/qc.schema.json)
         publication.json        ← manually updated or ESGF API script
 schemas/                        # JSON Schemas for validation
 scripts/
   ingest_report.py              # Place a batch report into the hierarchy
   sync_reports.py               # Bulk-ingest a tree of reports rsynced from Gadi
   compile_progress.py           # Build dashboard/progress.json
+  qc_from_report.py             # Extract release gates from a batch report
   validate_plans.py             # Validate plans/*.yaml
+  validate_qc.py                # Validate progress/**/qc.json
 dashboard/                      # Static GitHub Pages site
   index.html / style.css / app.js
   progress.json                 # Generated by CI — do not edit manually
@@ -378,6 +489,7 @@ dashboard updates on the next CI run.
 
 ```bash
 python scripts/validate_plans.py
+python scripts/validate_qc.py
 python scripts/compile_progress.py
 cd dashboard && python -m http.server 8080
 ```
@@ -394,7 +506,7 @@ pixi run dev
 
 That will:
 
-1. validate `plans/*.yaml`
+1. validate `plans/*.yaml` and `progress/**/qc.json`
 2. rebuild `dashboard/progress.json`
 3. serve the dashboard at `http://localhost:8080`
 

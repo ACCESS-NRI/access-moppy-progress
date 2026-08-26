@@ -1,0 +1,93 @@
+name: Sync MOPPy reports from Gadi
+
+on:
+  schedule:
+    # 14:00 UTC == 00:00 Australia/Brisbane (AEST, UTC+10, no daylight saving)
+    - cron: "0 14 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Rsync and report what would change, without committing
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: sync-gadi-reports
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install pyyaml jsonschema
+
+      - name: Configure SSH access to Gadi
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/gadi_key
+          chmod 600 ~/.ssh/gadi_key
+          ssh-keyscan -H gadi.nci.org.au >> ~/.ssh/known_hosts 2>/dev/null
+          chmod 600 ~/.ssh/known_hosts
+
+      - name: Rsync reports from Gadi
+        env:
+          GADI_USER: ${{ secrets.GADI_USER }}
+          GADI_DATA_PATH: ${{ vars.GADI_DATA_PATH || '/scratch/p73/ESM1p6_CMORised/' }}
+        run: |
+          rsync -av --prune-empty-dirs \
+            -e "ssh -i ~/.ssh/gadi_key -o BatchMode=yes" \
+            --include='*/' \
+            --include='batch_config.yml' \
+            --include='moppy_batch_report_*.json' \
+            --exclude='*' \
+            "${GADI_USER}@gadi.nci.org.au:${GADI_DATA_PATH}" \
+            ./ESM1p6_CMORised/
+
+      - name: Ingest reports into progress/
+        run: |
+          python scripts/sync_reports.py \
+            --source ESM1p6_CMORised \
+            ${{ inputs.dry_run && '--dry-run' || '' }}
+
+      - name: Compile progress (check ingested records)
+        run: python scripts/compile_progress.py --output /tmp/progress.json
+
+      - name: Commit and push changes
+        id: commit
+        if: ${{ !inputs.dry_run }}
+        run: |
+          if [ -z "$(git status --porcelain progress/)" ]; then
+            echo "No progress changes detected; nothing to commit."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add progress/
+          git commit -m "chore(progress): sync MOPPy reports from Gadi"
+          git push origin HEAD:main
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Rebuild and deploy dashboard
+        if: ${{ steps.commit.outputs.changed == 'true' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run build_dashboard.yml --ref main

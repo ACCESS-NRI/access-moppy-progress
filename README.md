@@ -42,6 +42,7 @@ progress/                       # Ingested runtime reports
 schemas/                        # JSON Schemas for validation
 scripts/
   ingest_report.py              # Place a batch report into the hierarchy
+  sync_reports.py               # Bulk-ingest a tree of reports rsynced from Gadi
   compile_progress.py           # Build dashboard/progress.json
   validate_plans.py             # Validate plans/*.yaml
 dashboard/                      # Static GitHub Pages site
@@ -51,6 +52,7 @@ dashboard/                      # Static GitHub Pages site
   workflows/
     validate_plans.yml          # Run on every PR touching plans/ or progress/
     build_dashboard.yml         # Rebuild + deploy on merge to main
+    sync_gadi_reports.yml       # Nightly rsync from Gadi + ingest + deploy
 ```
 
 ## Adding a new model
@@ -96,6 +98,71 @@ git push
 ```
 
 CI will recompile `progress.json` and redeploy the dashboard automatically.
+
+## Automated nightly sync from Gadi
+
+`sync_gadi_reports.yml` keeps the dashboard current without manual ingestion. It
+runs at **00:00 Australia/Brisbane** (`0 14 * * *` UTC — Brisbane has no daylight
+saving) and can also be triggered by hand from the **Actions** tab, with an
+optional `dry_run` input that rsyncs and reports what would change without
+committing.
+
+Each run:
+
+1. Rsyncs `batch_config.yml` and `moppy_batch_report_*.json` from
+   `/scratch/p73/ESM1p6_CMORised/` on Gadi — the same command used manually:
+
+   ```bash
+   rsync -av --prune-empty-dirs \
+       --include='*/' \
+       --include='batch_config.yml' \
+       --include='moppy_batch_report_*.json' \
+       --exclude='*' \
+       <user>@gadi.nci.org.au:/scratch/p73/ESM1p6_CMORised/ ./ESM1p6_CMORised/
+   ```
+
+2. Runs `scripts/sync_reports.py` to ingest the tree into `progress/`.
+3. Recompiles `progress.json` as a sanity check.
+4. Commits and pushes to `main` **only if `progress/` actually changed**, then
+   dispatches `build_dashboard.yml` to redeploy the dashboard.
+
+Nothing is committed when the reports are unchanged: `sync_reports.py` compares
+report content and leaves the existing `ingested_at` timestamp alone, so
+re-running produces no diff.
+
+### Required configuration
+
+| Kind | Name | Value |
+|---|---|---|
+| Secret | `GADI_USER` | NCI username, e.g. `rb5533` |
+| Secret | `DEPLOY_KEY` | Private half of a passphrase-less SSH key whose public half is in `~/.ssh/authorized_keys` on Gadi |
+| Variable (optional) | `GADI_DATA_PATH` | Source path to sync; defaults to `/scratch/p73/ESM1p6_CMORised/` |
+
+Generate and install the key with:
+
+```bash
+ssh-keygen -t ed25519 -f gadi_dashboard_key -N "" -C "access-moppy-progress CI"
+ssh-copy-id -i gadi_dashboard_key.pub <user>@gadi.nci.org.au
+```
+
+Then add the contents of `gadi_dashboard_key` (the private file, including the
+`BEGIN`/`END` lines) as the `DEPLOY_KEY` repository secret under
+**Settings → Secrets and variables → Actions**, and delete the local copy.
+
+### How reports are matched to records
+
+`sync_reports.py` resolves each report's `(source_id, experiment_id,
+variant_label)` from the report itself, falling back to the sibling
+`batch_config.yml` for older reports that omit them, and normalises the result
+against `plans/*.yaml` — so `ACCESS-ESM1-6` / `esm-picontrol` is written to
+`progress/ACCESS-ESM1.6/esm-piControl/`. Where one run directory holds several
+reports, the most recent wins.
+
+When two *different* run directories claim the same experiment and member, the
+combination is skipped and reported rather than guessed at, so a mislabelled
+`batch_config.yml` cannot silently overwrite another experiment's record. Fix
+the offending config on Gadi, or pass `--allow-collisions` to take the most
+recent report anyway.
 
 ## Managing submissions (ingest, update, delete)
 

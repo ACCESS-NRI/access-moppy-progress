@@ -35,9 +35,10 @@ jobs:
       - name: Install dependencies
         run: pip install pyyaml jsonschema
 
-      - name: Configure SSH access to Gadi
+      - name: Preflight - validate DEPLOY_KEY and Gadi access
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+          GADI_USER: ${{ secrets.GADI_USER }}
         run: |
           if [ -z "$DEPLOY_KEY" ]; then
             echo "::error::DEPLOY_KEY secret is empty or not set." >&2
@@ -46,12 +47,13 @@ jobs:
 
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
-          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/gadi_key
+          printf '%s\n' "$DEPLOY_KEY" | tr -d '\r' > ~/.ssh/gadi_key
           chmod 600 ~/.ssh/gadi_key
 
-          # A secret pasted without its BEGIN/END lines, or with CRLF line
-          # endings, produces the same "Permission denied (publickey)" as a key
-          # that simply is not installed on Gadi. Separate the two cases here.
+          # A secret pasted without its BEGIN/END lines, and a key that is
+          # simply not installed on Gadi, both surface as the same opaque
+          # "Permission denied (publickey)". Separate the cases here, before
+          # the transfer step, so the log names the actual problem.
           if ! ssh-keygen -y -f ~/.ssh/gadi_key < /dev/null > /dev/null 2>&1; then
             echo "::error::DEPLOY_KEY is not a usable private key: it is either passphrase-protected, or was truncated when pasted into the secret. The secret must hold the whole file, BEGIN and END lines included." >&2
             exit 1
@@ -62,14 +64,8 @@ jobs:
           echo "This must appear in ~/.ssh/authorized_keys on Gadi. Compare with:"
           echo "  ssh-keygen -l -f <your-key>.pub"
 
-          ssh-keyscan -H gadi.nci.org.au >> ~/.ssh/known_hosts 2>/dev/null
-          chmod 600 ~/.ssh/known_hosts
-
-      - name: Verify Gadi connection
-        env:
-          GADI_USER: ${{ secrets.GADI_USER }}
-        run: |
           if ssh -i ~/.ssh/gadi_key -o BatchMode=yes -o ConnectTimeout=20 \
+              -o StrictHostKeyChecking=accept-new \
               "${GADI_USER}@gadi.nci.org.au" true; then
             echo "Authenticated to Gadi as ${GADI_USER}."
             exit 0
@@ -77,22 +73,31 @@ jobs:
 
           echo "::error::Could not authenticate to Gadi. Verbose log follows." >&2
           ssh -v -i ~/.ssh/gadi_key -o BatchMode=yes -o ConnectTimeout=20 \
+            -o StrictHostKeyChecking=accept-new \
             "${GADI_USER}@gadi.nci.org.au" true || true
           exit 1
 
       - name: Rsync reports from Gadi
+        # Matches the transfer pattern used across ACCESS-Analysis-Conda, in
+        # pull mode. The action assembles its rsync command as a string and
+        # runs it through eval, so each filter carries its own quotes to keep
+        # the pattern literal. Defensive rather than load-bearing: the glob is
+        # the whole word (--exclude=*), so it only expands if the working
+        # directory happens to hold a file named --exclude=<something>.
+        uses: up9cloud/action-rsync@v1.3
         env:
-          GADI_USER: ${{ secrets.GADI_USER }}
-          GADI_DATA_PATH: ${{ vars.GADI_DATA_PATH || '/scratch/p73/ESM1p6_CMORised/' }}
-        run: |
-          rsync -av --prune-empty-dirs \
-            -e "ssh -i ~/.ssh/gadi_key -o BatchMode=yes" \
-            --include='*/' \
-            --include='batch_config.yml' \
-            --include='moppy_batch_report_*.json' \
-            --exclude='*' \
-            "${GADI_USER}@gadi.nci.org.au:${GADI_DATA_PATH}" \
-            ./ESM1p6_CMORised/
+          MODE: pull
+          HOST: gadi.nci.org.au
+          USER: ${{ secrets.GADI_USER }}
+          KEY: ${{ secrets.DEPLOY_KEY }}
+          SOURCE: ${{ secrets.GADI_DATA_PATH || '/scratch/p73/ESM1p6_CMORised/' }}
+          TARGET: ./ESM1p6_CMORised/
+          ARGS: >-
+            -av --prune-empty-dirs
+            --include='*/'
+            --include='batch_config.yml'
+            --include='moppy_batch_report_*.json'
+            --exclude='*'
 
       - name: Ingest reports into progress/
         run: |

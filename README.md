@@ -136,7 +136,7 @@ re-running produces no diff.
 |---|---|---|
 | Secret | `GADI_USER` | NCI username, e.g. `rb5533` |
 | Secret | `DEPLOY_KEY` | Private half of a passphrase-less SSH key whose public half is in `~/.ssh/authorized_keys` on Gadi |
-| Variable (optional) | `GADI_DATA_PATH` | Source path to sync; defaults to `/scratch/p73/ESM1p6_CMORised/` |
+| Secret (optional) | `GADI_DATA_PATH` | Source path to sync; defaults to `/scratch/p73/ESM1p6_CMORised/` |
 
 Generate and install the key with:
 

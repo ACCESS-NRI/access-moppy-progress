@@ -41,6 +41,8 @@ from pathlib import Path
 
 import yaml
 
+from qc_from_report import write_qc_record
+
 ROOT = Path(__file__).parent.parent
 
 REPORT_GLOB = "moppy_batch_report_*.json"
@@ -232,6 +234,29 @@ def write_record(
     return outcome
 
 
+def write_gates(
+    model: str,
+    experiment: str,
+    member: str,
+    source_path: Path,
+    report: dict,
+    dry_run: bool,
+) -> str:
+    """Write the member's qc.json from the gate results in its report."""
+    outcome, count = write_qc_record(
+        model,
+        experiment,
+        member,
+        report,
+        source_report=source_path.name,
+        checked_by="sync_reports.py",
+        dry_run=dry_run,
+    )
+    if outcome in ("created", "updated"):
+        print(f"{outcome:9s} {model}/{experiment}/{member}/qc.json  ({count} variables)")
+    return outcome
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Ingest a rsynced tree of MOPPy batch reports into progress/"
@@ -267,14 +292,21 @@ def main() -> None:
         sys.exit(1)
 
     counts = {"created": 0, "updated": 0, "unchanged": 0}
+    gate_counts = {"created": 0, "updated": 0, "unchanged": 0, "absent": 0}
     for (model, experiment, member), (path, report) in sorted(latest.items()):
         outcome = write_record(model, experiment, member, path, report, args.dry_run)
         counts[outcome] += 1
+        gate_counts[write_gates(model, experiment, member, path, report, args.dry_run)] += 1
 
     print(
         f"\n{len(latest)} report(s) considered: "
         f"{counts['created']} created, {counts['updated']} updated, "
         f"{counts['unchanged']} unchanged."
+    )
+    print(
+        f"Release gates: {gate_counts['created']} created, "
+        f"{gate_counts['updated']} updated, {gate_counts['unchanged']} unchanged, "
+        f"{gate_counts['absent']} report(s) carried no gate results."
     )
 
 

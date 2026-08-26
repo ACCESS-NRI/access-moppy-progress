@@ -9,26 +9,58 @@ const QC_REGISTRY_REPO = "https://github.com/access-nri/access-moppy-qc-registry
 const QC_REGISTRY_DASHBOARD = "https://access-nri.github.io/access-moppy-qc-registry/";
 const CMOR_REQUEST_TEMPLATE_URL = `https://github.com/${GITHUB_REPO}/issues/new?template=propose_submission.yml`;
 
-// ── Stage metadata ──────────────────────────────────────────────────────────
-const STAGES = {
-  published:   { label: "Published",   symbol: "★", cls: "published"  },
-  ready_for_nci: { label: "Ready for NCI", symbol: "△", cls: "ready_for_nci" },
-  qc_checks:   { label: "QC checks",   symbol: "◌", cls: "qc_checks"  },
-  cmorised:    { label: "CMORised",    symbol: "✓", cls: "cmorised"   },
-  planned:     { label: "Planned",     symbol: "○", cls: "planned"    },
+// ── State + release gate metadata ───────────────────────────────────────────
+// CMORisation is the entry condition, not an achievement. What a unit is
+// waiting on is one of three release gates; clearing all three makes it ready
+// to hand to CSIRO for scientific review and to NCI for publication.
+const STATES = {
+  published:        { label: "Published",          chip: "Published",   symbol: "★", cls: "published" },
+  ready_for_review: { label: "Ready for review",   chip: "Ready",       symbol: "◆", cls: "ready" },
+  blocked:          { label: "Blocked by a check", chip: "Blocked",     symbol: "▲", cls: "blocked" },
+  cmorised:         { label: "CMORised",           chip: "CMORised",    symbol: "·", cls: "cmorised" },
+  cmorise_failed:   { label: "CMORisation failed", chip: "CMOR failed", symbol: "✗", cls: "cmor-failed" },
+  planned:          { label: "Planned",            chip: "Planned",     symbol: "○", cls: "planned" },
 };
 
-const STAGE_PRIORITY = [
-  "planned","cmorised","qc_checks","ready_for_nci","published"
+// Least to most advanced — progress bars and roll-ups read in this order.
+const STATE_PROGRESS = [
+  "planned","cmorise_failed","cmorised","blocked","ready_for_review","published"
 ];
+
+// Most urgent first — table sorting reads in this order, so what needs a human
+// surfaces above what is merely unfinished.
+const STATE_ATTENTION = [
+  "blocked","cmorise_failed","cmorised","planned","ready_for_review","published"
+];
+
+// Fixed order. Position is what makes the strip readable without a legend, so
+// a gate is always drawn in its own slot even when it has not run.
+const GATES = [
+  { key: "range",  letter: "R", label: "Value range" },
+  { key: "wcrp",   letter: "W", label: "WCRP compliance" },
+  { key: "repack", letter: "K", label: "Repack" },
+];
+
+const GATE_RESULT_LABEL = {
+  pass:    "passed",
+  warn:    "passed with a warning",
+  fail:    "failed",
+  implied: "implied, not recorded",
+  not_run: "not run",
+};
+
+// Worst first. An unrun check outranks a warning: not knowing is worse than
+// knowing and being mildly unhappy.
+const GATE_PRIORITY = ["fail","not_run","warn","implied","pass"];
+const GATE_CLEARED  = ["pass","warn","implied"];
 
 const REQUEST_STATUS_META = {
   proposed:    { label: "Proposed", cls: "planned" },
   accepted:    { label: "Accepted", cls: "cmorised" },
-  in_progress: { label: "In progress", cls: "qc_checks" },
-  on_hold:     { label: "On hold", cls: "ready_for_nci" },
+  in_progress: { label: "In progress", cls: "blocked" },
+  on_hold:     { label: "On hold", cls: "ready" },
   completed:   { label: "Completed", cls: "published" },
-  rejected:    { label: "Rejected", cls: "failed" },
+  rejected:    { label: "Rejected", cls: "cmor-failed" },
 };
 
 const REQUEST_STATUS_PRIORITY = ["accepted", "in_progress", "on_hold", "proposed", "completed", "rejected"];
@@ -297,19 +329,60 @@ function themeLabel(theme) {
   return "Other Experiments";
 }
 
-function worstStage(stages) {
-  return stages.reduce((a, b) => {
-    const ai = STAGE_PRIORITY.indexOf(a); const bi = STAGE_PRIORITY.indexOf(b);
-    return (ai === -1 || bi < ai) ? b : a;
-  }, "published");
+function stateOf(unit) {
+  return (unit && STATES[unit.state]) ? unit.state : "planned";
 }
 
-function displayStage(stage) {
-  if (stage === "published") return "published";
-  if (stage === "qc_pass" || stage === "qc_warn") return "ready_for_nci";
-  if (stage === "cmorised") return "cmorised";
-  if (["qc_fail", "qc_pending", "failed"].includes(stage)) return "qc_checks";
-  return "planned";
+function stateMeta(unit) {
+  return STATES[stateOf(unit)];
+}
+
+function gatesOf(unit) {
+  const gates = unit?.gates || {};
+  const out = {};
+  for (const { key } of GATES) out[key] = gates[key] || "not_run";
+  return out;
+}
+
+function gatesCleared(gates) {
+  return GATES.filter(({ key }) => GATE_CLEARED.includes(gates[key])).length;
+}
+
+function gateSummaryText(gates) {
+  return GATES
+    .map(({ key, letter, label }) =>
+      `${letter} ${label}: ${GATE_RESULT_LABEL[gates[key]] || gates[key]}`)
+    .join(" · ");
+}
+
+// One three-segment strip. Size is "xs" (matrix cells) or omitted (rows).
+function gateStrip(unit, size) {
+  const gates = gatesOf(unit);
+  const messages = unit?.gate_messages || {};
+  const cls = size ? ` strip-${size}` : "";
+  const segments = GATES.map(({ key, letter, label }) => {
+    const result = gates[key];
+    const detail = messages[key] ? ` — ${messages[key]}` : "";
+    const title = `${letter} ${label}: ${GATE_RESULT_LABEL[result] || result}${detail}`;
+    return `<i class="gate gate-${result}" title="${escHtml(title)}"></i>`;
+  }).join("");
+  return `<span class="strip${cls}" role="img" aria-label="${escHtml(gateSummaryText(gates))}">${segments}</span>`;
+}
+
+// Roll many variables up into one gate result for a member or experiment.
+// A gate only goes green when every CMORised variable cleared it.
+function aggregateGates(summary) {
+  const counts = summary?.gates || {};
+  const out = {};
+  for (const { key } of GATES) {
+    const tally = counts[key] || {};
+    out[key] = GATE_PRIORITY.find(result => tally[result] > 0) || "not_run";
+  }
+  return out;
+}
+
+function aggregateGateUnit(summary) {
+  return { gates: aggregateGates(summary) };
 }
 
 // ── App state ───────────────────────────────────────────────────────────────
@@ -340,10 +413,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const totalUnits = progress.units.length;
   const done = progress.units.filter(u => u.cmorisation_status === "completed").length;
+  const ready = progress.units.filter(u => u.state === "ready_for_review").length;
   const requestCount = progress.requests?.length || 0;
   document.getElementById("meta").textContent =
     `Generated ${new Date(progress.generated_at).toLocaleString()} · ` +
-    `${totalUnits} units · ${done} cmorised or beyond · ${requestCount} CMOR requests`;
+    `${totalUnits} units · ${done} CMORised · ${ready} ready for review · ` +
+    `${requestCount} CMOR requests`;
 
   renderView();
 });
@@ -380,37 +455,30 @@ function unitsFor(model, experiment, member) {
   );
 }
 
-function stageCell(stage) {
-  const s = STAGES[displayStage(stage)] || STAGES.planned;
-  return `<td class="cell-${s.cls}" title="${s.label}">${s.symbol}</td>`;
+function stateBadge(unit) {
+  const s = stateMeta(unit);
+  return `<span class="stage stage-${s.cls}">${escHtml(s.label)}</span>`;
 }
 
-function stageBadge(stage) {
-  const s = STAGES[displayStage(stage)] || STAGES.planned;
-  return `<span class="stage stage-${s.cls}">${s.label}</span>`;
-}
-
-function normalizeStatusForDisplay(status) {
-  if (status === "completed") return "cmorised";
-  if (status === "running" || status === "pending" || status === "retrying") return "planned";
-  if (status === "not_published" || status === "retracted") return "not_started";
-  return status;
-}
-
-function qcStatusForDisplay(unit) {
-  const stage = unit.pipeline_stage;
-  if (stage === "published") return "qc_pass";
-  if (stage === "qc_pass" || stage === "qc_warn" || stage === "qc_fail" || stage === "qc_pending") {
-    return stage;
-  }
-  if (stage === "failed") return "failed";
-  if (stage === "cmorised") return "planned";
-  return "not_started";
+// Dense matrix cells carry no strip — at this size the number of cleared gates
+// is the readable marker, and the full breakdown lives in the tooltip.
+function matrixCell(unit, context) {
+  const state = stateOf(unit);
+  const s = STATES[state];
+  const gates = gatesOf(unit);
+  const mark = (state === "cmorised" || state === "blocked" || state === "ready_for_review")
+    ? `${gatesCleared(gates)}`
+    : s.symbol;
+  const detail = (unit && unit.cmorisation_status === "completed")
+    ? ` — ${gateSummaryText(gates)}`
+    : "";
+  const title = `${s.label} — ${context}${detail}`;
+  return `<td class="cell-${s.cls}" title="${escHtml(title)}">${mark}</td>`;
 }
 
 function simpleStatusBadge(kind) {
-  if (kind === "passed") return `<span class="stage stage-qc_pass">✓</span>`;
-  if (kind === "failed") return `<span class="stage stage-failed">✗</span>`;
+  if (kind === "passed") return `<span class="stage stage-ready">✓</span>`;
+  if (kind === "failed") return `<span class="stage stage-cmor-failed">✗</span>`;
   return `<span class="stage stage-not_started">Not started</span>`;
 }
 
@@ -420,72 +488,74 @@ function cmorSimpleStatus(unit) {
   return "not_started";
 }
 
-function qcSimpleStatus(unit) {
-  const stage = unit.pipeline_stage;
-  if (stage === "published" || stage === "qc_pass" || stage === "qc_warn") return "passed";
-  if (stage === "qc_fail" || stage === "failed") return "failed";
-  return "not_started";
-}
-
 function publicationSimpleStatus(unit) {
   if (unit.publication_status === "published") return "passed";
   if (unit.publication_status === "retracted") return "failed";
   return "not_started";
 }
 
+// Most advanced first, so the bar fills from the left as work progresses.
+function stateSegments(summary) {
+  return [...STATE_PROGRESS].reverse().map(state => [
+    state,
+    summary[state] || 0,
+    STATES[state],
+  ]);
+}
+
 function progressBar(summary, total) {
   if (!total) return "";
-  const segments = [
-    ["published",  summary.published  || 0, "seg-published"],
-    ["ready_for_nci", (summary.qc_pass || 0) + (summary.qc_warn || 0), "seg-ready-for-nci"],
-    ["qc_checks",  (summary.qc_fail || 0) + (summary.qc_pending || 0) + (summary.failed || 0), "seg-qc-checks"],
-    ["cmorised",   summary.cmorised   || 0, "seg-cmorised"],
-    ["planned",    (summary.not_started || 0) + (summary.planned || 0), "seg-planned"],
-  ];
-  const bars = segments
+  const bars = stateSegments(summary)
     .filter(([,n]) => n > 0)
-    .map(([,n,cls]) => `<div class="progress-segment ${cls}" style="width:${(n/total*100).toFixed(1)}%" title="${n}"></div>`)
+    .map(([,n,meta]) =>
+      `<div class="progress-segment seg-${meta.cls}" style="width:${(n/total*100).toFixed(1)}%" title="${n} ${escHtml(meta.label)}"></div>`)
     .join("");
   return `<div class="progress-wrap">${bars}</div>`;
 }
 
 function countChips(summary) {
-  const parts = [];
-  const checks = [
-    ["Published", "chip-published", summary.published || 0],
-    ["Ready for NCI", "chip-ready-for-nci", (summary.qc_pass || 0) + (summary.qc_warn || 0)],
-    ["QC checks", "chip-qc-checks", (summary.qc_fail || 0) + (summary.qc_pending || 0) + (summary.failed || 0)],
-    ["CMORised", "chip-cmorised", summary.cmorised || 0],
-    ["Planned", "chip-planned", (summary.planned || 0) + (summary.not_started || 0)],
-  ];
-  for (const [label, cls, n] of checks) {
-    if (n) parts.push(`<span class="chip ${cls}">${n} ${label}</span>`);
-  }
+  const parts = stateSegments(summary)
+    .filter(([,n]) => n > 0)
+    .map(([,n,meta]) =>
+      `<span class="chip chip-${meta.cls}" title="${escHtml(meta.label)}">${n} ${escHtml(meta.chip)}</span>`);
   return `<div class="count-chips">${parts.join("")}</div>`;
+}
+
+// Gate roll-up for one member: the strip, plus how many variables still have
+// an outstanding check.
+function gateRollup(summary, { note = true } = {}) {
+  const cmorised = STATE_PROGRESS
+    .filter(state => state !== "planned" && state !== "cmorise_failed")
+    .reduce((total, state) => total + (summary[state] || 0), 0);
+  if (!cmorised) return "";
+  const counts = summary.gates || {};
+  const outstanding = GATES.reduce(
+    (worst, { key }) => Math.max(worst, (counts[key] || {}).not_run || 0), 0);
+  const text = outstanding ? `${outstanding} unchecked` : "all checks recorded";
+  const strip = gateStrip(aggregateGateUnit(summary));
+  if (!note) {
+    return `<span class="gate-rollup" title="${escHtml(text)}">${strip}</span>`;
+  }
+  return `<span class="gate-rollup">${strip}<span class="gate-rollup-note">${escHtml(text)}</span></span>`;
 }
 
 // Above this many members, an experiment card switches from a detailed
 // table (one row per member) to a compact colour-coded matrix.
 const MEMBER_MATRIX_THRESHOLD = 6;
 
-function memberAggregateStage(summary) {
-  const buckets = {
-    planned:       (summary?.not_started || 0) + (summary?.planned || 0),
-    cmorised:      summary?.cmorised || 0,
-    qc_checks:     (summary?.qc_fail || 0) + (summary?.qc_pending || 0) + (summary?.failed || 0),
-    ready_for_nci: (summary?.qc_pass || 0) + (summary?.qc_warn || 0),
-    published:     summary?.published || 0,
-  };
-  let bestStage = "planned";
+// The state most of this member's variables are in. Ties favour the more
+// advanced state, so a member does not look stuck when half of it has moved on.
+function memberAggregateState(summary) {
+  let bestState = "planned";
   let bestCount = 0;
-  for (const stage of [...STAGE_PRIORITY].reverse()) {
-    const count = buckets[stage] || 0;
+  for (const state of [...STATE_PROGRESS].reverse()) {
+    const count = summary?.[state] || 0;
     if (count > bestCount) {
-      bestStage = stage;
+      bestState = state;
       bestCount = count;
     }
   }
-  return bestCount > 0 ? bestStage : "planned";
+  return bestCount > 0 ? bestState : "planned";
 }
 
 function memberShortLabel(member) {
@@ -498,31 +568,60 @@ function renderMemberMatrix(model, expId, members) {
     const key = `${model}/${expId}/${member}`;
     const summary = progress.summaries[key] || {};
     const total = summary.total_planned || 0;
-    const done = (summary.published || 0) + (summary.qc_pass || 0) + (summary.qc_warn || 0) + (summary.cmorised || 0);
-    const stage = memberAggregateStage(summary);
-    const s = STAGES[stage] || STAGES.planned;
+    const done = STATE_PROGRESS
+      .filter(state => state !== "planned" && state !== "cmorise_failed")
+      .reduce((sum, state) => sum + (summary[state] || 0), 0);
+    const state = memberAggregateState(summary);
+    const s = STATES[state];
+    const aggregate = aggregateGateUnit(summary);
     const completionPct = total ? Math.max(0, Math.min(100, (done / total) * 100)) : 0;
-    const title = `${member} — ${s.label}${total ? ` (${done}/${total})` : " (no report yet)"}`;
+    const title = total
+      ? `${member} — ${s.label} (${done}/${total} CMORised) · ${gateSummaryText(aggregate.gates)}`
+      : `${member} — no report yet`;
     return `<span class="member-cell cell-${s.cls}" title="${escHtml(title)}" data-model="${model}" data-exp="${expId}" data-member="${member}">
       <span class="member-cell-label">${escHtml(memberShortLabel(member))}</span>
+      ${gateStrip(aggregate, "xs")}
       <span class="member-cell-progress" style="width:${completionPct.toFixed(1)}%"></span>
     </span>`;
   }).join("");
   return `<div class="member-grid">${cells}</div>`;
 }
 
-function makeLegend(stages) {
-  return `<div class="legend">${stages.map(s => {
-    const st = STAGES[s] || {};
-    return `<span class="legend-item"><span class="legend-swatch cell-${st.cls}"></span>${st.label}</span>`;
-  }).join("")}</div>`;
+const DEFAULT_LEGEND_STATES = [
+  "planned","cmorise_failed","cmorised","blocked","ready_for_review","published"
+];
+
+function makeLegend(states = DEFAULT_LEGEND_STATES) {
+  const items = states.map(state => {
+    const st = STATES[state];
+    return `<span class="legend-item"><span class="legend-swatch cell-${st.cls}"></span>${escHtml(st.label)}</span>`;
+  }).join("");
+  return `<div class="legend">${items}</div>`;
+}
+
+// The gate key is a separate legend: the strip encodes a different axis from
+// the state colours, and conflating the two is what made the old stage ladder
+// unreadable.
+function makeGateLegend() {
+  const gateNames = GATES
+    .map(({ letter, label }) => `<strong>${letter}</strong> ${escHtml(label)}`)
+    .join(" · ");
+  const results = ["pass","warn","fail","not_run","implied"]
+    .map(result =>
+      `<span class="legend-item"><i class="gate gate-${result}"></i>${escHtml(GATE_RESULT_LABEL[result])}</span>`)
+    .join("");
+  return `<div class="legend legend-gates">
+    <span class="legend-title">Release gates ${gateNames}</span>
+    ${results}
+  </div>`;
 }
 
 // ── View: Overview ───────────────────────────────────────────────────────────
 function renderOverview(container) {
   const title = h("div", "view-title", "Submission Overview");
   const sub   = h("div", "view-sub",
-    "Each card = one experiment. Rows = ensemble members. Bars show pipeline stage breakdown.");
+    "Each card = one experiment. Rows = ensemble members. Bars break down by state; " +
+    "the strip shows which release gates the member has cleared.");
   container.appendChild(title);
   container.appendChild(sub);
 
@@ -539,7 +638,8 @@ function renderOverview(container) {
     <select id="overview-category">${buildOptions(["All categories", ...categoriesForModel(selModel)], selCategory)}</select>
   `;
   container.appendChild(controls);
-  container.appendChild(el(makeLegend(["planned","cmorised","qc_checks","ready_for_nci","published"])));
+  container.appendChild(el(makeLegend()));
+  container.appendChild(el(makeGateLegend()));
 
   const content = document.createElement("div");
   container.appendChild(content);
@@ -602,7 +702,7 @@ function renderOverview(container) {
         } else {
           const table = document.createElement("table");
           table.className = "members-table";
-          table.innerHTML = `<thead><tr><th>Member</th><th>Progress</th><th>Breakdown</th></tr></thead>`;
+          table.innerHTML = `<thead><tr><th>Member</th><th>Progress</th><th>Gates</th><th>Breakdown</th></tr></thead>`;
           const tbody = document.createElement("tbody");
 
           for (const member of members) {
@@ -613,6 +713,7 @@ function renderOverview(container) {
             tr.innerHTML = `
               <td><span class="member-label" data-model="${selModel}" data-exp="${expId}" data-member="${member}">${member}</span></td>
               <td>${progressBar(summary, total)}<span style="font-size:0.7rem;color:var(--text-muted)">${total}</span></td>
+              <td>${gateRollup(summary, { note: false })}</td>
               <td>${countChips(summary)}</td>
             `;
             tbody.appendChild(tr);
@@ -690,11 +791,14 @@ function renderExperimentDetail(container, preModel, preExp) {
   `;
 
   const title = h("div", "view-title", "Experiment Detail");
-  const sub   = h("div", "view-sub", "Rows = variables · Columns = ensemble members · Click a cell for details.");
+  const sub   = h("div", "view-sub",
+    "Rows = variables · Columns = ensemble members. A CMORised cell shows how many of its " +
+    "three release gates are cleared; hover for the breakdown.");
   container.appendChild(title);
   container.appendChild(sub);
   container.appendChild(controls);
-  container.appendChild(el(makeLegend(["planned","cmorised","qc_checks","ready_for_nci","published"])));
+  container.appendChild(el(makeLegend()));
+  container.appendChild(el(makeGateLegend()));
 
   const wrap = document.createElement("div");
   container.appendChild(wrap);
@@ -752,10 +856,7 @@ function renderExperimentDetail(container, preModel, preExp) {
       th.innerHTML = `<span class="variable-link" data-var="${escHtml(v)}">${variableLabelHtml(variableUnit)}</span>`;
       row.appendChild(th);
       for (const m of members) {
-        const u = byKey[`${v}__${m}`];
-        const stage = displayStage(u ? u.pipeline_stage : "planned");
-        const s = STAGES[stage] || STAGES.planned;
-        row.insertCell().outerHTML = `<td class="cell-${s.cls}" title="${s.label} — ${v} / ${m}">${s.symbol}</td>`;
+        row.insertCell().outerHTML = matrixCell(byKey[`${v}__${m}`], `${v} / ${m}`);
       }
     }
     scrollDiv.appendChild(table);
@@ -802,10 +903,12 @@ function renderMemberTimeline(container, preModel, preExp, preMember) {
   `;
 
   const title = h("div", "view-title", "Member Timeline");
-  const sub   = h("div", "view-sub", "All variables for a single (model, experiment, member) — ordered by overall progress.");
+  const sub   = h("div", "view-sub",
+    "All variables for a single (model, experiment, member) — what needs attention first.");
   container.appendChild(title);
   container.appendChild(sub);
   container.appendChild(controls);
+  container.appendChild(el(makeGateLegend()));
 
   const wrap = document.createElement("div");
   container.appendChild(wrap);
@@ -828,27 +931,34 @@ function renderMemberTimeline(container, preModel, preExp, preMember) {
     summaryDiv.innerHTML = `
       ${progressBar(summary, total)}
       <div style="margin-top:0.5rem">${countChips(summary)}</div>
+      <div style="margin-top:0.5rem">${gateRollup(summary)}</div>
     `;
     wrap.appendChild(summaryDiv);
 
-    // Sort by pipeline stage priority (worst first so failures are visible)
+    // Most urgent first, so a blocked check is never buried under finished work.
     const sorted = [...units].sort((a, b) =>
-      STAGE_PRIORITY.indexOf(displayStage(a.pipeline_stage)) - STAGE_PRIORITY.indexOf(displayStage(b.pipeline_stage))
+      STATE_ATTENTION.indexOf(stateOf(a)) - STATE_ATTENTION.indexOf(stateOf(b))
     );
 
     const scrollDiv = document.createElement("div");
     scrollDiv.className = "scroll";
     const table = document.createElement("table");
     table.className = "detail";
-    table.innerHTML = `<thead><tr><th>Variable</th><th>CMORisation</th><th>QC Checks</th><th>Publication</th></tr></thead>`;
+    table.innerHTML = `<thead><tr>
+      <th>Variable</th><th>CMORised</th><th>Release gates</th><th>State</th><th>Publication</th>
+    </tr></thead>`;
     const tbody = document.createElement("tbody");
     for (const u of sorted) {
-      const qcStatus = qcSimpleStatus(u);
+      const gates = gatesOf(u);
+      const cleared = u.cmorisation_status === "completed"
+        ? `<span class="gate-count">${gatesCleared(gates)}/${GATES.length}</span>`
+        : "";
       const tr = document.createElement("tr");
       tr.innerHTML = `
         <td>${variableLabelHtml(u)}</td>
         <td>${simpleStatusBadge(cmorSimpleStatus(u))}</td>
-        <td><span class="timeline-qc-cell" data-var="${escHtml(u.variable)}" title="Open variable pipeline for ${escHtml(u.variable)}">${simpleStatusBadge(qcStatus)}</span></td>
+        <td><span class="timeline-qc-cell" data-var="${escHtml(u.variable)}" title="Open variable pipeline for ${escHtml(u.variable)}">${gateStrip(u)}${cleared}</span></td>
+        <td>${stateBadge(u)}</td>
         <td>${simpleStatusBadge(publicationSimpleStatus(u))}</td>
       `;
       tbody.appendChild(tr);
@@ -916,7 +1026,7 @@ function renderVariablePipeline(container, selection) {
 
   const title = h("div", "view-title", "Variable Pipeline");
   const sub   = h("div", "view-sub",
-    "For one variable: pipeline stage across all (model, experiment, member) combinations.");
+    "For one variable: state and release gates across all (model, experiment, member) combinations.");
   container.appendChild(title);
   container.appendChild(sub);
   container.appendChild(controls);
@@ -984,16 +1094,14 @@ function renderVariablePipeline(container, selection) {
         th2.textContent = exp;
         row.appendChild(th2);
         for (const m of members) {
-          const u = byKey[`${model}__${exp}__${m}`];
-          const stage = displayStage(u ? u.pipeline_stage : "planned");
-          const s = STAGES[stage] || STAGES.planned;
-          row.insertCell().outerHTML = `<td class="cell-${s.cls}" title="${s.label} — ${exp}/${m}">${s.symbol}</td>`;
+          row.insertCell().outerHTML = matrixCell(byKey[`${model}__${exp}__${m}`], `${exp} / ${m}`);
         }
       }
     }
 
     scrollDiv.appendChild(table);
-    wrap.appendChild(el(makeLegend(["planned","cmorised","qc_checks","ready_for_nci","published"])));
+    wrap.appendChild(el(makeLegend()));
+    wrap.appendChild(el(makeGateLegend()));
     wrap.appendChild(scrollDiv);
   }
 

@@ -31,6 +31,8 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
+from qc_from_report import write_qc_record
+
 ROOT = Path(__file__).parent.parent
 
 
@@ -112,6 +114,20 @@ def ingest(
         f"{summary.get('completed', 0)} completed, "
         f"{summary.get('failed', 0)} failed"
     )
+
+    gate_outcome, gate_count = write_qc_record(
+        model,
+        exp_id,
+        member,
+        report,
+        source_report=report_path.name,
+        checked_by="ingest_report.py",
+    )
+    if gate_outcome == "absent":
+        print("  Gates    : none recorded in this report")
+    else:
+        print(f"  Gates    : {gate_outcome} qc.json for {gate_count} variable(s)")
+
     return dest
 
 

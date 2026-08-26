@@ -15,6 +15,7 @@ on:
     paths:
       - "plans/**"
       - "requests/**"
+      - "progress/**"
       - "schemas/**"
       - "scripts/**"
 
@@ -27,11 +28,15 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install dependencies
-        run: pip install pyyaml jsonschema
+        run: pip install pyyaml jsonschema pytest
+      - name: Run tests
+        run: pytest tests -q
       - name: Validate plan files
         run: python scripts/validate_plans.py
       - name: Validate submission requests
         run: python scripts/validate_requests.py
+      - name: Validate QC gate records
+        run: python scripts/validate_qc.py
       - name: Compile progress (dry-run)
         run: python scripts/compile_progress.py --output /tmp/progress.json
       - name: Upload compiled artefact

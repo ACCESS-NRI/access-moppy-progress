@@ -15,8 +15,8 @@ The expected source tree is what this rsync produces::
         --exclude='*' \\
         rb5533@gadi.nci.org.au:/scratch/p73/ESM1p6_CMORised/ ./ESM1p6_CMORised/
 
-Each run directory may hold several ``moppy_batch_report_<timestamp>.json``
-files; only the most recent one per (model, experiment, member) is ingested.
+Several ``moppy_batch_report_<timestamp>.json`` files may claim one
+(model, experiment, member); only the most recent of them is ingested.
 Identifiers come from the report itself, falling back to the sibling
 ``batch_config.yml`` for older reports that omit them, and are normalised
 against ``plans/*.yaml`` so that e.g. ``ACCESS-ESM1-6``/``esm-picontrol``
@@ -73,13 +73,35 @@ def load_plan_vocabulary() -> tuple[dict[str, str], dict[str, str]]:
     return models, experiments
 
 
-def report_timestamp(path: Path, report: dict) -> str:
-    """Sort key for picking the most recent report; created_at, else filename stamp."""
+def report_timestamp(path: Path, report: dict) -> datetime:
+    """When the report was produced: created_at, else the stamp in its filename.
+
+    Both forms are parsed to a datetime rather than compared as strings. They
+    sort against each other -- an ISO created_at and a bare filename stamp meet
+    whenever two run directories are weighed by recency -- and as text
+    "2026-08-19T06:41:39+00:00" sorts below "20260819T064139Z" whatever the
+    dates say, because "-" precedes "0". A report carrying neither form sorts
+    oldest, so any dated report outranks it.
+    """
     created = report.get("created_at")
     if created:
-        return created
+        try:
+            parsed = datetime.fromisoformat(str(created).replace("Z", "+00:00"))
+        except ValueError:
+            print(
+                f"WARNING: {path}: unparseable created_at {created!r}; "
+                "falling back to the filename stamp",
+                file=sys.stderr,
+            )
+        else:
+            return parsed if parsed.tzinfo else parsed.replace(tzinfo=timezone.utc)
+
     match = FILENAME_TS_RE.search(path.name)
-    return match.group(1) if match else ""
+    if match:
+        return datetime.strptime(match.group(1), "%Y%m%dT%H%M%SZ").replace(
+            tzinfo=timezone.utc
+        )
+    return datetime.min.replace(tzinfo=timezone.utc)
 
 
 def run_directory(path: Path, source: Path) -> Path:
@@ -160,21 +182,21 @@ def resolve_identity(
     return model, experiment, member
 
 
-def collect_latest(
-    source: Path, allow_collisions: bool = False
-) -> dict[tuple[str, str, str], tuple[Path, dict]]:
+def collect_latest(source: Path) -> dict[tuple[str, str, str], tuple[Path, dict]]:
     """Map (model, experiment, member) to the most recent report found under source.
 
-    Reruns of the same job land several reports in one run directory -- at its
-    top level or archived in a subdirectory of it -- and the newest wins. Two *different* run directories claiming the same identity is
-    ambiguous: it may be a legitimate rerun under a new directory, or a
-    copy-pasted experiment_id in batch_config.yml pointing a run at the wrong
-    record. Such keys are reported and skipped, so an unattended run never
-    silently overwrites one experiment's record with another's; pass
-    allow_collisions to take the most recent report instead.
+    The newest report wins, wherever it sits: reruns of the same job land
+    several reports in one run directory -- at its top level or archived in a
+    subdirectory of it -- and a job rerun under a fresh run directory carries
+    the identity over to that directory.
+
+    Several run directories claiming one identity is still worth a look, since
+    it can equally mean a copy-pasted experiment_id in batch_config.yml has
+    pointed a run at the wrong record. That is reported, naming the report
+    taken, rather than skipped.
     """
     models, experiments = load_plan_vocabulary()
-    latest: dict[tuple[str, str, str], tuple[str, Path, dict]] = {}
+    latest: dict[tuple[str, str, str], tuple[datetime, Path, dict]] = {}
     run_dirs: dict[tuple[str, str, str], set[Path]] = {}
 
     for path in sorted(source.rglob(REPORT_GLOB)):
@@ -200,15 +222,13 @@ def collect_latest(
         if len(dirs) > 1:
             model, experiment, member = identity
             listed = ", ".join(str(d) for d in sorted(dirs))
-            action = "COLLISION (using most recent)" if allow_collisions else "SKIP"
             print(
-                f"{action} {model}/{experiment}/{member}: claimed by {len(dirs)} run "
-                f"directories ({listed}). Check experiment_id/variant_label in each "
-                f"{CONFIG_NAME} on Gadi.",
+                f"COLLISION {model}/{experiment}/{member}: claimed by {len(dirs)} run "
+                f"directories ({listed}); taking the most recent report, "
+                f"{latest[identity][1]}. Check experiment_id/variant_label in each "
+                f"{CONFIG_NAME} on Gadi if that is not the intended run.",
                 file=sys.stderr,
             )
-            if not allow_collisions:
-                del latest[identity]
 
     return {identity: (path, report) for identity, (_, path, report) in latest.items()}
 
@@ -291,21 +311,13 @@ def main() -> None:
         action="store_true",
         help="Report what would change without writing anything",
     )
-    parser.add_argument(
-        "--allow-collisions",
-        action="store_true",
-        help=(
-            "When several run directories claim the same experiment/member, "
-            "ingest the most recent instead of skipping the combination"
-        ),
-    )
     args = parser.parse_args()
 
     if not args.source.is_dir():
         print(f"ERROR: source is not a directory: {args.source}", file=sys.stderr)
         sys.exit(1)
 
-    latest = collect_latest(args.source, allow_collisions=args.allow_collisions)
+    latest = collect_latest(args.source)
     if not latest:
         print(f"ERROR: no usable {REPORT_GLOB} found under {args.source}", file=sys.stderr)
         sys.exit(1)

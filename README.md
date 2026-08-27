@@ -266,14 +266,19 @@ Then add the contents of `gadi_dashboard_key` (the private file, including the
 variant_label)` from the report itself, falling back to the sibling
 `batch_config.yml` for older reports that omit them, and normalises the result
 against `plans/*.yaml` — so `ACCESS-ESM1-6` / `esm-picontrol` is written to
-`progress/ACCESS-ESM1.6/esm-piControl/`. Where one run directory holds several
-reports, the most recent wins.
+`progress/ACCESS-ESM1.6/esm-piControl/`.
 
-When two *different* run directories claim the same experiment and member, the
-combination is skipped and reported rather than guessed at, so a mislabelled
-`batch_config.yml` cannot silently overwrite another experiment's record. Fix
-the offending config on Gadi, or pass `--allow-collisions` to take the most
-recent report anyway.
+Where several reports claim one experiment and member, the most recent wins,
+wherever it sits — beside `batch_config.yml`, archived in a subdirectory of
+that run directory, or in a fresh run directory the job was rerun under. A
+report's date comes from its `created_at`, falling back to the stamp in its
+filename.
+
+Several *different* run directories claiming one experiment and member is
+still worth a look, since it can equally mean a copy-pasted `experiment_id` in
+`batch_config.yml` has pointed a run at the wrong record. That prints a
+`COLLISION` line naming the directories and the report taken; if it is not the
+intended run, fix the offending config on Gadi.
 
 ## Managing submissions (ingest, update, delete)
 

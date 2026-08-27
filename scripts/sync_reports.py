@@ -82,6 +82,23 @@ def report_timestamp(path: Path, report: dict) -> str:
     return match.group(1) if match else ""
 
 
+def run_directory(path: Path, source: Path) -> Path:
+    """The run directory owning ``path``: nearest ancestor holding a batch_config.yml.
+
+    A run directory often keeps superseded reports in a subdirectory of its own
+    (``<run>/archives/``). Those are the same run, so they must resolve to the
+    same directory as the live report beside ``batch_config.yml`` -- otherwise
+    an archived report looks like a second run laying claim to the identity, and
+    the collision check below drops the combination, newest report included.
+    """
+    for directory in (path.parent, *path.parent.parents):
+        if (directory / CONFIG_NAME).exists():
+            return directory
+        if directory == source:
+            break
+    return path.parent
+
+
 def read_batch_config(directory: Path) -> dict:
     """Identifier fields from the sibling batch_config.yml, or {} if unavailable."""
     config_path = directory / CONFIG_NAME
@@ -100,6 +117,7 @@ def resolve_identity(
     report: dict,
     models: dict[str, str],
     experiments: dict[str, str],
+    run_dir: Path | None = None,
 ) -> tuple[str, str, str] | None:
     """Resolve (model, experiment, member) for one report, or None if incomplete."""
     fields = ("source_id", "experiment_id", "variant_label")
@@ -110,7 +128,7 @@ def resolve_identity(
     # invent a combination that never ran.
     resolved = {field: report.get(field) for field in fields}
     if not all(resolved.values()):
-        config = read_batch_config(path.parent)
+        config = read_batch_config(run_dir if run_dir is not None else path.parent)
         resolved = {field: config.get(field) for field in fields}
 
     missing = [field for field, value in resolved.items() if not value]
@@ -147,8 +165,8 @@ def collect_latest(
 ) -> dict[tuple[str, str, str], tuple[Path, dict]]:
     """Map (model, experiment, member) to the most recent report found under source.
 
-    Reruns of the same job land several reports in one run directory, and the
-    newest wins. Two *different* run directories claiming the same identity is
+    Reruns of the same job land several reports in one run directory -- at its
+    top level or archived in a subdirectory of it -- and the newest wins. Two *different* run directories claiming the same identity is
     ambiguous: it may be a legitimate rerun under a new directory, or a
     copy-pasted experiment_id in batch_config.yml pointing a run at the wrong
     record. Such keys are reported and skipped, so an unattended run never
@@ -167,11 +185,12 @@ def collect_latest(
             print(f"SKIP {path}: unreadable ({exc})", file=sys.stderr)
             continue
 
-        identity = resolve_identity(path, report, models, experiments)
+        run_dir = run_directory(path, source)
+        identity = resolve_identity(path, report, models, experiments, run_dir)
         if identity is None:
             continue
 
-        run_dirs.setdefault(identity, set()).add(path.parent)
+        run_dirs.setdefault(identity, set()).add(run_dir)
         stamp = report_timestamp(path, report)
         current = latest.get(identity)
         if current is None or stamp > current[0]:

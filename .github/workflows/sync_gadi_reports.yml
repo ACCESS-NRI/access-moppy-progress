@@ -104,6 +104,9 @@ jobs:
         # directory happens to hold a file named --exclude=<something>.
         # MIP-DRS7/ (the CMORised output) and logs/ never hold reports; skipping
         # them spares rsync a walk of every output directory on /g/data.
+        # The action runs rsync in a root-owned container. Gadi directories are
+        # group-private, so -a alone makes incoming/ unreadable to later steps
+        # running as the GitHub runner user. Give copied reports readable modes.
         uses: up9cloud/action-rsync@v1.3
         env:
           MODE: pull
@@ -113,7 +116,7 @@ jobs:
           SOURCE: ${{ vars.GADI_INCOMING_PATH || '/g/data/im55/admin/incoming/' }}
           TARGET: ./incoming/
           ARGS: >-
-            -av --prune-empty-dirs
+            -av --prune-empty-dirs --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r
             --exclude='MIP-DRS7/'
             --exclude='logs/'
             --include='*/'

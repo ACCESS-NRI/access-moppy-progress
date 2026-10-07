@@ -229,7 +229,7 @@ Each run:
    `/g/data/im55/admin/incoming/` on Gadi — the same command used manually:
 
    ```bash
-   rsync -av --prune-empty-dirs \
+   rsync -av --prune-empty-dirs --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r \
        --exclude='MIP-DRS7/' --exclude='logs/' \
        --include='*/' \
        --include='batch_config.yml' \

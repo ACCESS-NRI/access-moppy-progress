@@ -225,7 +225,14 @@ def _merge_publication_status(current: str | None, new: str | None) -> str | Non
 
 
 def _effective_publication_status(cmor_status: str | None, pub_status: str | None) -> str:
-    """Publication cannot outrun CMOR completion."""
+    """Publication cannot outrun CMOR completion.
+
+    The exception is a variable with no CMORisation record at all: output in
+    the NCI publication tree is published whether or not the report of the
+    run that produced it is still on file.
+    """
+    if cmor_status is None and pub_status == "published":
+        return pub_status
     if cmor_status != "completed":
         return "not_published"
     return pub_status or "not_published"
@@ -481,10 +488,14 @@ def _compile_unit_summary(
             cmor_status = cmor_by_branded.get(cmip7_name)
         if cmor_status is None:
             cmor_status = cmor_by_branded.get(request_name) or cmor_by_branded.get(short_name)
-        pub_status = _effective_publication_status(
-            cmor_status,
-            pub_by_var.get(short_name, pub_by_var.get(request_name)),
-        )
+        # Branded name first: a short name such as "tas" is shared by every
+        # frequency, so it only identifies the variable in hand-written records.
+        recorded_pub = None
+        for key in (cmip7_name, request_name, short_name):
+            if key and key in pub_by_var:
+                recorded_pub = pub_by_var[key]
+                break
+        pub_status = _effective_publication_status(cmor_status, recorded_pub)
 
         qc_entry = None
         for key in (cmip7_name, request_name, short_name):

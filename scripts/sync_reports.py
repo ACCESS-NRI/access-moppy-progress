@@ -8,7 +8,7 @@ Bulk-ingests a tree of MOPPy batch reports rsynced from Gadi into the
 
 The expected source tree is what this rsync produces::
 
-    rsync -av --prune-empty-dirs \\
+    rsync -av --prune-empty-dirs --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r \\
         --exclude='MIP-DRS7/' --exclude='logs/' \\
         --include='*/' \\
         --include='batch_config.yml' \\

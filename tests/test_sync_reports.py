@@ -13,7 +13,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
-from sync_reports import collect_latest, run_directory  # noqa: E402
+from sync_reports import collect_latest, latest_delivery, run_directory  # noqa: E402
 
 IDENTITY = ("ACCESS-ESM1.6", "1pctCO2", "r1i1p1f1")
 
@@ -149,3 +149,22 @@ def test_run_directory_falls_back_to_the_reports_own_directory(tmp_path):
     path = _report(stray, "20260827T053037Z")
 
     assert run_directory(path, tmp_path) == stray
+
+
+
+def test_only_the_most_recent_delivery_folder_is_read(tmp_path):
+    """Older dated deliveries are ignored, even for experiments the newest lacks."""
+    _report(_run_dir(tmp_path / "20260914", "1pctCO2"), "20261001T000000Z")
+    newest = tmp_path / "20260930"
+    _report(newest / "piControl", "20261002T000000Z", experiment_id="piControl")
+
+    assert latest_delivery(tmp_path) == newest
+    collected = collect_latest(latest_delivery(tmp_path))
+
+    assert set(collected) == {("ACCESS-ESM1.6", "piControl", "r1i1p1f1")}
+
+
+def test_a_source_without_dated_folders_is_read_whole(tmp_path):
+    _run_dir(tmp_path, "1pctCO2-01")
+
+    assert latest_delivery(tmp_path) == tmp_path

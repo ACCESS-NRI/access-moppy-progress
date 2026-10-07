@@ -9,12 +9,16 @@ Bulk-ingests a tree of MOPPy batch reports rsynced from Gadi into the
 The expected source tree is what this rsync produces::
 
     rsync -av --prune-empty-dirs \\
+        --exclude='MIP-DRS7/' --exclude='logs/' \\
         --include='*/' \\
         --include='batch_config.yml' \\
         --include='moppy_batch_report_*.json' \\
         --exclude='*' \\
-        rb5533@gadi.nci.org.au:/scratch/p73/ESM1p6_CMORised/ ./ESM1p6_CMORised/
+        rb5533@gadi.nci.org.au:/g/data/im55/admin/incoming/ ./incoming/
 
+Runs are delivered into dated folders, ``incoming/<YYYYMMDD>/<run>/``.
+Only the most recent dated folder is read: each delivery is a fresh start,
+and records under ``progress/`` for experiments it does not carry are removed.
 Several ``moppy_batch_report_<timestamp>.json`` files may claim one
 (model, experiment, member); only the most recent of them is ingested.
 Identifiers come from the report itself, falling back to the sibling
@@ -27,8 +31,8 @@ content actually changed, so re-running produces no spurious diffs.
 
 Usage
 -----
-    python scripts/sync_reports.py --source ESM1p6_CMORised
-    python scripts/sync_reports.py --source ESM1p6_CMORised --dry-run
+    python scripts/sync_reports.py --source incoming
+    python scripts/sync_reports.py --source incoming --dry-run
 """
 from __future__ import annotations
 
@@ -49,6 +53,7 @@ REPORT_GLOB = "moppy_batch_report_*.json"
 CONFIG_NAME = "batch_config.yml"
 MEMBER_RE = re.compile(r"^r\d+i\d+p\d+f\d+$")
 FILENAME_TS_RE = re.compile(r"moppy_batch_report_(\d{8}T\d{6}Z)\.json$")
+DELIVERY_RE = re.compile(r"^\d{8}$")
 
 
 def canonical_key(value: str) -> str:
@@ -102,6 +107,20 @@ def report_timestamp(path: Path, report: dict) -> datetime:
             tzinfo=timezone.utc
         )
     return datetime.min.replace(tzinfo=timezone.utc)
+
+
+def latest_delivery(source: Path) -> Path:
+    """The most recent dated delivery folder (``YYYYMMDD``) under source.
+
+    Runs are copied into ``<source>/<YYYYMMDD>/`` as they are delivered, and
+    the newest delivery replaces every earlier one outright. A source with no
+    dated folders is read as a whole.
+    """
+    deliveries = sorted(
+        child for child in source.iterdir()
+        if child.is_dir() and DELIVERY_RE.match(child.name)
+    )
+    return deliveries[-1] if deliveries else source
 
 
 def run_directory(path: Path, source: Path) -> Path:
@@ -296,6 +315,42 @@ def write_gates(
     return outcome
 
 
+def prune_stale(keep: set[tuple[str, str, str]], dry_run: bool) -> int:
+    """Remove synced records for identities absent from the current delivery.
+
+    Only what this script writes is removed: every cmorisation.json, and a
+    qc.json only when sync_reports.py produced it, so hand-recorded QC and
+    publication records survive. A member with a publication.json is kept
+    whole: once NCI approves a delivery its output moves out of incoming/, and
+    its last report is still the record of how that output was produced.
+    Returns the number of members pruned.
+    """
+    pruned = 0
+    progress = ROOT / "progress"
+    for report_path in sorted(progress.glob("*/*/*/cmorisation.json")):
+        member_dir = report_path.parent
+        identity = tuple(member_dir.relative_to(progress).parts)
+        if identity in keep or (member_dir / "publication.json").exists():
+            continue
+
+        stale = [report_path]
+        qc_path = member_dir / "qc.json"
+        if qc_path.exists():
+            try:
+                with qc_path.open() as fh:
+                    if json.load(fh).get("checked_by") == "sync_reports.py":
+                        stale.append(qc_path)
+            except (OSError, json.JSONDecodeError):
+                pass
+
+        if not dry_run:
+            for path in stale:
+                path.unlink()
+        print(f"removed   {'/'.join(identity)}  (not in the current delivery)")
+        pruned += 1
+    return pruned
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Ingest a rsynced tree of MOPPy batch reports into progress/"
@@ -304,7 +359,7 @@ def main() -> None:
         "--source",
         required=True,
         type=Path,
-        help="Directory holding the rsynced Gadi tree, e.g. ESM1p6_CMORised",
+        help="Directory holding the rsynced Gadi tree, e.g. incoming",
     )
     parser.add_argument(
         "--dry-run",
@@ -317,9 +372,11 @@ def main() -> None:
         print(f"ERROR: source is not a directory: {args.source}", file=sys.stderr)
         sys.exit(1)
 
-    latest = collect_latest(args.source)
+    delivery = latest_delivery(args.source)
+    print(f"Reading delivery {delivery}")
+    latest = collect_latest(delivery)
     if not latest:
-        print(f"ERROR: no usable {REPORT_GLOB} found under {args.source}", file=sys.stderr)
+        print(f"ERROR: no usable {REPORT_GLOB} found under {delivery}", file=sys.stderr)
         sys.exit(1)
 
     counts = {"created": 0, "updated": 0, "unchanged": 0}
@@ -334,6 +391,7 @@ def main() -> None:
         f"{counts['created']} created, {counts['updated']} updated, "
         f"{counts['unchanged']} unchanged."
     )
+    print(f"{prune_stale(set(latest), args.dry_run)} stale record(s) removed.")
     print(
         f"Release gates: {gate_counts['created']} created, "
         f"{gate_counts['updated']} updated, {gate_counts['unchanged']} unchanged, "

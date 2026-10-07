@@ -147,11 +147,12 @@ progress/                       # Ingested runtime reports
       <member>/
         cmorisation.json        ← from moppy_batch_report.json (via ingest_report.py)
         qc.json                 ← release gate results (schemas/qc.schema.json)
-        publication.json        ← manually updated or ESGF API script
+        publication.json        ← from /g/data/im55/publications (via sync_publications.py), or by hand
 schemas/                        # JSON Schemas for validation
 scripts/
   ingest_report.py              # Place a batch report into the hierarchy
   sync_reports.py               # Bulk-ingest a tree of reports rsynced from Gadi
+  sync_publications.py          # Mark variables published from the NCI publication tree
   compile_progress.py           # Build dashboard/progress.json
   qc_from_report.py             # Extract release gates from a batch report
   validate_plans.py             # Validate plans/*.yaml
@@ -213,28 +214,38 @@ CI will recompile `progress.json` and redeploy the dashboard automatically.
 ## Automated nightly sync from Gadi
 
 `sync_gadi_reports.yml` keeps the dashboard current without manual ingestion. It
-runs at **00:00 Australia/Brisbane** (`0 14 * * *` UTC — Brisbane has no daylight
+runs at **00:23 Australia/Brisbane** (`23 14 * * *` UTC — Brisbane has no daylight
 saving) and can also be triggered by hand from the **Actions** tab, with an
 optional `dry_run` input that rsyncs and reports what would change without
 committing.
 
 Each run:
 
-1. Rsyncs `batch_config.yml` and `moppy_batch_report_*.json` from
-   `/scratch/p73/ESM1p6_CMORised/` on Gadi — the same command used manually:
+1. Lists the directories holding output under `/g/data/im55/publications/`.
+   NCI moves an approved delivery there from `admin/incoming/`, so everything
+   in it is published; `scripts/sync_publications.py` marks those variables
+   `published` in each member's `publication.json`.
+2. Rsyncs `batch_config.yml` and `moppy_batch_report_*.json` from
+   `/g/data/im55/admin/incoming/` on Gadi — the same command used manually:
 
    ```bash
    rsync -av --prune-empty-dirs \
+       --exclude='MIP-DRS7/' --exclude='logs/' \
        --include='*/' \
        --include='batch_config.yml' \
        --include='moppy_batch_report_*.json' \
        --exclude='*' \
-       <user>@gadi.nci.org.au:/scratch/p73/ESM1p6_CMORised/ ./ESM1p6_CMORised/
+       <user>@gadi.nci.org.au:/g/data/im55/admin/incoming/ ./incoming/
    ```
 
-2. Runs `scripts/sync_reports.py` to ingest the tree into `progress/`.
-3. Recompiles `progress.json` as a sanity check.
-4. Commits and pushes to `main` **only if `progress/` actually changed**, then
+   Runs are delivered into dated folders, `incoming/<YYYYMMDD>/<run>/`. Only
+   the **most recent dated folder** is read: each delivery is a fresh start, and
+   records for experiments it does not carry are removed from `progress/` —
+   except published ones, which keep their last report.
+
+3. Runs `scripts/sync_reports.py` to ingest the newest delivery into `progress/`.
+4. Recompiles `progress.json` as a sanity check.
+5. Commits and pushes to `main` **only if `progress/` actually changed**, then
    dispatches `build_dashboard.yml` to redeploy the dashboard.
 
 Nothing is committed when the reports are unchanged: `sync_reports.py` compares
@@ -247,7 +258,8 @@ re-running produces no diff.
 |---|---|---|
 | Secret | `GADI_USER` | NCI username, e.g. `rb5533` |
 | Secret | `DEPLOY_KEY` | Private half of a passphrase-less SSH key whose public half is in `~/.ssh/authorized_keys` on Gadi |
-| Secret (optional) | `GADI_DATA_PATH` | Source path to sync; defaults to `/scratch/p73/ESM1p6_CMORised/` |
+| Variable (optional) | `GADI_INCOMING_PATH` | Source path to sync; defaults to `/g/data/im55/admin/incoming/` |
+| Variable (optional) | `GADI_PUBLICATIONS_PATH` | Publication tree to list; defaults to `/g/data/im55/publications` |
 
 Generate and install the key with:
 
@@ -486,9 +498,15 @@ scripts/gadi_manage_submission.sh \
 
 ## Updating publication status
 
-Edit `progress/<model>/<experiment>/<member>/publication.json` directly.
-The file follows `schemas/publication.schema.json`. Commit and push — the
-dashboard updates on the next CI run.
+Publication status is synced nightly from `/g/data/im55/publications/` (see
+[Automated nightly sync from Gadi](#automated-nightly-sync-from-gadi)). A
+variable is matched by its MIP-DRS7 path back to its branded name, and is
+`published` for as long as its output stays in that tree.
+
+To record a status by hand instead — `publishing` or `retracted`, say — edit
+`progress/<model>/<experiment>/<member>/publication.json` directly, following
+`schemas/publication.schema.json`. The sync never overwrites a record whose
+`updated_by` is anything other than `sync_publications.py`.
 
 ## Local development
 

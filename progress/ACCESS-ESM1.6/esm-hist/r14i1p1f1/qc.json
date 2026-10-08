@@ -1,0 +1,3242 @@
+{
+  "schema_version": "access-moppy.qc.v1",
+  "model": "ACCESS-ESM1.6",
+  "experiment_id": "esm-hist",
+  "variant_label": "r14i1p1f1",
+  "checked_at": "2026-10-08T20:04:12+00:00",
+  "checked_by": "sync_reports.py",
+  "source_report": "moppy_batch_report_20261008T181618Z.json",
+  "variables": {
+    "atmos.areacella.ti-u-hxy-u.fx.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          100000000000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          79026785.62471725,
+          28978280872.519714
+        ],
+        "result": "pass",
+        "units": "m2"
+      },
+      "repack": {
+        "message": "cmip7repack left areacella uncompressed (chunking contiguous, filters {'zlib': False, 'szip': False, 'zstd': False, 'bzip2': False, 'blosc': False, 'shuffle': False, 'complevel': 0, 'fletcher32': False})",
+        "result": "warn",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_areacella_ti-u-hxy-u_fx_glb/compliance_areacella_ti-u-hxy-u_fx_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:35:39+00:00"
+      }
+    },
+    "land.mrsofc.ti-u-hxy-lnd.fx.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          10000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          1.1998010633792244
+        ],
+        "result": "pass",
+        "units": "kg m-2"
+      },
+      "repack": {
+        "message": "cmip7repack left mrsofc uncompressed (chunking contiguous, filters {'zlib': False, 'szip': False, 'zstd': False, 'bzip2': False, 'blosc': False, 'shuffle': False, 'complevel': 0, 'fletcher32': False})",
+        "result": "warn",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/land_mrsofc_ti-u-hxy-lnd_fx_glb/compliance_mrsofc_ti-u-hxy-lnd_fx_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:34:14+00:00"
+      }
+    },
+    "land.orog.ti-u-hxy-u.fx.glb": {
+      "range": {
+        "allowed": [
+          -500.0,
+          9000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -230.0431365966797,
+          5499.869140625
+        ],
+        "result": "pass",
+        "units": "m"
+      },
+      "repack": {
+        "message": "cmip7repack left orog uncompressed (chunking contiguous, filters {'zlib': False, 'szip': False, 'zstd': False, 'bzip2': False, 'blosc': False, 'shuffle': False, 'complevel': 0, 'fletcher32': False})",
+        "result": "warn",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/land_orog_ti-u-hxy-u_fx_glb/compliance_orog_ti-u-hxy-u_fx_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:34:06+00:00"
+      }
+    },
+    "land.rootd.ti-u-hxy-lnd.fx.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          20.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          4.6
+        ],
+        "result": "pass",
+        "units": "m"
+      },
+      "repack": {
+        "message": "cmip7repack left rootd uncompressed (chunking contiguous, filters {'zlib': False, 'szip': False, 'zstd': False, 'bzip2': False, 'blosc': False, 'shuffle': False, 'complevel': 0, 'fletcher32': False})",
+        "result": "warn",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/land_rootd_ti-u-hxy-lnd_fx_glb/compliance_rootd_ti-u-hxy-lnd_fx_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:34:39+00:00"
+      }
+    },
+    "land.sftgif.ti-u-hxy-u.fx.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          100.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          100.0
+        ],
+        "result": "pass",
+        "units": "%"
+      },
+      "repack": {
+        "message": "cmip7repack left sftgif uncompressed (chunking contiguous, filters {'zlib': False, 'szip': False, 'zstd': False, 'bzip2': False, 'blosc': False, 'shuffle': False, 'complevel': 0, 'fletcher32': False})",
+        "result": "warn",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/land_sftgif_ti-u-hxy-u_fx_glb/compliance_sftgif_ti-u-hxy-u_fx_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:34:01+00:00"
+      }
+    },
+    "atmos.sftlf.ti-u-hxy-u.fx.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          100.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          100.0
+        ],
+        "result": "pass",
+        "units": "%"
+      },
+      "repack": {
+        "message": "cmip7repack left sftlf uncompressed (chunking contiguous, filters {'zlib': False, 'szip': False, 'zstd': False, 'bzip2': False, 'blosc': False, 'shuffle': False, 'complevel': 0, 'fletcher32': False})",
+        "result": "warn",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_sftlf_ti-u-hxy-u_fx_glb/compliance_sftlf_ti-u-hxy-u_fx_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:33:28+00:00"
+      }
+    },
+    "land.slthick.ti-sl-hxy-lnd.fx.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          100.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          2.871999979019165
+        ],
+        "result": "pass",
+        "units": "m"
+      },
+      "repack": {
+        "message": "cmip7repack left slthick uncompressed (chunking contiguous, filters {'zlib': False, 'szip': False, 'zstd': False, 'bzip2': False, 'blosc': False, 'shuffle': False, 'complevel': 0, 'fletcher32': False})",
+        "result": "warn",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/land_slthick_ti-sl-hxy-lnd_fx_glb/compliance_slthick_ti-sl-hxy-lnd_fx_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:34:29+00:00"
+      }
+    },
+    "ocean.areacello.ti-u-hxy-u.fx.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          100000000000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          655465600.0,
+          10841903104.0
+        ],
+        "result": "pass",
+        "units": "m2"
+      },
+      "repack": {
+        "message": "cmip7repack left areacello uncompressed (chunking contiguous, filters {'zlib': False, 'szip': False, 'zstd': False, 'bzip2': False, 'blosc': False, 'shuffle': False, 'complevel': 0, 'fletcher32': False})",
+        "result": "warn",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/ocean_areacello_ti-u-hxy-u_fx_glb/compliance_areacello_ti-u-hxy-u_fx_glb_g118_ACCESS-ESM1-6_esm-hist_r14i1p1f1.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:34:52+00:00"
+      }
+    },
+    "ocean.basin.ti-u-hxy-u.fx.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          10.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          10.0
+        ],
+        "result": "pass",
+        "units": "1"
+      },
+      "repack": {
+        "message": "cmip7repack left basin uncompressed (chunking contiguous, filters {'zlib': False, 'szip': False, 'zstd': False, 'bzip2': False, 'blosc': False, 'shuffle': False, 'complevel': 0, 'fletcher32': False})",
+        "result": "warn",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/ocean_basin_ti-u-hxy-u_fx_glb/compliance_basin_ti-u-hxy-u_fx_glb_g118_ACCESS-ESM1-6_esm-hist_r14i1p1f1.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:34:28+00:00"
+      }
+    },
+    "ocean.deptho.ti-u-hxy-sea.fx.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          12000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          45.11148452758789,
+          6000.0
+        ],
+        "result": "pass",
+        "units": "m"
+      },
+      "repack": {
+        "message": "cmip7repack left deptho uncompressed (chunking contiguous, filters {'zlib': False, 'szip': False, 'zstd': False, 'bzip2': False, 'blosc': False, 'shuffle': False, 'complevel': 0, 'fletcher32': False})",
+        "result": "warn",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/ocean_deptho_ti-u-hxy-sea_fx_glb/compliance_deptho_ti-u-hxy-sea_fx_glb_g118_ACCESS-ESM1-6_esm-hist_r14i1p1f1.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:33:57+00:00"
+      }
+    },
+    "ocean.hfgeou.ti-u-hxy-sea.fx.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          10.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          0.0
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "message": "cmip7repack left hfgeou uncompressed (chunking contiguous, filters {'zlib': False, 'szip': False, 'zstd': False, 'bzip2': False, 'blosc': False, 'shuffle': False, 'complevel': 0, 'fletcher32': False})",
+        "result": "warn",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/ocean_hfgeou_ti-u-hxy-sea_fx_glb/compliance_hfgeou_ti-u-hxy-sea_fx_glb_g118_ACCESS-ESM1-6_esm-hist_r14i1p1f1.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:33:36+00:00"
+      }
+    },
+    "ocean.sftof.ti-u-hxy-u.fx.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          100.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          100.0
+        ],
+        "result": "pass",
+        "units": "%"
+      },
+      "repack": {
+        "message": "cmip7repack left sftof uncompressed (chunking contiguous, filters {'zlib': False, 'szip': False, 'zstd': False, 'bzip2': False, 'blosc': False, 'shuffle': False, 'complevel': 0, 'fletcher32': False})",
+        "result": "warn",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/ocean_sftof_ti-u-hxy-u_fx_glb/compliance_sftof_ti-u-hxy-u_fx_glb_g118_ACCESS-ESM1-6_esm-hist_r14i1p1f1.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:35:03+00:00"
+      }
+    },
+    "atmos.cl.tavg-al-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          100.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          99.99966430664062
+        ],
+        "result": "pass",
+        "units": "%"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_cl_tavg-al-hxy-u_mon_glb/compliance_cl_tavg-al-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:48:15+00:00"
+      }
+    },
+    "atmos.cli.tavg-al-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          0.02
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          5.978113040328026e-05
+        ],
+        "result": "pass",
+        "units": "kg kg-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_cli_tavg-al-hxy-u_mon_glb/compliance_cli_tavg-al-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:49:20+00:00"
+      }
+    },
+    "atmos.clivi.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          1000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          1.014711856842041
+        ],
+        "result": "pass",
+        "units": "kg m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_clivi_tavg-u-hxy-u_mon_glb/compliance_clivi_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:36:29+00:00"
+      }
+    },
+    "atmos.clt.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          100.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          100.0
+        ],
+        "result": "pass",
+        "units": "%"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_clt_tavg-u-hxy-u_mon_glb/compliance_clt_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:48:42+00:00"
+      }
+    },
+    "atmos.clw.tavg-al-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          0.02
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          5.91344251006376e-05
+        ],
+        "result": "pass",
+        "units": "kg kg-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_clw_tavg-al-hxy-u_mon_glb/compliance_clw_tavg-al-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:47:02+00:00"
+      }
+    },
+    "atmos.clwvi.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          1000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          1.3083635568618774
+        ],
+        "result": "pass",
+        "units": "kg m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_clwvi_tavg-u-hxy-u_mon_glb/compliance_clwvi_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:50:05+00:00"
+      }
+    },
+    "atmos.evspsbl.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -0.05,
+          0.05
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -2.445164864184335e-05,
+          0.0002104571321979165
+        ],
+        "result": "pass",
+        "units": "kg m-2 s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_evspsbl_tavg-u-hxy-u_mon_glb/compliance_evspsbl_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:35:08+00:00"
+      }
+    },
+    "atmos.hfls.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -5000.0,
+          5000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -61.15357208251953,
+          526.353271484375
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_hfls_tavg-u-hxy-u_mon_glb/compliance_hfls_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:34:55+00:00"
+      }
+    },
+    "atmos.hfss.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -5000.0,
+          5000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -78.74102783203125,
+          442.4535217285156
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_hfss_tavg-u-hxy-u_mon_glb/compliance_hfss_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:35:45+00:00"
+      }
+    },
+    "atmos.hur.tavg-p19-hxy-air.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          100.0
+        ],
+        "check_id": "cmip7_ranges",
+        "message": "CMIP7 QC range warning for hur in experiment esm-hist using rule default: observed range 0.000..123.011 % is outside allowed range 0.000..100.000 %.",
+        "observed": [
+          0.00022233492927625775,
+          123.01105499267578
+        ],
+        "result": "warn",
+        "units": "%"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_hur_tavg-p19-hxy-air_mon_glb/compliance_hur_tavg-p19-hxy-air_mon_glb_g110_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:36:04+00:00"
+      }
+    },
+    "atmos.hurs.tavg-h2m-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          100.0
+        ],
+        "check_id": "cmip7_ranges",
+        "message": "CMIP7 QC range warning for hurs in experiment esm-hist using rule default: observed range 4.921..182.757 % is outside allowed range 0.000..100.000 %.",
+        "observed": [
+          4.0333051681518555,
+          182.75697326660156
+        ],
+        "result": "warn",
+        "units": "%"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_hurs_tavg-h2m-hxy-u_mon_glb/compliance_hurs_tavg-h2m-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:34:25+00:00"
+      }
+    },
+    "atmos.hus.tavg-p19-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          0.08
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          9.494856954006536e-07,
+          0.022929217666387558
+        ],
+        "result": "pass",
+        "units": "1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_hus_tavg-p19-hxy-u_mon_glb/compliance_hus_tavg-p19-hxy-u_mon_glb_g110_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:35:54+00:00"
+      }
+    },
+    "atmos.huss.tavg-h2m-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          0.08
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          4.816095497517381e-06,
+          0.02712852880358696
+        ],
+        "result": "pass",
+        "units": "1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_huss_tavg-h2m-hxy-u_mon_glb/compliance_huss_tavg-h2m-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:47:41+00:00"
+      }
+    },
+    "atmos.pr.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          0.1
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -1.0503881400839242e-25,
+          0.0010199537500739098
+        ],
+        "result": "pass",
+        "units": "kg m-2 s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_pr_tavg-u-hxy-u_mon_glb/compliance_pr_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:39:27+00:00"
+      }
+    },
+    "atmos.prc.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          0.1
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -1.9889112926052555e-11,
+          0.0008812478627078235
+        ],
+        "result": "pass",
+        "units": "kg m-2 s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_prc_tavg-u-hxy-u_mon_glb/compliance_prc_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:51:54+00:00"
+      }
+    },
+    "atmos.prsn.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          0.1
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -6.489597053414311e-23,
+          0.00047058225027285516
+        ],
+        "result": "pass",
+        "units": "kg m-2 s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_prsn_tavg-u-hxy-u_mon_glb/compliance_prsn_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:38:49+00:00"
+      }
+    },
+    "atmos.prw.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          150.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.07177734375,
+          81.2763671875
+        ],
+        "result": "pass",
+        "units": "kg m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_prw_tavg-u-hxy-u_mon_glb/compliance_prw_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:52:34+00:00"
+      }
+    },
+    "atmos.ps.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          30000.0,
+          120000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          50180.09765625,
+          105822.1328125
+        ],
+        "result": "pass",
+        "units": "Pa"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_ps_tavg-u-hxy-u_mon_glb/compliance_ps_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:39:42+00:00"
+      }
+    },
+    "atmos.psl.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          80000.0,
+          110000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          96072.2421875,
+          105260.5703125
+        ],
+        "result": "pass",
+        "units": "Pa"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_psl_tavg-u-hxy-u_mon_glb/compliance_psl_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:40:46+00:00"
+      }
+    },
+    "atmos.rlds.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -100.0,
+          1500.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          54.451297760009766,
+          487.061767578125
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_rlds_tavg-u-hxy-u_mon_glb/compliance_rlds_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:38:43+00:00"
+      }
+    },
+    "atmos.rldscs.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -100.0,
+          1500.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          49.11016845703125,
+          484.5540466308594
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_rldscs_tavg-u-hxy-u_mon_glb/compliance_rldscs_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:38:47+00:00"
+      }
+    },
+    "atmos.rlus.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -100.0,
+          1500.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          84.21195983886719,
+          594.7012939453125
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_rlus_tavg-u-hxy-u_mon_glb/compliance_rlus_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:55:25+00:00"
+      }
+    },
+    "atmos.rluscs.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -100.0,
+          1500.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          90.31390380859375,
+          367.8013000488281
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_rluscs_tavg-u-hxy-u_mon_glb/compliance_rluscs_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:39:33+00:00"
+      }
+    },
+    "atmos.rlut.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -100.0,
+          1500.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          91.68120574951172,
+          368.06353759765625
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_rlut_tavg-u-hxy-u_mon_glb/compliance_rlut_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:45:19+00:00"
+      }
+    },
+    "atmos.rlutcs.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -100.0,
+          1500.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          90.31390380859375,
+          367.8013000488281
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_rlutcs_tavg-u-hxy-u_mon_glb/compliance_rlutcs_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T14:43:46+00:00"
+      }
+    },
+    "atmos.rsds.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -100.0,
+          1500.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          474.93212890625
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_rsds_tavg-u-hxy-u_mon_glb/compliance_rsds_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:07:13+00:00"
+      }
+    },
+    "atmos.rsdscs.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -100.0,
+          1500.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          485.1861572265625
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_rsdscs_tavg-u-hxy-u_mon_glb/compliance_rsdscs_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:08:11+00:00"
+      }
+    },
+    "atmos.rsdt.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          1500.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          550.59130859375
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_rsdt_tavg-u-hxy-u_mon_glb/compliance_rsdt_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:09:51+00:00"
+      }
+    },
+    "atmos.rsus.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -100.0,
+          1500.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          362.18939208984375
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_rsus_tavg-u-hxy-u_mon_glb/compliance_rsus_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:19:55+00:00"
+      }
+    },
+    "atmos.rsuscs.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -100.0,
+          1500.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          369.8774108886719
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_rsuscs_tavg-u-hxy-u_mon_glb/compliance_rsuscs_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:10:00+00:00"
+      }
+    },
+    "atmos.rsut.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -100.0,
+          1500.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          378.3299865722656
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_rsut_tavg-u-hxy-u_mon_glb/compliance_rsut_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:11:43+00:00"
+      }
+    },
+    "atmos.rsutcs.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -100.0,
+          1500.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          377.7424621582031
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_rsutcs_tavg-u-hxy-u_mon_glb/compliance_rsutcs_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:09:47+00:00"
+      }
+    },
+    "atmos.sfcWind.tavg-h10m-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          150.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.40892481803894043,
+          22.329702377319336
+        ],
+        "result": "pass",
+        "units": "m s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_sfcWind_tavg-h10m-hxy-u_mon_glb/compliance_sfcWind_tavg-h10m-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:11:31+00:00"
+      }
+    },
+    "atmos.ta.tavg-p19-hxy-air.mon.glb": {
+      "range": {
+        "allowed": [
+          150.0,
+          350.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          150.5915069580078,
+          312.51275634765625
+        ],
+        "result": "pass",
+        "units": "K"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_ta_tavg-p19-hxy-air_mon_glb/compliance_ta_tavg-p19-hxy-air_mon_glb_g110_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:10:55+00:00"
+      }
+    },
+    "atmos.tas.tavg-h2m-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          180.0,
+          330.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          201.98394775390625,
+          314.10736083984375
+        ],
+        "result": "pass",
+        "units": "K"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_tas_tavg-h2m-hxy-u_mon_glb/compliance_tas_tavg-h2m-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:08:41+00:00"
+      }
+    },
+    "atmos.tas.tmaxavg-h2m-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          180.0,
+          330.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          204.5541229248047,
+          320.27398681640625
+        ],
+        "result": "pass",
+        "units": "K"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_tas_tmaxavg-h2m-hxy-u_mon_glb/compliance_tas_tmaxavg-h2m-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:20:07+00:00"
+      }
+    },
+    "atmos.tas.tminavg-h2m-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          180.0,
+          330.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          198.92613220214844,
+          308.48223876953125
+        ],
+        "result": "pass",
+        "units": "K"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_tas_tminavg-h2m-hxy-u_mon_glb/compliance_tas_tminavg-h2m-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:24:02+00:00"
+      }
+    },
+    "atmos.tauu.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -10.0,
+          10.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -0.7518471479415894,
+          1.1313554048538208
+        ],
+        "result": "pass",
+        "units": "Pa"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_tauu_tavg-u-hxy-u_mon_glb/compliance_tauu_tavg-u-hxy-u_mon_glb_g109_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:14:49+00:00"
+      }
+    },
+    "atmos.tauv.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -10.0,
+          10.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -0.9194707274436951,
+          0.7675368189811707
+        ],
+        "result": "pass",
+        "units": "Pa"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_tauv_tavg-u-hxy-u_mon_glb/compliance_tauv_tavg-u-hxy-u_mon_glb_g108_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:17:11+00:00"
+      }
+    },
+    "atmos.ts.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          150.0,
+          370.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          196.0524444580078,
+          319.0499267578125
+        ],
+        "result": "pass",
+        "units": "K"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_ts_tavg-u-hxy-u_mon_glb/compliance_ts_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:15:55+00:00"
+      }
+    },
+    "atmos.ua.tavg-p19-hxy-air.mon.glb": {
+      "range": {
+        "allowed": [
+          -150.0,
+          150.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -118.97514343261719,
+          148.4079132080078
+        ],
+        "result": "pass",
+        "units": "m s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_ua_tavg-p19-hxy-air_mon_glb/compliance_ua_tavg-p19-hxy-air_mon_glb_g110_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:14:35+00:00"
+      }
+    },
+    "atmos.uas.tavg-h10m-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -150.0,
+          150.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -17.91420555114746,
+          16.01982879638672
+        ],
+        "result": "pass",
+        "units": "m s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_uas_tavg-h10m-hxy-u_mon_glb/compliance_uas_tavg-h10m-hxy-u_mon_glb_g109_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:20:40+00:00"
+      }
+    },
+    "atmos.va.tavg-p19-hxy-air.mon.glb": {
+      "range": {
+        "allowed": [
+          -150.0,
+          150.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -124.0550537109375,
+          121.15357971191406
+        ],
+        "result": "pass",
+        "units": "m s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_va_tavg-p19-hxy-air_mon_glb/compliance_va_tavg-p19-hxy-air_mon_glb_g110_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:23:25+00:00"
+      }
+    },
+    "atmos.vas.tavg-h10m-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -150.0,
+          150.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -17.90449333190918,
+          20.56325340270996
+        ],
+        "result": "pass",
+        "units": "m s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_vas_tavg-h10m-hxy-u_mon_glb/compliance_vas_tavg-h10m-hxy-u_mon_glb_g108_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:24:34+00:00"
+      }
+    },
+    "atmos.wap.tavg-p19-hxy-air.mon.glb": {
+      "range": {
+        "allowed": [
+          -20.0,
+          20.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -0.7191386222839355,
+          1.071205735206604
+        ],
+        "result": "pass",
+        "units": "Pa s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_wap_tavg-p19-hxy-air_mon_glb/compliance_wap_tavg-p19-hxy-air_mon_glb_g110_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:34:19+00:00"
+      }
+    },
+    "atmos.zg.tavg-p19-hxy-air.mon.glb": {
+      "range": {
+        "allowed": [
+          -500.0,
+          80000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -110.1413803100586,
+          49339.828125
+        ],
+        "result": "pass",
+        "units": "m"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/atmos_zg_tavg-p19-hxy-air_mon_glb/compliance_zg_tavg-p19-hxy-air_mon_glb_g110_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:35:41+00:00"
+      }
+    },
+    "land.evspsblsoi.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          -0.05,
+          0.05
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -2.440306388962199e-06,
+          0.0001001993368845433
+        ],
+        "result": "pass",
+        "units": "kg m-2 s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/land_evspsblsoi_tavg-u-hxy-lnd_mon_glb/compliance_evspsblsoi_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:34:50+00:00"
+      }
+    },
+    "land.evspsblveg.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          -0.05,
+          0.05
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -1.860479528659198e-06,
+          6.33955787634477e-05
+        ],
+        "result": "pass",
+        "units": "kg m-2 s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/land_evspsblveg_tavg-u-hxy-lnd_mon_glb/compliance_evspsblveg_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:36:06+00:00"
+      }
+    },
+    "land.lai.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          20.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          6.905259132385254
+        ],
+        "result": "pass",
+        "units": "1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/land_lai_tavg-u-hxy-lnd_mon_glb/compliance_lai_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:43:22+00:00"
+      }
+    },
+    "landIce.mrfso.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          10000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          1743.9967041015625
+        ],
+        "result": "pass",
+        "units": "kg m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/landIce_mrfso_tavg-u-hxy-lnd_mon_glb/compliance_mrfso_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:48:44+00:00"
+      }
+    },
+    "land.mrro.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          0.1
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          0.0010219077812507749
+        ],
+        "result": "pass",
+        "units": "kg m-2 s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/land_mrro_tavg-u-hxy-lnd_mon_glb/compliance_mrro_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:51:47+00:00"
+      }
+    },
+    "land.mrros.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          0.1
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          0.0006325480062514544
+        ],
+        "result": "pass",
+        "units": "kg m-2 s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/land_mrros_tavg-u-hxy-lnd_mon_glb/compliance_mrros_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:41:15+00:00"
+      }
+    },
+    "land.mrso.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          10000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          2170.7490234375
+        ],
+        "result": "pass",
+        "units": "kg m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/land_mrso_tavg-u-hxy-lnd_mon_glb/compliance_mrso_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:57:13+00:00"
+      }
+    },
+    "land.mrsol.tavg-d10cm-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          10000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          72.46561723111807
+        ],
+        "result": "pass",
+        "units": "kg m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/land_mrsol_tavg-d10cm-hxy-lnd_mon_glb/compliance_mrsol_tavg-d10cm-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:55:05+00:00"
+      }
+    },
+    "land.cSoil.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          1000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          28.521944046020508
+        ],
+        "result": "pass",
+        "units": "kg m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/land_cSoil_tavg-u-hxy-lnd_mon_glb/compliance_cSoil_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:59:09+00:00"
+      }
+    },
+    "land.cVeg.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          1000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          36.4969367980957
+        ],
+        "result": "pass",
+        "units": "kg m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/land_cVeg_tavg-u-hxy-lnd_mon_glb/compliance_cVeg_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:01:24+00:00"
+      }
+    },
+    "land.fBNF.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          -0.0001,
+          0.0001
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          4.45460890396987e-10
+        ],
+        "result": "pass",
+        "units": "kg m-2 s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/land_fBNF_tavg-u-hxy-lnd_mon_glb/compliance_fBNF_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:58:28+00:00"
+      }
+    },
+    "land.gpp.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          -0.0001,
+          0.0001
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -8.556435182778543e-13,
+          1.6680563419413375e-07
+        ],
+        "result": "pass",
+        "units": "kg m-2 s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/land_gpp_tavg-u-hxy-lnd_mon_glb/compliance_gpp_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:00:18+00:00"
+      }
+    },
+    "land.nbp.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          -0.0001,
+          0.0001
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -5.724518103988885e-08,
+          7.051602324281703e-08
+        ],
+        "result": "pass",
+        "units": "kg m-2 s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/land_nbp_tavg-u-hxy-lnd_mon_glb/compliance_nbp_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:04:57+00:00"
+      }
+    },
+    "land.ra.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          -0.0001,
+          0.0001
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -1.3771502275040881e-25,
+          1.0942363815047429e-07
+        ],
+        "result": "pass",
+        "units": "kg m-2 s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/land_ra_tavg-u-hxy-lnd_mon_glb/compliance_ra_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:06:18+00:00"
+      }
+    },
+    "land.rh.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          -0.0001,
+          0.0001
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          7.028105386552852e-08
+        ],
+        "result": "pass",
+        "units": "kg m-2 s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/land_rh_tavg-u-hxy-lnd_mon_glb/compliance_rh_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:06:00+00:00"
+      }
+    },
+    "land.tsl.tavg-sl-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          150.0,
+          350.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          214.07041931152344,
+          321.11041259765625
+        ],
+        "result": "pass",
+        "units": "K"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/land_tsl_tavg-sl-hxy-lnd_mon_glb/compliance_tsl_tavg-sl-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:02:12+00:00"
+      }
+    },
+    "landIce.snc.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          100.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          100.00001525878906
+        ],
+        "result": "pass",
+        "units": "%"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/landIce_snc_tavg-u-hxy-lnd_mon_glb/compliance_snc_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:04:53+00:00"
+      }
+    },
+    "landIce.snw.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          50000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          1777.4912109375
+        ],
+        "result": "pass",
+        "units": "kg m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/landIce_snw_tavg-u-hxy-lnd_mon_glb/compliance_snw_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:55:13+00:00"
+      }
+    },
+    "ocean.bigthetao.tavg-ol-hxy-sea.mon.glb": {
+      "range": {
+        "allowed": [
+          -3.0,
+          40.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -1.996551513671875,
+          34.278350830078125
+        ],
+        "result": "pass",
+        "units": "degC"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/ocean_bigthetao_tavg-ol-hxy-sea_mon_glb/compliance_bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:59:45+00:00"
+      }
+    },
+    "ocnBgchem.fgco2.tavg-u-hxy-sea.mon.glb": {
+      "range": {
+        "allowed": [
+          -1e-06,
+          1e-06
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -3.967309680774633e-08,
+          9.7685344258025e-09
+        ],
+        "result": "pass",
+        "units": "kg m-2 s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/ocnBgchem_fgco2_tavg-u-hxy-sea_mon_glb/compliance_fgco2_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T15:55:15+00:00"
+      }
+    },
+    "ocean.hfds.tavg-u-hxy-sea.mon.glb": {
+      "range": {
+        "allowed": [
+          -5000.0,
+          5000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -1042.049560546875,
+          2347.3203125
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/ocean_hfds_tavg-u-hxy-sea_mon_glb/compliance_hfds_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:00:20+00:00"
+      }
+    },
+    "ocean.masscello.tavg-ol-hxy-sea.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          12000000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          4361.4482421875,
+          346344.3125
+        ],
+        "result": "pass",
+        "units": "kg m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/ocean_masscello_tavg-ol-hxy-sea_mon_glb/compliance_masscello_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:08:21+00:00"
+      }
+    },
+    "ocean.mlotst.tavg-u-hxy-sea.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          7000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          11.87667465209961,
+          5511.38134765625
+        ],
+        "result": "pass",
+        "units": "m"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/ocean_mlotst_tavg-u-hxy-sea_mon_glb/compliance_mlotst_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:03:22+00:00"
+      }
+    },
+    "ocean.so.tavg-ol-hxy-sea.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          50.0
+        ],
+        "check_id": "cmip7_ranges",
+        "message": "CMIP7 QC range warning for so in experiment esm-hist using rule default: observed range 4.778..51.396 1E-03 is outside allowed range 0.000..50.000 0.001.",
+        "observed": [
+          4.379498481750488,
+          51.39649963378906
+        ],
+        "result": "warn",
+        "units": "1E-03"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/ocean_so_tavg-ol-hxy-sea_mon_glb/compliance_so_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:09:18+00:00"
+      }
+    },
+    "ocean.sos.tavg-u-hxy-sea.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          60.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          4.379498481750488,
+          51.39649963378906
+        ],
+        "result": "pass",
+        "units": "1E-03"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/ocean_sos_tavg-u-hxy-sea_mon_glb/compliance_sos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:09:08+00:00"
+      }
+    },
+    "ocean.tauuo.tavg-u-hxy-sea.mon.glb": {
+      "range": {
+        "allowed": [
+          -10.0,
+          10.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -0.7568809986114502,
+          0.7875850200653076
+        ],
+        "result": "pass",
+        "units": "N m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/ocean_tauuo_tavg-u-hxy-sea_mon_glb/compliance_tauuo_tavg-u-hxy-sea_mon_glb_g116_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:10:28+00:00"
+      }
+    },
+    "ocean.tauvo.tavg-u-hxy-sea.mon.glb": {
+      "range": {
+        "allowed": [
+          -10.0,
+          10.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -0.8928995132446289,
+          0.7749705910682678
+        ],
+        "result": "pass",
+        "units": "N m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/ocean_tauvo_tavg-u-hxy-sea_mon_glb/compliance_tauvo_tavg-u-hxy-sea_mon_glb_g116_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:13:14+00:00"
+      }
+    },
+    "ocean.thetao.tavg-ol-hxy-sea.mon.glb": {
+      "range": {
+        "allowed": [
+          -3.0,
+          40.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -2.000114679336548,
+          34.378074645996094
+        ],
+        "result": "pass",
+        "units": "degC"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/ocean_thetao_tavg-ol-hxy-sea_mon_glb/compliance_thetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:19:20+00:00"
+      }
+    },
+    "ocean.thkcello.tavg-ol-hxy-sea.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          10000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          4.213959693908691,
+          334.6322021484375
+        ],
+        "result": "pass",
+        "units": "m"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/ocean_thkcello_tavg-ol-hxy-sea_mon_glb/compliance_thkcello_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:24:57+00:00"
+      }
+    },
+    "ocean.tos.tavg-u-hxy-sea.mon.glb": {
+      "range": {
+        "allowed": [
+          -3.0,
+          45.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -1.927703857421875,
+          34.278350830078125
+        ],
+        "result": "pass",
+        "units": "degC"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/ocean_tos_tavg-u-hxy-sea_mon_glb/compliance_tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:19:58+00:00"
+      }
+    },
+    "ocean.umo.tavg-ol-hxy-sea.mon.glb": {
+      "range": {
+        "allowed": [
+          -5000000000000.0,
+          5000000000000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -3591021824.0,
+          3899011840.0
+        ],
+        "result": "pass",
+        "units": "kg s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/ocean_umo_tavg-ol-hxy-sea_mon_glb/compliance_umo_tavg-ol-hxy-sea_mon_glb_g116_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:29:50+00:00"
+      }
+    },
+    "ocean.uo.tavg-ol-hxy-sea.mon.glb": {
+      "range": {
+        "allowed": [
+          -150.0,
+          150.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -1.7286590337753296,
+          1.5457918643951416
+        ],
+        "result": "pass",
+        "units": "m s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/ocean_uo_tavg-ol-hxy-sea_mon_glb/compliance_uo_tavg-ol-hxy-sea_mon_glb_g116_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:29:01+00:00"
+      }
+    },
+    "ocean.vmo.tavg-ol-hxy-sea.mon.glb": {
+      "range": {
+        "allowed": [
+          -5000000000000.0,
+          5000000000000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -8753171456.0,
+          6453831680.0
+        ],
+        "result": "pass",
+        "units": "kg s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/ocean_vmo_tavg-ol-hxy-sea_mon_glb/compliance_vmo_tavg-ol-hxy-sea_mon_glb_g116_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:29:45+00:00"
+      }
+    },
+    "ocean.vo.tavg-ol-hxy-sea.mon.glb": {
+      "range": {
+        "allowed": [
+          -150.0,
+          150.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -1.4560188055038452,
+          1.8446677923202515
+        ],
+        "result": "pass",
+        "units": "m s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/ocean_vo_tavg-ol-hxy-sea_mon_glb/compliance_vo_tavg-ol-hxy-sea_mon_glb_g116_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:30:15+00:00"
+      }
+    },
+    "ocean.volcello.tavg-ol-hxy-sea.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          1e+16
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          3717510912.0,
+          3627849089024.0
+        ],
+        "result": "pass",
+        "units": "m3"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/ocean_volcello_tavg-ol-hxy-sea_mon_glb/compliance_volcello_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:32:39+00:00"
+      }
+    },
+    "ocean.wmo.tavg-ol-hxy-sea.mon.glb": {
+      "range": {
+        "allowed": [
+          -5000000000000.0,
+          5000000000000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -4083629312.0,
+          3519970816.0
+        ],
+        "result": "pass",
+        "units": "kg s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/ocean_wmo_tavg-ol-hxy-sea_mon_glb/compliance_wmo_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:35:47+00:00"
+      }
+    },
+    "ocean.wo.tavg-ol-hxy-sea.mon.glb": {
+      "range": {
+        "allowed": [
+          -0.01,
+          0.01
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -0.0017609779024496675,
+          0.0010368500370532274
+        ],
+        "result": "pass",
+        "units": "m s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/ocean_wo_tavg-ol-hxy-sea_mon_glb/compliance_wo_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:38:34+00:00"
+      }
+    },
+    "ocean.zos.tavg-u-hxy-sea.mon.glb": {
+      "range": {
+        "allowed": [
+          -20.0,
+          20.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -7.4884724617004395,
+          -1.3933008909225464
+        ],
+        "result": "pass",
+        "units": "m"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/ocean_zos_tavg-u-hxy-sea_mon_glb/compliance_zos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:34:00+00:00"
+      }
+    },
+    "ocean.zostoga.tavg-u-hm-sea.mon.glb": {
+      "range": {
+        "allowed": [
+          -20.0,
+          20.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -0.017115801572799683,
+          0.028993932530283928
+        ],
+        "result": "pass",
+        "units": "m"
+      },
+      "repack": {
+        "message": "cmip7repack left zostoga uncompressed (chunking [1024], filters {'zlib': False, 'szip': False, 'zstd': False, 'bzip2': False, 'blosc': False, 'shuffle': False, 'complevel': 0, 'fletcher32': False})",
+        "result": "warn",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/ocean_zostoga_tavg-u-hm-sea_mon_glb/compliance_zostoga_tavg-u-hm-sea_mon_glb_g118_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:34:45+00:00"
+      }
+    },
+    "seaIce.siconc.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          100.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          99.99971008300781
+        ],
+        "result": "pass",
+        "units": "%"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/seaIce_siconc_tavg-u-hxy-u_mon_glb/compliance_siconc_tavg-u-hxy-u_mon_glb_g118_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:35:08+00:00"
+      }
+    },
+    "seaIce.simass.tavg-u-hxy-si.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          50000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          13068.4921875
+        ],
+        "result": "pass",
+        "units": "kg m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/seaIce_simass_tavg-u-hxy-si_mon_glb/compliance_simass_tavg-u-hxy-si_mon_glb_g118_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:39:56+00:00"
+      }
+    },
+    "seaIce.snd.tavg-u-hxy-sn.mon.glb": {
+      "range": {
+        "check_id": "cmip7_ranges",
+        "result": "pass"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/seaIce_snd_tavg-u-hxy-sn_mon_glb/compliance_snd_tavg-u-hxy-sn_mon_glb_g118_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:44:07+00:00"
+      }
+    },
+    "seaIce.sithick.tavg-u-hxy-si.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          20.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0002838685759343207,
+          18.965618133544922
+        ],
+        "result": "pass",
+        "units": "m"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/seaIce_sithick_tavg-u-hxy-si_mon_glb/compliance_sithick_tavg-u-hxy-si_mon_glb_g118_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:45:11+00:00"
+      }
+    },
+    "seaIce.sitimefrac.tavg-u-hxy-sea.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          1.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          1.0
+        ],
+        "result": "pass",
+        "units": "1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/seaIce_sitimefrac_tavg-u-hxy-sea_mon_glb/compliance_sitimefrac_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:46:07+00:00"
+      }
+    },
+    "seaIce.siu.tavg-u-hxy-si.mon.glb": {
+      "range": {
+        "allowed": [
+          -150.0,
+          150.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -2.241734504699707,
+          1.0799602270126343
+        ],
+        "result": "pass",
+        "units": "m s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/seaIce_siu_tavg-u-hxy-si_mon_glb/compliance_siu_tavg-u-hxy-si_mon_glb_g116_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:44:42+00:00"
+      }
+    },
+    "seaIce.siv.tavg-u-hxy-si.mon.glb": {
+      "range": {
+        "allowed": [
+          -150.0,
+          150.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -1.3519026041030884,
+          1.2968140840530396
+        ],
+        "result": "pass",
+        "units": "m s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r14i1p1f1-d7b1858e/logs/seaIce_siv_tavg-u-hxy-si_mon_glb/compliance_siv_tavg-u-hxy-si_mon_glb_g116_ACCESS-ESM1-6_esm-hist_r14i1p1f1_185001-185912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-08T16:50:50+00:00"
+      }
+    }
+  }
+}

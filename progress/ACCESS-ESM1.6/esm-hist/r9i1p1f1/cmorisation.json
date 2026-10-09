@@ -1,57 +1,26 @@
 {
   "all_tasks_terminal": true,
-  "completed_at": "2026-10-08T22:24:12+00:00",
+  "completed_at": "2026-10-09T00:15:25+00:00",
   "config_path": "/scratch/p73/rb5533/ensemble-esm-historical/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae/batch_config.yml",
-  "created_at": "2026-10-08T22:24:12+00:00",
+  "created_at": "2026-10-09T00:15:25+00:00",
   "db_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae/cmor_tasks.db",
   "experiment_id": "esm-hist",
-  "failures": [
-    {
-      "error_message": [
-        "job 180823620.gadi-pbs | exit_status=1 | pbs_comment='Job run at Fri Oct 09 at 04:10 on (gadi-cpu-bdw-0098:ncpus=24:mem=104857600kb:jobfs=104857600kb) and failed' | mem_used=427268kb | walltime_used=00:00:11 | err_tail:",
-        "File \"/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/sitecustomize.py\", line 72, in tracking_import",
-        "    mod = _real_import(name, globals, locals, fromlist, level)",
-        "          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-        "  File \"/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/pandas/core/indexing.py\", line 80, in <module>",
-        "    from pandas.core.indexes.api import (",
-        "  File \"/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/sitecustomize.py\", line 72, in tracking_import",
-        "    mod = _real_import(name, globals, locals, fromlist, level)",
-        "          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-        "  File \"/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/pandas/core/indexes/api.py\", line 28, in <module>",
-        "    from pandas.core.indexes.datetimes import DatetimeIndex",
-        "  File \"/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/sitecustomize.py\", line 72, in tracking_import",
-        "    mod = _real_import(name, globals, locals, fromlist, level)",
-        "          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-        "  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load",
-        "  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked",
-        "  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked",
-        "  File \"<frozen importlib._bootstrap_external>\", line 995, in exec_module",
-        "  File \"<frozen importlib._bootstrap_external>\", line 1132, in get_code",
-        "  File \"<frozen importlib._bootstrap_external>\", line 1191, in get_data",
-        "OSError: [Errno 5] Input/output error"
-      ],
-      "experiment_id": "esm-hist",
-      "pbs_job_id": "180823620.gadi-pbs",
-      "stderr": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae/land_tsl_tavg-sl-hxy-lnd_mon_glb/cmor_land_tsl_tavg-sl-hxy-lnd_mon_glb.err",
-      "stderr_tail": null,
-      "variable": "land.tsl.tavg-sl-hxy-lnd.mon.glb"
-    }
-  ],
+  "failures": [],
   "monitor": {
-    "pbs_job_id": "180817343.gadi-pbs",
+    "pbs_job_id": "180847340.gadi-pbs",
     "stderr": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae/moppy_monitor.err",
     "stdout": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae/moppy_monitor.out",
-    "submitted_at": "2026-10-09T01:18:41"
+    "submitted_at": "2026-10-09T10:33:56"
   },
   "output_folder": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae",
   "schema_version": "access-moppy.batch-report.v2",
   "script_dir": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae",
   "source_id": "ACCESS-ESM1-6",
-  "status": "failed",
-  "success": false,
+  "status": "completed",
+  "success": true,
   "summary": {
-    "completed": 103,
-    "failed": 1,
+    "completed": 104,
+    "failed": 0,
     "pending": 0,
     "retrying": 0,
     "running": 0,
@@ -15667,41 +15636,148 @@
       }
     },
     {
-      "compliance": null,
-      "duration_seconds": null,
-      "end_time": "2026-10-08 17:12:08",
-      "error_message": [
-        "job 180823620.gadi-pbs | exit_status=1 | pbs_comment='Job run at Fri Oct 09 at 04:10 on (gadi-cpu-bdw-0098:ncpus=24:mem=104857600kb:jobfs=104857600kb) and failed' | mem_used=427268kb | walltime_used=00:00:11 | err_tail:",
-        "File \"/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/sitecustomize.py\", line 72, in tracking_import",
-        "    mod = _real_import(name, globals, locals, fromlist, level)",
-        "          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-        "  File \"/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/pandas/core/indexing.py\", line 80, in <module>",
-        "    from pandas.core.indexes.api import (",
-        "  File \"/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/sitecustomize.py\", line 72, in tracking_import",
-        "    mod = _real_import(name, globals, locals, fromlist, level)",
-        "          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-        "  File \"/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/pandas/core/indexes/api.py\", line 28, in <module>",
-        "    from pandas.core.indexes.datetimes import DatetimeIndex",
-        "  File \"/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/sitecustomize.py\", line 72, in tracking_import",
-        "    mod = _real_import(name, globals, locals, fromlist, level)",
-        "          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-        "  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load",
-        "  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked",
-        "  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked",
-        "  File \"<frozen importlib._bootstrap_external>\", line 995, in exec_module",
-        "  File \"<frozen importlib._bootstrap_external>\", line 1132, in get_code",
-        "  File \"<frozen importlib._bootstrap_external>\", line 1191, in get_data",
-        "OSError: [Errno 5] Input/output error"
-      ],
+      "compliance": {
+        "backfilled": false,
+        "checked_at": "2026-10-08T23:50:04+00:00",
+        "cv_version": "2.3.4",
+        "environment_warning": false,
+        "error": null,
+        "failed_checks": null,
+        "file": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae/MIP-DRS7/CMIP7/CMIP/ACCESS-Consortium/ACCESS-ESM1-6/esm-hist/r9i1p1f1/glb/mon/tsl/tavg-sl-hxy-lnd/g115/v20261009/tsl_tavg-sl-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r9i1p1f1_185001-185912.nc",
+        "passed": true,
+        "report_path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae/logs/land_tsl_tavg-sl-hxy-lnd_mon_glb/compliance_tsl_tavg-sl-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r9i1p1f1_185001-185912.json",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ]
+      },
+      "duration_seconds": 1951.0,
+      "end_time": "2026-10-09 00:09:24",
+      "error_message": null,
       "experiment_id": "esm-hist",
       "id": 74,
-      "output_summary": null,
+      "output_summary": {
+        "file_count": 18,
+        "files": [
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae/MIP-DRS7/CMIP7/CMIP/ACCESS-Consortium/ACCESS-ESM1-6/esm-hist/r9i1p1f1/glb/mon/tsl/tavg-sl-hxy-lnd/g115/v20261009/tsl_tavg-sl-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r9i1p1f1_185001-185912.nc",
+            "size": "21.0 MiB",
+            "size_bytes": 22033547
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae/MIP-DRS7/CMIP7/CMIP/ACCESS-Consortium/ACCESS-ESM1-6/esm-hist/r9i1p1f1/glb/mon/tsl/tavg-sl-hxy-lnd/g115/v20261009/tsl_tavg-sl-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r9i1p1f1_186001-186912.nc",
+            "size": "21.0 MiB",
+            "size_bytes": 22026370
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae/MIP-DRS7/CMIP7/CMIP/ACCESS-Consortium/ACCESS-ESM1-6/esm-hist/r9i1p1f1/glb/mon/tsl/tavg-sl-hxy-lnd/g115/v20261009/tsl_tavg-sl-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r9i1p1f1_187001-187912.nc",
+            "size": "21.0 MiB",
+            "size_bytes": 22049295
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae/MIP-DRS7/CMIP7/CMIP/ACCESS-Consortium/ACCESS-ESM1-6/esm-hist/r9i1p1f1/glb/mon/tsl/tavg-sl-hxy-lnd/g115/v20261009/tsl_tavg-sl-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r9i1p1f1_188001-188912.nc",
+            "size": "21.0 MiB",
+            "size_bytes": 22028534
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae/MIP-DRS7/CMIP7/CMIP/ACCESS-Consortium/ACCESS-ESM1-6/esm-hist/r9i1p1f1/glb/mon/tsl/tavg-sl-hxy-lnd/g115/v20261009/tsl_tavg-sl-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r9i1p1f1_189001-189912.nc",
+            "size": "21.0 MiB",
+            "size_bytes": 22031753
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae/MIP-DRS7/CMIP7/CMIP/ACCESS-Consortium/ACCESS-ESM1-6/esm-hist/r9i1p1f1/glb/mon/tsl/tavg-sl-hxy-lnd/g115/v20261009/tsl_tavg-sl-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r9i1p1f1_190001-190912.nc",
+            "size": "21.0 MiB",
+            "size_bytes": 22036678
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae/MIP-DRS7/CMIP7/CMIP/ACCESS-Consortium/ACCESS-ESM1-6/esm-hist/r9i1p1f1/glb/mon/tsl/tavg-sl-hxy-lnd/g115/v20261009/tsl_tavg-sl-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r9i1p1f1_191001-191912.nc",
+            "size": "21.0 MiB",
+            "size_bytes": 22035117
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae/MIP-DRS7/CMIP7/CMIP/ACCESS-Consortium/ACCESS-ESM1-6/esm-hist/r9i1p1f1/glb/mon/tsl/tavg-sl-hxy-lnd/g115/v20261009/tsl_tavg-sl-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r9i1p1f1_192001-192912.nc",
+            "size": "21.0 MiB",
+            "size_bytes": 22031133
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae/MIP-DRS7/CMIP7/CMIP/ACCESS-Consortium/ACCESS-ESM1-6/esm-hist/r9i1p1f1/glb/mon/tsl/tavg-sl-hxy-lnd/g115/v20261009/tsl_tavg-sl-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r9i1p1f1_193001-193912.nc",
+            "size": "21.0 MiB",
+            "size_bytes": 22032033
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae/MIP-DRS7/CMIP7/CMIP/ACCESS-Consortium/ACCESS-ESM1-6/esm-hist/r9i1p1f1/glb/mon/tsl/tavg-sl-hxy-lnd/g115/v20261009/tsl_tavg-sl-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r9i1p1f1_194001-194912.nc",
+            "size": "21.0 MiB",
+            "size_bytes": 22023918
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae/MIP-DRS7/CMIP7/CMIP/ACCESS-Consortium/ACCESS-ESM1-6/esm-hist/r9i1p1f1/glb/mon/tsl/tavg-sl-hxy-lnd/g115/v20261009/tsl_tavg-sl-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r9i1p1f1_195001-195912.nc",
+            "size": "21.0 MiB",
+            "size_bytes": 22023629
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae/MIP-DRS7/CMIP7/CMIP/ACCESS-Consortium/ACCESS-ESM1-6/esm-hist/r9i1p1f1/glb/mon/tsl/tavg-sl-hxy-lnd/g115/v20261009/tsl_tavg-sl-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r9i1p1f1_196001-196912.nc",
+            "size": "21.0 MiB",
+            "size_bytes": 22025928
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae/MIP-DRS7/CMIP7/CMIP/ACCESS-Consortium/ACCESS-ESM1-6/esm-hist/r9i1p1f1/glb/mon/tsl/tavg-sl-hxy-lnd/g115/v20261009/tsl_tavg-sl-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r9i1p1f1_197001-197912.nc",
+            "size": "21.0 MiB",
+            "size_bytes": 22020845
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae/MIP-DRS7/CMIP7/CMIP/ACCESS-Consortium/ACCESS-ESM1-6/esm-hist/r9i1p1f1/glb/mon/tsl/tavg-sl-hxy-lnd/g115/v20261009/tsl_tavg-sl-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r9i1p1f1_198001-198912.nc",
+            "size": "21.0 MiB",
+            "size_bytes": 22006512
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae/MIP-DRS7/CMIP7/CMIP/ACCESS-Consortium/ACCESS-ESM1-6/esm-hist/r9i1p1f1/glb/mon/tsl/tavg-sl-hxy-lnd/g115/v20261009/tsl_tavg-sl-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r9i1p1f1_199001-199912.nc",
+            "size": "21.0 MiB",
+            "size_bytes": 22015671
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae/MIP-DRS7/CMIP7/CMIP/ACCESS-Consortium/ACCESS-ESM1-6/esm-hist/r9i1p1f1/glb/mon/tsl/tavg-sl-hxy-lnd/g115/v20261009/tsl_tavg-sl-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r9i1p1f1_200001-200912.nc",
+            "size": "21.0 MiB",
+            "size_bytes": 22004079
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae/MIP-DRS7/CMIP7/CMIP/ACCESS-Consortium/ACCESS-ESM1-6/esm-hist/r9i1p1f1/glb/mon/tsl/tavg-sl-hxy-lnd/g115/v20261009/tsl_tavg-sl-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r9i1p1f1_201001-201912.nc",
+            "size": "21.0 MiB",
+            "size_bytes": 21995219
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae/MIP-DRS7/CMIP7/CMIP/ACCESS-Consortium/ACCESS-ESM1-6/esm-hist/r9i1p1f1/glb/mon/tsl/tavg-sl-hxy-lnd/g115/v20261009/tsl_tavg-sl-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_esm-hist_r9i1p1f1_202001-202212.nc",
+            "size": "6.3 MiB",
+            "size_bytes": 6635055
+          }
+        ],
+        "gates": {
+          "range": {
+            "allowed": [
+              150.0,
+              350.0
+            ],
+            "check_id": "cmip7_ranges",
+            "observed": [
+              214.90943908691406,
+              321.4263000488281
+            ],
+            "result": "pass",
+            "units": "K"
+          },
+          "repack": {
+            "result": "pass",
+            "tool": "cmip7repack"
+          }
+        },
+        "total_bytes": 381055316,
+        "total_size": "363.4 MiB"
+      },
       "pbs": {
-        "comment": "Job run at Fri Oct 09 at 04:10 on (gadi-cpu-bdw-0098:ncpus=24:mem=104857600kb:jobfs=104857600kb) and failed",
-        "exec_host": "gadi-cpu-bdw-0098/1*24",
-        "exec_vnode": "(gadi-cpu-bdw-0098:ncpus=24:mem=104857600kb:jobfs=104857600kb)",
-        "exit_status": 1,
-        "job_id": "180823620.gadi-pbs",
+        "comment": "Job run at Fri Oct 09 at 10:36 on (gadi-cpu-bdw-0042:ncpus=24:mem=104857600kb:jobfs=104857600kb) and finished",
+        "exec_host": "gadi-cpu-bdw-0042/0*24",
+        "exec_vnode": "(gadi-cpu-bdw-0042:ncpus=24:mem=104857600kb:jobfs=104857600kb)",
+        "exit_status": 0,
+        "job_id": "180847407.gadi-pbs",
         "job_state": "F",
         "pbs_server": "gadi-pbs-01",
         "pbs_version": "2024.1.2.20241017100211",
@@ -15709,35 +15785,35 @@
         "qstat_format": "json",
         "queue": "normalbw-exec",
         "raw_qstat": {
-          "Exit_status": 1,
+          "Exit_status": 0,
           "Resource_List.jobfs": "107374182400b",
           "Resource_List.mem": "107374182400b",
           "Resource_List.mpiprocs": 24,
           "Resource_List.ncpus": 24,
           "Resource_List.storage": "gdata/tm70+gdata/p73+scratch/p73+gdata/im55+gdata/xp65+scratch/iq82+scratch/tm70",
           "Resource_List.walltime": "06:00:00",
-          "comment": "Job run at Fri Oct 09 at 04:10 on (gadi-cpu-bdw-0098:ncpus=24:mem=104857600kb:jobfs=104857600kb) and failed",
-          "ctime": "Fri Oct  9 03:16:57 2026",
-          "etime": "Fri Oct  9 03:16:57 2026",
-          "exec_host": "gadi-cpu-bdw-0098/1*24",
-          "exec_vnode": "(gadi-cpu-bdw-0098:ncpus=24:mem=104857600kb:jobfs=104857600kb)",
-          "job_id": "180823620.gadi-pbs",
+          "comment": "Job run at Fri Oct 09 at 10:36 on (gadi-cpu-bdw-0042:ncpus=24:mem=104857600kb:jobfs=104857600kb) and finished",
+          "ctime": "Fri Oct  9 10:35:24 2026",
+          "etime": "Fri Oct  9 10:35:24 2026",
+          "exec_host": "gadi-cpu-bdw-0042/0*24",
+          "exec_vnode": "(gadi-cpu-bdw-0042:ncpus=24:mem=104857600kb:jobfs=104857600kb)",
+          "job_id": "180847407.gadi-pbs",
           "job_state": "F",
-          "mtime": "Fri Oct  9 04:10:33 2026",
+          "mtime": "Fri Oct  9 11:09:37 2026",
           "pbs_server": "gadi-pbs-01",
           "pbs_version": "2024.1.2.20241017100211",
           "project": "iq82",
           "qstat_format": "json",
-          "qtime": "Fri Oct  9 03:16:57 2026",
+          "qtime": "Fri Oct  9 10:35:24 2026",
           "queue": "normalbw-exec",
-          "resources_used.cpupercent": 37,
-          "resources_used.cput": "00:00:04",
-          "resources_used.mem": "427268kb",
+          "resources_used.cpupercent": 566,
+          "resources_used.cput": "01:30:54",
+          "resources_used.mem": "93326816kb",
           "resources_used.ncpus": 24,
-          "resources_used.vmem": "427268kb",
-          "resources_used.walltime": "00:00:11",
+          "resources_used.vmem": "93326820kb",
+          "resources_used.walltime": "00:32:51",
           "scheduler": "pbs",
-          "stime": "Fri Oct  9 04:10:08 2026"
+          "stime": "Fri Oct  9 10:36:37 2026"
         },
         "resources_requested": {
           "jobfs": "107374182400b",
@@ -15748,29 +15824,42 @@
           "walltime": "06:00:00"
         },
         "resources_used": {
-          "cpupercent": 37,
-          "cput": "00:00:04",
-          "mem": "427268kb",
+          "cpupercent": 566,
+          "cput": "01:30:54",
+          "mem": "93326816kb",
           "ncpus": 24,
-          "vmem": "427268kb",
-          "walltime": "00:00:11"
+          "vmem": "93326820kb",
+          "walltime": "00:32:51"
         },
         "scheduler": "pbs",
         "timestamps": {
-          "created_at": "Fri Oct  9 03:16:57 2026",
-          "eligible_at": "Fri Oct  9 03:16:57 2026",
-          "modified_at": "Fri Oct  9 04:10:33 2026",
-          "queued_at": "Fri Oct  9 03:16:57 2026",
-          "started_at": "Fri Oct  9 04:10:08 2026"
+          "created_at": "Fri Oct  9 10:35:24 2026",
+          "eligible_at": "Fri Oct  9 10:35:24 2026",
+          "modified_at": "Fri Oct  9 11:09:37 2026",
+          "queued_at": "Fri Oct  9 10:35:24 2026",
+          "started_at": "Fri Oct  9 10:36:37 2026"
         }
       },
-      "pbs_job_id": "180823620.gadi-pbs",
-      "start_time": null,
-      "status": "failed",
+      "pbs_job_id": "180847407.gadi-pbs",
+      "start_time": "2026-10-08 23:36:53",
+      "status": "completed",
       "stderr": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae/land_tsl_tavg-sl-hxy-lnd_mon_glb/cmor_land_tsl_tavg-sl-hxy-lnd_mon_glb.err",
       "stdout": "/g/data/im55/admin/incoming/20260930/esm-hist/esm-historical-esm-historical-1.1-r9i1p1f1-faeb0bae/land_tsl_tavg-sl-hxy-lnd_mon_glb/cmor_land_tsl_tavg-sl-hxy-lnd_mon_glb.out",
       "variable": "land.tsl.tavg-sl-hxy-lnd.mon.glb",
-      "worker_memory": null
+      "worker_memory": {
+        "memory_limit_per_worker": "12.50GB",
+        "n_workers": 8,
+        "peak_rss_mb": {
+          "tcp://127.0.0.1:33417": 3356.61328125,
+          "tcp://127.0.0.1:39517": 3346.40234375,
+          "tcp://127.0.0.1:39739": 3314.12109375,
+          "tcp://127.0.0.1:43959": 3352.37109375,
+          "tcp://127.0.0.1:44171": 3359.1015625,
+          "tcp://127.0.0.1:46123": 3667.68359375,
+          "tcp://127.0.0.1:46671": 5460.0390625,
+          "tcp://127.0.0.1:46827": 3365.00390625
+        }
+      }
     },
     {
       "compliance": {
@@ -22572,5 +22661,5 @@
   ],
   "variant_label": "r9i1p1f1",
   "model": "ACCESS-ESM1.6",
-  "ingested_at": "2026-10-08T23:27:03+00:00"
+  "ingested_at": "2026-10-09T19:35:52+00:00"
 }

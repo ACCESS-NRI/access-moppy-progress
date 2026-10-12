@@ -47,6 +47,7 @@ Output schema
       "cmorised":         110,
       "blocked":            0,
       "ready_for_review":   0,
+      "staging":            0,
       "published":          0,
       "gates": {
         "range":  {"pass": 0, "warn": 0, "fail": 0, "implied": 0,   "not_run": 110},
@@ -109,6 +110,7 @@ STATES = (
     "cmorised",
     "blocked",
     "ready_for_review",
+    "staging",
     "published",
 )
 
@@ -122,8 +124,9 @@ CMOR_STATUS_PRIORITY = {
 
 PUBLICATION_STATUS_PRIORITY = {
     "not_published": 0,
-    "publishing": 1,
-    "published": 2,
+    "staging": 1,
+    "publishing": 2,
+    "published": 3,
     "retracted": 0,
 }
 
@@ -192,6 +195,8 @@ def _unit_state(
     """Derive a single state from CMORisation, the gates, and publication."""
     if pub_status == "published":
         return "published"
+    if pub_status == "staging":
+        return "staging"
     if cmor_status is None or cmor_status == "not_started":
         return "planned"
     if cmor_status == "failed":
@@ -228,10 +233,10 @@ def _effective_publication_status(cmor_status: str | None, pub_status: str | Non
     """Publication cannot outrun CMOR completion.
 
     The exception is a variable with no CMORisation record at all: output in
-    the NCI publication tree is published whether or not the report of the
-    run that produced it is still on file.
+    an NCI staging or publication tree establishes its location even when the
+    report of the run that produced it is no longer on file.
     """
-    if cmor_status is None and pub_status == "published":
+    if cmor_status is None and pub_status in ("staging", "published"):
         return pub_status
     if cmor_status != "completed":
         return "not_published"
@@ -365,16 +370,23 @@ def _build_cmip7_lookup(plans: dict[str, dict]) -> dict[str, dict[str, str | Non
     return lookup
 
 
-def _resolve_variables(target_variables: list | str, cmor_report: dict | None) -> list[str]:
+def _resolve_variables(
+    target_variables: list | str,
+    cmor_report: dict | None,
+    pub: dict | None = None,
+) -> list[str]:
     """
     Resolve target_variables (may be '*' or a list) to a concrete list.
-    When '*', fall back to the variables that appear in the batch report tasks.
+    When '*', use variables from batch report tasks and publication records.
     """
     if target_variables != "*":
         return list(target_variables)
     if cmor_report:
         seen = {t["variable"] for t in cmor_report.get("tasks", [])}
+        seen.update((pub or {}).get("variables", {}))
         return sorted(seen)
+    if pub:
+        return sorted(pub.get("variables", {}))
     return []
 
 
@@ -382,6 +394,7 @@ def _normalize_target_variables(
     target_variables: list | str,
     cmor_report: dict | None,
     cmip7_lookup: dict[str, dict[str, str | None]],
+    pub: dict | None = None,
 ) -> list[dict[str, str | None]]:
     """Return canonical variable metadata for planned variables.
 
@@ -389,7 +402,7 @@ def _normalize_target_variables(
     variable names from the report; translate them back to their
     request/short name via cmip7_lookup when known.
     """
-    resolved = _resolve_variables(target_variables, cmor_report)
+    resolved = _resolve_variables(target_variables, cmor_report, pub)
     normalized: list[dict[str, str | None]] = []
     for item in resolved:
         if isinstance(item, str):
@@ -454,7 +467,7 @@ def _compile_unit_summary(
                 info.get("status", "not_published"),
             )
 
-    target_vars = _normalize_target_variables(target_variables, cmor, cmip7_lookup)
+    target_vars = _normalize_target_variables(target_variables, cmor, cmip7_lookup, pub)
 
     if not target_vars and not cmor_by_branded:
         return None

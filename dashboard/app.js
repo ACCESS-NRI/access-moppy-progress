@@ -15,6 +15,7 @@ const CMOR_REQUEST_TEMPLATE_URL = `https://github.com/${GITHUB_REPO}/issues/new?
 // to hand to CSIRO for scientific review and to NCI for publication.
 const STATES = {
   published:        { label: "Published",          chip: "Published",   symbol: "★", cls: "published" },
+  staging:          { label: "Staging",            chip: "Staging",     symbol: "⇢", cls: "staging" },
   ready_for_review: { label: "Ready for review",   chip: "Ready",       symbol: "◆", cls: "ready" },
   blocked:          { label: "Blocked by a check", chip: "Blocked",     symbol: "▲", cls: "blocked" },
   cmorised:         { label: "CMORised",           chip: "CMORised",    symbol: "·", cls: "cmorised" },
@@ -24,13 +25,13 @@ const STATES = {
 
 // Least to most advanced — progress bars and roll-ups read in this order.
 const STATE_PROGRESS = [
-  "planned","cmorise_failed","cmorised","blocked","ready_for_review","published"
+  "planned","cmorise_failed","cmorised","blocked","ready_for_review","staging","published"
 ];
 
 // Most urgent first — table sorting reads in this order, so what needs a human
 // surfaces above what is merely unfinished.
 const STATE_ATTENTION = [
-  "blocked","cmorise_failed","cmorised","planned","ready_for_review","published"
+  "blocked","cmorise_failed","cmorised","planned","ready_for_review","staging","published"
 ];
 
 // Fixed order. Position is what makes the strip readable without a legend, so
@@ -478,6 +479,7 @@ function matrixCell(unit, context) {
 
 function simpleStatusBadge(kind) {
   if (kind === "passed") return `<span class="stage stage-ready">✓</span>`;
+  if (kind === "staging") return `<span class="stage stage-staging">Staging</span>`;
   if (kind === "failed") return `<span class="stage stage-cmor-failed">✗</span>`;
   return `<span class="stage stage-not_started">Not started</span>`;
 }
@@ -490,6 +492,7 @@ function cmorSimpleStatus(unit) {
 
 function publicationSimpleStatus(unit) {
   if (unit.publication_status === "published") return "passed";
+  if (unit.publication_status === "staging") return "staging";
   if (unit.publication_status === "retracted") return "failed";
   return "not_started";
 }
@@ -588,7 +591,7 @@ function renderMemberMatrix(model, expId, members) {
 }
 
 const DEFAULT_LEGEND_STATES = [
-  "planned","cmorise_failed","cmorised","blocked","ready_for_review","published"
+  "planned","cmorise_failed","cmorised","blocked","ready_for_review","staging","published"
 ];
 
 function makeLegend(states = DEFAULT_LEGEND_STATES) {

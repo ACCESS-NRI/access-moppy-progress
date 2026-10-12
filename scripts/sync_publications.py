@@ -3,14 +3,14 @@
 sync_publications.py
 ====================
 
-Marks variables as published from a listing of the NCI publication tree.
+Tracks variables in the NCI staging and publication trees.
 
-Once NCI approves a delivery, its output is moved from
-``/g/data/im55/admin/incoming/`` to ``/g/data/im55/publications/``. Whatever
-sits there is published. The listing is one directory per line, holding at
-least one ``.nc`` file, relative to the publication root::
+NCI moves output from ``admin/incoming/`` to ``staging/`` before it reaches
+``publications/``. A variable in staging is not yet published. Each listing
+contains one MIP-DRS7 version directory per line, holding at least one
+``.nc`` file. Any dated staging prefix is removed::
 
-    cd /g/data/im55/publications && find MIP-DRS7 -name '*.nc' -printf '%h\\n' | sort -u
+    MIP-DRS7/CMIP7/CMIP/.../v20261001
 
 Each line follows the MIP-DRS7 layout::
 
@@ -28,8 +28,8 @@ written by hand are left untouched.
 
 Usage
 -----
-    python scripts/sync_publications.py --listing published.txt
-    python scripts/sync_publications.py --listing published.txt --dry-run
+    python scripts/sync_publications.py --listing published.txt --staging-listing staging.txt
+    python scripts/sync_publications.py --listing published.txt --staging-listing staging.txt --dry-run
 """
 from __future__ import annotations
 
@@ -125,17 +125,14 @@ def parse_listing(listing: Path) -> dict[Identity, dict[str, str]]:
     return published
 
 
-def build_record(identity: Identity, variables: dict[str, str]) -> dict:
+def build_record(identity: Identity, variables: dict[str, dict[str, str]]) -> dict:
     model, experiment, member = identity
     return {
         "model": model,
         "experiment_id": experiment,
         "variant_label": member,
         "updated_by": WRITER,
-        "variables": {
-            name: {"status": "published", "notes": f"{version} in /g/data/im55/publications"}
-            for name, version in sorted(variables.items())
-        },
+        "variables": {name: info for name, info in sorted(variables.items())},
     }
 
 
@@ -158,11 +155,27 @@ def owned_records() -> dict[Identity, Path]:
     return owned
 
 
-def sync(published: dict[Identity, dict[str, str]], dry_run: bool) -> dict[str, int]:
+def sync(
+    published: dict[Identity, dict[str, str]],
+    dry_run: bool,
+    staging: dict[Identity, dict[str, str]] | None = None,
+) -> dict[str, int]:
     counts = {"created": 0, "updated": 0, "unchanged": 0, "removed": 0, "manual": 0}
     owned = owned_records()
+    observed: dict[Identity, dict[str, dict[str, str]]] = {}
+    for identity, variables in (staging or {}).items():
+        observed[identity] = {
+            name: {"status": "staging", "notes": f"{version} in /g/data/im55/admin/staging"}
+            for name, version in variables.items()
+        }
+    for identity, variables in published.items():
+        current = observed.setdefault(identity, {})
+        current.update({
+            name: {"status": "published", "notes": f"{version} in /g/data/im55/publications"}
+            for name, version in variables.items()
+        })
 
-    for identity, variables in sorted(published.items()):
+    for identity, variables in sorted(observed.items()):
         dest = PROGRESS.joinpath(*identity, "publication.json")
         record = build_record(identity, variables)
         label = "/".join(identity)
@@ -184,15 +197,15 @@ def sync(published: dict[Identity, dict[str, str]], dry_run: bool) -> dict[str, 
         if not dry_run:
             dest.parent.mkdir(parents=True, exist_ok=True)
             dest.write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
-        print(f"{outcome:9s} {label}/publication.json  ({len(variables)} published)")
+        print(f"{outcome:9s} {label}/publication.json  ({len(variables)} staged or published)")
         counts[outcome] += 1
 
     for identity, path in sorted(owned.items()):
-        if identity in published:
+        if identity in observed:
             continue
         if not dry_run:
             path.unlink()
-        print(f"removed   {'/'.join(identity)}/publication.json  (nothing published)")
+        print(f"removed   {'/'.join(identity)}/publication.json  (nothing staged or published)")
         counts["removed"] += 1
 
     return counts
@@ -200,7 +213,7 @@ def sync(published: dict[Identity, dict[str, str]], dry_run: bool) -> dict[str, 
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Mark variables published from a listing of the NCI publication tree"
+        description="Track variables in the NCI staging and publication trees"
     )
     parser.add_argument(
         "--listing",
@@ -213,17 +226,27 @@ def main() -> None:
         action="store_true",
         help="Report what would change without writing anything",
     )
+    parser.add_argument(
+        "--staging-listing",
+        type=Path,
+        help="File of staged version directories, one per line",
+    )
     args = parser.parse_args()
 
     if not args.listing.is_file():
         print(f"ERROR: listing is not a file: {args.listing}", file=sys.stderr)
         sys.exit(1)
+    if args.staging_listing is not None and not args.staging_listing.is_file():
+        print(f"ERROR: staging listing is not a file: {args.staging_listing}", file=sys.stderr)
+        sys.exit(1)
 
     published = parse_listing(args.listing)
-    counts = sync(published, args.dry_run)
+    staging = parse_listing(args.staging_listing) if args.staging_listing else {}
+    counts = sync(published, args.dry_run, staging)
     print(
-        f"\n{sum(len(v) for v in published.values())} published variable(s) across "
-        f"{len(published)} member(s): {counts['created']} created, "
+        f"\n{sum(len(v) for v in staging.values())} staged and "
+        f"{sum(len(v) for v in published.values())} published variable(s): "
+        f"{counts['created']} created, "
         f"{counts['updated']} updated, {counts['unchanged']} unchanged, "
         f"{counts['removed']} removed, {counts['manual']} left as hand-written."
     )

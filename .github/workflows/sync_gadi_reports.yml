@@ -80,8 +80,8 @@ jobs:
           exit 1
 
       - name: List published output on Gadi
-        # NCI moves approved output from admin/incoming/ to publications/, so
-        # anything there is published. Only the directories holding files are
+        # NCI moves output from admin/incoming/ through admin/staging/ to
+        # publications/. Only the directories holding files are
         # needed, not the files themselves. pipefail keeps a failed listing from
         # passing as an empty one, which would unpublish every variable.
         env:
@@ -94,6 +94,18 @@ jobs:
             "set -o pipefail; cd '${PUBLICATIONS}' && find MIP-DRS7 -name '*.nc' -printf '%h\\n' | sort -u" \
             > published.txt
           echo "$(grep -c '^MIP-DRS7/' published.txt || true) published version directories."
+
+      - name: List staged output on Gadi
+        env:
+          GADI_USER: ${{ secrets.GADI_USER }}
+          STAGING: ${{ vars.GADI_STAGING_PATH || '/g/data/im55/admin/staging' }}
+        run: |
+          set -o pipefail
+          ssh -i ~/.ssh/gadi_key -o BatchMode=yes -o ConnectTimeout=20 \
+            "${GADI_USER}@gadi.nci.org.au" \
+            "set -o pipefail; cd '${STAGING}' && find . -path '*/MIP-DRS7/*' -name '*.nc' -printf '%h\\n' | sed -n 's#^.*MIP-DRS7/#MIP-DRS7/#p' | sort -u" \
+            > staging.txt
+          echo "$(grep -c '^MIP-DRS7/' staging.txt || true) staged version directories."
 
       - name: Rsync reports from Gadi
         # Matches the transfer pattern used across ACCESS-Analysis-Conda, in
@@ -124,12 +136,13 @@ jobs:
             --include='moppy_batch_report_*.json'
             --exclude='*'
 
-      - name: Ingest publication status into progress/
+      - name: Ingest staging and publication status into progress/
         # Before the reports: a member with a publication.json keeps its last
         # report when it is no longer in the current delivery.
         run: |
           python scripts/sync_publications.py \
             --listing published.txt \
+            --staging-listing staging.txt \
             ${{ inputs.dry_run && '--dry-run' || '' }}
 
       - name: Ingest reports into progress/

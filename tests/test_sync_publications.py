@@ -10,7 +10,11 @@ import pytest
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
 import sync_publications  # noqa: E402
-from compile_progress import _effective_publication_status  # noqa: E402
+from compile_progress import (  # noqa: E402
+    _compile_unit_summary,
+    _effective_publication_status,
+    _unit_state,
+)
 
 DRS = "MIP-DRS7/CMIP7/CMIP/ACCESS-Consortium/ACCESS-ESM1-6/piControl/r1i1p1f1"
 TAS = f"{DRS}/glb/mon/tas/tavg-h2m-hxy-u/g115/v20261001"
@@ -62,6 +66,23 @@ def test_sync_is_idempotent_and_withdraws_what_left_the_tree(progress):
     assert not progress.joinpath(*IDENTITY, "publication.json").exists()
 
 
+def test_staging_moves_to_publications_without_losing_the_record(progress):
+    staged = sync_publications.parse_listing(_listing(progress, TAS))
+    dest = progress.joinpath(*IDENTITY, "publication.json")
+    branded = "atmos.tas.tavg-h2m-hxy-u.mon.glb"
+
+    assert sync_publications.sync({}, dry_run=False, staging=staged)["created"] == 1
+    assert json.loads(dest.read_text())["variables"][branded]["status"] == "staging"
+    assert sync_publications.sync({}, dry_run=False, staging=staged)["unchanged"] == 1
+
+    assert sync_publications.sync(staged, dry_run=False, staging=staged)["updated"] == 1
+    assert json.loads(dest.read_text())["variables"][branded]["status"] == "published"
+    assert sync_publications.sync(staged, dry_run=False)["unchanged"] == 1
+
+    assert sync_publications.sync({}, dry_run=False)["removed"] == 1
+    assert not dest.exists()
+
+
 def test_a_hand_written_record_is_left_alone(progress):
     dest = progress.joinpath(*IDENTITY, "publication.json")
     dest.parent.mkdir(parents=True)
@@ -77,4 +98,22 @@ def test_a_hand_written_record_is_left_alone(progress):
 
 def test_publication_without_a_cmorisation_record_still_counts():
     assert _effective_publication_status(None, "published") == "published"
+    assert _effective_publication_status(None, "staging") == "staging"
     assert _effective_publication_status("failed", "published") == "not_published"
+    assert _unit_state(None, {}, "staging") == "staging"
+
+
+def test_staging_without_a_report_appears_in_the_compiled_units():
+    branded = "atmos.tas.tavg-h2m-hxy-u.mon.glb"
+    result = _compile_unit_summary(
+        *IDENTITY, "*", None,
+        {"variables": {branded: {"status": "staging"}}},
+        None, False, {},
+        {branded: {"request_name": "Amon.tas", "short_name": "tas", "cmip7_name": branded}},
+    )
+
+    assert result is not None
+    units, summary = result
+    assert units[0]["state"] == "staging"
+    assert units[0]["publication_status"] == "staging"
+    assert summary["staging"] == 1

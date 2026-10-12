@@ -25,7 +25,7 @@ the three checks that decide if it can be handed to CSIRO for scientific review
 and to NCI for publication.
 
 ```
-planned ──→ CMORised ──→ [ R  value range ] ──→ ready_for_review ──→ published
+planned ──→ CMORised ──→ [ R  value range ] ──→ ready_for_review ──→ staging ──→ published
    │                     [ W  WCRP compliance ]        │
    │                     [ K  repack        ]          └→ scientific review (CSIRO)
    └→ cmorise_failed          │
@@ -52,6 +52,7 @@ A unit's `state` is derived from the three gates:
 | `cmorised` | CMORised, at least one gate still outstanding |
 | `blocked` | A gate failed; needs a fix before it can go anywhere |
 | `ready_for_review` | All three gates cleared — hand to CSIRO and NCI |
+| `staging` | NCI has moved output from `admin/incoming/` to `admin/staging/` |
 | `published` | Published to ESGF |
 
 Every state here has a producer. The retired `qc_pending` / `qc_pass` /
@@ -147,12 +148,12 @@ progress/                       # Ingested runtime reports
       <member>/
         cmorisation.json        ← from moppy_batch_report.json (via ingest_report.py)
         qc.json                 ← release gate results (schemas/qc.schema.json)
-        publication.json        ← from /g/data/im55/publications (via sync_publications.py), or by hand
+        publication.json        ← from NCI staging/publications (via sync_publications.py), or by hand
 schemas/                        # JSON Schemas for validation
 scripts/
   ingest_report.py              # Place a batch report into the hierarchy
   sync_reports.py               # Bulk-ingest a tree of reports rsynced from Gadi
-  sync_publications.py          # Mark variables published from the NCI publication tree
+  sync_publications.py          # Track variables in NCI staging and publication trees
   compile_progress.py           # Build dashboard/progress.json
   qc_from_report.py             # Extract release gates from a batch report
   validate_plans.py             # Validate plans/*.yaml
@@ -221,10 +222,11 @@ committing.
 
 Each run:
 
-1. Lists the directories holding output under `/g/data/im55/publications/`.
-   NCI moves an approved delivery there from `admin/incoming/`, so everything
-   in it is published; `scripts/sync_publications.py` marks those variables
-   `published` in each member's `publication.json`.
+1. Lists the directories holding output under `/g/data/im55/admin/staging/`
+   and `/g/data/im55/publications/`. NCI moves delivery out of `admin/incoming/`
+   into staging first. `scripts/sync_publications.py` marks variables there
+   `staging`, then `published` once they appear in publications. If a variable
+   appears in both trees during a move, publication takes precedence.
 2. Rsyncs `batch_config.yml` and `moppy_batch_report_*.json` from
    `/g/data/im55/admin/incoming/` on Gadi — the same command used manually:
 
@@ -241,7 +243,7 @@ Each run:
    Runs are delivered into dated folders, `incoming/<YYYYMMDD>/<run>/`. Only
    the **most recent dated folder** is read: each delivery is a fresh start, and
    records for experiments it does not carry are removed from `progress/` —
-   except published ones, which keep their last report.
+   except staged or published ones, which keep their last report.
 
 3. Runs `scripts/sync_reports.py` to ingest the newest delivery into `progress/`.
 4. Recompiles `progress.json` as a sanity check.
@@ -259,6 +261,7 @@ re-running produces no diff.
 | Secret | `GADI_USER` | NCI username, e.g. `rb5533` |
 | Secret | `DEPLOY_KEY` | Private half of a passphrase-less SSH key whose public half is in `~/.ssh/authorized_keys` on Gadi |
 | Variable (optional) | `GADI_INCOMING_PATH` | Source path to sync; defaults to `/g/data/im55/admin/incoming/` |
+| Variable (optional) | `GADI_STAGING_PATH` | Staging tree to list; defaults to `/g/data/im55/admin/staging` |
 | Variable (optional) | `GADI_PUBLICATIONS_PATH` | Publication tree to list; defaults to `/g/data/im55/publications` |
 
 Generate and install the key with:
@@ -498,10 +501,11 @@ scripts/gadi_manage_submission.sh \
 
 ## Updating publication status
 
-Publication status is synced nightly from `/g/data/im55/publications/` (see
-[Automated nightly sync from Gadi](#automated-nightly-sync-from-gadi)). A
-variable is matched by its MIP-DRS7 path back to its branded name, and is
-`published` for as long as its output stays in that tree.
+Publication status is synced nightly from `/g/data/im55/admin/staging/` and
+`/g/data/im55/publications/` (see [Automated nightly sync from Gadi](#automated-nightly-sync-from-gadi)).
+A variable is matched by its MIP-DRS7 path back to its branded name. It is
+`staging` while its output is in the staging tree and `published` once it is
+in the publication tree.
 
 To record a status by hand instead — `publishing` or `retracted`, say — edit
 `progress/<model>/<experiment>/<member>/publication.json` directly, following

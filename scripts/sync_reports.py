@@ -321,7 +321,7 @@ def prune_stale(keep: set[tuple[str, str, str]], dry_run: bool) -> int:
     Only what this script writes is removed: every cmorisation.json, and a
     qc.json only when sync_reports.py produced it, so hand-recorded QC and
     publication records survive. A member with a publication.json is kept
-    whole: once NCI approves a delivery its output moves out of incoming/, and
+    whole: once NCI stages a delivery its output moves out of incoming/, and
     its last report is still the record of how that output was produced.
     Returns the number of members pruned.
     """

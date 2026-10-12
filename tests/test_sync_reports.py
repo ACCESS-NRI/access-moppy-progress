@@ -13,9 +13,25 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
+import sync_reports  # noqa: E402
 from sync_reports import collect_latest, latest_delivery, run_directory  # noqa: E402
 
 IDENTITY = ("ACCESS-ESM1.6", "1pctCO2", "r1i1p1f1")
+
+
+def test_staged_member_keeps_its_last_report_after_leaving_incoming(tmp_path, monkeypatch):
+    monkeypatch.setattr(sync_reports, "ROOT", tmp_path)
+    member = tmp_path.joinpath("progress", *IDENTITY)
+    member.mkdir(parents=True)
+    report = member / "cmorisation.json"
+    report.write_text("{}\n", encoding="utf-8")
+    (member / "publication.json").write_text(
+        json.dumps({"variables": {"atmos.tas.tavg-h2m-hxy-u.mon.glb": {"status": "staging"}}}),
+        encoding="utf-8",
+    )
+
+    assert sync_reports.prune_stale(set(), dry_run=False) == 0
+    assert report.exists()
 
 
 def _iso(stamp: str) -> str:

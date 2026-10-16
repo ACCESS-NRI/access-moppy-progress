@@ -1,0 +1,2222 @@
+{
+  "schema_version": "access-moppy.qc.v1",
+  "model": "ACCESS-ESM1.6",
+  "experiment_id": "amip",
+  "variant_label": "r7i1p1f1",
+  "checked_at": "2026-10-16T00:59:28+00:00",
+  "checked_by": "sync_reports.py",
+  "source_report": "moppy_batch_report_20261014T045026Z.json",
+  "variables": {
+    "atmos.areacella.ti-u-hxy-u.fx.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          100000000000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          79026785.62471725,
+          28978280872.519714
+        ],
+        "result": "pass",
+        "units": "m2"
+      },
+      "repack": {
+        "message": "cmip7repack left areacella uncompressed (chunking contiguous, filters {'zlib': False, 'szip': False, 'zstd': False, 'bzip2': False, 'blosc': False, 'shuffle': False, 'complevel': 0, 'fletcher32': False})",
+        "result": "warn",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_areacella_ti-u-hxy-u_fx_glb/compliance_areacella_ti-u-hxy-u_fx_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:11:02+00:00"
+      }
+    },
+    "land.mrsofc.ti-u-hxy-lnd.fx.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          10000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          1.1998010633792244
+        ],
+        "result": "pass",
+        "units": "kg m-2"
+      },
+      "repack": {
+        "message": "cmip7repack left mrsofc uncompressed (chunking contiguous, filters {'zlib': False, 'szip': False, 'zstd': False, 'bzip2': False, 'blosc': False, 'shuffle': False, 'complevel': 0, 'fletcher32': False})",
+        "result": "warn",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/land_mrsofc_ti-u-hxy-lnd_fx_glb/compliance_mrsofc_ti-u-hxy-lnd_fx_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:10:03+00:00"
+      }
+    },
+    "land.orog.ti-u-hxy-u.fx.glb": {
+      "range": {
+        "allowed": [
+          -500.0,
+          9000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -230.0431365966797,
+          5499.869140625
+        ],
+        "result": "pass",
+        "units": "m"
+      },
+      "repack": {
+        "message": "cmip7repack left orog uncompressed (chunking contiguous, filters {'zlib': False, 'szip': False, 'zstd': False, 'bzip2': False, 'blosc': False, 'shuffle': False, 'complevel': 0, 'fletcher32': False})",
+        "result": "warn",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/land_orog_ti-u-hxy-u_fx_glb/compliance_orog_ti-u-hxy-u_fx_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:10:05+00:00"
+      }
+    },
+    "land.rootd.ti-u-hxy-lnd.fx.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          20.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          4.6
+        ],
+        "result": "pass",
+        "units": "m"
+      },
+      "repack": {
+        "message": "cmip7repack left rootd uncompressed (chunking contiguous, filters {'zlib': False, 'szip': False, 'zstd': False, 'bzip2': False, 'blosc': False, 'shuffle': False, 'complevel': 0, 'fletcher32': False})",
+        "result": "warn",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/land_rootd_ti-u-hxy-lnd_fx_glb/compliance_rootd_ti-u-hxy-lnd_fx_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:09:01+00:00"
+      }
+    },
+    "land.sftgif.ti-u-hxy-u.fx.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          100.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          100.0
+        ],
+        "result": "pass",
+        "units": "%"
+      },
+      "repack": {
+        "message": "cmip7repack left sftgif uncompressed (chunking contiguous, filters {'zlib': False, 'szip': False, 'zstd': False, 'bzip2': False, 'blosc': False, 'shuffle': False, 'complevel': 0, 'fletcher32': False})",
+        "result": "warn",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/land_sftgif_ti-u-hxy-u_fx_glb/compliance_sftgif_ti-u-hxy-u_fx_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:09:43+00:00"
+      }
+    },
+    "atmos.sftlf.ti-u-hxy-u.fx.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          100.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          100.0
+        ],
+        "result": "pass",
+        "units": "%"
+      },
+      "repack": {
+        "message": "cmip7repack left sftlf uncompressed (chunking contiguous, filters {'zlib': False, 'szip': False, 'zstd': False, 'bzip2': False, 'blosc': False, 'shuffle': False, 'complevel': 0, 'fletcher32': False})",
+        "result": "warn",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_sftlf_ti-u-hxy-u_fx_glb/compliance_sftlf_ti-u-hxy-u_fx_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:08:17+00:00"
+      }
+    },
+    "land.slthick.ti-sl-hxy-lnd.fx.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          100.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          2.871999979019165
+        ],
+        "result": "pass",
+        "units": "m"
+      },
+      "repack": {
+        "message": "cmip7repack left slthick uncompressed (chunking contiguous, filters {'zlib': False, 'szip': False, 'zstd': False, 'bzip2': False, 'blosc': False, 'shuffle': False, 'complevel': 0, 'fletcher32': False})",
+        "result": "warn",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/land_slthick_ti-sl-hxy-lnd_fx_glb/compliance_slthick_ti-sl-hxy-lnd_fx_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:10:27+00:00"
+      }
+    },
+    "atmos.cl.tavg-al-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          100.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          99.96772766113281
+        ],
+        "result": "pass",
+        "units": "%"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_cl_tavg-al-hxy-u_mon_glb/compliance_cl_tavg-al-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:11:07+00:00"
+      }
+    },
+    "atmos.cli.tavg-al-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          0.02
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          3.7976195017108694e-05
+        ],
+        "result": "pass",
+        "units": "kg kg-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_cli_tavg-al-hxy-u_mon_glb/compliance_cli_tavg-al-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:09:58+00:00"
+      }
+    },
+    "atmos.clivi.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          1000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          0.9202179908752441
+        ],
+        "result": "pass",
+        "units": "kg m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_clivi_tavg-u-hxy-u_mon_glb/compliance_clivi_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:09:33+00:00"
+      }
+    },
+    "atmos.clt.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          100.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          100.0
+        ],
+        "result": "pass",
+        "units": "%"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_clt_tavg-u-hxy-u_mon_glb/compliance_clt_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:08:52+00:00"
+      }
+    },
+    "atmos.clw.tavg-al-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          0.02
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          5.886403960175812e-05
+        ],
+        "result": "pass",
+        "units": "kg kg-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_clw_tavg-al-hxy-u_mon_glb/compliance_clw_tavg-al-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:09:30+00:00"
+      }
+    },
+    "atmos.clwvi.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          1000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          1.390007734298706
+        ],
+        "result": "pass",
+        "units": "kg m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_clwvi_tavg-u-hxy-u_mon_glb/compliance_clwvi_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:09:09+00:00"
+      }
+    },
+    "atmos.evspsbl.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -0.05,
+          0.05
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -2.6250430892105214e-05,
+          0.00022995317704044282
+        ],
+        "result": "pass",
+        "units": "kg m-2 s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_evspsbl_tavg-u-hxy-u_mon_glb/compliance_evspsbl_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:09:23+00:00"
+      }
+    },
+    "atmos.hfls.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -5000.0,
+          5000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -65.65232849121094,
+          575.1129150390625
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_hfls_tavg-u-hxy-u_mon_glb/compliance_hfls_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:10:29+00:00"
+      }
+    },
+    "atmos.hfss.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -5000.0,
+          5000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -74.28592681884766,
+          447.6736145019531
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_hfss_tavg-u-hxy-u_mon_glb/compliance_hfss_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:10:25+00:00"
+      }
+    },
+    "atmos.hur.tavg-p19-hxy-air.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          100.0
+        ],
+        "check_id": "cmip7_ranges",
+        "message": "CMIP7 QC range warning for hur in experiment amip using rule default: observed range 0.000..120.133 % is outside allowed range 0.000..100.000 %.",
+        "observed": [
+          0.00022233492927625775,
+          120.1326675415039
+        ],
+        "result": "warn",
+        "units": "%"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_hur_tavg-p19-hxy-air_mon_glb/compliance_hur_tavg-p19-hxy-air_mon_glb_g110_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:09:42+00:00"
+      }
+    },
+    "atmos.hurs.tavg-h2m-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          100.0
+        ],
+        "check_id": "cmip7_ranges",
+        "message": "CMIP7 QC range warning for hurs in experiment amip using rule default: observed range 3.439..179.858 % is outside allowed range 0.000..100.000 %.",
+        "observed": [
+          3.439013719558716,
+          179.8581085205078
+        ],
+        "result": "warn",
+        "units": "%"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_hurs_tavg-h2m-hxy-u_mon_glb/compliance_hurs_tavg-h2m-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:09:17+00:00"
+      }
+    },
+    "atmos.hus.tavg-p19-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          0.08
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          9.598375072528142e-07,
+          0.023246679455041885
+        ],
+        "result": "pass",
+        "units": "1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_hus_tavg-p19-hxy-u_mon_glb/compliance_hus_tavg-p19-hxy-u_mon_glb_g110_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:10:50+00:00"
+      }
+    },
+    "atmos.huss.tavg-h2m-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          0.08
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          6.7077207859256305e-06,
+          0.025524144992232323
+        ],
+        "result": "pass",
+        "units": "1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_huss_tavg-h2m-hxy-u_mon_glb/compliance_huss_tavg-h2m-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:08:54+00:00"
+      }
+    },
+    "atmos.pr.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          0.1
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -5.251940700419621e-26,
+          0.0011539352126419544
+        ],
+        "result": "pass",
+        "units": "kg m-2 s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_pr_tavg-u-hxy-u_mon_glb/compliance_pr_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:08:45+00:00"
+      }
+    },
+    "atmos.prc.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          0.1
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -3.440178480626499e-12,
+          0.0010003469651564956
+        ],
+        "result": "pass",
+        "units": "kg m-2 s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_prc_tavg-u-hxy-u_mon_glb/compliance_prc_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:10:07+00:00"
+      }
+    },
+    "atmos.prsn.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          0.1
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -5.661112611557134e-23,
+          0.0002722254430409521
+        ],
+        "result": "pass",
+        "units": "kg m-2 s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_prsn_tavg-u-hxy-u_mon_glb/compliance_prsn_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:09:31+00:00"
+      }
+    },
+    "atmos.prw.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          150.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.07666015625,
+          83.103515625
+        ],
+        "result": "pass",
+        "units": "kg m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_prw_tavg-u-hxy-u_mon_glb/compliance_prw_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:11:04+00:00"
+      }
+    },
+    "atmos.ps.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          30000.0,
+          120000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          50295.31640625,
+          105682.375
+        ],
+        "result": "pass",
+        "units": "Pa"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_ps_tavg-u-hxy-u_mon_glb/compliance_ps_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:09:24+00:00"
+      }
+    },
+    "atmos.psl.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          80000.0,
+          110000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          96081.9609375,
+          104581.4921875
+        ],
+        "result": "pass",
+        "units": "Pa"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_psl_tavg-u-hxy-u_mon_glb/compliance_psl_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:10:38+00:00"
+      }
+    },
+    "atmos.rlds.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -100.0,
+          1500.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          58.13404846191406,
+          491.0202941894531
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_rlds_tavg-u-hxy-u_mon_glb/compliance_rlds_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:10:13+00:00"
+      }
+    },
+    "atmos.rldscs.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -100.0,
+          1500.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          50.65256118774414,
+          488.56439208984375
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_rldscs_tavg-u-hxy-u_mon_glb/compliance_rldscs_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:14:57+00:00"
+      }
+    },
+    "atmos.rlus.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -100.0,
+          1500.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          88.52837371826172,
+          589.6651611328125
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_rlus_tavg-u-hxy-u_mon_glb/compliance_rlus_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:14:55+00:00"
+      }
+    },
+    "atmos.rluscs.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -100.0,
+          1500.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          92.74832153320312,
+          363.4402160644531
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_rluscs_tavg-u-hxy-u_mon_glb/compliance_rluscs_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:14:21+00:00"
+      }
+    },
+    "atmos.rlut.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -100.0,
+          1500.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          93.97696685791016,
+          363.7953796386719
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_rlut_tavg-u-hxy-u_mon_glb/compliance_rlut_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:19:23+00:00"
+      }
+    },
+    "atmos.rlutcs.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -100.0,
+          1500.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          92.74832153320312,
+          363.4402160644531
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_rlutcs_tavg-u-hxy-u_mon_glb/compliance_rlutcs_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:19:13+00:00"
+      }
+    },
+    "atmos.rsds.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -100.0,
+          1500.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          474.47332763671875
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_rsds_tavg-u-hxy-u_mon_glb/compliance_rsds_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:19:24+00:00"
+      }
+    },
+    "atmos.rsdscs.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -100.0,
+          1500.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          486.5235900878906
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_rsdscs_tavg-u-hxy-u_mon_glb/compliance_rsdscs_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:17:56+00:00"
+      }
+    },
+    "atmos.rsdt.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          1500.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          550.5695190429688
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_rsdt_tavg-u-hxy-u_mon_glb/compliance_rsdt_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:18:03+00:00"
+      }
+    },
+    "atmos.rsus.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -100.0,
+          1500.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          362.7291564941406
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_rsus_tavg-u-hxy-u_mon_glb/compliance_rsus_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:18:52+00:00"
+      }
+    },
+    "atmos.rsuscs.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -100.0,
+          1500.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          370.8431091308594
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_rsuscs_tavg-u-hxy-u_mon_glb/compliance_rsuscs_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:19:18+00:00"
+      }
+    },
+    "atmos.rsut.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -100.0,
+          1500.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          379.1146240234375
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_rsut_tavg-u-hxy-u_mon_glb/compliance_rsut_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:18:33+00:00"
+      }
+    },
+    "atmos.rsutcs.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -100.0,
+          1500.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          378.17816162109375
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_rsutcs_tavg-u-hxy-u_mon_glb/compliance_rsutcs_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:18:12+00:00"
+      }
+    },
+    "atmos.sfcWind.tavg-h10m-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          150.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.41448110342025757,
+          21.328886032104492
+        ],
+        "result": "pass",
+        "units": "m s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_sfcWind_tavg-h10m-hxy-u_mon_glb/compliance_sfcWind_tavg-h10m-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:19:58+00:00"
+      }
+    },
+    "atmos.ta.tavg-p19-hxy-air.mon.glb": {
+      "range": {
+        "allowed": [
+          150.0,
+          350.0
+        ],
+        "check_id": "cmip7_ranges",
+        "message": "CMIP7 QC range warning for ta in experiment amip using rule default: observed range 149.803..311.369 K is outside allowed range 150.000..350.000 K.",
+        "observed": [
+          149.802978515625,
+          311.36865234375
+        ],
+        "result": "warn",
+        "units": "K"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_ta_tavg-p19-hxy-air_mon_glb/compliance_ta_tavg-p19-hxy-air_mon_glb_g110_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:20:08+00:00"
+      }
+    },
+    "atmos.tas.tavg-h2m-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          180.0,
+          330.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          203.84564208984375,
+          313.992431640625
+        ],
+        "result": "pass",
+        "units": "K"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_tas_tavg-h2m-hxy-u_mon_glb/compliance_tas_tavg-h2m-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:19:45+00:00"
+      }
+    },
+    "atmos.tas.tmaxavg-h2m-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          180.0,
+          330.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          206.5697784423828,
+          320.7622985839844
+        ],
+        "result": "pass",
+        "units": "K"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_tas_tmaxavg-h2m-hxy-u_mon_glb/compliance_tas_tmaxavg-h2m-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:17:47+00:00"
+      }
+    },
+    "atmos.tas.tminavg-h2m-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          180.0,
+          330.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          200.6309814453125,
+          308.265869140625
+        ],
+        "result": "pass",
+        "units": "K"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_tas_tminavg-h2m-hxy-u_mon_glb/compliance_tas_tminavg-h2m-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:24:05+00:00"
+      }
+    },
+    "atmos.tauu.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -10.0,
+          10.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -0.8333413600921631,
+          1.2091631889343262
+        ],
+        "result": "pass",
+        "units": "Pa"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_tauu_tavg-u-hxy-u_mon_glb/compliance_tauu_tavg-u-hxy-u_mon_glb_g109_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:23:34+00:00"
+      }
+    },
+    "atmos.tauv.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -10.0,
+          10.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -0.6822960376739502,
+          0.7609331011772156
+        ],
+        "result": "pass",
+        "units": "Pa"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_tauv_tavg-u-hxy-u_mon_glb/compliance_tauv_tavg-u-hxy-u_mon_glb_g108_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:25:15+00:00"
+      }
+    },
+    "atmos.ts.tavg-u-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          150.0,
+          370.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          198.51315307617188,
+          318.3079528808594
+        ],
+        "result": "pass",
+        "units": "K"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_ts_tavg-u-hxy-u_mon_glb/compliance_ts_tavg-u-hxy-u_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:24:33+00:00"
+      }
+    },
+    "atmos.ua.tavg-p19-hxy-air.mon.glb": {
+      "range": {
+        "allowed": [
+          -150.0,
+          150.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -108.15969848632812,
+          146.7837677001953
+        ],
+        "result": "pass",
+        "units": "m s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_ua_tavg-p19-hxy-air_mon_glb/compliance_ua_tavg-p19-hxy-air_mon_glb_g110_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:24:57+00:00"
+      }
+    },
+    "atmos.uas.tavg-h10m-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -150.0,
+          150.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -18.27751922607422,
+          15.022499084472656
+        ],
+        "result": "pass",
+        "units": "m s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_uas_tavg-h10m-hxy-u_mon_glb/compliance_uas_tavg-h10m-hxy-u_mon_glb_g109_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:24:45+00:00"
+      }
+    },
+    "atmos.va.tavg-p19-hxy-air.mon.glb": {
+      "range": {
+        "allowed": [
+          -150.0,
+          150.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -117.26239776611328,
+          111.88963317871094
+        ],
+        "result": "pass",
+        "units": "m s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_va_tavg-p19-hxy-air_mon_glb/compliance_va_tavg-p19-hxy-air_mon_glb_g110_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:24:01+00:00"
+      }
+    },
+    "atmos.vas.tavg-h10m-hxy-u.mon.glb": {
+      "range": {
+        "allowed": [
+          -150.0,
+          150.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -15.15449047088623,
+          19.5506534576416
+        ],
+        "result": "pass",
+        "units": "m s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_vas_tavg-h10m-hxy-u_mon_glb/compliance_vas_tavg-h10m-hxy-u_mon_glb_g108_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:24:25+00:00"
+      }
+    },
+    "atmos.wap.tavg-p19-hxy-air.mon.glb": {
+      "range": {
+        "allowed": [
+          -20.0,
+          20.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -0.7085354328155518,
+          1.0594569444656372
+        ],
+        "result": "pass",
+        "units": "Pa s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_wap_tavg-p19-hxy-air_mon_glb/compliance_wap_tavg-p19-hxy-air_mon_glb_g110_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:23:50+00:00"
+      }
+    },
+    "atmos.zg.tavg-p19-hxy-air.mon.glb": {
+      "range": {
+        "allowed": [
+          -500.0,
+          80000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -102.27166748046875,
+          49068.9921875
+        ],
+        "result": "pass",
+        "units": "m"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/atmos_zg_tavg-p19-hxy-air_mon_glb/compliance_zg_tavg-p19-hxy-air_mon_glb_g110_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:24:56+00:00"
+      }
+    },
+    "land.evspsblsoi.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          -0.05,
+          0.05
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -2.7486210001370637e-06,
+          0.00010322462912881747
+        ],
+        "result": "pass",
+        "units": "kg m-2 s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/land_evspsblsoi_tavg-u-hxy-lnd_mon_glb/compliance_evspsblsoi_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:23:33+00:00"
+      }
+    },
+    "land.evspsblveg.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          -0.05,
+          0.05
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -1.3573129535870976e-06,
+          5.983946175547317e-05
+        ],
+        "result": "pass",
+        "units": "kg m-2 s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/land_evspsblveg_tavg-u-hxy-lnd_mon_glb/compliance_evspsblveg_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:25:31+00:00"
+      }
+    },
+    "land.lai.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          20.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          6.824213027954102
+        ],
+        "result": "pass",
+        "units": "1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/land_lai_tavg-u-hxy-lnd_mon_glb/compliance_lai_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:24:29+00:00"
+      }
+    },
+    "landIce.mrfso.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          10000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          1740.207275390625
+        ],
+        "result": "pass",
+        "units": "kg m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/landIce_mrfso_tavg-u-hxy-lnd_mon_glb/compliance_mrfso_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:29:03+00:00"
+      }
+    },
+    "land.mrro.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          0.1
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          0.001059550791978836
+        ],
+        "result": "pass",
+        "units": "kg m-2 s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/land_mrro_tavg-u-hxy-lnd_mon_glb/compliance_mrro_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:30:37+00:00"
+      }
+    },
+    "land.mrros.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          0.1
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          0.0007082584779709578
+        ],
+        "result": "pass",
+        "units": "kg m-2 s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/land_mrros_tavg-u-hxy-lnd_mon_glb/compliance_mrros_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:29:10+00:00"
+      }
+    },
+    "land.mrso.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          10000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          2152.59814453125
+        ],
+        "result": "pass",
+        "units": "kg m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/land_mrso_tavg-u-hxy-lnd_mon_glb/compliance_mrso_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:29:26+00:00"
+      }
+    },
+    "land.mrsol.tavg-d10cm-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          10000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          72.41937518677665
+        ],
+        "result": "pass",
+        "units": "kg m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/land_mrsol_tavg-d10cm-hxy-lnd_mon_glb/compliance_mrsol_tavg-d10cm-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:28:51+00:00"
+      }
+    },
+    "land.cSoil.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          1000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          28.799440383911133
+        ],
+        "result": "pass",
+        "units": "kg m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/land_cSoil_tavg-u-hxy-lnd_mon_glb/compliance_cSoil_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:29:33+00:00"
+      }
+    },
+    "land.cVeg.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          1000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          36.39767837524414
+        ],
+        "result": "pass",
+        "units": "kg m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/land_cVeg_tavg-u-hxy-lnd_mon_glb/compliance_cVeg_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:30:35+00:00"
+      }
+    },
+    "land.fBNF.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          -0.0001,
+          0.0001
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          4.45460890396987e-10
+        ],
+        "result": "pass",
+        "units": "kg m-2 s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/land_fBNF_tavg-u-hxy-lnd_mon_glb/compliance_fBNF_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:30:58+00:00"
+      }
+    },
+    "land.gpp.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          -0.0001,
+          0.0001
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -8.439004703375552e-13,
+          1.693320825779665e-07
+        ],
+        "result": "pass",
+        "units": "kg m-2 s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/land_gpp_tavg-u-hxy-lnd_mon_glb/compliance_gpp_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:28:53+00:00"
+      }
+    },
+    "land.nbp.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          -0.0001,
+          0.0001
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -3.8022072601506807e-08,
+          3.967351602796043e-08
+        ],
+        "result": "pass",
+        "units": "kg m-2 s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/land_nbp_tavg-u-hxy-lnd_mon_glb/compliance_nbp_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:35:37+00:00"
+      }
+    },
+    "land.ra.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          -0.0001,
+          0.0001
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -1.7990437631942156e-25,
+          1.1250946840846154e-07
+        ],
+        "result": "pass",
+        "units": "kg m-2 s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/land_ra_tavg-u-hxy-lnd_mon_glb/compliance_ra_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:33:52+00:00"
+      }
+    },
+    "land.rh.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          -0.0001,
+          0.0001
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          7.068285157174614e-08
+        ],
+        "result": "pass",
+        "units": "kg m-2 s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/land_rh_tavg-u-hxy-lnd_mon_glb/compliance_rh_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:36:35+00:00"
+      }
+    },
+    "land.tsl.tavg-sl-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          150.0,
+          350.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          215.744384765625,
+          321.5918884277344
+        ],
+        "result": "pass",
+        "units": "K"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/land_tsl_tavg-sl-hxy-lnd_mon_glb/compliance_tsl_tavg-sl-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:33:35+00:00"
+      }
+    },
+    "landIce.snc.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          100.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          100.00001525878906
+        ],
+        "result": "pass",
+        "units": "%"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/landIce_snc_tavg-u-hxy-lnd_mon_glb/compliance_snc_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:34:35+00:00"
+      }
+    },
+    "landIce.snw.tavg-u-hxy-lnd.mon.glb": {
+      "range": {
+        "allowed": [
+          0.0,
+          50000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          0.0,
+          6572.96484375
+        ],
+        "result": "pass",
+        "units": "kg m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/amip/amip-amip-1.0-r7i1p1f1-9d329ee4/logs/landIce_snw_tavg-u-hxy-lnd_mon_glb/compliance_snw_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_amip_r7i1p1f1_197901-197912.json",
+        "backfilled": false,
+        "checked_at": "2026-10-14T04:34:48+00:00"
+      }
+    }
+  }
+}

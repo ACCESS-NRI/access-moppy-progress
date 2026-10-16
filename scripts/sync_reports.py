@@ -17,8 +17,9 @@ The expected source tree is what this rsync produces::
         rb5533@gadi.nci.org.au:/g/data/im55/admin/incoming/ ./incoming/
 
 Runs are delivered into dated folders, ``incoming/<YYYYMMDD>/<run>/``.
-Only the most recent dated folder is read: each delivery is a fresh start,
-and records under ``progress/`` for experiments it does not carry are removed.
+All folders still present in the incoming tree are read. The latest report
+for each (model, experiment, member) wins, even across deliveries; records
+absent from the incoming tree are removed unless publication is recorded.
 Several ``moppy_batch_report_<timestamp>.json`` files may claim one
 (model, experiment, member); only the most recent of them is ingested.
 Identifiers come from the report itself, falling back to the sibling
@@ -53,7 +54,6 @@ REPORT_GLOB = "moppy_batch_report_*.json"
 CONFIG_NAME = "batch_config.yml"
 MEMBER_RE = re.compile(r"^r\d+i\d+p\d+f\d+$")
 FILENAME_TS_RE = re.compile(r"moppy_batch_report_(\d{8}T\d{6}Z)\.json$")
-DELIVERY_RE = re.compile(r"^\d{8}$")
 
 
 def canonical_key(value: str) -> str:
@@ -107,20 +107,6 @@ def report_timestamp(path: Path, report: dict) -> datetime:
             tzinfo=timezone.utc
         )
     return datetime.min.replace(tzinfo=timezone.utc)
-
-
-def latest_delivery(source: Path) -> Path:
-    """The most recent dated delivery folder (``YYYYMMDD``) under source.
-
-    Runs are copied into ``<source>/<YYYYMMDD>/`` as they are delivered, and
-    the newest delivery replaces every earlier one outright. A source with no
-    dated folders is read as a whole.
-    """
-    deliveries = sorted(
-        child for child in source.iterdir()
-        if child.is_dir() and DELIVERY_RE.match(child.name)
-    )
-    return deliveries[-1] if deliveries else source
 
 
 def run_directory(path: Path, source: Path) -> Path:
@@ -316,7 +302,7 @@ def write_gates(
 
 
 def prune_stale(keep: set[tuple[str, str, str]], dry_run: bool) -> int:
-    """Remove synced records for identities absent from the current delivery.
+    """Remove synced records for identities absent from the incoming tree.
 
     Only what this script writes is removed: every cmorisation.json, and a
     qc.json only when sync_reports.py produced it, so hand-recorded QC and
@@ -346,7 +332,7 @@ def prune_stale(keep: set[tuple[str, str, str]], dry_run: bool) -> int:
         if not dry_run:
             for path in stale:
                 path.unlink()
-        print(f"removed   {'/'.join(identity)}  (not in the current delivery)")
+        print(f"removed   {'/'.join(identity)}  (not in the incoming tree)")
         pruned += 1
     return pruned
 
@@ -372,11 +358,10 @@ def main() -> None:
         print(f"ERROR: source is not a directory: {args.source}", file=sys.stderr)
         sys.exit(1)
 
-    delivery = latest_delivery(args.source)
-    print(f"Reading delivery {delivery}")
-    latest = collect_latest(delivery)
+    print(f"Reading incoming tree {args.source}")
+    latest = collect_latest(args.source)
     if not latest:
-        print(f"ERROR: no usable {REPORT_GLOB} found under {delivery}", file=sys.stderr)
+        print(f"ERROR: no usable {REPORT_GLOB} found under {args.source}", file=sys.stderr)
         sys.exit(1)
 
     counts = {"created": 0, "updated": 0, "unchanged": 0}

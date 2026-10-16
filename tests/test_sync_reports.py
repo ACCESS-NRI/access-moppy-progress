@@ -14,7 +14,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
 import sync_reports  # noqa: E402
-from sync_reports import collect_latest, latest_delivery, run_directory  # noqa: E402
+from sync_reports import collect_latest, run_directory  # noqa: E402
 
 IDENTITY = ("ACCESS-ESM1.6", "1pctCO2", "r1i1p1f1")
 
@@ -168,19 +168,40 @@ def test_run_directory_falls_back_to_the_reports_own_directory(tmp_path):
 
 
 
-def test_only_the_most_recent_delivery_folder_is_read(tmp_path):
-    """Older dated deliveries are ignored, even for experiments the newest lacks."""
-    _report(_run_dir(tmp_path / "20260914", "1pctCO2"), "20261001T000000Z")
+def test_all_available_deliveries_are_read(tmp_path):
+    """Members in an older delivery remain visible while that folder exists."""
+    old = _report(_run_dir(tmp_path / "20260914", "1pctCO2"), "20261001T000000Z")
     newest = tmp_path / "20260930"
-    _report(newest / "piControl", "20261002T000000Z", experiment_id="piControl")
+    current = _report(newest / "piControl", "20261002T000000Z", experiment_id="piControl")
 
-    assert latest_delivery(tmp_path) == newest
-    collected = collect_latest(latest_delivery(tmp_path))
+    collected = collect_latest(tmp_path)
 
-    assert set(collected) == {("ACCESS-ESM1.6", "piControl", "r1i1p1f1")}
+    assert {path for path, _ in collected.values()} == {old, current}
 
 
-def test_a_source_without_dated_folders_is_read_whole(tmp_path):
-    _run_dir(tmp_path, "1pctCO2-01")
+def test_newer_report_for_same_member_wins_across_deliveries(tmp_path):
+    _report(_run_dir(tmp_path / "20260914", "1pctCO2"), "20261001T000000Z")
+    newest = _report(_run_dir(tmp_path / "20260930", "1pctCO2"), "20261002T000000Z")
 
-    assert latest_delivery(tmp_path) == tmp_path
+    assert collect_latest(tmp_path)[IDENTITY][0] == newest
+
+
+def test_sync_ingests_members_from_each_dated_delivery(tmp_path, monkeypatch):
+    source = tmp_path / "incoming"
+    plans = tmp_path / "plans"
+    plans.mkdir()
+    (plans / "model.yaml").write_text(
+        "model: ACCESS-ESM1.6\nexperiments:\n  - id: amip\n  - id: piControl\n",
+        encoding="utf-8",
+    )
+    _report(_run_dir(source / "20260914", "amip-r2"), "20261001T000000Z",
+            experiment_id="amip", variant_label="r2i1p1f1")
+    _report(_run_dir(source / "20260930", "piControl"), "20261002T000000Z",
+            experiment_id="piControl")
+    monkeypatch.setattr(sync_reports, "ROOT", tmp_path)
+    monkeypatch.setattr(sys, "argv", ["sync_reports.py", "--source", str(source)])
+
+    sync_reports.main()
+
+    assert (tmp_path / "progress/ACCESS-ESM1.6/amip/r2i1p1f1/cmorisation.json").exists()
+    assert (tmp_path / "progress/ACCESS-ESM1.6/piControl/r1i1p1f1/cmorisation.json").exists()

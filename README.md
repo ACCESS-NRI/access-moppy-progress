@@ -222,7 +222,7 @@ committing.
 
 Each run:
 
-1. Lists the directories holding output under `/g/data/im55/admin/staging/`
+1. Lists version directories under `/g/data/im55/admin/staging/`
    and `/g/data/im55/publications/`. NCI moves delivery out of `admin/incoming/`
    into staging first. `scripts/sync_publications.py` marks variables there
    `staging`, then `published` once they appear in publications. If a variable
@@ -240,12 +240,12 @@ Each run:
        <user>@gadi.nci.org.au:/g/data/im55/admin/incoming/ ./incoming/
    ```
 
-   Runs are delivered into dated folders, `incoming/<YYYYMMDD>/<run>/`. Only
-   the **most recent dated folder** is read: each delivery is a fresh start, and
-   records for experiments it does not carry are removed from `progress/` —
-   except staged or published ones, which keep their last report.
+   Runs are delivered into dated folders, `incoming/<YYYYMMDD>/<run>/`.
+   Every folder still present on im55 is read, and the latest report for each
+   experiment/member wins. Records absent from the incoming tree are removed
+   from `progress/`, except staged or published ones, which keep their last report.
 
-3. Runs `scripts/sync_reports.py` to ingest the newest delivery into `progress/`.
+3. Runs `scripts/sync_reports.py` to ingest the available deliveries into `progress/`.
 4. Recompiles `progress.json` as a sanity check.
 5. Commits and pushes to `main` **only if `progress/` actually changed**, then
    dispatches `build_dashboard.yml` to redeploy the dashboard.

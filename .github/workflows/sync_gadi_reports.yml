@@ -81,9 +81,9 @@ jobs:
 
       - name: List published output on Gadi
         # NCI moves output from admin/incoming/ through admin/staging/ to
-        # publications/. Only the directories holding files are
-        # needed, not the files themselves. pipefail keeps a failed listing from
-        # passing as an empty one, which would unpublish every variable.
+        # publications/. Version directories identify published variables.
+        # Prune there: NCI can make their contents unreadable to this account.
+        # pipefail keeps a failed listing from passing as an empty one.
         env:
           GADI_USER: ${{ secrets.GADI_USER }}
           PUBLICATIONS: ${{ vars.GADI_PUBLICATIONS_PATH || '/g/data/im55/publications' }}
@@ -91,11 +91,13 @@ jobs:
           set -o pipefail
           ssh -i ~/.ssh/gadi_key -o BatchMode=yes -o ConnectTimeout=20 \
             "${GADI_USER}@gadi.nci.org.au" \
-            "set -o pipefail; cd '${PUBLICATIONS}' && find MIP-DRS7 -name '*.nc' -printf '%h\\n' | sort -u" \
+            "set -o pipefail; cd '${PUBLICATIONS}' && find MIP-DRS7 -type d -name 'v[0-9]*' -print -prune | sort -u" \
             > published.txt
           echo "$(grep -c '^MIP-DRS7/' published.txt || true) published version directories."
 
       - name: List staged output on Gadi
+        # NCI may remove read permission from a staged version directory.
+        # Record the directory itself and avoid descending into its contents.
         env:
           GADI_USER: ${{ secrets.GADI_USER }}
           STAGING: ${{ vars.GADI_STAGING_PATH || '/g/data/im55/admin/staging' }}
@@ -103,7 +105,7 @@ jobs:
           set -o pipefail
           ssh -i ~/.ssh/gadi_key -o BatchMode=yes -o ConnectTimeout=20 \
             "${GADI_USER}@gadi.nci.org.au" \
-            "set -o pipefail; cd '${STAGING}' && find . -path '*/MIP-DRS7/*' -name '*.nc' -printf '%h\\n' | sed -n 's#^.*MIP-DRS7/#MIP-DRS7/#p' | sort -u" \
+            "set -o pipefail; cd '${STAGING}' && find . -type d -name 'v[0-9]*' -print -prune | sed -n 's#^.*MIP-DRS7/#MIP-DRS7/#p' | sort -u" \
             > staging.txt
           echo "$(grep -c '^MIP-DRS7/' staging.txt || true) staged version directories."
 
@@ -138,7 +140,7 @@ jobs:
 
       - name: Ingest staging and publication status into progress/
         # Before the reports: a member with a publication.json keeps its last
-        # report when it is no longer in the current delivery.
+        # report when it is no longer in the incoming tree.
         run: |
           python scripts/sync_publications.py \
             --listing published.txt \

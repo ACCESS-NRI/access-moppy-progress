@@ -36,7 +36,8 @@ Output schema
       "gates":                 {"range": "not_run", "wcrp": "not_run", "repack": "implied"},
       "gates_cleared":         1,
       "cmorisation_status":    "completed",
-      "publication_status":    "not_published"
+      "publication_status":    "not_published",
+      "location":              "incoming"
     }
   ],
   "summaries": {
@@ -49,6 +50,7 @@ Output schema
       "ready_for_review":   0,
       "staging":            0,
       "published":          0,
+      "incoming":           1,
       "gates": {
         "range":  {"pass": 0, "warn": 0, "fail": 0, "implied": 0,   "not_run": 110},
         "wcrp":   {"pass": 0, "warn": 0, "fail": 0, "implied": 0,   "not_run": 110},
@@ -486,6 +488,7 @@ def _compile_unit_summary(
 
     summary: dict = {"total_planned": len(all_vars)}
     summary.update(dict.fromkeys(STATES, 0))
+    summary["incoming"] = 0
     summary["gates"] = {
         gate: dict.fromkeys(GATE_RESULTS, 0) for gate in GATES
     }
@@ -509,6 +512,14 @@ def _compile_unit_summary(
                 recorded_pub = pub_by_var[key]
                 break
         pub_status = _effective_publication_status(cmor_status, recorded_pub)
+        # sync_reports.py tracks whether the source report is still present in
+        # admin/incoming. Publication records take precedence after NCI moves
+        # an individual variable into staging or publications.
+        location = None
+        if pub_status in ("staging", "published"):
+            location = pub_status
+        elif cmor_status == "completed" and cmor and cmor.get("source_location") == "incoming":
+            location = "incoming"
 
         qc_entry = None
         for key in (cmip7_name, request_name, short_name):
@@ -534,6 +545,7 @@ def _compile_unit_summary(
             "gates_cleared": sum(1 for r in gates.values() if r in GATE_CLEARED),
             "cmorisation_status": cmor_status or "not_started",
             "publication_status": pub_status,
+            "location": location,
         }
 
         messages = {
@@ -547,6 +559,8 @@ def _compile_unit_summary(
         units.append(unit)
 
         summary[state] = summary.get(state, 0) + 1
+        if location == "incoming":
+            summary["incoming"] += 1
         # Gates are only counted where they mean something — a variable that
         # never CMORised has nothing to check.
         if cmor_status == "completed":

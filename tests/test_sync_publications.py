@@ -116,4 +116,30 @@ def test_staging_without_a_report_appears_in_the_compiled_units():
     units, summary = result
     assert units[0]["state"] == "staging"
     assert units[0]["publication_status"] == "staging"
+    assert units[0]["location"] == "staging"
     assert summary["staging"] == 1
+
+
+def test_incoming_report_is_distinct_from_publication():
+    branded = "atmos.tas.tavg-h2m-hxy-u.mon.glb"
+    cmor = {"source_location": "incoming", "tasks": [{"variable": branded, "status": "completed"}]}
+    qc = {"variables": {branded: {
+        gate: {"result": "pass"} for gate in ("range", "wcrp", "repack")
+    }}}
+    units, summary = _compile_unit_summary(
+        "ACCESS-ESM1.6", "amip", "r1i1p1f1", "*", cmor, None,
+        qc, False, {}, {},
+    )
+
+    assert units[0]["state"] == "ready_for_review"
+    assert units[0]["publication_status"] == "not_published"
+    assert units[0]["location"] == "incoming"
+    assert summary["incoming"] == 1
+
+    published = {"variables": {branded: {"status": "published"}}}
+    units, summary = _compile_unit_summary(
+        "ACCESS-ESM1.6", "amip", "r1i1p1f1", "*", cmor, published,
+        qc, False, {}, {},
+    )
+    assert units[0]["location"] == "published"
+    assert summary["incoming"] == 0

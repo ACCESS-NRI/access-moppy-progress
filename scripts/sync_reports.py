@@ -256,6 +256,7 @@ def write_record(
     record["model"] = model
     record["experiment_id"] = experiment
     record["variant_label"] = member
+    record["source_location"] = "incoming"
 
     dest = ROOT / "progress" / model / experiment / member / "cmorisation.json"
 
@@ -316,7 +317,18 @@ def prune_stale(keep: set[tuple[str, str, str]], dry_run: bool) -> int:
     for report_path in sorted(progress.glob("*/*/*/cmorisation.json")):
         member_dir = report_path.parent
         identity = tuple(member_dir.relative_to(progress).parts)
-        if identity in keep or (member_dir / "publication.json").exists():
+        if identity in keep:
+            continue
+
+        # A staged or published member keeps its last report for provenance,
+        # but that report no longer proves the output is still in incoming/.
+        if (member_dir / "publication.json").exists():
+            with report_path.open() as fh:
+                record = json.load(fh)
+            if record.pop("source_location", None) is not None:
+                if not dry_run:
+                    report_path.write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
+                print(f"updated   {'/'.join(identity)}  (left the incoming tree)")
             continue
 
         stale = [report_path]

@@ -24,7 +24,7 @@ def test_staged_member_keeps_its_last_report_after_leaving_incoming(tmp_path, mo
     member = tmp_path.joinpath("progress", *IDENTITY)
     member.mkdir(parents=True)
     report = member / "cmorisation.json"
-    report.write_text("{}\n", encoding="utf-8")
+    report.write_text('{"source_location": "incoming"}\n', encoding="utf-8")
     (member / "publication.json").write_text(
         json.dumps({"variables": {"atmos.tas.tavg-h2m-hxy-u.mon.glb": {"status": "staging"}}}),
         encoding="utf-8",
@@ -32,6 +32,16 @@ def test_staged_member_keeps_its_last_report_after_leaving_incoming(tmp_path, mo
 
     assert sync_reports.prune_stale(set(), dry_run=False) == 0
     assert report.exists()
+    assert "source_location" not in json.loads(report.read_text())
+
+
+def test_synced_report_records_its_incoming_location(tmp_path, monkeypatch):
+    monkeypatch.setattr(sync_reports, "ROOT", tmp_path)
+    source = tmp_path / "incoming" / "report.json"
+
+    assert sync_reports.write_record(*IDENTITY, source, {"tasks": []}, dry_run=False) == "created"
+    report = tmp_path.joinpath("progress", *IDENTITY, "cmorisation.json")
+    assert json.loads(report.read_text())["source_location"] == "incoming"
 
 
 def _iso(stamp: str) -> str:

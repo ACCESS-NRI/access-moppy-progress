@@ -473,7 +473,8 @@ function matrixCell(unit, context) {
   const detail = (unit && unit.cmorisation_status === "completed")
     ? ` — ${gateSummaryText(gates)}`
     : "";
-  const title = `${s.label} — ${context}${detail}`;
+  const location = unit?.location === "incoming" ? " · Incoming" : "";
+  const title = `${s.label}${location} — ${context}${detail}`;
   return `<td class="cell-${s.cls}" title="${escHtml(title)}">${mark}</td>`;
 }
 
@@ -490,11 +491,12 @@ function cmorSimpleStatus(unit) {
   return "not_started";
 }
 
-function publicationSimpleStatus(unit) {
-  if (unit.publication_status === "published") return "passed";
-  if (unit.publication_status === "staging") return "staging";
-  if (unit.publication_status === "retracted") return "failed";
-  return "not_started";
+function outputLocationBadge(unit) {
+  const location = unit.location || unit.publication_status;
+  if (location === "published") return `<span class="stage stage-published">Published</span>`;
+  if (location === "staging") return `<span class="stage stage-staging">Staging</span>`;
+  if (location === "incoming") return `<span class="stage stage-incoming">Incoming</span>`;
+  return `<span class="stage stage-not_started">—</span>`;
 }
 
 // Most advanced first, so the bar fills from the left as work progresses.
@@ -578,8 +580,9 @@ function renderMemberMatrix(model, expId, members) {
     const s = STATES[state];
     const aggregate = aggregateGateUnit(summary);
     const completionPct = total ? Math.max(0, Math.min(100, (done / total) * 100)) : 0;
+    const location = summary.incoming ? ` · ${summary.incoming} in incoming` : "";
     const title = total
-      ? `${member} — ${s.label} (${done}/${total} CMORised) · ${gateSummaryText(aggregate.gates)}`
+      ? `${member} — ${s.label}${location} (${done}/${total} CMORised) · ${gateSummaryText(aggregate.gates)}`
       : `${member} — no report yet`;
     return `<span class="member-cell cell-${s.cls}" title="${escHtml(title)}" data-model="${model}" data-exp="${expId}" data-member="${member}">
       <span class="member-cell-label">${escHtml(memberShortLabel(member))}</span>
@@ -688,6 +691,9 @@ function renderOverview(container) {
 
       for (const [expId, expInfo] of experiments) {
         const members = expInfo.members || [];
+        const incomingMembers = members.filter(member =>
+          (progress.summaries[`${selModel}/${expId}/${member}`]?.incoming || 0) > 0
+        ).length;
         const card = document.createElement("div");
         card.className = experimentCardClass(expInfo);
         card.dataset.cardModel = selModel;
@@ -697,7 +703,7 @@ function renderOverview(container) {
           ${renderExperimentTags(expInfo)}
           <h3>${escHtml(title)}</h3>
           ${renderExperimentMeta(expInfo)}
-          <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:0.5rem">${members.length} member${members.length!==1?"s":""}</div>
+          <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:0.5rem">${members.length} member${members.length!==1?"s":""}${incomingMembers ? ` · ${incomingMembers} in incoming` : ""}</div>
         `;
 
         if (members.length > MEMBER_MATRIX_THRESHOLD) {
@@ -948,7 +954,7 @@ function renderMemberTimeline(container, preModel, preExp, preMember) {
     const table = document.createElement("table");
     table.className = "detail";
     table.innerHTML = `<thead><tr>
-      <th>Variable</th><th>CMORised</th><th>Release gates</th><th>State</th><th>Publication</th>
+      <th>Variable</th><th>CMORised</th><th>Release gates</th><th>State</th><th>Output location</th>
     </tr></thead>`;
     const tbody = document.createElement("tbody");
     for (const u of sorted) {
@@ -962,7 +968,7 @@ function renderMemberTimeline(container, preModel, preExp, preMember) {
         <td>${simpleStatusBadge(cmorSimpleStatus(u))}</td>
         <td><span class="timeline-qc-cell" data-var="${escHtml(u.variable)}" title="Open variable pipeline for ${escHtml(u.variable)}">${gateStrip(u)}${cleared}</span></td>
         <td>${stateBadge(u)}</td>
-        <td>${simpleStatusBadge(publicationSimpleStatus(u))}</td>
+        <td>${outputLocationBadge(u)}</td>
       `;
       tbody.appendChild(tr);
     }

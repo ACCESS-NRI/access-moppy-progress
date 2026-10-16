@@ -28,6 +28,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -170,8 +172,22 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add progress/
           git commit -m "chore(progress): sync MOPPy reports from Gadi"
-          git push origin HEAD:main
-          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+          # A plan PR can land while the Gadi transfer is running. Rebase the
+          # generated records onto the latest main, and retry if main moves
+          # again between the fetch and push.
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              echo "changed=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "Push attempt ${attempt} failed; retrying against latest main."
+          done
+
+          echo "::error::Could not push progress changes after three attempts." >&2
+          exit 1
 
       - name: Rebuild and deploy dashboard
         if: ${{ steps.commit.outputs.changed == 'true' }}

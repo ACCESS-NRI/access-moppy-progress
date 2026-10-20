@@ -3,9 +3,9 @@
   "model": "ACCESS-ESM1.6",
   "experiment_id": "esm-flat10-cdr",
   "variant_label": "r1i1p1f1",
-  "checked_at": "2026-10-19T20:02:19+00:00",
+  "checked_at": "2026-10-20T18:34:36+00:00",
   "checked_by": "sync_reports.py",
-  "source_report": "moppy_batch_report_20261019T195911Z.json",
+  "source_report": "moppy_batch_report_20261020T113539Z.json",
   "variables": {
     "atmos.ps.tavg-u-hxy-u.day.glb": {
       "range": {
@@ -762,6 +762,23 @@
       }
     },
     "atmos.ta.tpt-p3-hxy-air.6hr.glb": {
+      "range": {
+        "allowed": [
+          150.0,
+          350.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          192.35153198242188,
+          316.63970947265625
+        ],
+        "result": "pass",
+        "units": "K"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
       "wcrp": {
         "check_id": "wcrp",
         "result": "pass",
@@ -772,10 +789,27 @@
         "cv_version": "2.3.4",
         "report_path": "/g/data/im55/admin/incoming/20260930/esm-flat10-cdr/logs/atmos_ta_tpt-p3-hxy-air_6hr_glb/compliance_ta_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_esm-flat10-cdr_r1i1p1f1_030101010600-030201010000.json",
         "backfilled": false,
-        "checked_at": "2026-10-19T10:47:10+00:00"
+        "checked_at": "2026-10-19T22:42:04+00:00"
       }
     },
     "atmos.ua.tpt-p3-hxy-air.6hr.glb": {
+      "range": {
+        "allowed": [
+          -150.0,
+          150.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -70.4134750366211,
+          122.9536361694336
+        ],
+        "result": "pass",
+        "units": "m s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
       "wcrp": {
         "check_id": "wcrp",
         "result": "pass",
@@ -786,10 +820,27 @@
         "cv_version": "2.3.4",
         "report_path": "/g/data/im55/admin/incoming/20260930/esm-flat10-cdr/logs/atmos_ua_tpt-p3-hxy-air_6hr_glb/compliance_ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_esm-flat10-cdr_r1i1p1f1_030101010600-030201010000.json",
         "backfilled": false,
-        "checked_at": "2026-10-19T10:46:40+00:00"
+        "checked_at": "2026-10-19T22:41:08+00:00"
       }
     },
     "atmos.va.tpt-p3-hxy-air.6hr.glb": {
+      "range": {
+        "allowed": [
+          -150.0,
+          150.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -93.29901885986328,
+          103.05322265625
+        ],
+        "result": "pass",
+        "units": "m s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
       "wcrp": {
         "check_id": "wcrp",
         "result": "pass",
@@ -800,7 +851,7 @@
         "cv_version": "2.3.4",
         "report_path": "/g/data/im55/admin/incoming/20260930/esm-flat10-cdr/logs/atmos_va_tpt-p3-hxy-air_6hr_glb/compliance_va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_esm-flat10-cdr_r1i1p1f1_030101010600-030201010000.json",
         "backfilled": false,
-        "checked_at": "2026-10-19T10:47:54+00:00"
+        "checked_at": "2026-10-19T22:41:57+00:00"
       }
     }
   }

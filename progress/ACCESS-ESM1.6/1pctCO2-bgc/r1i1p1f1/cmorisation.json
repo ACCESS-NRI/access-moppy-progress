@@ -1,8 +1,8 @@
 {
   "all_tasks_terminal": true,
-  "completed_at": "2026-10-19T16:48:58+00:00",
+  "completed_at": "2026-10-20T05:00:08+00:00",
   "config_path": "/scratch/p73/rb5533/1pctCO2-bgc-01/batch_config.yml",
-  "created_at": "2026-10-19T16:48:58+00:00",
+  "created_at": "2026-10-20T05:00:08+00:00",
   "db_path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/cmor_tasks.db",
   "experiment_id": "1pctCO2-bgc",
   "failures": [
@@ -35,73 +35,13 @@
       "stderr": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/atmos_ta_tpt-p3-hxy-air_6hr_glb/cmor_atmos_ta_tpt-p3-hxy-air_6hr_glb.err",
       "stderr_tail": null,
       "variable": "atmos.ta.tpt-p3-hxy-air.6hr.glb"
-    },
-    {
-      "error_message": [
-        "job 181609806.gadi-pbs | exit_status=-29 | pbs_comment='Job run at Mon Oct 19 at 21:39 on (gadi-cpu-bdw-0368:ncpus=7:mem=134217728kb:jobfs=104857600kb) and exceeded resource walltime' | mem_used=57150504kb | walltime_used=06:00:31 | err_tail:",
-        "with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "=>> PBS: job killed: walltime 21620 exceeded limit 21600"
-      ],
-      "experiment_id": "1pctCO2-bgc",
-      "pbs_job_id": "181609806.gadi-pbs",
-      "stderr": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/atmos_ua_tpt-p3-hxy-air_6hr_glb/cmor_atmos_ua_tpt-p3-hxy-air_6hr_glb.err",
-      "stderr_tail": null,
-      "variable": "atmos.ua.tpt-p3-hxy-air.6hr.glb"
-    },
-    {
-      "error_message": [
-        "job 181609807.gadi-pbs | exit_status=-29 | pbs_comment='Job run at Mon Oct 19 at 21:41 on (gadi-cpu-bdw-0105:ncpus=7:mem=134217728kb:jobfs=104857600kb) and exceeded resource walltime' | mem_used=52212728kb | walltime_used=06:01:19 | err_tail:",
-        "with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "=>> PBS: job killed: walltime 21668 exceeded limit 21600"
-      ],
-      "experiment_id": "1pctCO2-bgc",
-      "pbs_job_id": "181609807.gadi-pbs",
-      "stderr": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/atmos_va_tpt-p3-hxy-air_6hr_glb/cmor_atmos_va_tpt-p3-hxy-air_6hr_glb.err",
-      "stderr_tail": null,
-      "variable": "atmos.va.tpt-p3-hxy-air.6hr.glb"
     }
   ],
   "monitor": {
-    "pbs_job_id": "181609264.gadi-pbs",
+    "pbs_job_id": "181649436.gadi-pbs",
     "stderr": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/moppy_monitor.err",
     "stdout": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/moppy_monitor.out",
-    "submitted_at": "2026-10-19T21:35:22"
+    "submitted_at": "2026-10-20T09:32:31"
   },
   "output_folder": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01",
   "schema_version": "access-moppy.batch-report.v2",
@@ -110,8 +50,8 @@
   "status": "failed",
   "success": false,
   "summary": {
-    "completed": 28,
-    "failed": 3,
+    "completed": 30,
+    "failed": 1,
     "pending": 0,
     "retrying": 0,
     "running": 0,
@@ -11506,12 +11446,12 @@
     {
       "compliance": {
         "backfilled": false,
-        "checked_at": "2026-10-19T10:46:28+00:00",
+        "checked_at": "2026-10-19T22:41:01+00:00",
         "cv_version": "2.3.4",
         "environment_warning": false,
         "error": null,
         "failed_checks": null,
-        "file": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261019/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_020101010600-020201010000.nc",
+        "file": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_020101010600-020201010000.nc",
         "passed": true,
         "report_path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/logs/atmos_ua_tpt-p3-hxy-air_6hr_glb/compliance_ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_020101010600-020201010000.json",
         "suites": [
@@ -11519,40 +11459,878 @@
           "wcrp_cmip7:1.0"
         ]
       },
-      "duration_seconds": 21834.0,
-      "end_time": "2026-10-19 16:43:58",
-      "error_message": [
-        "job 181609806.gadi-pbs | exit_status=-29 | pbs_comment='Job run at Mon Oct 19 at 21:39 on (gadi-cpu-bdw-0368:ncpus=7:mem=134217728kb:jobfs=104857600kb) and exceeded resource walltime' | mem_used=57150504kb | walltime_used=06:00:31 | err_tail:",
-        "with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "=>> PBS: job killed: walltime 21620 exceeded limit 21600"
-      ],
+      "duration_seconds": 22176.0,
+      "end_time": "2026-10-20 04:45:35",
+      "error_message": null,
       "experiment_id": "1pctCO2-bgc",
       "id": 30,
-      "output_summary": null,
+      "output_summary": {
+        "file_count": 167,
+        "files": [
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_020101010600-020201010000.nc",
+            "size": "357.1 MiB",
+            "size_bytes": 374473587
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_020201010600-020301010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374572072
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_020301010600-020401010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374571910
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_020401010600-020501010000.nc",
+            "size": "358.3 MiB",
+            "size_bytes": 375672482
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_020501010600-020601010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374605823
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_020601010600-020701010000.nc",
+            "size": "357.4 MiB",
+            "size_bytes": 374726234
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_020701010600-020801010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374639296
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_020801010600-020901010000.nc",
+            "size": "358.1 MiB",
+            "size_bytes": 375506886
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_020901010600-021001010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374634987
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_021001010600-021101010000.nc",
+            "size": "357.4 MiB",
+            "size_bytes": 374735460
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_021101010600-021201010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374514865
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_021201010600-021301010000.nc",
+            "size": "358.3 MiB",
+            "size_bytes": 375656349
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_021301010600-021401010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374602825
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_021401010600-021501010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374536173
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_021501010600-021601010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374683502
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_021601010600-021701010000.nc",
+            "size": "358.3 MiB",
+            "size_bytes": 375710656
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_021701010600-021801010000.nc",
+            "size": "357.1 MiB",
+            "size_bytes": 374453879
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_021801010600-021901010000.nc",
+            "size": "357.1 MiB",
+            "size_bytes": 374448529
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_021901010600-022001010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374675775
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_022001010600-022101010000.nc",
+            "size": "358.4 MiB",
+            "size_bytes": 375811379
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_022101010600-022201010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374563720
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_022201010600-022301010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374573278
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_022301010600-022401010000.nc",
+            "size": "357.1 MiB",
+            "size_bytes": 374409281
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_022401010600-022501010000.nc",
+            "size": "358.3 MiB",
+            "size_bytes": 375721345
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_022501010600-022601010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374708278
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_022601010600-022701010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374564863
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_022701010600-022801010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374603526
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_022801010600-022901010000.nc",
+            "size": "358.2 MiB",
+            "size_bytes": 375598907
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_022901010600-023001010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374635251
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_023001010600-023101010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374700964
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_023101010600-023201010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374510916
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_023201010600-023301010000.nc",
+            "size": "358.3 MiB",
+            "size_bytes": 375704382
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_023301010600-023401010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374700147
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_023401010600-023501010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374567111
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_023501010600-023601010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374542747
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_023601010600-023701010000.nc",
+            "size": "358.3 MiB",
+            "size_bytes": 375729266
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_023701010600-023801010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374599749
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_023801010600-023901010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374570347
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_023901010600-024001010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374700282
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_024001010600-024101010000.nc",
+            "size": "358.2 MiB",
+            "size_bytes": 375567404
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_024101010600-024201010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374609269
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_024201010600-024301010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374664000
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_024301010600-024401010000.nc",
+            "size": "357.4 MiB",
+            "size_bytes": 374784121
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_024401010600-024501010000.nc",
+            "size": "358.3 MiB",
+            "size_bytes": 375705375
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_024501010600-024601010000.nc",
+            "size": "357.4 MiB",
+            "size_bytes": 374734022
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_024601010600-024701010000.nc",
+            "size": "357.4 MiB",
+            "size_bytes": 374789376
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_024701010600-024801010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374519010
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_024801010600-024901010000.nc",
+            "size": "358.2 MiB",
+            "size_bytes": 375643741
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_024901010600-025001010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374596169
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_025001010600-025101010000.nc",
+            "size": "357.1 MiB",
+            "size_bytes": 374480461
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_025101010600-025201010000.nc",
+            "size": "357.1 MiB",
+            "size_bytes": 374439647
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_025201010600-025301010000.nc",
+            "size": "358.3 MiB",
+            "size_bytes": 375740116
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_025301010600-025401010000.nc",
+            "size": "357.5 MiB",
+            "size_bytes": 374847549
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_025401010600-025501010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374593490
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_025501010600-025601010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374660646
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_025601010600-025701010000.nc",
+            "size": "358.2 MiB",
+            "size_bytes": 375602567
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_025701010600-025801010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374692801
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_025801010600-025901010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374625781
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_025901010600-026001010000.nc",
+            "size": "357.4 MiB",
+            "size_bytes": 374715209
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_026001010600-026101010000.nc",
+            "size": "358.2 MiB",
+            "size_bytes": 375591436
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_026101010600-026201010000.nc",
+            "size": "357.1 MiB",
+            "size_bytes": 374483584
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_026201010600-026301010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374598005
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_026301010600-026401010000.nc",
+            "size": "357.1 MiB",
+            "size_bytes": 374482140
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_026401010600-026501010000.nc",
+            "size": "358.1 MiB",
+            "size_bytes": 375488066
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_026501010600-026601010000.nc",
+            "size": "357.1 MiB",
+            "size_bytes": 374463467
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_026601010600-026701010000.nc",
+            "size": "357.1 MiB",
+            "size_bytes": 374479989
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_026701010600-026801010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374634774
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_026801010600-026901010000.nc",
+            "size": "358.3 MiB",
+            "size_bytes": 375684765
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_026901010600-027001010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374560526
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_027001010600-027101010000.nc",
+            "size": "357.1 MiB",
+            "size_bytes": 374434679
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_027101010600-027201010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374642006
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_027201010600-027301010000.nc",
+            "size": "358.2 MiB",
+            "size_bytes": 375566092
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_027301010600-027401010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374617517
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_027401010600-027501010000.nc",
+            "size": "357.4 MiB",
+            "size_bytes": 374729063
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_027501010600-027601010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374636495
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_027601010600-027701010000.nc",
+            "size": "358.3 MiB",
+            "size_bytes": 375730450
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_027701010600-027801010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374659718
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_027801010600-027901010000.nc",
+            "size": "357.4 MiB",
+            "size_bytes": 374726886
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_027901010600-028001010000.nc",
+            "size": "357.4 MiB",
+            "size_bytes": 374733201
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_028001010600-028101010000.nc",
+            "size": "358.1 MiB",
+            "size_bytes": 375483649
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_028101010600-028201010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374601106
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_028201010600-028301010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374521946
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_028301010600-028401010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374581294
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_028401010600-028501010000.nc",
+            "size": "358.4 MiB",
+            "size_bytes": 375762535
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_028501010600-028601010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374571805
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_028601010600-028701010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374624649
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_028701010600-028801010000.nc",
+            "size": "357.4 MiB",
+            "size_bytes": 374765902
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_028801010600-028901010000.nc",
+            "size": "358.2 MiB",
+            "size_bytes": 375592317
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_028901010600-029001010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374529624
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_029001010600-029101010000.nc",
+            "size": "357.4 MiB",
+            "size_bytes": 374760946
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_029101010600-029201010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374557990
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_029201010600-029301010000.nc",
+            "size": "358.1 MiB",
+            "size_bytes": 375526237
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_029301010600-029401010000.nc",
+            "size": "357.4 MiB",
+            "size_bytes": 374774085
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_029401010600-029501010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374546785
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_029501010600-029601010000.nc",
+            "size": "357.4 MiB",
+            "size_bytes": 374725696
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_029601010600-029701010000.nc",
+            "size": "358.3 MiB",
+            "size_bytes": 375677657
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_029701010600-029801010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374632228
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_029801010600-029901010000.nc",
+            "size": "357.4 MiB",
+            "size_bytes": 374722734
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_029901010600-030001010000.nc",
+            "size": "357.1 MiB",
+            "size_bytes": 374459851
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_030001010600-030101010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374564624
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_030101010600-030201010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374663287
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_030201010600-030301010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374516785
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_030301010600-030401010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374643960
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_030401010600-030501010000.nc",
+            "size": "358.3 MiB",
+            "size_bytes": 375654811
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_030501010600-030601010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374594187
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_030601010600-030701010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374619260
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_030701010600-030801010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374549368
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_030801010600-030901010000.nc",
+            "size": "358.2 MiB",
+            "size_bytes": 375590823
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_030901010600-031001010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374630456
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_031001010600-031101010000.nc",
+            "size": "357.1 MiB",
+            "size_bytes": 374418671
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_031101010600-031201010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374519855
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_031201010600-031301010000.nc",
+            "size": "358.2 MiB",
+            "size_bytes": 375601023
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_031301010600-031401010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374609562
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_031401010600-031501010000.nc",
+            "size": "357.4 MiB",
+            "size_bytes": 374761677
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_031501010600-031601010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374609022
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_031601010600-031701010000.nc",
+            "size": "358.0 MiB",
+            "size_bytes": 375438505
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_031701010600-031801010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374539734
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_031801010600-031901010000.nc",
+            "size": "357.4 MiB",
+            "size_bytes": 374761162
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_031901010600-032001010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374652854
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_032001010600-032101010000.nc",
+            "size": "358.3 MiB",
+            "size_bytes": 375721426
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_032101010600-032201010000.nc",
+            "size": "357.4 MiB",
+            "size_bytes": 374732769
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_032201010600-032301010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374629419
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_032301010600-032401010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374626642
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_032401010600-032501010000.nc",
+            "size": "358.2 MiB",
+            "size_bytes": 375569486
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_032501010600-032601010000.nc",
+            "size": "357.4 MiB",
+            "size_bytes": 374772004
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_032601010600-032701010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374511913
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_032701010600-032801010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374683039
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_032801010600-032901010000.nc",
+            "size": "358.4 MiB",
+            "size_bytes": 375780394
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_032901010600-033001010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374594564
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_033001010600-033101010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374636154
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_033101010600-033201010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374682007
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_033201010600-033301010000.nc",
+            "size": "358.3 MiB",
+            "size_bytes": 375749728
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_033301010600-033401010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374633770
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_033401010600-033501010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374609976
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_033501010600-033601010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374628852
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_033601010600-033701010000.nc",
+            "size": "358.3 MiB",
+            "size_bytes": 375737743
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_033701010600-033801010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374659817
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_033801010600-033901010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374516471
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_033901010600-034001010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374653738
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_034001010600-034101010000.nc",
+            "size": "358.4 MiB",
+            "size_bytes": 375804268
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_034101010600-034201010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374698120
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_034201010600-034301010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374527356
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_034301010600-034401010000.nc",
+            "size": "357.5 MiB",
+            "size_bytes": 374824900
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_034401010600-034501010000.nc",
+            "size": "358.2 MiB",
+            "size_bytes": 375608660
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_034501010600-034601010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374528862
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_034601010600-034701010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374695645
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_034701010600-034801010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374554366
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_034801010600-034901010000.nc",
+            "size": "358.3 MiB",
+            "size_bytes": 375720872
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_034901010600-035001010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374635720
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_035001010600-035101010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374662891
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_035101010600-035201010000.nc",
+            "size": "357.4 MiB",
+            "size_bytes": 374709219
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_035201010600-035301010000.nc",
+            "size": "358.4 MiB",
+            "size_bytes": 375761466
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_035301010600-035401010000.nc",
+            "size": "357.5 MiB",
+            "size_bytes": 374826706
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_035401010600-035501010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374701118
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_035501010600-035601010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374568929
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_035601010600-035701010000.nc",
+            "size": "358.2 MiB",
+            "size_bytes": 375638135
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_035701010600-035801010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374644528
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_035801010600-035901010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374568148
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_035901010600-036001010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374582161
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_036001010600-036101010000.nc",
+            "size": "358.3 MiB",
+            "size_bytes": 375692318
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_036101010600-036201010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374650881
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_036201010600-036301010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374592066
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_036301010600-036401010000.nc",
+            "size": "357.5 MiB",
+            "size_bytes": 374860979
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_036401010600-036501010000.nc",
+            "size": "358.2 MiB",
+            "size_bytes": 375609935
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_036501010600-036601010000.nc",
+            "size": "357.5 MiB",
+            "size_bytes": 374815598
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_036601010600-036701010000.nc",
+            "size": "357.2 MiB",
+            "size_bytes": 374523576
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/ua/tpt-p3-hxy-air/g110/v20261020/ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_036701010600-036801010000.nc",
+            "size": "357.3 MiB",
+            "size_bytes": 374606594
+          }
+        ],
+        "gates": {
+          "range": {
+            "allowed": [
+              -150.0,
+              150.0
+            ],
+            "check_id": "cmip7_ranges",
+            "observed": [
+              -70.19512176513672,
+              119.12447357177734
+            ],
+            "result": "pass",
+            "units": "m s-1"
+          },
+          "repack": {
+            "result": "pass",
+            "tool": "cmip7repack"
+          }
+        },
+        "total_bytes": 62602993233,
+        "total_size": "58.3 GiB"
+      },
       "pbs": {
-        "comment": "Job run at Mon Oct 19 at 21:39 on (gadi-cpu-bdw-0368:ncpus=7:mem=134217728kb:jobfs=104857600kb) and exceeded resource walltime",
-        "exec_host": "gadi-cpu-bdw-0368/0*7",
-        "exec_vnode": "(gadi-cpu-bdw-0368:ncpus=7:mem=134217728kb:jobfs=104857600kb)",
-        "exit_status": -29,
-        "job_id": "181609806.gadi-pbs",
+        "comment": "Job run at Tue Oct 20 at 09:35 on (gadi-cpu-bdw-0132:ncpus=12:mem=199229440kb:jobfs=104857600kb) and finished",
+        "exec_host": "gadi-cpu-bdw-0132/0*12",
+        "exec_vnode": "(gadi-cpu-bdw-0132:ncpus=12:mem=199229440kb:jobfs=104857600kb)",
+        "exit_status": 0,
+        "job_id": "181649539.gadi-pbs",
         "job_state": "F",
         "pbs_server": "gadi-pbs-01",
         "pbs_version": "2024.1.2.20241017100211",
@@ -11560,78 +12338,94 @@
         "qstat_format": "json",
         "queue": "normalbw-exec",
         "raw_qstat": {
-          "Exit_status": -29,
+          "Exit_status": 0,
           "Resource_List.jobfs": "107374182400b",
-          "Resource_List.mem": "137438953472b",
-          "Resource_List.mpiprocs": 7,
-          "Resource_List.ncpus": 7,
+          "Resource_List.mem": "204010946560b",
+          "Resource_List.mpiprocs": 12,
+          "Resource_List.ncpus": 12,
           "Resource_List.storage": "scratch/tm70+gdata/p73+gdata/xp65+gdata/tm70+gdata/im55+scratch/p73",
-          "Resource_List.walltime": "06:00:00",
-          "comment": "Job run at Mon Oct 19 at 21:39 on (gadi-cpu-bdw-0368:ncpus=7:mem=134217728kb:jobfs=104857600kb) and exceeded resource walltime",
-          "ctime": "Mon Oct 19 21:38:33 2026",
-          "etime": "Mon Oct 19 21:38:33 2026",
-          "exec_host": "gadi-cpu-bdw-0368/0*7",
-          "exec_vnode": "(gadi-cpu-bdw-0368:ncpus=7:mem=134217728kb:jobfs=104857600kb)",
-          "job_id": "181609806.gadi-pbs",
+          "Resource_List.walltime": "24:00:00",
+          "comment": "Job run at Tue Oct 20 at 09:35 on (gadi-cpu-bdw-0132:ncpus=12:mem=199229440kb:jobfs=104857600kb) and finished",
+          "ctime": "Tue Oct 20 09:34:26 2026",
+          "etime": "Tue Oct 20 09:34:26 2026",
+          "exec_host": "gadi-cpu-bdw-0132/0*12",
+          "exec_vnode": "(gadi-cpu-bdw-0132:ncpus=12:mem=199229440kb:jobfs=104857600kb)",
+          "job_id": "181649539.gadi-pbs",
           "job_state": "F",
-          "mtime": "Tue Oct 20 03:40:29 2026",
+          "mtime": "Tue Oct 20 15:45:48 2026",
           "pbs_server": "gadi-pbs-01",
           "pbs_version": "2024.1.2.20241017100211",
           "project": "tm70",
           "qstat_format": "json",
-          "qtime": "Mon Oct 19 21:38:33 2026",
+          "qtime": "Tue Oct 20 09:34:26 2026",
           "queue": "normalbw-exec",
-          "resources_used.cpupercent": 267,
-          "resources_used.cput": "06:56:01",
-          "resources_used.mem": "57150504kb",
-          "resources_used.ncpus": 7,
-          "resources_used.vmem": "57150508kb",
-          "resources_used.walltime": "06:00:31",
+          "resources_used.cpupercent": 360,
+          "resources_used.cput": "13:46:20",
+          "resources_used.mem": "109058540kb",
+          "resources_used.ncpus": 12,
+          "resources_used.vmem": "109058540kb",
+          "resources_used.walltime": "06:09:57",
           "scheduler": "pbs",
-          "stime": "Mon Oct 19 21:39:45 2026"
+          "stime": "Tue Oct 20 09:35:42 2026"
         },
         "resources_requested": {
           "jobfs": "107374182400b",
-          "mem": "137438953472b",
-          "mpiprocs": 7,
-          "ncpus": 7,
+          "mem": "204010946560b",
+          "mpiprocs": 12,
+          "ncpus": 12,
           "storage": "scratch/tm70+gdata/p73+gdata/xp65+gdata/tm70+gdata/im55+scratch/p73",
-          "walltime": "06:00:00"
+          "walltime": "24:00:00"
         },
         "resources_used": {
-          "cpupercent": 267,
-          "cput": "06:56:01",
-          "mem": "57150504kb",
-          "ncpus": 7,
-          "vmem": "57150508kb",
-          "walltime": "06:00:31"
+          "cpupercent": 360,
+          "cput": "13:46:20",
+          "mem": "109058540kb",
+          "ncpus": 12,
+          "vmem": "109058540kb",
+          "walltime": "06:09:57"
         },
         "scheduler": "pbs",
         "timestamps": {
-          "created_at": "Mon Oct 19 21:38:33 2026",
-          "eligible_at": "Mon Oct 19 21:38:33 2026",
-          "modified_at": "Tue Oct 20 03:40:29 2026",
-          "queued_at": "Mon Oct 19 21:38:33 2026",
-          "started_at": "Mon Oct 19 21:39:45 2026"
+          "created_at": "Tue Oct 20 09:34:26 2026",
+          "eligible_at": "Tue Oct 20 09:34:26 2026",
+          "modified_at": "Tue Oct 20 15:45:48 2026",
+          "queued_at": "Tue Oct 20 09:34:26 2026",
+          "started_at": "Tue Oct 20 09:35:42 2026"
         }
       },
-      "pbs_job_id": "181609806.gadi-pbs",
-      "start_time": "2026-10-19 10:40:04",
-      "status": "failed",
+      "pbs_job_id": "181649539.gadi-pbs",
+      "start_time": "2026-10-19 22:35:59",
+      "status": "completed",
       "stderr": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/atmos_ua_tpt-p3-hxy-air_6hr_glb/cmor_atmos_ua_tpt-p3-hxy-air_6hr_glb.err",
       "stdout": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/atmos_ua_tpt-p3-hxy-air_6hr_glb/cmor_atmos_ua_tpt-p3-hxy-air_6hr_glb.out",
       "variable": "atmos.ua.tpt-p3-hxy-air.6hr.glb",
-      "worker_memory": null
+      "worker_memory": {
+        "memory_limit_per_worker": "17.27GB",
+        "n_workers": 11,
+        "peak_rss_mb": {
+          "tcp://127.0.0.1:34153": 1350.8125,
+          "tcp://127.0.0.1:35343": 1364.8046875,
+          "tcp://127.0.0.1:35495": 1561.8359375,
+          "tcp://127.0.0.1:36097": 1346.34765625,
+          "tcp://127.0.0.1:37483": 1358.8125,
+          "tcp://127.0.0.1:39041": 1440.890625,
+          "tcp://127.0.0.1:39335": 1293.69140625,
+          "tcp://127.0.0.1:42259": 1561.8046875,
+          "tcp://127.0.0.1:43459": 1522.66015625,
+          "tcp://127.0.0.1:45675": 1360.02734375,
+          "tcp://127.0.0.1:45987": 1716.40625
+        }
+      }
     },
     {
       "compliance": {
         "backfilled": false,
-        "checked_at": "2026-10-19T10:48:41+00:00",
+        "checked_at": "2026-10-19T22:40:46+00:00",
         "cv_version": "2.3.4",
         "environment_warning": false,
         "error": null,
         "failed_checks": null,
-        "file": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261019/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_020101010600-020201010000.nc",
+        "file": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_020101010600-020201010000.nc",
         "passed": true,
         "report_path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/logs/atmos_va_tpt-p3-hxy-air_6hr_glb/compliance_va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_020101010600-020201010000.json",
         "suites": [
@@ -11639,40 +12433,878 @@
           "wcrp_cmip7:1.0"
         ]
       },
-      "duration_seconds": 21742.0,
-      "end_time": "2026-10-19 16:43:57",
-      "error_message": [
-        "job 181609807.gadi-pbs | exit_status=-29 | pbs_comment='Job run at Mon Oct 19 at 21:41 on (gadi-cpu-bdw-0105:ncpus=7:mem=134217728kb:jobfs=104857600kb) and exceeded resource walltime' | mem_used=52212728kb | walltime_used=06:01:19 | err_tail:",
-        "with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "/g/data/xp65/public/apps/med_conda/envs/analysis3-26.10/lib/python3.12/site-packages/access_moppy/qc/cmip7.py:365: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates prior reform date (1582-10-15). To silence this warning specify 'use_cftime=True'.",
-        "  with xr.open_dataset(path, engine=\"netcdf4\", chunks=\"auto\") as ds:",
-        "=>> PBS: job killed: walltime 21668 exceeded limit 21600"
-      ],
+      "duration_seconds": 22671.0,
+      "end_time": "2026-10-20 04:53:52",
+      "error_message": null,
       "experiment_id": "1pctCO2-bgc",
       "id": 31,
-      "output_summary": null,
+      "output_summary": {
+        "file_count": 167,
+        "files": [
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_020101010600-020201010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382146093
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_020201010600-020301010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382162870
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_020301010600-020401010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382170083
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_020401010600-020501010000.nc",
+            "size": "365.5 MiB",
+            "size_bytes": 383283663
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_020501010600-020601010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382148170
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_020601010600-020701010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382217008
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_020701010600-020801010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382234141
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_020801010600-020901010000.nc",
+            "size": "365.4 MiB",
+            "size_bytes": 383186215
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_020901010600-021001010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382165426
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_021001010600-021101010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382249687
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_021101010600-021201010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382139299
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_021201010600-021301010000.nc",
+            "size": "365.4 MiB",
+            "size_bytes": 383178693
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_021301010600-021401010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382162727
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_021401010600-021501010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382166448
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_021501010600-021601010000.nc",
+            "size": "364.6 MiB",
+            "size_bytes": 382304102
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_021601010600-021701010000.nc",
+            "size": "365.4 MiB",
+            "size_bytes": 383187576
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_021701010600-021801010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382188370
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_021801010600-021901010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382136573
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_021901010600-022001010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382091981
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_022001010600-022101010000.nc",
+            "size": "365.5 MiB",
+            "size_bytes": 383301744
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_022101010600-022201010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382097716
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_022201010600-022301010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382190503
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_022301010600-022401010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382066861
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_022401010600-022501010000.nc",
+            "size": "365.5 MiB",
+            "size_bytes": 383280929
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_022501010600-022601010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382176611
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_022601010600-022701010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382213551
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_022701010600-022801010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382138802
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_022801010600-022901010000.nc",
+            "size": "365.4 MiB",
+            "size_bytes": 383184815
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_022901010600-023001010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382173710
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_023001010600-023101010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382213827
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_023101010600-023201010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382145511
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_023201010600-023301010000.nc",
+            "size": "365.4 MiB",
+            "size_bytes": 383186862
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_023301010600-023401010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382184654
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_023401010600-023501010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382156159
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_023501010600-023601010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382182568
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_023601010600-023701010000.nc",
+            "size": "365.5 MiB",
+            "size_bytes": 383255608
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_023701010600-023801010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382231936
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_023801010600-023901010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382126852
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_023901010600-024001010000.nc",
+            "size": "364.6 MiB",
+            "size_bytes": 382290256
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_024001010600-024101010000.nc",
+            "size": "365.5 MiB",
+            "size_bytes": 383221029
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_024101010600-024201010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382133094
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_024201010600-024301010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382119259
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_024301010600-024401010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382224373
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_024401010600-024501010000.nc",
+            "size": "365.6 MiB",
+            "size_bytes": 383316995
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_024501010600-024601010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382246406
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_024601010600-024701010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382231292
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_024701010600-024801010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382144749
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_024801010600-024901010000.nc",
+            "size": "365.5 MiB",
+            "size_bytes": 383290907
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_024901010600-025001010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382098908
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_025001010600-025101010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382187690
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_025101010600-025201010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382123933
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_025201010600-025301010000.nc",
+            "size": "365.5 MiB",
+            "size_bytes": 383203317
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_025301010600-025401010000.nc",
+            "size": "364.6 MiB",
+            "size_bytes": 382277620
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_025401010600-025501010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382220648
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_025501010600-025601010000.nc",
+            "size": "364.6 MiB",
+            "size_bytes": 382294120
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_025601010600-025701010000.nc",
+            "size": "365.5 MiB",
+            "size_bytes": 383277389
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_025701010600-025801010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382225136
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_025801010600-025901010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382157908
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_025901010600-026001010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382202996
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_026001010600-026101010000.nc",
+            "size": "365.5 MiB",
+            "size_bytes": 383283771
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_026101010600-026201010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382154334
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_026201010600-026301010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382116060
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_026301010600-026401010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382171161
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_026401010600-026501010000.nc",
+            "size": "365.5 MiB",
+            "size_bytes": 383272198
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_026501010600-026601010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382155555
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_026601010600-026701010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382130768
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_026701010600-026801010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382228369
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_026801010600-026901010000.nc",
+            "size": "365.5 MiB",
+            "size_bytes": 383277855
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_026901010600-027001010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382070757
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_027001010600-027101010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382086268
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_027101010600-027201010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382167297
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_027201010600-027301010000.nc",
+            "size": "365.4 MiB",
+            "size_bytes": 383201521
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_027301010600-027401010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382228824
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_027401010600-027501010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382237802
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_027501010600-027601010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382181901
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_027601010600-027701010000.nc",
+            "size": "365.5 MiB",
+            "size_bytes": 383204957
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_027701010600-027801010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382240325
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_027801010600-027901010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382249002
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_027901010600-028001010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382254987
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_028001010600-028101010000.nc",
+            "size": "365.4 MiB",
+            "size_bytes": 383178371
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_028101010600-028201010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382153366
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_028201010600-028301010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382113037
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_028301010600-028401010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382216037
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_028401010600-028501010000.nc",
+            "size": "365.5 MiB",
+            "size_bytes": 383248079
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_028501010600-028601010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382191813
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_028601010600-028701010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382177285
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_028701010600-028801010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382203319
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_028801010600-028901010000.nc",
+            "size": "365.4 MiB",
+            "size_bytes": 383140534
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_028901010600-029001010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382165942
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_029001010600-029101010000.nc",
+            "size": "364.6 MiB",
+            "size_bytes": 382286569
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_029101010600-029201010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382212701
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_029201010600-029301010000.nc",
+            "size": "365.4 MiB",
+            "size_bytes": 383150829
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_029301010600-029401010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382076963
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_029401010600-029501010000.nc",
+            "size": "364.6 MiB",
+            "size_bytes": 382264438
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_029501010600-029601010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382231147
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_029601010600-029701010000.nc",
+            "size": "365.5 MiB",
+            "size_bytes": 383215779
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_029701010600-029801010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382136123
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_029801010600-029901010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382083446
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_029901010600-030001010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382116744
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_030001010600-030101010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382226855
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_030101010600-030201010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382226048
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_030201010600-030301010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382228398
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_030301010600-030401010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382129058
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_030401010600-030501010000.nc",
+            "size": "365.5 MiB",
+            "size_bytes": 383283996
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_030501010600-030601010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382156503
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_030601010600-030701010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382093282
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_030701010600-030801010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382201072
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_030801010600-030901010000.nc",
+            "size": "365.5 MiB",
+            "size_bytes": 383287062
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_030901010600-031001010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382159546
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_031001010600-031101010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382179287
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_031101010600-031201010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382161687
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_031201010600-031301010000.nc",
+            "size": "365.4 MiB",
+            "size_bytes": 383133916
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_031301010600-031401010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382208342
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_031401010600-031501010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382235551
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_031501010600-031601010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382171491
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_031601010600-031701010000.nc",
+            "size": "365.4 MiB",
+            "size_bytes": 383136716
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_031701010600-031801010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382106801
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_031801010600-031901010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382174095
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_031901010600-032001010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382184692
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_032001010600-032101010000.nc",
+            "size": "365.5 MiB",
+            "size_bytes": 383295047
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_032101010600-032201010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382124790
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_032201010600-032301010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382172492
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_032301010600-032401010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382170808
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_032401010600-032501010000.nc",
+            "size": "365.5 MiB",
+            "size_bytes": 383237352
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_032501010600-032601010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382249747
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_032601010600-032701010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382237017
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_032701010600-032801010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382247384
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_032801010600-032901010000.nc",
+            "size": "365.5 MiB",
+            "size_bytes": 383239569
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_032901010600-033001010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382183466
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_033001010600-033101010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382217389
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_033101010600-033201010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382238172
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_033201010600-033301010000.nc",
+            "size": "365.5 MiB",
+            "size_bytes": 383251718
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_033301010600-033401010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382223910
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_033401010600-033501010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382146630
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_033501010600-033601010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382222163
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_033601010600-033701010000.nc",
+            "size": "365.4 MiB",
+            "size_bytes": 383168171
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_033701010600-033801010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382111786
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_033801010600-033901010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382144188
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_033901010600-034001010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382231114
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_034001010600-034101010000.nc",
+            "size": "365.5 MiB",
+            "size_bytes": 383292016
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_034101010600-034201010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382214674
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_034201010600-034301010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382142863
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_034301010600-034401010000.nc",
+            "size": "364.6 MiB",
+            "size_bytes": 382263747
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_034401010600-034501010000.nc",
+            "size": "365.5 MiB",
+            "size_bytes": 383215678
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_034501010600-034601010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382157404
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_034601010600-034701010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382123870
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_034701010600-034801010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382179834
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_034801010600-034901010000.nc",
+            "size": "365.6 MiB",
+            "size_bytes": 383311590
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_034901010600-035001010000.nc",
+            "size": "364.6 MiB",
+            "size_bytes": 382260137
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_035001010600-035101010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382198400
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_035101010600-035201010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382189031
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_035201010600-035301010000.nc",
+            "size": "365.5 MiB",
+            "size_bytes": 383281980
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_035301010600-035401010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382174271
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_035401010600-035501010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382200027
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_035501010600-035601010000.nc",
+            "size": "364.4 MiB",
+            "size_bytes": 382127083
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_035601010600-035701010000.nc",
+            "size": "365.4 MiB",
+            "size_bytes": 383187453
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_035701010600-035801010000.nc",
+            "size": "364.6 MiB",
+            "size_bytes": 382288229
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_035801010600-035901010000.nc",
+            "size": "364.6 MiB",
+            "size_bytes": 382283442
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_035901010600-036001010000.nc",
+            "size": "364.6 MiB",
+            "size_bytes": 382261492
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_036001010600-036101010000.nc",
+            "size": "365.5 MiB",
+            "size_bytes": 383213007
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_036101010600-036201010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382154302
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_036201010600-036301010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382189318
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_036301010600-036401010000.nc",
+            "size": "364.6 MiB",
+            "size_bytes": 382283057
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_036401010600-036501010000.nc",
+            "size": "365.5 MiB",
+            "size_bytes": 383264947
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_036501010600-036601010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382254312
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_036601010600-036701010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382155980
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/MIP-DRS7/CMIP7/C4MIP/ACCESS-Consortium/ACCESS-ESM1-6/1pctCO2-bgc/r1i1p1f1/glb/6hr/va/tpt-p3-hxy-air/g110/v20261020/va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_036701010600-036801010000.nc",
+            "size": "364.5 MiB",
+            "size_bytes": 382217633
+          }
+        ],
+        "gates": {
+          "range": {
+            "allowed": [
+              -150.0,
+              150.0
+            ],
+            "check_id": "cmip7_ranges",
+            "observed": [
+              -95.67224884033203,
+              98.51598358154297
+            ],
+            "result": "pass",
+            "units": "m s-1"
+          },
+          "repack": {
+            "result": "pass",
+            "tool": "cmip7repack"
+          }
+        },
+        "total_bytes": 63866875691,
+        "total_size": "59.5 GiB"
+      },
       "pbs": {
-        "comment": "Job run at Mon Oct 19 at 21:41 on (gadi-cpu-bdw-0105:ncpus=7:mem=134217728kb:jobfs=104857600kb) and exceeded resource walltime",
-        "exec_host": "gadi-cpu-bdw-0105/0*7",
-        "exec_vnode": "(gadi-cpu-bdw-0105:ncpus=7:mem=134217728kb:jobfs=104857600kb)",
-        "exit_status": -29,
-        "job_id": "181609807.gadi-pbs",
+        "comment": "Job run at Tue Oct 20 at 09:35 on (gadi-cpu-bdw-0133:ncpus=12:mem=199229440kb:jobfs=104857600kb) and finished",
+        "exec_host": "gadi-cpu-bdw-0133/0*12",
+        "exec_vnode": "(gadi-cpu-bdw-0133:ncpus=12:mem=199229440kb:jobfs=104857600kb)",
+        "exit_status": 0,
+        "job_id": "181649540.gadi-pbs",
         "job_state": "F",
         "pbs_server": "gadi-pbs-01",
         "pbs_version": "2024.1.2.20241017100211",
@@ -11680,72 +13312,88 @@
         "qstat_format": "json",
         "queue": "normalbw-exec",
         "raw_qstat": {
-          "Exit_status": -29,
+          "Exit_status": 0,
           "Resource_List.jobfs": "107374182400b",
-          "Resource_List.mem": "137438953472b",
-          "Resource_List.mpiprocs": 7,
-          "Resource_List.ncpus": 7,
+          "Resource_List.mem": "204010946560b",
+          "Resource_List.mpiprocs": 12,
+          "Resource_List.ncpus": 12,
           "Resource_List.storage": "scratch/tm70+gdata/p73+gdata/xp65+gdata/tm70+gdata/im55+scratch/p73",
-          "Resource_List.walltime": "06:00:00",
-          "comment": "Job run at Mon Oct 19 at 21:41 on (gadi-cpu-bdw-0105:ncpus=7:mem=134217728kb:jobfs=104857600kb) and exceeded resource walltime",
-          "ctime": "Mon Oct 19 21:38:34 2026",
-          "etime": "Mon Oct 19 21:38:34 2026",
-          "exec_host": "gadi-cpu-bdw-0105/0*7",
-          "exec_vnode": "(gadi-cpu-bdw-0105:ncpus=7:mem=134217728kb:jobfs=104857600kb)",
-          "job_id": "181609807.gadi-pbs",
+          "Resource_List.walltime": "24:00:00",
+          "comment": "Job run at Tue Oct 20 at 09:35 on (gadi-cpu-bdw-0133:ncpus=12:mem=199229440kb:jobfs=104857600kb) and finished",
+          "ctime": "Tue Oct 20 09:34:27 2026",
+          "etime": "Tue Oct 20 09:34:27 2026",
+          "exec_host": "gadi-cpu-bdw-0133/0*12",
+          "exec_vnode": "(gadi-cpu-bdw-0133:ncpus=12:mem=199229440kb:jobfs=104857600kb)",
+          "job_id": "181649540.gadi-pbs",
           "job_state": "F",
-          "mtime": "Tue Oct 20 03:42:54 2026",
+          "mtime": "Tue Oct 20 15:54:06 2026",
           "pbs_server": "gadi-pbs-01",
           "pbs_version": "2024.1.2.20241017100211",
           "project": "tm70",
           "qstat_format": "json",
-          "qtime": "Mon Oct 19 21:38:34 2026",
+          "qtime": "Tue Oct 20 09:34:27 2026",
           "queue": "normalbw-exec",
-          "resources_used.cpupercent": 309,
-          "resources_used.cput": "10:46:15",
-          "resources_used.mem": "52212728kb",
-          "resources_used.ncpus": 7,
-          "resources_used.vmem": "52225084kb",
-          "resources_used.walltime": "06:01:19",
+          "resources_used.cpupercent": 356,
+          "resources_used.cput": "14:01:08",
+          "resources_used.mem": "107866672kb",
+          "resources_used.ncpus": 12,
+          "resources_used.vmem": "107866672kb",
+          "resources_used.walltime": "06:18:14",
           "scheduler": "pbs",
-          "stime": "Mon Oct 19 21:41:24 2026"
+          "stime": "Tue Oct 20 09:35:42 2026"
         },
         "resources_requested": {
           "jobfs": "107374182400b",
-          "mem": "137438953472b",
-          "mpiprocs": 7,
-          "ncpus": 7,
+          "mem": "204010946560b",
+          "mpiprocs": 12,
+          "ncpus": 12,
           "storage": "scratch/tm70+gdata/p73+gdata/xp65+gdata/tm70+gdata/im55+scratch/p73",
-          "walltime": "06:00:00"
+          "walltime": "24:00:00"
         },
         "resources_used": {
-          "cpupercent": 309,
-          "cput": "10:46:15",
-          "mem": "52212728kb",
-          "ncpus": 7,
-          "vmem": "52225084kb",
-          "walltime": "06:01:19"
+          "cpupercent": 356,
+          "cput": "14:01:08",
+          "mem": "107866672kb",
+          "ncpus": 12,
+          "vmem": "107866672kb",
+          "walltime": "06:18:14"
         },
         "scheduler": "pbs",
         "timestamps": {
-          "created_at": "Mon Oct 19 21:38:34 2026",
-          "eligible_at": "Mon Oct 19 21:38:34 2026",
-          "modified_at": "Tue Oct 20 03:42:54 2026",
-          "queued_at": "Mon Oct 19 21:38:34 2026",
-          "started_at": "Mon Oct 19 21:41:24 2026"
+          "created_at": "Tue Oct 20 09:34:27 2026",
+          "eligible_at": "Tue Oct 20 09:34:27 2026",
+          "modified_at": "Tue Oct 20 15:54:06 2026",
+          "queued_at": "Tue Oct 20 09:34:27 2026",
+          "started_at": "Tue Oct 20 09:35:42 2026"
         }
       },
-      "pbs_job_id": "181609807.gadi-pbs",
-      "start_time": "2026-10-19 10:41:35",
-      "status": "failed",
+      "pbs_job_id": "181649540.gadi-pbs",
+      "start_time": "2026-10-19 22:36:01",
+      "status": "completed",
       "stderr": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/atmos_va_tpt-p3-hxy-air_6hr_glb/cmor_atmos_va_tpt-p3-hxy-air_6hr_glb.err",
       "stdout": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/atmos_va_tpt-p3-hxy-air_6hr_glb/cmor_atmos_va_tpt-p3-hxy-air_6hr_glb.out",
       "variable": "atmos.va.tpt-p3-hxy-air.6hr.glb",
-      "worker_memory": null
+      "worker_memory": {
+        "memory_limit_per_worker": "17.27GB",
+        "n_workers": 11,
+        "peak_rss_mb": {
+          "tcp://127.0.0.1:33661": 1279.80859375,
+          "tcp://127.0.0.1:33883": 1452.55078125,
+          "tcp://127.0.0.1:34443": 1512.75,
+          "tcp://127.0.0.1:35517": 1657.47265625,
+          "tcp://127.0.0.1:36239": 1615.19140625,
+          "tcp://127.0.0.1:36835": 1342.98828125,
+          "tcp://127.0.0.1:38247": 1326.640625,
+          "tcp://127.0.0.1:41911": 1376.60546875,
+          "tcp://127.0.0.1:44345": 1388.953125,
+          "tcp://127.0.0.1:44559": 1350.4140625,
+          "tcp://127.0.0.1:44765": 1383.51953125
+        }
+      }
     }
   ],
   "variant_label": "r1i1p1f1",
   "model": "ACCESS-ESM1.6",
   "source_location": "incoming",
-  "ingested_at": "2026-10-19T20:02:19+00:00"
+  "ingested_at": "2026-10-20T18:34:36+00:00"
 }

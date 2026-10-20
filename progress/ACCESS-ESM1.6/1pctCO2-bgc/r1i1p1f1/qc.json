@@ -3,9 +3,9 @@
   "model": "ACCESS-ESM1.6",
   "experiment_id": "1pctCO2-bgc",
   "variant_label": "r1i1p1f1",
-  "checked_at": "2026-10-19T20:02:19+00:00",
+  "checked_at": "2026-10-20T18:34:36+00:00",
   "checked_by": "sync_reports.py",
-  "source_report": "moppy_batch_report_20261019T164858Z.json",
+  "source_report": "moppy_batch_report_20261020T050008Z.json",
   "variables": {
     "atmos.ps.tavg-u-hxy-u.day.glb": {
       "range": {
@@ -899,6 +899,23 @@
       }
     },
     "atmos.ua.tpt-p3-hxy-air.6hr.glb": {
+      "range": {
+        "allowed": [
+          -150.0,
+          150.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -70.19512176513672,
+          119.12447357177734
+        ],
+        "result": "pass",
+        "units": "m s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
       "wcrp": {
         "check_id": "wcrp",
         "result": "pass",
@@ -909,10 +926,27 @@
         "cv_version": "2.3.4",
         "report_path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/logs/atmos_ua_tpt-p3-hxy-air_6hr_glb/compliance_ua_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_020101010600-020201010000.json",
         "backfilled": false,
-        "checked_at": "2026-10-19T10:46:28+00:00"
+        "checked_at": "2026-10-19T22:41:01+00:00"
       }
     },
     "atmos.va.tpt-p3-hxy-air.6hr.glb": {
+      "range": {
+        "allowed": [
+          -150.0,
+          150.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -95.67224884033203,
+          98.51598358154297
+        ],
+        "result": "pass",
+        "units": "m s-1"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
       "wcrp": {
         "check_id": "wcrp",
         "result": "pass",
@@ -923,7 +957,7 @@
         "cv_version": "2.3.4",
         "report_path": "/g/data/im55/admin/incoming/20260930/1pctCO2-bgc-01/logs/atmos_va_tpt-p3-hxy-air_6hr_glb/compliance_va_tpt-p3-hxy-air_6hr_glb_g110_ACCESS-ESM1-6_1pctCO2-bgc_r1i1p1f1_020101010600-020201010000.json",
         "backfilled": false,
-        "checked_at": "2026-10-19T10:48:41+00:00"
+        "checked_at": "2026-10-19T22:40:46+00:00"
       }
     }
   }

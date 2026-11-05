@@ -551,4 +551,4 @@ pixi run serve-dashboard
 
 ## Licence
 
-MIT
+[MIT](LICENSE).

@@ -3,9 +3,9 @@
   "model": "ACCESS-ESM1.6",
   "experiment_id": "scen7-h",
   "variant_label": "r3i1p1f1",
-  "checked_at": "2026-11-06T20:30:46+00:00",
+  "checked_at": "2026-11-12T22:07:04+00:00",
   "checked_by": "sync_reports.py",
-  "source_report": "moppy_batch_report_20261106T095011Z.json",
+  "source_report": "moppy_batch_report_20261112T024228Z.json",
   "variables": {
     "atmos.areacella.ti-u-hxy-u.fx.glb": {
       "range": {
@@ -2385,12 +2385,11 @@
           40.0
         ],
         "check_id": "cmip7_ranges",
-        "message": "CMIP7 QC range warning for bigthetao in experiment scen7-h using rule default: observed range -275.132..-238.387 degC is outside allowed range -3.000..40.000 degC.",
         "observed": [
-          -275.1318664550781,
-          -235.11740112304688
+          -1.9818779230117798,
+          38.0325927734375
         ],
-        "result": "warn",
+        "result": "pass",
         "units": "degC"
       },
       "repack": {
@@ -2407,7 +2406,7 @@
         "cv_version": "2.3.4",
         "report_path": "/g/data/im55/admin/incoming/20260930/scen7-h/scen7-h-scen7-h-1.0-r3i1p1f1-716cf888/logs/ocean_bigthetao_tavg-ol-hxy-sea_mon_glb/compliance_bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-h_r3i1p1f1_202201-202912.json",
         "backfilled": false,
-        "checked_at": "2026-11-06T05:22:19+00:00"
+        "checked_at": "2026-11-12T02:29:25+00:00"
       }
     },
     "ocnBgchem.fgco2.tavg-u-hxy-sea.mon.glb": {
@@ -2439,6 +2438,37 @@
         "report_path": "/g/data/im55/admin/incoming/20260930/scen7-h/scen7-h-scen7-h-1.0-r3i1p1f1-716cf888/logs/ocnBgchem_fgco2_tavg-u-hxy-sea_mon_glb/compliance_fgco2_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-h_r3i1p1f1_202201-202912.json",
         "backfilled": false,
         "checked_at": "2026-11-06T05:19:16+00:00"
+      }
+    },
+    "ocean.hfds.tavg-u-hxy-sea.mon.glb": {
+      "range": {
+        "allowed": [
+          -5000.0,
+          5000.0
+        ],
+        "check_id": "cmip7_ranges",
+        "observed": [
+          -913.4502563476562,
+          2586.772705078125
+        ],
+        "result": "pass",
+        "units": "W m-2"
+      },
+      "repack": {
+        "result": "pass",
+        "tool": "cmip7repack"
+      },
+      "wcrp": {
+        "check_id": "wcrp",
+        "result": "pass",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ],
+        "cv_version": "2.3.4",
+        "report_path": "/g/data/im55/admin/incoming/20260930/scen7-h/scen7-h-scen7-h-1.0-r3i1p1f1-716cf888/logs/ocean_hfds_tavg-u-hxy-sea_mon_glb/compliance_hfds_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-h_r3i1p1f1_202201-202912.json",
+        "backfilled": false,
+        "checked_at": "2026-11-12T02:26:41+00:00"
       }
     },
     "ocean.masscello.tavg-ol-hxy-sea.mon.glb": {
@@ -2697,12 +2727,11 @@
           45.0
         ],
         "check_id": "cmip7_ranges",
-        "message": "CMIP7 QC range warning for tos in experiment scen7-h using rule default: observed range -275.058..-238.387 degC is outside allowed range -3.000..45.000 degC.",
         "observed": [
-          -275.0577392578125,
-          -235.11740112304688
+          -1.9077337980270386,
+          38.0325927734375
         ],
-        "result": "warn",
+        "result": "pass",
         "units": "degC"
       },
       "repack": {
@@ -2719,7 +2748,7 @@
         "cv_version": "2.3.4",
         "report_path": "/g/data/im55/admin/incoming/20260930/scen7-h/scen7-h-scen7-h-1.0-r3i1p1f1-716cf888/logs/ocean_tos_tavg-u-hxy-sea_mon_glb/compliance_tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-h_r3i1p1f1_202201-202912.json",
         "backfilled": false,
-        "checked_at": "2026-11-06T05:29:05+00:00"
+        "checked_at": "2026-11-12T02:26:26+00:00"
       }
     },
     "ocean.umo.tavg-ol-hxy-sea.mon.glb": {
@@ -3883,12 +3912,11 @@
           45.0
         ],
         "check_id": "cmip7_ranges",
-        "message": "CMIP7 QC range warning for tos in experiment scen7-h using rule default: observed range -275.060..-238.006 degC is outside allowed range -3.000..45.000 degC.",
         "observed": [
-          -275.0603942871094,
-          -234.863525390625
+          -1.9103964567184448,
+          38.28646469116211
         ],
-        "result": "warn",
+        "result": "pass",
         "units": "degC"
       },
       "repack": {
@@ -3905,7 +3933,7 @@
         "cv_version": "2.3.4",
         "report_path": "/g/data/im55/admin/incoming/20260930/scen7-h/scen7-h-scen7-h-1.0-r3i1p1f1-716cf888/logs/ocean_tos_tavg-u-hxy-sea_day_glb/compliance_tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-h_r3i1p1f1_20220101-20241231.json",
         "backfilled": false,
-        "checked_at": "2026-11-06T06:04:52+00:00"
+        "checked_at": "2026-11-12T02:27:28+00:00"
       }
     },
     "ocean.zos.tavg-u-hxy-sea.day.glb": {

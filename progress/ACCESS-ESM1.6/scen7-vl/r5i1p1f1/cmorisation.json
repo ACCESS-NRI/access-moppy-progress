@@ -1,48 +1,26 @@
 {
   "all_tasks_terminal": true,
-  "completed_at": "2026-11-06T09:51:17+00:00",
+  "completed_at": "2026-11-12T03:15:25+00:00",
   "config_path": "/scratch/tm70/yz9299/scenariomip/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/batch_config.yml",
-  "created_at": "2026-11-06T09:51:17+00:00",
+  "created_at": "2026-11-12T03:15:25+00:00",
   "db_path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/cmor_tasks.db",
   "experiment_id": "scen7-vl",
-  "failures": [
-    {
-      "error_message": [
-        "job 183286782.gadi-pbs | exit_status=255 | pbs_comment='Job run at Fri Nov 06 at 16:01 on (gadi-cpu-bdw-0687:ncpus=12:mem=134217728kb:jobfs=104857600kb) and failed' | mem_used=616968kb | walltime_used=00:00:11 | err_tail:",
-        "Loading conda/analysis3-26.11",
-        "  Loading requirement: singularity",
-        "FATAL:   container creation failed: mount /proc/self/fd/3->/opt/nci/singularity/3.11.3/var/singularity/mnt/session/rootfs error: while mounting image /proc/self/fd/3: failed to mount squashfs filesystem: file exists"
-      ],
-      "experiment_id": "scen7-vl",
-      "pbs_job_id": "183286782.gadi-pbs",
-      "stderr": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/land_evspsblsoi_tavg-u-hxy-lnd_mon_glb/cmor_land_evspsblsoi_tavg-u-hxy-lnd_mon_glb.err",
-      "stderr_tail": null,
-      "variable": "land.evspsblsoi.tavg-u-hxy-lnd.mon.glb"
-    },
-    {
-      "error_message": "\"Required model variable(s) ['frazil_3d_int_z'] not found in the input for 'Omon.hfds'. Supply these diagnostics at the requested frequency.\"",
-      "experiment_id": "scen7-vl",
-      "pbs_job_id": "183290267.gadi-pbs",
-      "stderr": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/ocean_hfds_tavg-u-hxy-sea_mon_glb/cmor_ocean_hfds_tavg-u-hxy-sea_mon_glb.err",
-      "stderr_tail": null,
-      "variable": "ocean.hfds.tavg-u-hxy-sea.mon.glb"
-    }
-  ],
+  "failures": [],
   "monitor": {
-    "pbs_job_id": "183280739.gadi-pbs",
+    "pbs_job_id": "183714489.gadi-pbs",
     "stderr": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/moppy_monitor.err",
     "stdout": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/moppy_monitor.out",
-    "submitted_at": "2026-11-06T15:25:19"
+    "submitted_at": "2026-11-12T13:17:52"
   },
   "output_folder": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f",
   "schema_version": "access-moppy.batch-report.v2",
   "script_dir": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f",
   "source_id": "ACCESS-ESM1-6",
-  "status": "failed",
-  "success": false,
+  "status": "completed",
+  "success": true,
   "summary": {
-    "completed": 133,
-    "failed": 2,
+    "completed": 135,
+    "failed": 0,
     "pending": 0,
     "retrying": 0,
     "running": 0,
@@ -11838,93 +11816,258 @@
       }
     },
     {
-      "compliance": null,
-      "duration_seconds": null,
-      "end_time": "2026-11-06 05:04:02",
-      "error_message": [
-        "job 183286782.gadi-pbs | exit_status=255 | pbs_comment='Job run at Fri Nov 06 at 16:01 on (gadi-cpu-bdw-0687:ncpus=12:mem=134217728kb:jobfs=104857600kb) and failed' | mem_used=616968kb | walltime_used=00:00:11 | err_tail:",
-        "Loading conda/analysis3-26.11",
-        "  Loading requirement: singularity",
-        "FATAL:   container creation failed: mount /proc/self/fd/3->/opt/nci/singularity/3.11.3/var/singularity/mnt/session/rootfs error: while mounting image /proc/self/fd/3: failed to mount squashfs filesystem: file exists"
-      ],
+      "compliance": {
+        "backfilled": false,
+        "checked_at": "2026-11-12T02:48:50+00:00",
+        "cv_version": "2.3.4",
+        "environment_warning": false,
+        "error": null,
+        "failed_checks": null,
+        "file": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/evspsblsoi/tavg-u-hxy-lnd/g115/v20261112/evspsblsoi_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_202201-202912.nc",
+        "passed": true,
+        "report_path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/logs/land_evspsblsoi_tavg-u-hxy-lnd_mon_glb/compliance_evspsblsoi_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_202201-202912.json",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ]
+      },
+      "duration_seconds": 379.0,
+      "end_time": "2026-11-12 02:49:49",
+      "error_message": null,
       "experiment_id": "scen7-vl",
       "id": 59,
-      "output_summary": null,
+      "output_summary": {
+        "file_count": 14,
+        "files": [
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/evspsblsoi/tavg-u-hxy-lnd/g115/v20261112/evspsblsoi_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_202201-202912.nc",
+            "size": "2.5 MiB",
+            "size_bytes": 2652687
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/evspsblsoi/tavg-u-hxy-lnd/g115/v20261112/evspsblsoi_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_203001-203912.nc",
+            "size": "3.2 MiB",
+            "size_bytes": 3310846
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/evspsblsoi/tavg-u-hxy-lnd/g115/v20261112/evspsblsoi_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_204001-204912.nc",
+            "size": "3.2 MiB",
+            "size_bytes": 3321036
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/evspsblsoi/tavg-u-hxy-lnd/g115/v20261112/evspsblsoi_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_205001-205912.nc",
+            "size": "3.2 MiB",
+            "size_bytes": 3332891
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/evspsblsoi/tavg-u-hxy-lnd/g115/v20261112/evspsblsoi_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_206001-206912.nc",
+            "size": "3.2 MiB",
+            "size_bytes": 3326415
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/evspsblsoi/tavg-u-hxy-lnd/g115/v20261112/evspsblsoi_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_207001-207912.nc",
+            "size": "3.2 MiB",
+            "size_bytes": 3321956
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/evspsblsoi/tavg-u-hxy-lnd/g115/v20261112/evspsblsoi_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_208001-208912.nc",
+            "size": "3.2 MiB",
+            "size_bytes": 3317960
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/evspsblsoi/tavg-u-hxy-lnd/g115/v20261112/evspsblsoi_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_209001-209912.nc",
+            "size": "3.2 MiB",
+            "size_bytes": 3309638
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/evspsblsoi/tavg-u-hxy-lnd/g115/v20261112/evspsblsoi_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_210001-210912.nc",
+            "size": "3.2 MiB",
+            "size_bytes": 3308391
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/evspsblsoi/tavg-u-hxy-lnd/g115/v20261112/evspsblsoi_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_211001-211912.nc",
+            "size": "3.2 MiB",
+            "size_bytes": 3310028
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/evspsblsoi/tavg-u-hxy-lnd/g115/v20261112/evspsblsoi_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_212001-212912.nc",
+            "size": "3.1 MiB",
+            "size_bytes": 3290907
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/evspsblsoi/tavg-u-hxy-lnd/g115/v20261112/evspsblsoi_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_213001-213912.nc",
+            "size": "3.2 MiB",
+            "size_bytes": 3306985
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/evspsblsoi/tavg-u-hxy-lnd/g115/v20261112/evspsblsoi_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_214001-214912.nc",
+            "size": "3.2 MiB",
+            "size_bytes": 3307585
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/evspsblsoi/tavg-u-hxy-lnd/g115/v20261112/evspsblsoi_tavg-u-hxy-lnd_mon_glb_g115_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_215001-215012.nc",
+            "size": "362.5 KiB",
+            "size_bytes": 371159
+          }
+        ],
+        "gates": {
+          "range": {
+            "allowed": [
+              -0.05,
+              0.05
+            ],
+            "check_id": "cmip7_ranges",
+            "observed": [
+              -2.732063876464963e-06,
+              9.266495908377692e-05
+            ],
+            "result": "pass",
+            "units": "kg m-2 s-1"
+          },
+          "repack": {
+            "result": "pass",
+            "tool": "cmip7repack"
+          }
+        },
+        "total_bytes": 42788484,
+        "total_size": "40.8 MiB"
+      },
       "pbs": {
-        "comment": "Job run at Fri Nov 06 at 16:01 on (gadi-cpu-bdw-0687:ncpus=12:mem=134217728kb:jobfs=104857600kb) and failed",
-        "exec_host": "gadi-cpu-bdw-0687/1*12",
-        "exec_vnode": "(gadi-cpu-bdw-0687:ncpus=12:mem=134217728kb:jobfs=104857600kb)",
-        "exit_status": 255,
-        "job_id": "183286782.gadi-pbs",
+        "comment": "Job run at Thu Nov 12 at 13:43 on (gadi-cpu-clx-2573:ncpus=28:mem=134217728kb:jobfs=104857600kb) and finished",
+        "exec_host": "gadi-cpu-clx-2573/0*28",
+        "exec_vnode": "(gadi-cpu-clx-2573:ncpus=28:mem=134217728kb:jobfs=104857600kb)",
+        "exit_status": 0,
+        "job_id": "183714798.gadi-pbs",
         "job_state": "F",
         "pbs_server": "gadi-pbs-01",
         "pbs_version": "2024.1.2.20241017100211",
         "project": "tm70",
         "qstat_format": "json",
-        "queue": "normalbw-exec",
+        "queue": "normal-exec",
         "raw_qstat": {
-          "Exit_status": 255,
+          "Exit_status": 0,
           "Resource_List.jobfs": "107374182400b",
           "Resource_List.mem": "137438953472b",
-          "Resource_List.mpiprocs": 12,
-          "Resource_List.ncpus": 12,
-          "Resource_List.storage": "scratch/tm70+gdata/p73+gdata/xp65+gdata/tm70+gdata/im55+scratch/p73",
+          "Resource_List.mpiprocs": 28,
+          "Resource_List.ncpus": 28,
+          "Resource_List.storage": "gdata/xp65+gdata/im55+gdata/tm70+scratch/p73+gdata/p73+scratch/tm70",
           "Resource_List.walltime": "03:00:00",
-          "comment": "Job run at Fri Nov 06 at 16:01 on (gadi-cpu-bdw-0687:ncpus=12:mem=134217728kb:jobfs=104857600kb) and failed",
-          "ctime": "Fri Nov  6 15:59:01 2026",
-          "etime": "Fri Nov  6 15:59:01 2026",
-          "exec_host": "gadi-cpu-bdw-0687/1*12",
-          "exec_vnode": "(gadi-cpu-bdw-0687:ncpus=12:mem=134217728kb:jobfs=104857600kb)",
-          "job_id": "183286782.gadi-pbs",
+          "comment": "Job run at Thu Nov 12 at 13:43 on (gadi-cpu-clx-2573:ncpus=28:mem=134217728kb:jobfs=104857600kb) and finished",
+          "ctime": "Thu Nov 12 13:20:12 2026",
+          "etime": "Thu Nov 12 13:20:12 2026",
+          "exec_host": "gadi-cpu-clx-2573/0*28",
+          "exec_vnode": "(gadi-cpu-clx-2573:ncpus=28:mem=134217728kb:jobfs=104857600kb)",
+          "job_id": "183714798.gadi-pbs",
           "job_state": "F",
-          "mtime": "Fri Nov  6 16:02:17 2026",
+          "mtime": "Thu Nov 12 13:50:00 2026",
           "pbs_server": "gadi-pbs-01",
           "pbs_version": "2024.1.2.20241017100211",
           "project": "tm70",
           "qstat_format": "json",
-          "qtime": "Fri Nov  6 15:59:01 2026",
-          "queue": "normalbw-exec",
-          "resources_used.cpupercent": 73,
-          "resources_used.cput": "00:00:09",
-          "resources_used.mem": "616968kb",
-          "resources_used.ncpus": 12,
-          "resources_used.vmem": "616968kb",
-          "resources_used.walltime": "00:00:11",
+          "qtime": "Thu Nov 12 13:20:12 2026",
+          "queue": "normal-exec",
+          "resources_used.cpupercent": 677,
+          "resources_used.cput": "00:12:26",
+          "resources_used.mem": "19569272kb",
+          "resources_used.ncpus": 28,
+          "resources_used.vmem": "19569272kb",
+          "resources_used.walltime": "00:06:44",
           "scheduler": "pbs",
-          "stime": "Fri Nov  6 16:01:56 2026"
+          "stime": "Thu Nov 12 13:43:07 2026"
         },
         "resources_requested": {
           "jobfs": "107374182400b",
           "mem": "137438953472b",
-          "mpiprocs": 12,
-          "ncpus": 12,
-          "storage": "scratch/tm70+gdata/p73+gdata/xp65+gdata/tm70+gdata/im55+scratch/p73",
+          "mpiprocs": 28,
+          "ncpus": 28,
+          "storage": "gdata/xp65+gdata/im55+gdata/tm70+scratch/p73+gdata/p73+scratch/tm70",
           "walltime": "03:00:00"
         },
         "resources_used": {
-          "cpupercent": 73,
-          "cput": "00:00:09",
-          "mem": "616968kb",
-          "ncpus": 12,
-          "vmem": "616968kb",
-          "walltime": "00:00:11"
+          "cpupercent": 677,
+          "cput": "00:12:26",
+          "mem": "19569272kb",
+          "ncpus": 28,
+          "vmem": "19569272kb",
+          "walltime": "00:06:44"
         },
         "scheduler": "pbs",
         "timestamps": {
-          "created_at": "Fri Nov  6 15:59:01 2026",
-          "eligible_at": "Fri Nov  6 15:59:01 2026",
-          "modified_at": "Fri Nov  6 16:02:17 2026",
-          "queued_at": "Fri Nov  6 15:59:01 2026",
-          "started_at": "Fri Nov  6 16:01:56 2026"
+          "created_at": "Thu Nov 12 13:20:12 2026",
+          "eligible_at": "Thu Nov 12 13:20:12 2026",
+          "modified_at": "Thu Nov 12 13:50:00 2026",
+          "queued_at": "Thu Nov 12 13:20:12 2026",
+          "started_at": "Thu Nov 12 13:43:07 2026"
         }
       },
-      "pbs_job_id": "183286782.gadi-pbs",
-      "start_time": null,
-      "status": "failed",
+      "pbs_job_id": "183714798.gadi-pbs",
+      "start_time": "2026-11-12 02:43:30",
+      "status": "completed",
       "stderr": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/land_evspsblsoi_tavg-u-hxy-lnd_mon_glb/cmor_land_evspsblsoi_tavg-u-hxy-lnd_mon_glb.err",
       "stdout": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/land_evspsblsoi_tavg-u-hxy-lnd_mon_glb/cmor_land_evspsblsoi_tavg-u-hxy-lnd_mon_glb.out",
       "variable": "land.evspsblsoi.tavg-u-hxy-lnd.mon.glb",
-      "worker_memory": null
+      "worker_memory": {
+        "memory_limit_per_worker": "4.57GB",
+        "n_workers": 28,
+        "peak_rss_mb": {
+          "tcp://127.0.0.1:32855": 374.30859375,
+          "tcp://127.0.0.1:32949": 374.82421875,
+          "tcp://127.0.0.1:33087": 374.56640625,
+          "tcp://127.0.0.1:33223": 374.0625,
+          "tcp://127.0.0.1:33255": 456.6875,
+          "tcp://127.0.0.1:33663": 374.82421875,
+          "tcp://127.0.0.1:33687": 456.6875,
+          "tcp://127.0.0.1:34275": 374.30859375,
+          "tcp://127.0.0.1:34303": 375.08203125,
+          "tcp://127.0.0.1:34309": 456.6875,
+          "tcp://127.0.0.1:34347": 456.6875,
+          "tcp://127.0.0.1:34383": 374.56640625,
+          "tcp://127.0.0.1:34413": 456.6875,
+          "tcp://127.0.0.1:34507": 374.56640625,
+          "tcp://127.0.0.1:34517": 456.6875,
+          "tcp://127.0.0.1:34627": 374.30859375,
+          "tcp://127.0.0.1:34911": 374.82421875,
+          "tcp://127.0.0.1:34957": 456.6875,
+          "tcp://127.0.0.1:35049": 456.6875,
+          "tcp://127.0.0.1:35109": 374.56640625,
+          "tcp://127.0.0.1:35153": 374.82421875,
+          "tcp://127.0.0.1:35361": 456.6875,
+          "tcp://127.0.0.1:35397": 456.6875,
+          "tcp://127.0.0.1:36067": 456.6875,
+          "tcp://127.0.0.1:36153": 374.82421875,
+          "tcp://127.0.0.1:36999": 375.08203125,
+          "tcp://127.0.0.1:37039": 456.6875,
+          "tcp://127.0.0.1:37325": 456.6875,
+          "tcp://127.0.0.1:37657": 456.6875,
+          "tcp://127.0.0.1:37661": 418.9609375,
+          "tcp://127.0.0.1:37901": 374.57421875,
+          "tcp://127.0.0.1:38215": 456.6875,
+          "tcp://127.0.0.1:38335": 374.30859375,
+          "tcp://127.0.0.1:38531": 374.82421875,
+          "tcp://127.0.0.1:39011": 456.6875,
+          "tcp://127.0.0.1:39725": 456.6875,
+          "tcp://127.0.0.1:39747": 456.6875,
+          "tcp://127.0.0.1:40167": 456.6875,
+          "tcp://127.0.0.1:40535": 456.6875,
+          "tcp://127.0.0.1:40749": 456.6875,
+          "tcp://127.0.0.1:40949": 456.6875,
+          "tcp://127.0.0.1:41295": 374.30859375,
+          "tcp://127.0.0.1:41305": 374.82421875,
+          "tcp://127.0.0.1:41465": 374.82421875,
+          "tcp://127.0.0.1:41561": 374.30859375,
+          "tcp://127.0.0.1:41871": 456.6875,
+          "tcp://127.0.0.1:41895": 456.6875,
+          "tcp://127.0.0.1:41969": 456.6875,
+          "tcp://127.0.0.1:42907": 374.82421875,
+          "tcp://127.0.0.1:43053": 374.30859375,
+          "tcp://127.0.0.1:44571": 456.6875,
+          "tcp://127.0.0.1:44743": 374.30859375,
+          "tcp://127.0.0.1:45363": 456.6875,
+          "tcp://127.0.0.1:45443": 456.6875,
+          "tcp://127.0.0.1:45545": 374.82421875,
+          "tcp://127.0.0.1:46677": 374.56640625
+        }
+      }
     },
     {
       "compliance": {
@@ -15521,12 +15664,12 @@
     {
       "compliance": {
         "backfilled": false,
-        "checked_at": "2026-11-06T05:22:51+00:00",
+        "checked_at": "2026-11-12T03:02:18+00:00",
         "cv_version": "2.3.4",
         "environment_warning": false,
         "error": null,
         "failed_checks": null,
-        "file": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261106/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_202201-202912.nc",
+        "file": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261112/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_202201-202912.nc",
         "passed": true,
         "report_path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/logs/ocean_bigthetao_tavg-ol-hxy-sea_mon_glb/compliance_bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_202201-202912.json",
         "suites": [
@@ -15534,8 +15677,8 @@
           "wcrp_cmip7:1.0"
         ]
       },
-      "duration_seconds": 1425.0,
-      "end_time": "2026-11-06 05:40:48",
+      "duration_seconds": 600.0,
+      "end_time": "2026-11-12 03:06:43",
       "error_message": null,
       "experiment_id": "scen7-vl",
       "id": 77,
@@ -15543,74 +15686,74 @@
         "file_count": 14,
         "files": [
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261106/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_202201-202912.nc",
-            "size": "583.4 MiB",
-            "size_bytes": 611708594
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261112/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_202201-202912.nc",
+            "size": "771.6 MiB",
+            "size_bytes": 809129823
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261106/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_203001-203912.nc",
-            "size": "702.3 MiB",
-            "size_bytes": 736412479
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261112/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_203001-203912.nc",
+            "size": "941.8 MiB",
+            "size_bytes": 987555874
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261106/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_204001-204912.nc",
-            "size": "703.9 MiB",
-            "size_bytes": 738042173
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261112/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_204001-204912.nc",
+            "size": "945.9 MiB",
+            "size_bytes": 991885201
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261106/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_205001-205912.nc",
-            "size": "706.7 MiB",
-            "size_bytes": 740995011
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261112/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_205001-205912.nc",
+            "size": "940.6 MiB",
+            "size_bytes": 986253010
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261106/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_206001-206912.nc",
-            "size": "703.8 MiB",
-            "size_bytes": 737942229
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261112/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_206001-206912.nc",
+            "size": "943.9 MiB",
+            "size_bytes": 989711021
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261106/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_207001-207912.nc",
-            "size": "706.9 MiB",
-            "size_bytes": 741239948
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261112/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_207001-207912.nc",
+            "size": "941.9 MiB",
+            "size_bytes": 987618606
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261106/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_208001-208912.nc",
-            "size": "704.0 MiB",
-            "size_bytes": 738209322
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261112/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_208001-208912.nc",
+            "size": "940.1 MiB",
+            "size_bytes": 985736011
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261106/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_209001-209912.nc",
-            "size": "700.5 MiB",
-            "size_bytes": 734497197
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261112/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_209001-209912.nc",
+            "size": "944.2 MiB",
+            "size_bytes": 990107736
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261106/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_210001-210912.nc",
-            "size": "704.0 MiB",
-            "size_bytes": 738171872
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261112/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_210001-210912.nc",
+            "size": "939.0 MiB",
+            "size_bytes": 984593613
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261106/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_211001-211912.nc",
-            "size": "702.3 MiB",
-            "size_bytes": 736406028
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261112/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_211001-211912.nc",
+            "size": "943.5 MiB",
+            "size_bytes": 989289966
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261106/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_212001-212912.nc",
-            "size": "705.5 MiB",
-            "size_bytes": 739727806
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261112/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_212001-212912.nc",
+            "size": "938.2 MiB",
+            "size_bytes": 983776408
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261106/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_213001-213912.nc",
-            "size": "705.1 MiB",
-            "size_bytes": 739395669
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261112/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_213001-213912.nc",
+            "size": "943.1 MiB",
+            "size_bytes": 988913562
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261106/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_214001-214912.nc",
-            "size": "699.3 MiB",
-            "size_bytes": 733299353
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261112/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_214001-214912.nc",
+            "size": "939.0 MiB",
+            "size_bytes": 984663454
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261106/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_215001-215012.nc",
-            "size": "76.2 MiB",
-            "size_bytes": 79907016
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/bigthetao/tavg-ol-hxy-sea/g118/v20261112/bigthetao_tavg-ol-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_215001-215012.nc",
+            "size": "99.8 MiB",
+            "size_bytes": 104647774
           }
         ],
         "gates": {
@@ -15620,12 +15763,11 @@
               40.0
             ],
             "check_id": "cmip7_ranges",
-            "message": "CMIP7 QC range warning for bigthetao in experiment scen7-vl using rule default: observed range -275.143..-238.410 degC is outside allowed range -3.000..40.000 degC.",
             "observed": [
-              -275.1431884765625,
-              -237.44491577148438
+              -1.9931930303573608,
+              35.705081939697266
             ],
-            "result": "warn",
+            "result": "pass",
             "units": "degC"
           },
           "repack": {
@@ -15633,93 +15775,96 @@
             "tool": "cmip7repack"
           }
         },
-        "total_bytes": 9545954697,
-        "total_size": "8.9 GiB"
+        "total_bytes": 12763882059,
+        "total_size": "11.9 GiB"
       },
       "pbs": {
-        "comment": "Job run at Fri Nov 06 at 16:16 on (gadi-cpu-bdw-0725:ncpus=12:mem=199229440kb:jobfs=104857600kb) and finished",
-        "exec_host": "gadi-cpu-bdw-0725/0*12",
-        "exec_vnode": "(gadi-cpu-bdw-0725:ncpus=12:mem=199229440kb:jobfs=104857600kb)",
+        "comment": "Job run at Thu Nov 12 at 13:56 on (gadi-cpu-clx-0862:ncpus=28:mem=134217728kb:jobfs=104857600kb) and finished",
+        "exec_host": "gadi-cpu-clx-0862/0*28",
+        "exec_vnode": "(gadi-cpu-clx-0862:ncpus=28:mem=134217728kb:jobfs=104857600kb)",
         "exit_status": 0,
-        "job_id": "183289656.gadi-pbs",
+        "job_id": "183714800.gadi-pbs",
         "job_state": "F",
         "pbs_server": "gadi-pbs-01",
         "pbs_version": "2024.1.2.20241017100211",
         "project": "tm70",
         "qstat_format": "json",
-        "queue": "normalbw-exec",
+        "queue": "normal-exec",
         "raw_qstat": {
           "Exit_status": 0,
           "Resource_List.jobfs": "107374182400b",
-          "Resource_List.mem": "204010946560b",
-          "Resource_List.mpiprocs": 12,
-          "Resource_List.ncpus": 12,
-          "Resource_List.storage": "scratch/tm70+gdata/p73+gdata/xp65+gdata/tm70+gdata/im55+scratch/p73",
+          "Resource_List.mem": "137438953472b",
+          "Resource_List.mpiprocs": 28,
+          "Resource_List.ncpus": 28,
+          "Resource_List.storage": "gdata/xp65+gdata/im55+gdata/tm70+scratch/p73+gdata/p73+scratch/tm70",
           "Resource_List.walltime": "04:00:00",
-          "comment": "Job run at Fri Nov 06 at 16:16 on (gadi-cpu-bdw-0725:ncpus=12:mem=199229440kb:jobfs=104857600kb) and finished",
-          "ctime": "Fri Nov  6 16:14:54 2026",
-          "etime": "Fri Nov  6 16:14:54 2026",
-          "exec_host": "gadi-cpu-bdw-0725/0*12",
-          "exec_vnode": "(gadi-cpu-bdw-0725:ncpus=12:mem=199229440kb:jobfs=104857600kb)",
-          "job_id": "183289656.gadi-pbs",
+          "comment": "Job run at Thu Nov 12 at 13:56 on (gadi-cpu-clx-0862:ncpus=28:mem=134217728kb:jobfs=104857600kb) and finished",
+          "ctime": "Thu Nov 12 13:20:13 2026",
+          "etime": "Thu Nov 12 13:20:13 2026",
+          "exec_host": "gadi-cpu-clx-0862/0*28",
+          "exec_vnode": "(gadi-cpu-clx-0862:ncpus=28:mem=134217728kb:jobfs=104857600kb)",
+          "job_id": "183714800.gadi-pbs",
           "job_state": "F",
-          "mtime": "Fri Nov  6 16:41:00 2026",
+          "mtime": "Thu Nov 12 14:06:57 2026",
           "pbs_server": "gadi-pbs-01",
           "pbs_version": "2024.1.2.20241017100211",
           "project": "tm70",
           "qstat_format": "json",
-          "qtime": "Fri Nov  6 16:14:54 2026",
-          "queue": "normalbw-exec",
-          "resources_used.cpupercent": 771,
-          "resources_used.cput": "01:18:35",
-          "resources_used.mem": "39050792kb",
-          "resources_used.ncpus": 12,
-          "resources_used.vmem": "39050792kb",
-          "resources_used.walltime": "00:24:07",
+          "qtime": "Thu Nov 12 13:20:13 2026",
+          "queue": "normal-exec",
+          "resources_used.cpupercent": 1166,
+          "resources_used.cput": "01:04:59",
+          "resources_used.mem": "61124036kb",
+          "resources_used.ncpus": 28,
+          "resources_used.vmem": "61124036kb",
+          "resources_used.walltime": "00:10:22",
           "scheduler": "pbs",
-          "stime": "Fri Nov  6 16:16:44 2026"
+          "stime": "Thu Nov 12 13:56:24 2026"
         },
         "resources_requested": {
           "jobfs": "107374182400b",
-          "mem": "204010946560b",
-          "mpiprocs": 12,
-          "ncpus": 12,
-          "storage": "scratch/tm70+gdata/p73+gdata/xp65+gdata/tm70+gdata/im55+scratch/p73",
+          "mem": "137438953472b",
+          "mpiprocs": 28,
+          "ncpus": 28,
+          "storage": "gdata/xp65+gdata/im55+gdata/tm70+scratch/p73+gdata/p73+scratch/tm70",
           "walltime": "04:00:00"
         },
         "resources_used": {
-          "cpupercent": 771,
-          "cput": "01:18:35",
-          "mem": "39050792kb",
-          "ncpus": 12,
-          "vmem": "39050792kb",
-          "walltime": "00:24:07"
+          "cpupercent": 1166,
+          "cput": "01:04:59",
+          "mem": "61124036kb",
+          "ncpus": 28,
+          "vmem": "61124036kb",
+          "walltime": "00:10:22"
         },
         "scheduler": "pbs",
         "timestamps": {
-          "created_at": "Fri Nov  6 16:14:54 2026",
-          "eligible_at": "Fri Nov  6 16:14:54 2026",
-          "modified_at": "Fri Nov  6 16:41:00 2026",
-          "queued_at": "Fri Nov  6 16:14:54 2026",
-          "started_at": "Fri Nov  6 16:16:44 2026"
+          "created_at": "Thu Nov 12 13:20:13 2026",
+          "eligible_at": "Thu Nov 12 13:20:13 2026",
+          "modified_at": "Thu Nov 12 14:06:57 2026",
+          "queued_at": "Thu Nov 12 13:20:13 2026",
+          "started_at": "Thu Nov 12 13:56:24 2026"
         }
       },
-      "pbs_job_id": "183289656.gadi-pbs",
-      "start_time": "2026-11-06 05:17:03",
+      "pbs_job_id": "183714800.gadi-pbs",
+      "start_time": "2026-11-12 02:56:43",
       "status": "completed",
       "stderr": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/ocean_bigthetao_tavg-ol-hxy-sea_mon_glb/cmor_ocean_bigthetao_tavg-ol-hxy-sea_mon_glb.err",
       "stdout": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/ocean_bigthetao_tavg-ol-hxy-sea_mon_glb/cmor_ocean_bigthetao_tavg-ol-hxy-sea_mon_glb.out",
       "variable": "ocean.bigthetao.tavg-ol-hxy-sea.mon.glb",
       "worker_memory": {
-        "memory_limit_per_worker": "15.83GB",
-        "n_workers": 6,
+        "memory_limit_per_worker": "14.22GB",
+        "n_workers": 9,
         "peak_rss_mb": {
-          "tcp://127.0.0.1:36207": 1022.9140625,
-          "tcp://127.0.0.1:37213": 1022.671875,
-          "tcp://127.0.0.1:37351": 838.0078125,
-          "tcp://127.0.0.1:40023": 824.171875,
-          "tcp://127.0.0.1:42387": 869.2890625,
-          "tcp://127.0.0.1:43601": 820.6953125
+          "tcp://127.0.0.1:34927": 1041.046875,
+          "tcp://127.0.0.1:36763": 765.66796875,
+          "tcp://127.0.0.1:37245": 777.70703125,
+          "tcp://127.0.0.1:39377": 1014.72265625,
+          "tcp://127.0.0.1:39475": 967.01171875,
+          "tcp://127.0.0.1:45233": 877.75,
+          "tcp://127.0.0.1:46177": 827.94140625,
+          "tcp://127.0.0.1:46301": 826.9453125,
+          "tcp://127.0.0.1:46357": 763.7109375
         }
       }
     },
@@ -15931,103 +16076,256 @@
       }
     },
     {
-      "compliance": null,
-      "duration_seconds": 26.0,
-      "end_time": "2026-11-06 05:22:57",
-      "error_message": "\"Required model variable(s) ['frazil_3d_int_z'] not found in the input for 'Omon.hfds'. Supply these diagnostics at the requested frequency.\"",
+      "compliance": {
+        "backfilled": false,
+        "checked_at": "2026-11-12T02:48:54+00:00",
+        "cv_version": "2.3.4",
+        "environment_warning": false,
+        "error": null,
+        "failed_checks": null,
+        "file": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/hfds/tavg-u-hxy-sea/g118/v20261112/hfds_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_202201-202912.nc",
+        "passed": true,
+        "report_path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/logs/ocean_hfds_tavg-u-hxy-sea_mon_glb/compliance_hfds_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_202201-202912.json",
+        "suites": [
+          "cf:1.11",
+          "wcrp_cmip7:1.0"
+        ]
+      },
+      "duration_seconds": 406.0,
+      "end_time": "2026-11-12 02:50:18",
+      "error_message": null,
       "experiment_id": "scen7-vl",
       "id": 79,
-      "output_summary": null,
+      "output_summary": {
+        "file_count": 14,
+        "files": [
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/hfds/tavg-u-hxy-sea/g118/v20261112/hfds_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_202201-202912.nc",
+            "size": "29.1 MiB",
+            "size_bytes": 30466834
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/hfds/tavg-u-hxy-sea/g118/v20261112/hfds_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_203001-203912.nc",
+            "size": "34.2 MiB",
+            "size_bytes": 35906288
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/hfds/tavg-u-hxy-sea/g118/v20261112/hfds_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_204001-204912.nc",
+            "size": "34.2 MiB",
+            "size_bytes": 35898394
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/hfds/tavg-u-hxy-sea/g118/v20261112/hfds_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_205001-205912.nc",
+            "size": "34.2 MiB",
+            "size_bytes": 35886062
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/hfds/tavg-u-hxy-sea/g118/v20261112/hfds_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_206001-206912.nc",
+            "size": "34.2 MiB",
+            "size_bytes": 35891344
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/hfds/tavg-u-hxy-sea/g118/v20261112/hfds_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_207001-207912.nc",
+            "size": "34.2 MiB",
+            "size_bytes": 35907689
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/hfds/tavg-u-hxy-sea/g118/v20261112/hfds_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_208001-208912.nc",
+            "size": "34.2 MiB",
+            "size_bytes": 35897951
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/hfds/tavg-u-hxy-sea/g118/v20261112/hfds_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_209001-209912.nc",
+            "size": "34.2 MiB",
+            "size_bytes": 35904891
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/hfds/tavg-u-hxy-sea/g118/v20261112/hfds_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_210001-210912.nc",
+            "size": "34.3 MiB",
+            "size_bytes": 35915870
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/hfds/tavg-u-hxy-sea/g118/v20261112/hfds_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_211001-211912.nc",
+            "size": "34.2 MiB",
+            "size_bytes": 35911826
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/hfds/tavg-u-hxy-sea/g118/v20261112/hfds_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_212001-212912.nc",
+            "size": "34.3 MiB",
+            "size_bytes": 35917771
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/hfds/tavg-u-hxy-sea/g118/v20261112/hfds_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_213001-213912.nc",
+            "size": "34.3 MiB",
+            "size_bytes": 35915225
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/hfds/tavg-u-hxy-sea/g118/v20261112/hfds_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_214001-214912.nc",
+            "size": "34.2 MiB",
+            "size_bytes": 35906021
+          },
+          {
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/hfds/tavg-u-hxy-sea/g118/v20261112/hfds_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_215001-215012.nc",
+            "size": "10.9 MiB",
+            "size_bytes": 11410288
+          }
+        ],
+        "gates": {
+          "range": {
+            "allowed": [
+              -5000.0,
+              5000.0
+            ],
+            "check_id": "cmip7_ranges",
+            "observed": [
+              -958.7994995117188,
+              2511.134521484375
+            ],
+            "result": "pass",
+            "units": "W m-2"
+          },
+          "repack": {
+            "result": "pass",
+            "tool": "cmip7repack"
+          }
+        },
+        "total_bytes": 472736454,
+        "total_size": "450.8 MiB"
+      },
       "pbs": {
-        "comment": "Job run at Fri Nov 06 at 16:22 on (gadi-cpu-bdw-0597:ncpus=12:mem=134217728kb:jobfs=104857600kb) and failed",
-        "exec_host": "gadi-cpu-bdw-0597/0*12",
-        "exec_vnode": "(gadi-cpu-bdw-0597:ncpus=12:mem=134217728kb:jobfs=104857600kb)",
-        "exit_status": 1,
-        "job_id": "183290267.gadi-pbs",
+        "comment": "Job run at Thu Nov 12 at 13:43 on (gadi-cpu-clx-1419:ncpus=28:mem=134217728kb:jobfs=104857600kb) and finished",
+        "exec_host": "gadi-cpu-clx-1419/0*28",
+        "exec_vnode": "(gadi-cpu-clx-1419:ncpus=28:mem=134217728kb:jobfs=104857600kb)",
+        "exit_status": 0,
+        "job_id": "183714801.gadi-pbs",
         "job_state": "F",
         "pbs_server": "gadi-pbs-01",
         "pbs_version": "2024.1.2.20241017100211",
         "project": "tm70",
         "qstat_format": "json",
-        "queue": "normalbw-exec",
+        "queue": "normal-exec",
         "raw_qstat": {
-          "Exit_status": 1,
+          "Exit_status": 0,
           "Resource_List.jobfs": "107374182400b",
           "Resource_List.mem": "137438953472b",
-          "Resource_List.mpiprocs": 12,
-          "Resource_List.ncpus": 12,
-          "Resource_List.storage": "scratch/tm70+gdata/p73+gdata/xp65+gdata/tm70+gdata/im55+scratch/p73",
+          "Resource_List.mpiprocs": 28,
+          "Resource_List.ncpus": 28,
+          "Resource_List.storage": "gdata/xp65+gdata/im55+gdata/tm70+scratch/p73+gdata/p73+scratch/tm70",
           "Resource_List.walltime": "03:00:00",
-          "comment": "Job run at Fri Nov 06 at 16:22 on (gadi-cpu-bdw-0597:ncpus=12:mem=134217728kb:jobfs=104857600kb) and failed",
-          "ctime": "Fri Nov  6 16:19:55 2026",
-          "etime": "Fri Nov  6 16:19:55 2026",
-          "exec_host": "gadi-cpu-bdw-0597/0*12",
-          "exec_vnode": "(gadi-cpu-bdw-0597:ncpus=12:mem=134217728kb:jobfs=104857600kb)",
-          "job_id": "183290267.gadi-pbs",
+          "comment": "Job run at Thu Nov 12 at 13:43 on (gadi-cpu-clx-1419:ncpus=28:mem=134217728kb:jobfs=104857600kb) and finished",
+          "ctime": "Thu Nov 12 13:20:14 2026",
+          "etime": "Thu Nov 12 13:20:14 2026",
+          "exec_host": "gadi-cpu-clx-1419/0*28",
+          "exec_vnode": "(gadi-cpu-clx-1419:ncpus=28:mem=134217728kb:jobfs=104857600kb)",
+          "job_id": "183714801.gadi-pbs",
           "job_state": "F",
-          "mtime": "Fri Nov  6 16:23:08 2026",
+          "mtime": "Thu Nov 12 13:50:30 2026",
           "pbs_server": "gadi-pbs-01",
           "pbs_version": "2024.1.2.20241017100211",
           "project": "tm70",
           "qstat_format": "json",
-          "qtime": "Fri Nov  6 16:19:55 2026",
-          "queue": "normalbw-exec",
-          "resources_used.cpupercent": 284,
-          "resources_used.cput": "00:02:12",
-          "resources_used.mem": "3767556kb",
-          "resources_used.ncpus": 12,
-          "resources_used.vmem": "3767556kb",
-          "resources_used.walltime": "00:00:47",
+          "qtime": "Thu Nov 12 13:20:14 2026",
+          "queue": "normal-exec",
+          "resources_used.cpupercent": 579,
+          "resources_used.cput": "00:15:41",
+          "resources_used.mem": "22500576kb",
+          "resources_used.ncpus": 28,
+          "resources_used.vmem": "22500576kb",
+          "resources_used.walltime": "00:07:11",
           "scheduler": "pbs",
-          "stime": "Fri Nov  6 16:22:12 2026"
+          "stime": "Thu Nov 12 13:43:08 2026"
         },
         "resources_requested": {
           "jobfs": "107374182400b",
           "mem": "137438953472b",
-          "mpiprocs": 12,
-          "ncpus": 12,
-          "storage": "scratch/tm70+gdata/p73+gdata/xp65+gdata/tm70+gdata/im55+scratch/p73",
+          "mpiprocs": 28,
+          "ncpus": 28,
+          "storage": "gdata/xp65+gdata/im55+gdata/tm70+scratch/p73+gdata/p73+scratch/tm70",
           "walltime": "03:00:00"
         },
         "resources_used": {
-          "cpupercent": 284,
-          "cput": "00:02:12",
-          "mem": "3767556kb",
-          "ncpus": 12,
-          "vmem": "3767556kb",
-          "walltime": "00:00:47"
+          "cpupercent": 579,
+          "cput": "00:15:41",
+          "mem": "22500576kb",
+          "ncpus": 28,
+          "vmem": "22500576kb",
+          "walltime": "00:07:11"
         },
         "scheduler": "pbs",
         "timestamps": {
-          "created_at": "Fri Nov  6 16:19:55 2026",
-          "eligible_at": "Fri Nov  6 16:19:55 2026",
-          "modified_at": "Fri Nov  6 16:23:08 2026",
-          "queued_at": "Fri Nov  6 16:19:55 2026",
-          "started_at": "Fri Nov  6 16:22:12 2026"
+          "created_at": "Thu Nov 12 13:20:14 2026",
+          "eligible_at": "Thu Nov 12 13:20:14 2026",
+          "modified_at": "Thu Nov 12 13:50:30 2026",
+          "queued_at": "Thu Nov 12 13:20:14 2026",
+          "started_at": "Thu Nov 12 13:43:08 2026"
         }
       },
-      "pbs_job_id": "183290267.gadi-pbs",
-      "start_time": "2026-11-06 05:22:31",
-      "status": "failed",
+      "pbs_job_id": "183714801.gadi-pbs",
+      "start_time": "2026-11-12 02:43:32",
+      "status": "completed",
       "stderr": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/ocean_hfds_tavg-u-hxy-sea_mon_glb/cmor_ocean_hfds_tavg-u-hxy-sea_mon_glb.err",
       "stdout": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/ocean_hfds_tavg-u-hxy-sea_mon_glb/cmor_ocean_hfds_tavg-u-hxy-sea_mon_glb.out",
       "variable": "ocean.hfds.tavg-u-hxy-sea.mon.glb",
       "worker_memory": {
-        "memory_limit_per_worker": "9.39GB",
-        "n_workers": 12,
+        "memory_limit_per_worker": "4.57GB",
+        "n_workers": 28,
         "peak_rss_mb": {
-          "tcp://127.0.0.1:34199": 361.03515625,
-          "tcp://127.0.0.1:34301": 361.03515625,
-          "tcp://127.0.0.1:34633": 361.03515625,
-          "tcp://127.0.0.1:34699": 361.03515625,
-          "tcp://127.0.0.1:36373": 361.03515625,
-          "tcp://127.0.0.1:36545": 361.03515625,
-          "tcp://127.0.0.1:37015": 361.03515625,
-          "tcp://127.0.0.1:38219": 361.03515625,
-          "tcp://127.0.0.1:39817": 361.03515625,
-          "tcp://127.0.0.1:39923": 361.03515625,
-          "tcp://127.0.0.1:42449": 360.78515625,
-          "tcp://127.0.0.1:46275": 361.03515625
+          "tcp://127.0.0.1:32779": 624.14453125,
+          "tcp://127.0.0.1:33045": 376.34375,
+          "tcp://127.0.0.1:33811": 505.8125,
+          "tcp://127.0.0.1:33989": 373.8359375,
+          "tcp://127.0.0.1:34881": 374.06640625,
+          "tcp://127.0.0.1:34899": 373.3203125,
+          "tcp://127.0.0.1:35261": 624.14453125,
+          "tcp://127.0.0.1:35511": 624.14453125,
+          "tcp://127.0.0.1:35767": 624.14453125,
+          "tcp://127.0.0.1:35955": 624.14453125,
+          "tcp://127.0.0.1:36331": 515.1015625,
+          "tcp://127.0.0.1:36635": 624.14453125,
+          "tcp://127.0.0.1:36947": 624.14453125,
+          "tcp://127.0.0.1:37021": 624.14453125,
+          "tcp://127.0.0.1:37135": 524.15234375,
+          "tcp://127.0.0.1:37449": 373.33203125,
+          "tcp://127.0.0.1:37461": 375.58984375,
+          "tcp://127.0.0.1:37683": 624.14453125,
+          "tcp://127.0.0.1:37777": 624.14453125,
+          "tcp://127.0.0.1:37805": 377.52734375,
+          "tcp://127.0.0.1:37807": 624.14453125,
+          "tcp://127.0.0.1:38515": 374.06640625,
+          "tcp://127.0.0.1:38961": 373.8359375,
+          "tcp://127.0.0.1:39183": 374.06640625,
+          "tcp://127.0.0.1:39721": 466.24609375,
+          "tcp://127.0.0.1:39941": 624.14453125,
+          "tcp://127.0.0.1:40453": 624.14453125,
+          "tcp://127.0.0.1:40557": 373.33203125,
+          "tcp://127.0.0.1:41079": 624.14453125,
+          "tcp://127.0.0.1:41207": 624.14453125,
+          "tcp://127.0.0.1:41209": 624.14453125,
+          "tcp://127.0.0.1:41657": 624.14453125,
+          "tcp://127.0.0.1:41793": 624.14453125,
+          "tcp://127.0.0.1:41929": 466.7265625,
+          "tcp://127.0.0.1:43047": 624.14453125,
+          "tcp://127.0.0.1:43607": 624.14453125,
+          "tcp://127.0.0.1:43811": 375.02734375,
+          "tcp://127.0.0.1:44081": 624.14453125,
+          "tcp://127.0.0.1:44087": 374.06640625,
+          "tcp://127.0.0.1:45179": 501.953125,
+          "tcp://127.0.0.1:45607": 624.14453125,
+          "tcp://127.0.0.1:45645": 373.3515625,
+          "tcp://127.0.0.1:45675": 624.14453125,
+          "tcp://127.0.0.1:45733": 373.3203125,
+          "tcp://127.0.0.1:45755": 624.14453125,
+          "tcp://127.0.0.1:45807": 624.14453125,
+          "tcp://127.0.0.1:45813": 373.8359375,
+          "tcp://127.0.0.1:46203": 624.14453125,
+          "tcp://127.0.0.1:46267": 376.5859375,
+          "tcp://127.0.0.1:46355": 519.32421875,
+          "tcp://127.0.0.1:46369": 513.1640625,
+          "tcp://127.0.0.1:46547": 624.14453125,
+          "tcp://127.0.0.1:46631": 373.33203125,
+          "tcp://127.0.0.1:46685": 373.8359375,
+          "tcp://127.0.0.1:46693": 504.54296875,
+          "tcp://127.0.0.1:46805": 624.14453125
         }
       }
     },
@@ -17763,12 +18061,12 @@
     {
       "compliance": {
         "backfilled": false,
-        "checked_at": "2026-11-06T05:29:18+00:00",
+        "checked_at": "2026-11-12T02:48:50+00:00",
         "cv_version": "2.3.4",
         "environment_warning": false,
         "error": null,
         "failed_checks": null,
-        "file": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_202201-202912.nc",
+        "file": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_202201-202912.nc",
         "passed": true,
         "report_path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/logs/ocean_tos_tavg-u-hxy-sea_mon_glb/compliance_tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_202201-202912.json",
         "suites": [
@@ -17776,8 +18074,8 @@
           "wcrp_cmip7:1.0"
         ]
       },
-      "duration_seconds": 1002.0,
-      "end_time": "2026-11-06 05:44:34",
+      "duration_seconds": 389.0,
+      "end_time": "2026-11-12 02:50:00",
       "error_message": null,
       "experiment_id": "scen7-vl",
       "id": 88,
@@ -17785,74 +18083,74 @@
         "file_count": 14,
         "files": [
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_202201-202912.nc",
-            "size": "22.9 MiB",
-            "size_bytes": 23992756
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_202201-202912.nc",
+            "size": "26.8 MiB",
+            "size_bytes": 28096073
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_203001-203912.nc",
-            "size": "26.6 MiB",
-            "size_bytes": 27848099
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_203001-203912.nc",
+            "size": "31.4 MiB",
+            "size_bytes": 32969309
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_204001-204912.nc",
-            "size": "26.6 MiB",
-            "size_bytes": 27862270
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_204001-204912.nc",
+            "size": "31.4 MiB",
+            "size_bytes": 32956999
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_205001-205912.nc",
-            "size": "26.6 MiB",
-            "size_bytes": 27880974
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_205001-205912.nc",
+            "size": "31.4 MiB",
+            "size_bytes": 32974388
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_206001-206912.nc",
-            "size": "26.6 MiB",
-            "size_bytes": 27857803
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_206001-206912.nc",
+            "size": "31.4 MiB",
+            "size_bytes": 32952172
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_207001-207912.nc",
-            "size": "26.6 MiB",
-            "size_bytes": 27856328
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_207001-207912.nc",
+            "size": "31.4 MiB",
+            "size_bytes": 32962793
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_208001-208912.nc",
-            "size": "26.5 MiB",
-            "size_bytes": 27826455
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_208001-208912.nc",
+            "size": "31.4 MiB",
+            "size_bytes": 32927124
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_209001-209912.nc",
-            "size": "26.5 MiB",
-            "size_bytes": 27797315
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_209001-209912.nc",
+            "size": "31.4 MiB",
+            "size_bytes": 32910425
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_210001-210912.nc",
-            "size": "26.5 MiB",
-            "size_bytes": 27790075
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_210001-210912.nc",
+            "size": "31.4 MiB",
+            "size_bytes": 32904298
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_211001-211912.nc",
-            "size": "26.5 MiB",
-            "size_bytes": 27807926
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_211001-211912.nc",
+            "size": "31.4 MiB",
+            "size_bytes": 32926258
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_212001-212912.nc",
-            "size": "26.5 MiB",
-            "size_bytes": 27782108
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_212001-212912.nc",
+            "size": "31.4 MiB",
+            "size_bytes": 32893556
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_213001-213912.nc",
-            "size": "26.5 MiB",
-            "size_bytes": 27789504
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_213001-213912.nc",
+            "size": "31.4 MiB",
+            "size_bytes": 32906914
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_214001-214912.nc",
-            "size": "26.5 MiB",
-            "size_bytes": 27804679
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_214001-214912.nc",
+            "size": "31.4 MiB",
+            "size_bytes": 32904772
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_215001-215012.nc",
-            "size": "10.1 MiB",
-            "size_bytes": 10599055
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/mon/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_mon_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_215001-215012.nc",
+            "size": "10.6 MiB",
+            "size_bytes": 11112035
           }
         ],
         "gates": {
@@ -17862,12 +18160,11 @@
               45.0
             ],
             "check_id": "cmip7_ranges",
-            "message": "CMIP7 QC range warning for tos in experiment scen7-vl using rule default: observed range -275.065..-238.284 degC is outside allowed range -3.000..45.000 degC.",
             "observed": [
-              -275.0652770996094,
-              -237.44491577148438
+              -1.9152859449386597,
+              35.705081939697266
             ],
-            "result": "warn",
+            "result": "pass",
             "units": "degC"
           },
           "repack": {
@@ -17875,111 +18172,143 @@
             "tool": "cmip7repack"
           }
         },
-        "total_bytes": 368495347,
-        "total_size": "351.4 MiB"
+        "total_bytes": 434397116,
+        "total_size": "414.3 MiB"
       },
       "pbs": {
-        "comment": "Job run at Fri Nov 06 at 16:27 on (gadi-cpu-bdw-0460:ncpus=12:mem=134217728kb:jobfs=104857600kb) and finished",
-        "exec_host": "gadi-cpu-bdw-0460/0*12",
-        "exec_vnode": "(gadi-cpu-bdw-0460:ncpus=12:mem=134217728kb:jobfs=104857600kb)",
+        "comment": "Job run at Thu Nov 12 at 13:43 on (gadi-cpu-clx-2522:ncpus=28:mem=134217728kb:jobfs=104857600kb) and finished",
+        "exec_host": "gadi-cpu-clx-2522/0*28",
+        "exec_vnode": "(gadi-cpu-clx-2522:ncpus=28:mem=134217728kb:jobfs=104857600kb)",
         "exit_status": 0,
-        "job_id": "183291170.gadi-pbs",
+        "job_id": "183714804.gadi-pbs",
         "job_state": "F",
         "pbs_server": "gadi-pbs-01",
         "pbs_version": "2024.1.2.20241017100211",
         "project": "tm70",
         "qstat_format": "json",
-        "queue": "normalbw-exec",
+        "queue": "normal-exec",
         "raw_qstat": {
           "Exit_status": 0,
           "Resource_List.jobfs": "107374182400b",
           "Resource_List.mem": "137438953472b",
-          "Resource_List.mpiprocs": 12,
-          "Resource_List.ncpus": 12,
-          "Resource_List.storage": "scratch/tm70+gdata/p73+gdata/xp65+gdata/tm70+gdata/im55+scratch/p73",
+          "Resource_List.mpiprocs": 28,
+          "Resource_List.ncpus": 28,
+          "Resource_List.storage": "gdata/xp65+gdata/im55+gdata/tm70+scratch/p73+gdata/p73+scratch/tm70",
           "Resource_List.walltime": "03:00:00",
-          "comment": "Job run at Fri Nov 06 at 16:27 on (gadi-cpu-bdw-0460:ncpus=12:mem=134217728kb:jobfs=104857600kb) and finished",
-          "ctime": "Fri Nov  6 16:24:58 2026",
-          "etime": "Fri Nov  6 16:24:58 2026",
-          "exec_host": "gadi-cpu-bdw-0460/0*12",
-          "exec_vnode": "(gadi-cpu-bdw-0460:ncpus=12:mem=134217728kb:jobfs=104857600kb)",
-          "job_id": "183291170.gadi-pbs",
+          "comment": "Job run at Thu Nov 12 at 13:43 on (gadi-cpu-clx-2522:ncpus=28:mem=134217728kb:jobfs=104857600kb) and finished",
+          "ctime": "Thu Nov 12 13:20:15 2026",
+          "etime": "Thu Nov 12 13:20:15 2026",
+          "exec_host": "gadi-cpu-clx-2522/0*28",
+          "exec_vnode": "(gadi-cpu-clx-2522:ncpus=28:mem=134217728kb:jobfs=104857600kb)",
+          "job_id": "183714804.gadi-pbs",
           "job_state": "F",
-          "mtime": "Fri Nov  6 16:44:46 2026",
+          "mtime": "Thu Nov 12 13:50:11 2026",
           "pbs_server": "gadi-pbs-01",
           "pbs_version": "2024.1.2.20241017100211",
           "project": "tm70",
           "qstat_format": "json",
-          "qtime": "Fri Nov  6 16:24:58 2026",
-          "queue": "normalbw-exec",
-          "resources_used.cpupercent": 186,
-          "resources_used.cput": "00:23:37",
-          "resources_used.mem": "5117064kb",
-          "resources_used.ncpus": 12,
-          "resources_used.vmem": "5117064kb",
-          "resources_used.walltime": "00:17:05",
+          "qtime": "Thu Nov 12 13:20:15 2026",
+          "queue": "normal-exec",
+          "resources_used.cpupercent": 517,
+          "resources_used.cput": "00:13:26",
+          "resources_used.mem": "20207392kb",
+          "resources_used.ncpus": 28,
+          "resources_used.vmem": "20207392kb",
+          "resources_used.walltime": "00:06:53",
           "scheduler": "pbs",
-          "stime": "Fri Nov  6 16:27:32 2026"
+          "stime": "Thu Nov 12 13:43:09 2026"
         },
         "resources_requested": {
           "jobfs": "107374182400b",
           "mem": "137438953472b",
-          "mpiprocs": 12,
-          "ncpus": 12,
-          "storage": "scratch/tm70+gdata/p73+gdata/xp65+gdata/tm70+gdata/im55+scratch/p73",
+          "mpiprocs": 28,
+          "ncpus": 28,
+          "storage": "gdata/xp65+gdata/im55+gdata/tm70+scratch/p73+gdata/p73+scratch/tm70",
           "walltime": "03:00:00"
         },
         "resources_used": {
-          "cpupercent": 186,
-          "cput": "00:23:37",
-          "mem": "5117064kb",
-          "ncpus": 12,
-          "vmem": "5117064kb",
-          "walltime": "00:17:05"
+          "cpupercent": 517,
+          "cput": "00:13:26",
+          "mem": "20207392kb",
+          "ncpus": 28,
+          "vmem": "20207392kb",
+          "walltime": "00:06:53"
         },
         "scheduler": "pbs",
         "timestamps": {
-          "created_at": "Fri Nov  6 16:24:58 2026",
-          "eligible_at": "Fri Nov  6 16:24:58 2026",
-          "modified_at": "Fri Nov  6 16:44:46 2026",
-          "queued_at": "Fri Nov  6 16:24:58 2026",
-          "started_at": "Fri Nov  6 16:27:32 2026"
+          "created_at": "Thu Nov 12 13:20:15 2026",
+          "eligible_at": "Thu Nov 12 13:20:15 2026",
+          "modified_at": "Thu Nov 12 13:50:11 2026",
+          "queued_at": "Thu Nov 12 13:20:15 2026",
+          "started_at": "Thu Nov 12 13:43:09 2026"
         }
       },
-      "pbs_job_id": "183291170.gadi-pbs",
-      "start_time": "2026-11-06 05:27:52",
+      "pbs_job_id": "183714804.gadi-pbs",
+      "start_time": "2026-11-12 02:43:31",
       "status": "completed",
       "stderr": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/ocean_tos_tavg-u-hxy-sea_mon_glb/cmor_ocean_tos_tavg-u-hxy-sea_mon_glb.err",
       "stdout": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/ocean_tos_tavg-u-hxy-sea_mon_glb/cmor_ocean_tos_tavg-u-hxy-sea_mon_glb.out",
       "variable": "ocean.tos.tavg-u-hxy-sea.mon.glb",
       "worker_memory": {
-        "memory_limit_per_worker": "9.39GB",
-        "n_workers": 12,
+        "memory_limit_per_worker": "4.57GB",
+        "n_workers": 28,
         "peak_rss_mb": {
-          "tcp://127.0.0.1:34187": 642.86328125,
-          "tcp://127.0.0.1:34763": 363.1875,
-          "tcp://127.0.0.1:34863": 363.1875,
-          "tcp://127.0.0.1:35627": 642.86328125,
-          "tcp://127.0.0.1:36055": 363.1875,
-          "tcp://127.0.0.1:36485": 363.1875,
-          "tcp://127.0.0.1:37521": 642.86328125,
-          "tcp://127.0.0.1:38459": 642.86328125,
-          "tcp://127.0.0.1:38471": 363.1875,
-          "tcp://127.0.0.1:38995": 363.1875,
-          "tcp://127.0.0.1:39151": 363.1875,
-          "tcp://127.0.0.1:39199": 511.84375,
-          "tcp://127.0.0.1:39461": 642.86328125,
-          "tcp://127.0.0.1:39477": 363.1875,
-          "tcp://127.0.0.1:40133": 642.86328125,
-          "tcp://127.0.0.1:41125": 642.86328125,
-          "tcp://127.0.0.1:41353": 642.86328125,
-          "tcp://127.0.0.1:41973": 642.86328125,
-          "tcp://127.0.0.1:42387": 642.86328125,
-          "tcp://127.0.0.1:43029": 642.86328125,
-          "tcp://127.0.0.1:44423": 363.1875,
-          "tcp://127.0.0.1:44565": 363.1875,
-          "tcp://127.0.0.1:45997": 642.86328125,
-          "tcp://127.0.0.1:46713": 363.1875
+          "tcp://127.0.0.1:32985": 377.34375,
+          "tcp://127.0.0.1:33417": 377.6015625,
+          "tcp://127.0.0.1:33835": 377.859375,
+          "tcp://127.0.0.1:33949": 377.34375,
+          "tcp://127.0.0.1:34461": 623.0546875,
+          "tcp://127.0.0.1:34473": 623.0546875,
+          "tcp://127.0.0.1:34701": 623.0546875,
+          "tcp://127.0.0.1:34751": 623.0546875,
+          "tcp://127.0.0.1:35285": 377.859375,
+          "tcp://127.0.0.1:35299": 623.0546875,
+          "tcp://127.0.0.1:35319": 377.34375,
+          "tcp://127.0.0.1:35873": 377.34375,
+          "tcp://127.0.0.1:36103": 623.0546875,
+          "tcp://127.0.0.1:36315": 377.6015625,
+          "tcp://127.0.0.1:36397": 623.0546875,
+          "tcp://127.0.0.1:36629": 623.0546875,
+          "tcp://127.0.0.1:37199": 623.0546875,
+          "tcp://127.0.0.1:37309": 623.0546875,
+          "tcp://127.0.0.1:37357": 377.6015625,
+          "tcp://127.0.0.1:37391": 378.1171875,
+          "tcp://127.0.0.1:37613": 377.875,
+          "tcp://127.0.0.1:37777": 623.0546875,
+          "tcp://127.0.0.1:38001": 623.0546875,
+          "tcp://127.0.0.1:38161": 623.0546875,
+          "tcp://127.0.0.1:38195": 623.0546875,
+          "tcp://127.0.0.1:39285": 377.6015625,
+          "tcp://127.0.0.1:39319": 377.859375,
+          "tcp://127.0.0.1:39809": 623.0546875,
+          "tcp://127.0.0.1:39913": 377.859375,
+          "tcp://127.0.0.1:40195": 377.859375,
+          "tcp://127.0.0.1:40215": 377.859375,
+          "tcp://127.0.0.1:40367": 378.1171875,
+          "tcp://127.0.0.1:40413": 377.34375,
+          "tcp://127.0.0.1:40503": 378.1171875,
+          "tcp://127.0.0.1:40889": 530.4375,
+          "tcp://127.0.0.1:41089": 377.859375,
+          "tcp://127.0.0.1:41405": 377.34375,
+          "tcp://127.0.0.1:41757": 623.0546875,
+          "tcp://127.0.0.1:41897": 377.859375,
+          "tcp://127.0.0.1:42369": 623.0546875,
+          "tcp://127.0.0.1:42753": 623.0546875,
+          "tcp://127.0.0.1:43219": 623.0546875,
+          "tcp://127.0.0.1:43641": 623.0546875,
+          "tcp://127.0.0.1:43851": 377.6015625,
+          "tcp://127.0.0.1:43927": 623.0546875,
+          "tcp://127.0.0.1:44137": 377.6015625,
+          "tcp://127.0.0.1:44467": 623.0546875,
+          "tcp://127.0.0.1:44779": 623.0546875,
+          "tcp://127.0.0.1:44803": 623.0546875,
+          "tcp://127.0.0.1:45109": 377.6015625,
+          "tcp://127.0.0.1:45247": 623.0546875,
+          "tcp://127.0.0.1:45399": 377.34375,
+          "tcp://127.0.0.1:45667": 623.0546875,
+          "tcp://127.0.0.1:46573": 378.1171875,
+          "tcp://127.0.0.1:46849": 623.0546875,
+          "tcp://127.0.0.1:46853": 623.0546875
         }
       }
     },
@@ -27333,12 +27662,12 @@
     {
       "compliance": {
         "backfilled": false,
-        "checked_at": "2026-11-06T06:19:06+00:00",
+        "checked_at": "2026-11-12T02:49:15+00:00",
         "cv_version": "2.3.4",
         "environment_warning": false,
         "error": null,
         "failed_checks": null,
-        "file": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20220101-20241231.nc",
+        "file": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20220101-20241231.nc",
         "passed": true,
         "report_path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/logs/ocean_tos_tavg-u-hxy-sea_day_glb/compliance_tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20220101-20241231.json",
         "suites": [
@@ -27346,8 +27675,8 @@
           "wcrp_cmip7:1.0"
         ]
       },
-      "duration_seconds": 1980.0,
-      "end_time": "2026-11-06 06:49:10",
+      "duration_seconds": 591.0,
+      "end_time": "2026-11-12 02:53:23",
       "error_message": null,
       "experiment_id": "scen7-vl",
       "id": 126,
@@ -27355,139 +27684,139 @@
         "file_count": 27,
         "files": [
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20220101-20241231.nc",
-            "size": "175.5 MiB",
-            "size_bytes": 183996610
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20220101-20241231.nc",
+            "size": "220.9 MiB",
+            "size_bytes": 231636780
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20250101-20291231.nc",
-            "size": "286.8 MiB",
-            "size_bytes": 300714796
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20250101-20291231.nc",
+            "size": "362.5 MiB",
+            "size_bytes": 380131349
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20300101-20341231.nc",
-            "size": "287.2 MiB",
-            "size_bytes": 301113032
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20300101-20341231.nc",
+            "size": "362.8 MiB",
+            "size_bytes": 380394192
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20350101-20391231.nc",
-            "size": "287.2 MiB",
-            "size_bytes": 301151371
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20350101-20391231.nc",
+            "size": "362.9 MiB",
+            "size_bytes": 380482983
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20400101-20441231.nc",
-            "size": "287.4 MiB",
-            "size_bytes": 301387021
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20400101-20441231.nc",
+            "size": "362.7 MiB",
+            "size_bytes": 380320700
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20450101-20491231.nc",
-            "size": "287.4 MiB",
-            "size_bytes": 301381419
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20450101-20491231.nc",
+            "size": "362.6 MiB",
+            "size_bytes": 380168655
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20500101-20541231.nc",
-            "size": "287.9 MiB",
-            "size_bytes": 301870679
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20500101-20541231.nc",
+            "size": "362.9 MiB",
+            "size_bytes": 380518505
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20550101-20591231.nc",
-            "size": "287.5 MiB",
-            "size_bytes": 301514603
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20550101-20591231.nc",
+            "size": "362.8 MiB",
+            "size_bytes": 380463794
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20600101-20641231.nc",
-            "size": "287.5 MiB",
-            "size_bytes": 301420760
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20600101-20641231.nc",
+            "size": "362.8 MiB",
+            "size_bytes": 380412453
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20650101-20691231.nc",
-            "size": "287.4 MiB",
-            "size_bytes": 301319103
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20650101-20691231.nc",
+            "size": "362.6 MiB",
+            "size_bytes": 380194232
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20700101-20741231.nc",
-            "size": "287.3 MiB",
-            "size_bytes": 301259820
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20700101-20741231.nc",
+            "size": "362.7 MiB",
+            "size_bytes": 380275678
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20750101-20791231.nc",
-            "size": "287.3 MiB",
-            "size_bytes": 301281143
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20750101-20791231.nc",
+            "size": "362.7 MiB",
+            "size_bytes": 380275332
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20800101-20841231.nc",
-            "size": "287.2 MiB",
-            "size_bytes": 301132858
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20800101-20841231.nc",
+            "size": "362.6 MiB",
+            "size_bytes": 380207916
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20850101-20891231.nc",
-            "size": "286.8 MiB",
-            "size_bytes": 300711486
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20850101-20891231.nc",
+            "size": "362.1 MiB",
+            "size_bytes": 379681690
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20900101-20941231.nc",
-            "size": "286.7 MiB",
-            "size_bytes": 300615330
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20900101-20941231.nc",
+            "size": "362.2 MiB",
+            "size_bytes": 379745399
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20950101-20991231.nc",
-            "size": "286.5 MiB",
-            "size_bytes": 300423923
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_20950101-20991231.nc",
+            "size": "361.9 MiB",
+            "size_bytes": 379508693
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_21000101-21041231.nc",
-            "size": "286.6 MiB",
-            "size_bytes": 300483779
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_21000101-21041231.nc",
+            "size": "362.1 MiB",
+            "size_bytes": 379700909
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_21050101-21091231.nc",
-            "size": "286.3 MiB",
-            "size_bytes": 300248959
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_21050101-21091231.nc",
+            "size": "361.9 MiB",
+            "size_bytes": 379467030
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_21100101-21141231.nc",
-            "size": "286.7 MiB",
-            "size_bytes": 300625179
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_21100101-21141231.nc",
+            "size": "362.2 MiB",
+            "size_bytes": 379800357
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_21150101-21191231.nc",
-            "size": "286.6 MiB",
-            "size_bytes": 300573742
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_21150101-21191231.nc",
+            "size": "362.2 MiB",
+            "size_bytes": 379791431
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_21200101-21241231.nc",
-            "size": "286.7 MiB",
-            "size_bytes": 300656097
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_21200101-21241231.nc",
+            "size": "362.3 MiB",
+            "size_bytes": 379867459
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_21250101-21291231.nc",
-            "size": "286.3 MiB",
-            "size_bytes": 300187147
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_21250101-21291231.nc",
+            "size": "361.7 MiB",
+            "size_bytes": 379233272
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_21300101-21341231.nc",
-            "size": "286.4 MiB",
-            "size_bytes": 300280283
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_21300101-21341231.nc",
+            "size": "361.7 MiB",
+            "size_bytes": 379242805
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_21350101-21391231.nc",
-            "size": "286.5 MiB",
-            "size_bytes": 300433898
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_21350101-21391231.nc",
+            "size": "362.1 MiB",
+            "size_bytes": 379676366
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_21400101-21441231.nc",
-            "size": "286.9 MiB",
-            "size_bytes": 300790526
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_21400101-21441231.nc",
+            "size": "362.3 MiB",
+            "size_bytes": 379886713
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_21450101-21491231.nc",
-            "size": "286.6 MiB",
-            "size_bytes": 300549778
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_21450101-21491231.nc",
+            "size": "361.9 MiB",
+            "size_bytes": 379456241
           },
           {
-            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261106/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_21500101-21501231.nc",
-            "size": "64.0 MiB",
-            "size_bytes": 67066283
+            "path": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/MIP-DRS7/CMIP7/ScenarioMIP/ACCESS-Consortium/ACCESS-ESM1-6/scen7-vl/r5i1p1f1/glb/day/tos/tavg-u-hxy-sea/g118/v20261112/tos_tavg-u-hxy-sea_day_glb_g118_ACCESS-ESM1-6_scen7-vl_r5i1p1f1_21500101-21501231.nc",
+            "size": "79.1 MiB",
+            "size_bytes": 82978557
           }
         ],
         "gates": {
@@ -27497,12 +27826,11 @@
               45.0
             ],
             "check_id": "cmip7_ranges",
-            "message": "CMIP7 QC range warning for tos in experiment scen7-vl using rule default: observed range -275.068..-238.140 degC is outside allowed range -3.000..45.000 degC.",
             "observed": [
-              -275.06756591796875,
-              -237.12828063964844
+              -1.917571783065796,
+              36.02170944213867
             ],
-            "result": "warn",
+            "result": "pass",
             "units": "degC"
           },
           "repack": {
@@ -27510,102 +27838,120 @@
             "tool": "cmip7repack"
           }
         },
-        "total_bytes": 7773189625,
-        "total_size": "7.2 GiB"
+        "total_bytes": 9813519491,
+        "total_size": "9.1 GiB"
       },
       "pbs": {
-        "comment": "Job run at Fri Nov 06 at 17:15 on (gadi-cpu-bdw-0339:ncpus=12:mem=134217728kb:jobfs=104857600kb) and finished",
-        "exec_host": "gadi-cpu-bdw-0339/0*12",
-        "exec_vnode": "(gadi-cpu-bdw-0339:ncpus=12:mem=134217728kb:jobfs=104857600kb)",
+        "comment": "Job run at Thu Nov 12 at 13:43 on (gadi-cpu-clx-2524:ncpus=28:mem=134217728kb:jobfs=104857600kb) and finished",
+        "exec_host": "gadi-cpu-clx-2524/0*28",
+        "exec_vnode": "(gadi-cpu-clx-2524:ncpus=28:mem=134217728kb:jobfs=104857600kb)",
         "exit_status": 0,
-        "job_id": "183299290.gadi-pbs",
+        "job_id": "183714805.gadi-pbs",
         "job_state": "F",
         "pbs_server": "gadi-pbs-01",
         "pbs_version": "2024.1.2.20241017100211",
         "project": "tm70",
         "qstat_format": "json",
-        "queue": "normalbw-exec",
+        "queue": "normal-exec",
         "raw_qstat": {
           "Exit_status": 0,
           "Resource_List.jobfs": "107374182400b",
           "Resource_List.mem": "137438953472b",
-          "Resource_List.mpiprocs": 12,
-          "Resource_List.ncpus": 12,
-          "Resource_List.storage": "scratch/tm70+gdata/p73+gdata/xp65+gdata/tm70+gdata/im55+scratch/p73",
+          "Resource_List.mpiprocs": 28,
+          "Resource_List.ncpus": 28,
+          "Resource_List.storage": "gdata/xp65+gdata/im55+gdata/tm70+scratch/p73+gdata/p73+scratch/tm70",
           "Resource_List.walltime": "03:00:00",
-          "comment": "Job run at Fri Nov 06 at 17:15 on (gadi-cpu-bdw-0339:ncpus=12:mem=134217728kb:jobfs=104857600kb) and finished",
-          "ctime": "Fri Nov  6 17:10:48 2026",
-          "etime": "Fri Nov  6 17:10:48 2026",
-          "exec_host": "gadi-cpu-bdw-0339/0*12",
-          "exec_vnode": "(gadi-cpu-bdw-0339:ncpus=12:mem=134217728kb:jobfs=104857600kb)",
-          "job_id": "183299290.gadi-pbs",
+          "comment": "Job run at Thu Nov 12 at 13:43 on (gadi-cpu-clx-2524:ncpus=28:mem=134217728kb:jobfs=104857600kb) and finished",
+          "ctime": "Thu Nov 12 13:20:15 2026",
+          "etime": "Thu Nov 12 13:20:15 2026",
+          "exec_host": "gadi-cpu-clx-2524/0*28",
+          "exec_vnode": "(gadi-cpu-clx-2524:ncpus=28:mem=134217728kb:jobfs=104857600kb)",
+          "job_id": "183714805.gadi-pbs",
           "job_state": "F",
-          "mtime": "Fri Nov  6 17:49:22 2026",
+          "mtime": "Thu Nov 12 13:53:35 2026",
           "pbs_server": "gadi-pbs-01",
           "pbs_version": "2024.1.2.20241017100211",
           "project": "tm70",
           "qstat_format": "json",
-          "qtime": "Fri Nov  6 17:10:48 2026",
-          "queue": "normalbw-exec",
-          "resources_used.cpupercent": 378,
-          "resources_used.cput": "01:02:31",
-          "resources_used.mem": "24346008kb",
-          "resources_used.ncpus": 12,
-          "resources_used.vmem": "24346008kb",
-          "resources_used.walltime": "00:33:22",
+          "qtime": "Thu Nov 12 13:20:15 2026",
+          "queue": "normal-exec",
+          "resources_used.cpupercent": 846,
+          "resources_used.cput": "00:40:05",
+          "resources_used.mem": "41802040kb",
+          "resources_used.ncpus": 28,
+          "resources_used.vmem": "41802040kb",
+          "resources_used.walltime": "00:10:16",
           "scheduler": "pbs",
-          "stime": "Fri Nov  6 17:15:50 2026"
+          "stime": "Thu Nov 12 13:43:09 2026"
         },
         "resources_requested": {
           "jobfs": "107374182400b",
           "mem": "137438953472b",
-          "mpiprocs": 12,
-          "ncpus": 12,
-          "storage": "scratch/tm70+gdata/p73+gdata/xp65+gdata/tm70+gdata/im55+scratch/p73",
+          "mpiprocs": 28,
+          "ncpus": 28,
+          "storage": "gdata/xp65+gdata/im55+gdata/tm70+scratch/p73+gdata/p73+scratch/tm70",
           "walltime": "03:00:00"
         },
         "resources_used": {
-          "cpupercent": 378,
-          "cput": "01:02:31",
-          "mem": "24346008kb",
-          "ncpus": 12,
-          "vmem": "24346008kb",
-          "walltime": "00:33:22"
+          "cpupercent": 846,
+          "cput": "00:40:05",
+          "mem": "41802040kb",
+          "ncpus": 28,
+          "vmem": "41802040kb",
+          "walltime": "00:10:16"
         },
         "scheduler": "pbs",
         "timestamps": {
-          "created_at": "Fri Nov  6 17:10:48 2026",
-          "eligible_at": "Fri Nov  6 17:10:48 2026",
-          "modified_at": "Fri Nov  6 17:49:22 2026",
-          "queued_at": "Fri Nov  6 17:10:48 2026",
-          "started_at": "Fri Nov  6 17:15:50 2026"
+          "created_at": "Thu Nov 12 13:20:15 2026",
+          "eligible_at": "Thu Nov 12 13:20:15 2026",
+          "modified_at": "Thu Nov 12 13:53:35 2026",
+          "queued_at": "Thu Nov 12 13:20:15 2026",
+          "started_at": "Thu Nov 12 13:43:09 2026"
         }
       },
-      "pbs_job_id": "183299290.gadi-pbs",
-      "start_time": "2026-11-06 06:16:10",
+      "pbs_job_id": "183714805.gadi-pbs",
+      "start_time": "2026-11-12 02:43:32",
       "status": "completed",
       "stderr": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/ocean_tos_tavg-u-hxy-sea_day_glb/cmor_ocean_tos_tavg-u-hxy-sea_day_glb.err",
       "stdout": "/g/data/im55/admin/incoming/20260930/scen7-vl/scen7-vl-scen7-vl-1.0-r5i1p1f1-8363807f/ocean_tos_tavg-u-hxy-sea_day_glb/cmor_ocean_tos_tavg-u-hxy-sea_day_glb.out",
       "variable": "ocean.tos.tavg-u-hxy-sea.day.glb",
       "worker_memory": {
-        "memory_limit_per_worker": "9.39GB",
-        "n_workers": 9,
+        "memory_limit_per_worker": "4.57GB",
+        "n_workers": 19,
         "peak_rss_mb": {
-          "tcp://127.0.0.1:33611": 851.16796875,
-          "tcp://127.0.0.1:33977": 966.640625,
-          "tcp://127.0.0.1:34119": 801.0078125,
-          "tcp://127.0.0.1:34275": 851.16796875,
-          "tcp://127.0.0.1:34945": 852.7265625,
-          "tcp://127.0.0.1:36625": 851.16796875,
-          "tcp://127.0.0.1:37837": 1033.9765625,
-          "tcp://127.0.0.1:39957": 948.296875,
-          "tcp://127.0.0.1:40737": 884.67578125,
-          "tcp://127.0.0.1:40855": 1035.50390625,
-          "tcp://127.0.0.1:40985": 904.8671875,
-          "tcp://127.0.0.1:43215": 928.640625,
-          "tcp://127.0.0.1:43345": 1110.81640625,
-          "tcp://127.0.0.1:45177": 851.16796875,
-          "tcp://127.0.0.1:45959": 914.55859375
+          "tcp://127.0.0.1:32777": 997.703125,
+          "tcp://127.0.0.1:33037": 826.48046875,
+          "tcp://127.0.0.1:33377": 886.41796875,
+          "tcp://127.0.0.1:33433": 886.41796875,
+          "tcp://127.0.0.1:33899": 886.41796875,
+          "tcp://127.0.0.1:34101": 886.41796875,
+          "tcp://127.0.0.1:34263": 1036.5078125,
+          "tcp://127.0.0.1:34337": 371.7890625,
+          "tcp://127.0.0.1:34635": 371.7890625,
+          "tcp://127.0.0.1:34869": 1094.87890625,
+          "tcp://127.0.0.1:35535": 886.41796875,
+          "tcp://127.0.0.1:36203": 886.41796875,
+          "tcp://127.0.0.1:36311": 886.41796875,
+          "tcp://127.0.0.1:36349": 371.7890625,
+          "tcp://127.0.0.1:36511": 934.5546875,
+          "tcp://127.0.0.1:37603": 371.7890625,
+          "tcp://127.0.0.1:38403": 1023.8515625,
+          "tcp://127.0.0.1:40029": 886.41796875,
+          "tcp://127.0.0.1:40901": 371.7890625,
+          "tcp://127.0.0.1:41907": 886.41796875,
+          "tcp://127.0.0.1:42035": 886.41796875,
+          "tcp://127.0.0.1:42171": 1012.6875,
+          "tcp://127.0.0.1:42441": 927.2421875,
+          "tcp://127.0.0.1:42855": 853.234375,
+          "tcp://127.0.0.1:42895": 371.7890625,
+          "tcp://127.0.0.1:42999": 886.41796875,
+          "tcp://127.0.0.1:43031": 886.41796875,
+          "tcp://127.0.0.1:43731": 1120.77734375,
+          "tcp://127.0.0.1:44399": 886.5078125,
+          "tcp://127.0.0.1:44655": 886.41796875,
+          "tcp://127.0.0.1:45013": 886.41796875,
+          "tcp://127.0.0.1:46165": 886.41796875,
+          "tcp://127.0.0.1:46691": 1059.8359375
         }
       }
     },
@@ -33664,5 +34010,5 @@
   "variant_label": "r5i1p1f1",
   "model": "ACCESS-ESM1.6",
   "source_location": "incoming",
-  "ingested_at": "2026-11-06T20:30:46+00:00"
+  "ingested_at": "2026-11-12T22:07:05+00:00"
 }
